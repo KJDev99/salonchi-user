@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --main-input-bg-color: #efefef;
+  --input-placeholder-color: #8e8e93;
+  --input-color: #333333;
+  --main-white: #fff;
+  --main-black: #000;
+  --main-grey: #efefef;
+  --nav-link-color: #494949;
+  --nav-lang-btn-color: #3e3e3e;
+  --card-border: 0.5px solid #bfbfbf;
+  --btn-red: #1d4f72;
+  --product-title-color: #312b46;
+  --main-bg-color: #6417b0;
+  --footer-border: 1px solid #bfbfbf;
+  --list-item-bg-color: #f5f6f6;
+  --list-item-color: #212121;
+  --input-label-color: #565656;
+  --font-readex: "Readex Pro", sans-serif;
+  --catalog-card-bg: #e9f0ff;
+  --main-red: #f33434;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: GilroyExtraBold;
+  src: url(/src/assets/fonts/gilroy_extrabold.otf);
+}
+
+@font-face {
+  font-family: GilroyLight;
+  src: url(/src/assets/fonts/gilroy_light.otf);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "Readex Pro", sans-serif !important;
+  background-color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--main-input-bg-color) inset !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input,
+button,
+label {
+  font-family: var(--font-readex);
+}
+input::placeholder {
+  font-family: var(--font-readex);
+}
+
+.mantine-Drawer-inner {
+  z-index: 99999;
+}

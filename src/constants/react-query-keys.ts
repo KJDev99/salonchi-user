@@ -1,0 +1,17 @@
+export const REACT_QUERY_KEYS = {
+  READ_PRODUCT_LIST: "read-product-list",
+  CATEGORY_LIST_WITH_PRODUCTS: "CATEGORY_LIST_WITH_PRODUCTS",
+  PRODUCT_DETAIL: "get-product-detail",
+  GET_USER_INFO: "get-user-info",
+  BANNER_LIST: "get-banner-list",
+  READ_CATEGORY_LIST: "get-category-list",
+  GET_REGION_LIST: "get-region-list",
+  GET_DISTRICT_LIST: "get-district-list",
+  GET_CATALOG_LIST: "get-catalog-list",
+  GET_CATEGORY_LIST: "get-cats-list",
+  GET_ADDRESS_DETAIL: "get-address-details",
+  GET_ADDRESS_DETAIL1: "get-address-detail-1",
+  READ_DISTRICT_LIST: "read-district-list",
+  CHECK_STATUS: "check-status",
+  PAYMENT_STATUS: "/order/list",
+};

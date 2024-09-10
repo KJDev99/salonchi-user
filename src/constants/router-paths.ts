@@ -1,0 +1,18 @@
+export const PERMISSIONS = [
+  "/register",
+  "/login",
+  "/verify",
+  "/verify-code",
+  "/password",
+  "/create-address",
+  "/update-password",
+  "/forget-password",
+  "/404",
+  "/wholesaler/register",
+  "/wholesaler/forget-password",
+  "/wholesaler/login",
+  "/wholesaler/verify",
+  "/wholesaler/verify-code",
+  "/wholesaler/update-password",
+  "/wholesaler/pending",
+];

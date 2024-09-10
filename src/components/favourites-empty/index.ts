@@ -1,0 +1,1 @@
+export { FavouritesEmpty } from './empty';

@@ -1,0 +1,16 @@
+export const regions = [
+  { value: 'andijan', label: 'Andijon viloyati' },
+  { value: 'fergana', label: 'Farg`ona viloyati' },
+  { value: 'namangan', label: 'Namangan viloyati' },
+  { value: 'tashkent', label: 'Toshkent viloyati' },
+  { value: 'surkhandarya', label: 'Surxondaryo viloyati' },
+  { value: 'kashkadarya', label: 'Qashqadaryo viloyati' },
+  { value: 'bukhara', label: 'Buxoro viloyati' },
+  { value: 'jizzakh', label: 'Jizzax viloyati' },
+  { value: 'sirdarya', label: 'Sirdaryo viloyati' },
+  { value: 'navai', label: 'Navoiy viloyati' },
+  { value: 'khorezm', label: 'Xorazm viloyati' },
+  { value: 'tashkent', label: 'Toshkent viloyati' },
+  { value: 'samarkand', label: 'Samarqand viloyati' },
+  { value: 'karakalpakstan', label: 'Qoraqalpog`iston Respublikasi' },
+];

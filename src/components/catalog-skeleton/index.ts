@@ -1,0 +1,1 @@
+export { CatalogSkeleton } from './skeleton';
