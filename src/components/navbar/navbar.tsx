@@ -54,7 +54,7 @@ const Navbar = () => {
             <Right>
               {/* <span>{t("header.communication_center")}:</span> */}
               <span>
-                <a href="tel:+998930007570"> +998 93 537 20 00</a>
+                <a href="tel:+998930007570"> +998 93 537 20 01</a>
               </span>
               {/* <Button
                 variant="outline"
