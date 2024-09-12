@@ -21,7 +21,22 @@ export const Card = styled("div")`
     padding: 10px;
     border-radius: 10px;
   }
-
+  .heart-wrapper {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    right: 1rem;
+    top: 1rem;
+    /* background-color: whi; */
+    svg {
+      width: 24px;
+      height: 24px;
+      /* stroke: var(--main-bg-color); */
+      &.icon-tabler-heart-filled {
+        color: var(--main-bg-color);
+      }
+    }
+  }
   cursor: pointer;
   .number-price {
     font-weight: 500;
@@ -199,17 +214,7 @@ export const CardFooter = styled("div")`
       height: 18px;
     }
   }
-  .heart-wrapper {
-    cursor: pointer;
-    svg {
-      width: 24px;
-      height: 24px;
-      /* stroke: var(--main-bg-color); */
-      &.icon-tabler-heart-filled {
-        color: var(--main-bg-color);
-      }
-    }
-  }
+
   @media (max-width: 768px) {
     button {
       height: 39px;

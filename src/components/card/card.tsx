@@ -26,7 +26,13 @@ import { Carousel } from "./carousel";
 import { useTranslation } from "next-i18next";
 import { useViewportSize } from "@mantine/hooks";
 
-export const CustomCard = ({ id, item,isAllview, type = "default",isCarousel=false }: any) => {
+export const CustomCard = ({
+  id,
+  item,
+  isAllview,
+  type = "default",
+  isCarousel = false,
+}: any) => {
   const router = useRouter();
   const cart = useStore((state: any) => state.cart);
   const {
@@ -45,7 +51,20 @@ export const CustomCard = ({ id, item,isAllview, type = "default",isCarousel=fal
   const { width } = useViewportSize();
 
   return (
-    <Card className={`${router.pathname !== "/" ? "another-card" : ""} ${isCarousel ? 'carousel' : ''}`}>
+    <Card
+      className={`${router.pathname !== "/" ? "another-card" : ""} ${
+        isCarousel ? "carousel" : ""
+      }`}
+    >
+      <div
+        className="heart-wrapper"
+        onClick={(e: any) => {
+          setChecked(!checked);
+          handleAddWishlist(e);
+        }}
+      >
+        {checked ? <IconHeartFilled /> : <HeartOutlineIcon />}
+      </div>
       <CardHeader onClick={() => router.push(`/product/${item?.slug}`)}>
         {item?.photo !== null && <Carousel images={item?.photo} />}
         {type === "cheap" ? (
@@ -62,15 +81,6 @@ export const CustomCard = ({ id, item,isAllview, type = "default",isCarousel=fal
             <p>{router.locale == "ru" ? item?.name_ru : item?.name_uz}</p>
             <NumberFormat value={item?.price ?? 0} />
             <span> {t("card.currency")}</span>
-          </div>
-          <div
-            className="heart-wrapper"
-            onClick={(e: any) => {
-              setChecked(!checked);
-              handleAddWishlist(e);
-            }}
-          >
-            {checked ? <IconHeartFilled /> : <HeartOutlineIcon />}
           </div>
         </div>
         {cart?.find((el: IProduct) => el?.id === id) ? (
@@ -102,7 +112,11 @@ export const CustomCard = ({ id, item,isAllview, type = "default",isCarousel=fal
           <ButtonWrapper>
             <Button
               className="add-to-cart-btn"
-              onClick={(e) => item?.have_attribute ? router.push(`/product/${item?.slug}`) :   handleAddToCart(e, item)}
+              onClick={(e) =>
+                item?.have_attribute
+                  ? router.push(`/product/${item?.slug}`)
+                  : handleAddToCart(e, item)
+              }
             >
               Savatchaga
             </Button>
