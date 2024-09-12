@@ -20,15 +20,15 @@ export const Color = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #6417b0;
+  border: 1px solid #ea580c;
   /* background-color: ${(props: any) => props.color}; */
   cursor: pointer;
   outline-offset: 2px;
   transition: all 0.1s;
   &.active {
-    outline: 2px solid #6417b0;
+    outline: 2px solid #ea580c;
   }
   &:hover {
-    outline: 2px solid #6417b0;
+    outline: 2px solid #ea580c;
   }
 `;

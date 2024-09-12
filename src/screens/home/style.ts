@@ -38,13 +38,13 @@ export const Card = styled("div")`
   align-items: center;
   position: relative;
   cursor: pointer;
-  background-color: #F6F1FD;
-   p{
+  background-color: #f6f1fd;
+  p {
     font-size: 18px;
     line-height: 27px;
-    color: #6417B0;
+    color: #ea580c;
     text-align: center;
-   }
+  }
   @media (max-width: 576px) {
     padding: 10px;
     min-height: 286px;

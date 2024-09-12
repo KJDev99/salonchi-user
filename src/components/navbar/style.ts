@@ -8,7 +8,7 @@ export const NavProvider = styled.div`
 
 export const NavHeader = styled("div")`
   width: 100%;
-  height: 70px;
+  height: 40px;
   background-color: var(--main-bg-color);
   display: flex;
   justify-content: space-between;
@@ -19,10 +19,9 @@ export const NavHeader = styled("div")`
     font-weight: 300;
   }
   button {
-    width: 172px;
-    height: 42px;
+    height: 40px;
     border-radius: 10px;
-    border: 1px solid #fff;
+    border: none;
     font-size: 16px;
     background-color: var(--main-bg-color) !important;
     font-family: var(--font-readex);
@@ -55,6 +54,8 @@ export const Left = styled("div")`
   }
 `;
 export const Right = styled("div")`
+  display: flex;
+  align-items: center;
   & span:nth-of-type(1) {
     font-size: 12px;
   }

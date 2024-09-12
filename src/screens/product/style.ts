@@ -11,30 +11,30 @@ export const LeftContent = styled("div")`
   /* display: flex;
   align-items: center;
   justify-content: center; */
- /* overflow: hidden; */
+  /* overflow: hidden; */
   /* button {
     position: absolute;
     bottom: 100px;
   } */
-    /* img{
+  /* img{
       object-fit: cover;
     } */
-      /* display: flex; */
-      /* flex-direction: column; */
-      /* align-items: center; */
-      /* justify-content: center; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
 
-      .image-gallery-slide-wrapper {
-        width: 290px !important;
-        height: 400px !important;
+  .image-gallery-slide-wrapper {
+    width: 290px !important;
+    height: 400px !important;
 
-        margin: 0 auto !important;
-      }
-      .image-gallery-image{
-        width: 300px !important;
-        height: 400px !important;
-        object-fit:cover !important;
-      }
+    margin: 0 auto !important;
+  }
+  .image-gallery-image {
+    width: 300px !important;
+    height: 400px !important;
+    object-fit: cover !important;
+  }
   @media (max-width: 576px) {
     border-radius: 0;
   }
@@ -88,7 +88,7 @@ export const AddToCart = styled("div")`
   width: 100%;
   min-height: 274px;
   background: var(--main-white);
-  border: 1px solid #6417b0;
+  border: 1px solid #ea580c;
   border-radius: 10px;
   padding: 28px 32px 30px 30px;
 `;

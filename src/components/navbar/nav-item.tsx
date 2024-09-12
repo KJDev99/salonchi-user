@@ -115,7 +115,7 @@ const NavItem = ({
         </Link>
       )}
 
-      {btn && <LanguageMenu />}
+      {/* {btn && <LanguageMenu />} */}
       {badge && productCount > 0 && (
         <Badge>
           <span>{productCount}</span>

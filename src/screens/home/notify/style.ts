@@ -49,7 +49,7 @@ export const ModalFooter = styled("div")`
   }
   button {
     height: 42px;
-    background: #6417b0;
+    background: #ea580c;
     width: 85%;
     border-radius: 12px;
     margin: 32px auto 16px auto;

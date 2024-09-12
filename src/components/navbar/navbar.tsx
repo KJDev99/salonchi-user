@@ -49,19 +49,21 @@ const Navbar = () => {
           <Container className="nav-container">
             <Left>
               <Button variant="outline">Yangiliklar</Button>
+              <Button variant="outline">Hamkorlik qilish</Button>
             </Left>
             <Right>
-              <span>{t("header.communication_center")}:</span>
+              {/* <span>{t("header.communication_center")}:</span> */}
               <span>
                 <a href="tel:+998930007570"> +998 93 537 20 00</a>
               </span>
-              <Button
+              {/* <Button
                 variant="outline"
                 className="last-btn"
                 onClick={() => router.push("https://seller.xuping.uz")}
               >
                 Hamkorlik qilish
-              </Button>
+              </Button> */}
+              <LanguageMenu />
             </Right>
           </Container>
         </NavHeader>

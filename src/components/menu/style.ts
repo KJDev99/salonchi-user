@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   .lang-btn {
     background-color: transparent;
-    color: var(--nav-lang-btn-color);
+    color: white;
     font-family: var(--font-readex);
     font-weight: 300;
     font-size: 16px;
@@ -13,6 +13,9 @@ export const Wrapper = styled('div')`
     }
   }
   .item-active {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: red;
+    color: white;
+  }
+  .item {
   }
 `;
