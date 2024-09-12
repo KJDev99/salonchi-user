@@ -2,17 +2,19 @@ import styled from "@emotion/styled";
 
 export const Card = styled("div")`
   width: 100%;
-  min-height: 380px;
+  min-height: 387px;
   height: 100%;
   background: var(--main-white);
-  border: 0.5px solid var(--main-bg-color);
-  border-radius: 20px;
+  /* border: 0.5px solid var(--main-bg-color); */
+  border-radius: 12px;
   /* padding: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+  background-color: white;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 
   @media (max-width: 576px) {
     width: 10%;
@@ -47,7 +49,7 @@ export const Card = styled("div")`
     width: 180px;
     &.carousel {
       width: 150px !important;
-      p{
+      p {
         font-size: 12px;
       }
     }
@@ -97,10 +99,8 @@ export const CardHeader = styled("div")`
     font-weight: 400;
     font-family: "Readex Pro", sans-serif;
     @media (max-width: 576px) {
-      left:0;
-
-  }
-    
+      left: 0;
+    }
   }
 
   @media (max-width: 500px) {
@@ -149,10 +149,9 @@ export const CardBody = styled("div")`
 export const CardFooter = styled("div")`
   padding: 15px;
 
-  @media (max-width:576px) {
-    
-  padding: 0px;
-}
+  @media (max-width: 576px) {
+    padding: 0px;
+  }
   /* background-color: red; */
   .stars-group {
     display: flex;
