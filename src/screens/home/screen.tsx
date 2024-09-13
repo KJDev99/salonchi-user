@@ -31,7 +31,7 @@ const HomeScreen = () => {
   const { width } = useViewportSize();
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-
+  console.log(categoryListProducts);
   return (
     <Wrapper className="home-wrapper">
       <Container>
@@ -55,7 +55,7 @@ const HomeScreen = () => {
                       key={item?.id}
                     >
                       <CustomCard
-                       isCarousel={false}
+                        isCarousel={false}
                         id={item?.id}
                         item={item}
                         type={item?.is_cheap ? "cheap" : ""}
@@ -97,7 +97,7 @@ const HomeScreen = () => {
             { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
           ]}
           controlSize={47}
-          withControls={ width > 576  ? true : false}
+          withControls={width > 576 ? true : false}
           styles={{
             control: {
               "&[data-inactive]": {
@@ -107,7 +107,7 @@ const HomeScreen = () => {
             },
           }}
         >
-          {cheapProductList?.slice(0,9)?.map((v: any) => {
+          {cheapProductList?.slice(0, 9)?.map((v: any) => {
             return (
               <Carousel.Slide key={v?.id}>
                 <CustomCard
@@ -121,7 +121,10 @@ const HomeScreen = () => {
             );
           })}
           <Carousel.Slide>
-            <Card onClick={() => router.push(`/all-product/cheap`)} className={"another-card"}>
+            <Card
+              onClick={() => router.push(`/all-product/cheap`)}
+              className={"another-card"}
+            >
               <p>Barcha mahsulotlarni ko‘rish</p>
             </Card>
           </Carousel.Slide>
@@ -147,26 +150,27 @@ const HomeScreen = () => {
             },
           }}
           controlSize={47}
-          withControls={ width > 576  ? true : false}
-
+          withControls={width > 576 ? true : false}
         >
-          {newProductList?.slice(0,9)?.map((v: any) => {
+          {newProductList?.slice(0, 9)?.map((v: any) => {
             return (
               <Carousel.Slide key={v?.id}>
-                  
-                  <CustomCard isCarousel={true}  id={v?.id} item={v} type="new" />
+                <CustomCard isCarousel={true} id={v?.id} item={v} type="new" />
               </Carousel.Slide>
             );
           })}
           <Carousel.Slide>
-            <Card onClick={() => router.push(`/all-product/new`)} className={"another-card"}>
+            <Card
+              onClick={() => router.push(`/all-product/new`)}
+              className={"another-card"}
+            >
               <p>Barcha mahsulotlarni ko‘rish</p>
             </Card>
           </Carousel.Slide>
         </Carousel>
 
         <Grid>
-        {/* {
+          {/* {
           console.log("categoryListProducts",categoryListProducts)
         } */}
           {categoryListProducts?.map((item: any, idx: number) => {
@@ -198,9 +202,8 @@ const HomeScreen = () => {
                       { maxWidth: "md", slideSize: "50%" },
                       { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
                     ]}
-                    controlSize={ 47}
-                   withControls={ width > 576  ? true : false}
-
+                    controlSize={47}
+                    withControls={width > 576 ? true : false}
                     styles={{
                       control: {
                         "&[data-inactive]": {
@@ -210,12 +213,11 @@ const HomeScreen = () => {
                       },
                     }}
                   >
-                    {item?.products?.slice(0,9)?.map((children: any) => {
+                    {item?.products?.slice(0, 9)?.map((children: any) => {
                       return (
                         <Carousel.Slide key={children?.id}>
                           <CustomCard
-                           isCarousel={true}
-
+                            isCarousel={true}
                             id={children?.id}
                             item={children}
                             type={children?.is_cheap ? "cheap" : ""}
@@ -224,7 +226,10 @@ const HomeScreen = () => {
                       );
                     })}
                     <Carousel.Slide>
-                      <Card onClick={() => router.push(`/categories/${item.id}`)}  className={"another-card"}>
+                      <Card
+                        onClick={() => router.push(`/categories/${item.id}`)}
+                        className={"another-card"}
+                      >
                         <p>Barcha mahsulotlarni ko‘rish</p>
                       </Card>
                     </Carousel.Slide>
