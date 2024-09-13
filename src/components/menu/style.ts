@@ -17,5 +17,7 @@ export const Wrapper = styled("div")`
     color: white;
   }
   .item {
+    background-color: white !important;
+    color: black;
   }
 `;
