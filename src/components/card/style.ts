@@ -101,11 +101,12 @@ export const CardHeader = styled("div")`
   }
   .badge {
     position: absolute;
-    left: 10px;
-    bottom: 0 !important;
-    width: 58px;
-    background: #e93681;
-    border-radius: 5px;
+    left: 4px;
+    top: 4px !important;
+    /* width: 58px; */
+    padding: 4px 8px;
+    background-color: #f63d68;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,8 +163,13 @@ export const CardBody = styled("div")`
 `;
 
 export const CardFooter = styled("div")`
-  padding: 15px;
-
+  padding: 12px 16px;
+  .btn-group {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: min-content 1fr;
+    /* justify-content: s; */
+  }
   @media (max-width: 576px) {
     padding: 0px;
   }
@@ -183,12 +189,21 @@ export const CardFooter = styled("div")`
     font-weight: 600;
     line-height: normal;
   }
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .rating span {
+    color: #9da4ae;
+    font-size: 13px;
+  }
   p {
-    color: var(--brand-black, #141311);
+    color: var(--gray-700, #141311);
     font-family: "Readex Pro", sans-serif;
     font-size: 14px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     line-height: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -229,37 +244,46 @@ export const CardFooter = styled("div")`
 `;
 
 export const ButtonWrapper = styled("div")`
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   gap: 10px;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
+  */
   margin-top: 8px;
-  .to-chack-cart-btn {
+  /* .to-chack-cart-btn {
     width: 100%;
     height: 32px;
     background: var(--main-bg-color) !important;
     border-color: var(--main-bg-color) !important;
     color: var(--main-white);
     padding: 5px 10px;
-  }
+  }  */
+
   .add-to-cart-btn {
-    width: 100%;
-    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    /* width: 100%; */
+    /* height: 32px; */
+    padding: 8px 12px;
     font-size: 14px;
-    padding: 5px 6px;
+    /* padding: 5px 6px; */
     background-color: var(--main-bg-color) !important;
     border: 1px solid transparent !important;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     svg {
-      width: 27px;
-      height: 27px;
+      width: 16px;
+      height: 16px;
     }
+
     @media (max-width: 768px) {
-      svg {
+      /* svg {
         width: 24px;
         height: 24px;
-      }
+      } */
     }
     @media (max-width: 375px) {
       svg {
@@ -267,6 +291,12 @@ export const ButtonWrapper = styled("div")`
         height: 20px;
       }
     }
+  }
+  .add-to-cart-btn2 {
+    /* display: block; */
+    width: 100%;
+    padding: 6px;
+    font-weight: 500;
   }
   @media (max-width: 1400px) {
     gap: 5px;

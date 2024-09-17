@@ -2,7 +2,6 @@ import React from "react";
 import {
   ButtonWrapper,
   Card,
-  CardBody,
   CardFooter,
   CardHeader,
   Input,
@@ -10,9 +9,10 @@ import {
   // CardMain,
 } from "./style";
 import { StarIcon } from "@/assets/icons/start";
+import { CartIconn } from "@/assets/icons/cartIcon";
 import { useRouter } from "next/router";
 import { ActionIcon, Badge, Button } from "@mantine/core";
-import { CartIcon } from "@/assets/icons/cart";
+// import { CartIcon } from "@/assets/icons/cart";
 import { IProduct } from "@/types/product";
 import { NumberFormat } from "../number-format";
 import useStore from "@/store";
@@ -74,13 +74,45 @@ export const CustomCard = ({
         ) : null}
       </CardHeader>
       {/* <CardMain> */}
-
       <CardFooter>
         <div className="stars-group">
           <div>
             <p>{router.locale == "ru" ? item?.name_ru : item?.name_uz}</p>
-            <NumberFormat value={item?.price ?? 0} />
-            <span> {t("card.currency")}</span>
+            <div className="rating">
+              <StarIcon /> <span>4.7 (10 sharhlar)</span>
+            </div>
+            <div>
+              <NumberFormat
+                style={{
+                  color: "#6C737F",
+                  fontWeight: 400,
+                  fontSize: "13px",
+                  textDecoration: "line-through",
+                }}
+                value={item?.price ?? 0}
+              />
+              <span
+                style={{
+                  color: "#6C737F",
+                  fontWeight: 400,
+                  fontSize: "13px",
+                  textDecoration: "line-through",
+                }}
+              >
+                {" "}
+                {t("card.currency")}
+              </span>
+            </div>
+            <NumberFormat
+              style={{ color: "#1F2A37", fontWeight: 500, fontSize: "16px" }}
+              value={item?.price ?? 0}
+            />
+            <span
+              style={{ color: "#1F2A37", fontWeight: 500, fontSize: "16px" }}
+            >
+              {" "}
+              {t("card.currency")}
+            </span>
           </div>
         </div>
         {cart?.find((el: IProduct) => el?.id === id) ? (
@@ -109,18 +141,24 @@ export const CustomCard = ({
             </ActionIcon>
           </ProductBtns>
         ) : (
-          <ButtonWrapper>
-            <Button
-              className="add-to-cart-btn"
-              onClick={(e) =>
-                item?.have_attribute
-                  ? router.push(`/product/${item?.slug}`)
-                  : handleAddToCart(e, item)
-              }
-            >
-              Savatchaga
-            </Button>
-          </ButtonWrapper>
+          <div className="btn-group">
+            <ButtonWrapper>
+              <Button
+                className="add-to-cart-btn add-to-cart-btn1"
+                onClick={(e) => handleAddToCart(e, item)}
+              >
+                <CartIconn />
+              </Button>
+            </ButtonWrapper>
+            <ButtonWrapper>
+              <Button
+                className="add-to-cart-btn add-to-cart-btn2"
+                onClick={() => router.push(`/product/${item?.slug}`)}
+              >
+                Xarid qilish
+              </Button>
+            </ButtonWrapper>
+          </div>
         )}
       </CardFooter>
       {/* </CardMain> */}

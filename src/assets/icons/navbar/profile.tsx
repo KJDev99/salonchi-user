@@ -14,21 +14,21 @@ export const IconProfile = () => {
         stroke="#141311"
         strokeWidth="1.5"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M10.7507 12.9395C12.8318 12.9395 14.5189 11.342 14.5189 9.37126C14.5189 7.40055 12.8318 5.80298 10.7507 5.80298C8.66952 5.80298 6.98242 7.40055 6.98242 9.37126C6.98242 11.342 8.66952 12.9395 10.7507 12.9395Z"
         stroke="#141311"
         strokeWidth="1.5"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.70312 16.4543C5.27016 15.3966 6.13539 14.5084 7.20292 13.8879C8.27044 13.2674 9.49856 12.939 10.7511 12.939C12.0037 12.939 13.2318 13.2674 14.2994 13.8879C15.3669 14.5084 16.2321 15.3966 16.7992 16.4543"
         stroke="#141311"
         strokeWidth="1.5"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

@@ -29,28 +29,28 @@ export const PendingIcon = () => {
           stroke="white"
           stroke-width="0.649506"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M114.882 153.326L108.394 183.255L75.0742 182.112"
           stroke="white"
           stroke-width="0.649506"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
         <path
           d="M132.731 174.798L122.664 201.292L91.0137 205.741"
           stroke="white"
           stroke-width="0.649506"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         />
       </g>
       <path
         d="M181.666 149.384V177.677L179.731 177.092L159.005 170.779V139.642L161.324 140.642L173.515 145.877L181.666 149.384Z"
         fill="#FCDFB1"
       />
-      <g  opacity="0.75">
+      <g opacity="0.75">
         <path
           d="M179.732 177.092L159.006 170.779V139.642L161.325 140.642L170.34 146.78C170.34 146.78 165.507 164.433 177.484 174.235C178.861 175.358 179.569 176.306 179.732 177.092Z"
           fill="#FFF6D2"
@@ -77,30 +77,30 @@ export const PendingIcon = () => {
         stroke="#704D26"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M167.765 135.712C167.765 135.712 172.214 142.752 180.527 140.213"
         stroke="#704D26"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M168.972 118.214C168.972 118.214 169.92 115.818 172.719 116.149C175.187 116.441 175.733 118.214 175.733 118.214"
         stroke="#704D26"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M185.71 119.032C185.71 119.032 186.45 117.162 188.639 117.415C190.568 117.642 190.997 119.032 190.997 119.032"
         stroke="#704D26"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
-      <g  opacity="0.75">
+      <g opacity="0.75">
         <path
           d="M196.389 117.435H196.272C196.175 117.435 196.006 117.422 195.778 117.403C192.109 117.045 172.896 114.058 167.583 107.257C167.583 107.257 150.677 145.461 175.826 152.164C175.696 152.177 175.559 152.19 175.423 152.197C174.488 152.249 173.507 152.255 172.481 152.223C148.209 151.281 150.586 113.447 152.534 98.2033C152.534 98.1903 152.534 98.1773 152.541 98.1708C153.314 94.3322 153.983 91.9355 153.983 91.9355L165.576 88.5581L174.137 89.9286L186.341 96.9692L190.186 104.633L195.694 115.98L196.265 117.162L196.389 117.435Z"
           fill="#FFF6D2"
@@ -119,7 +119,7 @@ export const PendingIcon = () => {
         stroke="#7229B5"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M167.084 140.213C167.084 141.427 165.759 142.408 164.116 142.408C162.472 142.408 161.147 141.427 161.147 140.213C161.147 138.998 162.472 138.018 164.116 138.018C165.759 138.018 167.084 138.998 167.084 140.213Z"
@@ -141,7 +141,7 @@ export const PendingIcon = () => {
         d="M224.953 234.911L218.055 234.794L132.203 233.34L133.275 163.726L146.473 160.855H146.479L159.002 157.919C159.002 157.919 175.96 183.087 184.449 160.166L216.782 170.747L224.953 234.905V234.911Z"
         fill="white"
       />
-      <g  opacity="0.75">
+      <g opacity="0.75">
         <path
           d="M140.186 184.769C140.186 184.769 157.353 228.253 206.936 227.24L129.534 223.863L130.476 194.427L140.186 184.769Z"
           fill="#EFEFEF"
@@ -152,7 +152,7 @@ export const PendingIcon = () => {
         stroke="#BABABA"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M108.762 203.689L108.391 227.279C108.333 231.138 111.399 234.32 115.263 234.398L202.31 236.158V228.429L134.515 220.258L135.437 202.722L108.768 203.689H108.762Z"
@@ -171,7 +171,7 @@ export const PendingIcon = () => {
         stroke="#BABABA"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M139.25 205.735H106.424C106.424 172.779 122.895 165.713 130.326 164.199H130.332C132.482 163.771 134.34 163.485 134.34 163.485C142.582 169.045 139.243 205.729 139.243 205.729L139.25 205.735Z"
@@ -182,14 +182,14 @@ export const PendingIcon = () => {
         stroke="#BABABA"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M135.277 205.742L134.511 220.265L166.376 224.318"
         stroke="#7229B5"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M397.851 151.403C397.851 151.403 383.556 133.99 390.713 133.061C397.124 132.23 397.78 147.604 397.845 150.819C397.851 151.196 397.851 151.403 397.851 151.403Z"
@@ -339,7 +339,7 @@ export const PendingIcon = () => {
         d="M77.6586 202.333V228.235C77.6586 231.924 74.6708 234.912 70.9816 234.912H60.3557C56.6665 234.912 53.6788 231.924 53.6788 228.235V202.333H77.6521M77.6521 201.683H53.6788C53.3216 201.683 53.0293 201.975 53.0293 202.333V228.235C53.0293 232.275 56.3158 235.561 60.3557 235.561H70.9816C75.0216 235.561 78.3081 232.275 78.3081 228.235V202.333C78.3081 201.975 78.0158 201.683 77.6586 201.683H77.6521Z"
         fill="#0058B7"
       />
-      <g  opacity="0.75">
+      <g opacity="0.75">
         <path
           d="M69.2357 234.911H60.3634C56.6742 234.911 53.6865 231.924 53.6865 228.235V202.332H64.4618C63.533 209.919 62.0132 228.988 69.2292 234.905L69.2357 234.911Z"
           fill="#D4EEFF"
@@ -354,14 +354,14 @@ export const PendingIcon = () => {
         stroke="#41A000"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M314.903 181.691C323.529 180.554 326.244 187.881 326.244 187.881C326.244 187.881 319.424 169.422 326.107 169.13C329.848 168.967 334.661 180.282 334.661 180.282C334.661 180.282 328.069 147.683 341.923 147.683"
         stroke="#41A000"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M339.978 238.295C334.503 238.295 329.826 236.677 326.078 233.482C319.33 227.734 315.907 217.283 315.907 202.422C315.907 202.241 316.05 202.098 316.232 202.098H364.886C365.068 202.098 365.211 202.241 365.211 202.422C365.211 232.15 351.422 237.606 343.206 238.217C342.349 238.282 341.634 238.288 341.108 238.288H339.984L339.978 238.295Z"
@@ -371,7 +371,7 @@ export const PendingIcon = () => {
         d="M364.887 202.429C364.887 233.424 349.864 237.405 343.181 237.899C342.343 237.964 341.642 237.97 341.115 237.97C340.901 237.97 340.719 237.97 340.563 237.97C340.407 237.97 340.206 237.97 339.985 237.97C335.146 237.97 316.239 237.197 316.239 202.423H364.894M364.894 201.773H316.239C315.882 201.773 315.59 202.065 315.59 202.423C315.59 233.917 330.873 238.62 339.985 238.62H340.33H340.57H340.797H341.115C341.648 238.62 342.362 238.613 343.233 238.542C351.566 237.925 365.543 232.41 365.543 202.423C365.543 202.065 365.251 201.773 364.894 201.773Z"
         fill="#0058B7"
       />
-      <g  opacity="0.75">
+      <g opacity="0.75">
         <path
           d="M343.183 237.899C342.014 237.99 341.104 237.971 340.565 237.971C336.941 237.971 316.241 238.815 316.241 202.43H333.057C333.057 202.43 328.413 228.521 343.189 237.899H343.183Z"
           fill="#D4EEFF"
@@ -414,7 +414,7 @@ export const PendingIcon = () => {
         stroke="#9D6ECE"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M388.851 234.911H32.2852V252H388.851V234.911Z"
@@ -422,7 +422,7 @@ export const PendingIcon = () => {
         stroke="#7A4F0B"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M136.48 21.8022H73.5036C67.3528 21.8022 62.3711 26.784 62.3711 32.9348V56.9665C62.3711 63.1173 67.3528 68.099 73.5036 68.099H120.411L135.674 79.1666L132.037 68.099H136.486C142.637 68.099 147.619 63.1173 147.619 56.9665V32.9348C147.619 26.784 142.637 21.8022 136.486 21.8022H136.48Z"
@@ -434,56 +434,56 @@ export const PendingIcon = () => {
         stroke="#A97CD8"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.3877 42.2358H136.396"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.3877 29.3499H106.356"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.459 38.1895H113.423"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.5752 46.5293H126.211"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.6543 50.8228H135.909"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.6611 55.1226H136.41"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M74.6924 33.6428H136.233"
         stroke="#9E9E9E"
         stroke-width="0.649506"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M260.664 108.686C283.779 108.686 302.518 89.9476 302.518 66.8322C302.518 43.7168 283.779 24.978 260.664 24.978C237.548 24.978 218.81 43.7168 218.81 66.8322C218.81 89.9476 237.548 108.686 260.664 108.686Z"
@@ -491,63 +491,63 @@ export const PendingIcon = () => {
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M260.656 24.9585V32.2395"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M260.656 100.678V107.959"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M219.155 66.4619H226.436"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M294.875 66.4619H302.162"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M231.312 37.1177L236.456 42.2618"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M284.851 90.6565L290.001 95.8071"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M231.312 95.8071L236.456 90.6565"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M284.851 42.2618L290.001 37.1177"
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
       <path
         d="M263.477 66.4617C263.477 68.0205 262.217 69.2805 260.658 69.2805C259.099 69.2805 257.839 68.0205 257.839 66.4617C257.839 64.9029 259.099 63.6428 260.658 63.6428C262.217 63.6428 263.477 64.9029 263.477 66.4617Z"
@@ -558,9 +558,8 @@ export const PendingIcon = () => {
         stroke="#6A26A8"
         stroke-width="0.980754"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
-      
     </svg>
   );
 };

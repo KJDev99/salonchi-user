@@ -75,7 +75,7 @@
   "no address": "Manzil kiritmadingiz!",
   "similar products": "O‘xshash mahsulotlar",
   "news": "Yangiliklar",
-  "cheap prices": "Arzon narxlar",
+  "cheap prices": "Arzon mahsulotlar",
   "header": {
     "address": "Toshkent shaxar, Olmazor tuman.",
     "communication_center": "Aloqa markazi"
@@ -98,7 +98,7 @@
     "fetching": "Yana ko`rsatish"
   },
   "card": {
-    "currency": "som",
+    "currency": "so'm",
     "cart": "Savatchaga",
     "delete saved": "Sevimlilardan o'chirish"
   },

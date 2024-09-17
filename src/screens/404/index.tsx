@@ -1,7 +1,7 @@
-import { Button } from '@mantine/core';
-import { useRouter } from 'next/router';
-import { Box, Container, Text, Title, Wrapper } from './style';
-import { IconNotFound } from '@/assets/icons/404';
+import { Button } from "@mantine/core";
+import { useRouter } from "next/router";
+import { Box, Container, Text, Title, Wrapper } from "./style";
+import { IconNotFound } from "@/assets/icons/404";
 
 export const NotFoundScreen = () => {
   const router = useRouter();
@@ -11,9 +11,9 @@ export const NotFoundScreen = () => {
       <Wrapper>
         <Box
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <IconNotFound />
@@ -25,8 +25,8 @@ export const NotFoundScreen = () => {
         </Text>
         <Button
           color="red"
-          onClick={() => router.push('/')}
-          style={{ fontFamily: 'var(--font-readex);', fontWeight: '400' }}
+          onClick={() => router.push("/")}
+          style={{ fontFamily: "var(--font-readex)", fontWeight: "400" }}
         >
           Asosiy sahifaga qaytish
         </Button>

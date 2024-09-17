@@ -15,7 +15,9 @@ import { Carousel } from "@mantine/carousel";
 import { IconArrowRight2 } from "@/assets/icons/arrow.right2";
 import { useRouter } from "next/navigation";
 import { Notify } from "./notify";
+import Image from "next/image";
 
+import Banner from "@/assets/images/banner.png";
 const HomeScreen = () => {
   const { t } = useTranslation("common");
   const {
@@ -169,76 +171,79 @@ const HomeScreen = () => {
           </Carousel.Slide>
         </Carousel>
 
-        <Grid>
-          {/* {
-          console.log("categoryListProducts",categoryListProducts)
-        } */}
+        <Grid style={{ gap: "72px" }} gutter={16}>
+          {console.log("categoryListProducts", categoryListProducts)}
           {categoryListProducts?.map((item: any, idx: number) => {
             return (
-              <Grid.Col
-                span={12}
-                lg={12}
-                xs={12}
-                sm={12}
-                md={12}
-                key={item?.id}
-              >
-                <Title
-                  className="home-title catalog-title-2"
-                  style={idx === 0 ? { marginTop: 30 } : { marginTop: 15 }}
+              <>
+                <Image src={Banner} width={1248} height={400} alt="banner" />
+                <Grid.Col
+                  span={12}
+                  lg={12}
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  key={item?.id}
                 >
-                  {item?.name_uz} <IconArrowRight2 style={{ marginLeft: 10 }} />
-                </Title>
-
-                {item?.products?.length > 0 && (
-                  <Carousel
-                    withIndicators={false}
-                    slideSize="20%"
-                    slideGap="sm"
-                    slidesToScroll={width > 576 ? 5 : 1}
-                    loop={false}
-                    align="start"
-                    breakpoints={[
-                      { maxWidth: "md", slideSize: "50%" },
-                      { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
-                    ]}
-                    controlSize={47}
-                    withControls={width > 576 ? true : false}
-                    styles={{
-                      control: {
-                        "&[data-inactive]": {
-                          opacity: 0,
-                          cursor: "default",
-                        },
-                      },
-                    }}
+                  <Title
+                    className="home-title catalog-title-2"
+                    style={idx === 0 ? { marginTop: 30 } : { marginTop: 15 }}
                   >
-                    {item?.products?.slice(0, 9)?.map((children: any) => {
-                      return (
-                        <Carousel.Slide key={children?.id}>
-                          <CustomCard
-                            isCarousel={true}
-                            id={children?.id}
-                            item={children}
-                            type={children?.is_cheap ? "cheap" : ""}
-                          />
-                        </Carousel.Slide>
-                      );
-                    })}
-                    <Carousel.Slide>
-                      <Card
-                        onClick={() => router.push(`/categories/${item.id}`)}
-                        className={"another-card"}
-                      >
-                        <p>Barcha mahsulotlarni ko‘rish</p>
-                      </Card>
-                    </Carousel.Slide>
-                  </Carousel>
-                )}
-              </Grid.Col>
+                    {item?.name_uz}{" "}
+                    <IconArrowRight2 style={{ marginLeft: 10 }} />
+                  </Title>
+
+                  {item?.products?.length > 0 && (
+                    <Carousel
+                      withIndicators={false}
+                      slideSize="20%"
+                      slideGap="sm"
+                      slidesToScroll={width > 576 ? 5 : 1}
+                      loop={false}
+                      align="start"
+                      breakpoints={[
+                        { maxWidth: "md", slideSize: "50%" },
+                        { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
+                      ]}
+                      controlSize={47}
+                      withControls={width > 576 ? true : false}
+                      styles={{
+                        control: {
+                          "&[data-inactive]": {
+                            opacity: 0,
+                            cursor: "default",
+                          },
+                        },
+                      }}
+                    >
+                      {item?.products?.slice(0, 9)?.map((children: any) => {
+                        return (
+                          <Carousel.Slide key={children?.id}>
+                            <CustomCard
+                              isCarousel={true}
+                              id={children?.id}
+                              item={children}
+                              type={children?.is_cheap ? "cheap" : ""}
+                            />
+                          </Carousel.Slide>
+                        );
+                      })}
+                      <Carousel.Slide>
+                        <Card
+                          onClick={() => router.push(`/categories/${item.id}`)}
+                          className={"another-card"}
+                        >
+                          <p>Barcha mahsulotlarni ko‘rish</p>
+                        </Card>
+                      </Carousel.Slide>
+                    </Carousel>
+                  )}
+                </Grid.Col>
+              </>
             );
           })}
         </Grid>
+
         <Notify opened={opened} close={close} open={open} />
       </Container>
     </Wrapper>
