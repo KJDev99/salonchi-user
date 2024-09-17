@@ -72,6 +72,9 @@ export const SearchInput = () => {
           value={search || ""}
           onChange={handleSearch}
         />
+        <ActionIcon className="search-btn2" type="submit">
+          Izlash
+        </ActionIcon>
         {search?.length > 2 && outsideClick && (
           <OutsideClickHandler onOutsideClick={() => setOutSideClick(false)}>
             <CustomPopup>

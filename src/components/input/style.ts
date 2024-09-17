@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Button, PasswordInput, TextInput } from "@mantine/core";
 
 export const Searchbar = styled("div")`
-  width: 55%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,15 +23,15 @@ export const Searchbar = styled("div")`
   }
 `;
 export const CatalogPanel = styled("div")`
-  width: 130px;
-  height: 52px;
+  width: 154px;
+  height: 48px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   background-color: var(--main-bg-color);
-  border-radius: 30px;
+  border-radius: 8px;
   padding: 0 10px;
 
   span {
@@ -55,7 +55,21 @@ export const SearchWrapper = styled("form")`
   border: none;
   .search-btn {
     height: 100%;
-    width: 64px;
+    width: 48px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    /* cursor: pointer;
+    background-color: var(--main-bg-color); */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  .search-btn2 {
+    height: 100%;
+    width: 112px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -64,8 +78,9 @@ export const SearchWrapper = styled("form")`
     background-color: var(--main-bg-color);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: white;
   }
 
   @media (max-width: 992px) {
@@ -82,12 +97,12 @@ export const SearchWrapper = styled("form")`
 
 export const Input = styled("input")`
   background-color: #fff;
-  border-radius: 30px;
-  border: 1px solid var(--main-bg-color);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
   outline: none;
-  height: 58px;
+  height: 48px;
   width: 100%;
-  text-indent: 28px;
+  text-indent: 38px;
   font-family: "Readex Pro";
   font-weight: 400;
   font-size: 14px;

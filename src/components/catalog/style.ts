@@ -1,23 +1,16 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled("div")`
-  margin: 32px 0;
-  .mantine-Carousel-slide {
-    & > div {
-      width: auto;
-    }
+  margin: 0;
+  display: flex;
+  background: white;
+  .katalog_main {
+    display: flex;
   }
-  .mantine-Carousel-control:nth-of-type(1) {
-    position: absolute;
-    left: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .mantine-Carousel-control:nth-of-type(2) {
-    position: absolute;
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%);
+
+  .test {
+    display: flex;
+    gap: 40px;
   }
 
   @media (max-width: 576px) {
@@ -25,63 +18,64 @@ export const Wrapper = styled("div")`
   }
 `;
 
-export const WrapperContent = styled("div")`
-  display: flex;
-  gap: 6px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-`;
-
 export const Card = styled("div")`
-  width: 8.3%;
-  width: 130px;
-  height: auto;
-  cursor: pointer;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 8px;
+  cursor: pointer;
+  padding: 8px 0;
+
   p {
-    font-family: "Readex Pro", sans-serif;
-    font-style: normal;
-    font-weight: 400;
     font-size: 16px;
-    text-align: center;
-    color: #141311;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #4d5761;
+    white-space: nowrap;
   }
 
   @media (max-width: 576px) {
-    gap: 4px;
+    gap: 8px;
     p {
-      font-size: 12px;
-      line-height: normal;
-      margin-top: 4px !important;
+      font-size: 14px;
+      line-height: 18px;
     }
   }
 `;
 
 export const ImageContainer = styled("div")`
-  width: 130px;
-  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 25px;
-  position: relative;
-  border: 1px solid var(--main-bg-color);
+
   img {
-    width: 100px;
-    height: 100px;
-    position: unset;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
   }
 
   @media (max-width: 576px) {
-    width: 90px;
-    height: 90px;
-    border-radius: 10px;
     img {
-      width: 80px;
-      height: 80px;
+      width: 20px;
+      height: 20px;
     }
   }
+`;
+
+export const ButtonWrapper = styled("div")`
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+`;
+
+export const ViewAllButton = styled("button")`
+  background-color: #fff;
+  color: #4d5761;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+  white-space: nowrap;
 `;

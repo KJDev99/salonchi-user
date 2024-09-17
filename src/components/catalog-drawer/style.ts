@@ -4,7 +4,7 @@ export const Paper = styled("div")<any>`
   width: 100%;
   height: 100vh;
   position: absolute;
-  top: ${(props) => (props.scrollY > 0 ? "95px" : "150px")};
+  top: ${(props) => (props.scrollY > 0 ? "95px" : "140px")};
   left: 0;
   z-index: 10;
   background: var(--main-white);

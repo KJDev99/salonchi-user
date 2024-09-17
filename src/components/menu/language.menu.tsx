@@ -38,7 +38,7 @@ export const LanguageMenu = () => {
           </Menu.Item>
           <Menu.Item
             onClick={() => handleLanguage("ru")}
-            className={router.locale === "ru" ? "item-active" : ""}
+            className={router.locale === "ru" ? "item-active item" : "item"}
           >
             {t("locales.ru")}
           </Menu.Item>
