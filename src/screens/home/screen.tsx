@@ -34,9 +34,9 @@ const HomeScreen = () => {
   console.log(categoryListProducts);
   return (
     <Wrapper className="home-wrapper">
+      <Catalog />
       <Container>
         <Slider />
-        <Catalog />
         <Title className="home-title">{t("home.title")}</Title>
         {isLoading ? (
           <UISkeleton />

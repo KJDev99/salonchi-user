@@ -109,7 +109,7 @@ export const Header = styled.header<any>`
     width: 100%;
     row-gap: 24px;
     left: -100%;
-    padding: 24px 16px;
+    padding: 24px 0px;
     transition: all 0.2s;
     min-height: 100vh;
     color: #fff;

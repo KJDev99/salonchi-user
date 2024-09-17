@@ -9,7 +9,7 @@ export const Wrapper = styled("div")`
     font-size: 16px;
     line-height: 20px;
     svg {
-      width: 13px;
+      width: 16px;
     }
   }
   .item-active {
