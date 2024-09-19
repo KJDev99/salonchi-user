@@ -69,7 +69,7 @@ export const Footer = () => {
                     href="/"
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <IconInbox /> info@xuping.support.uz
+                    <IconInbox /> info@salonchi.support.uz
                   </Link>
                 </li>
               </Ul>
