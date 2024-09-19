@@ -8,6 +8,7 @@ import { List, ListItem } from "./style";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/assets/icons/right.arrow";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface ICatalogLayout {
   children: ReactNode;
@@ -23,6 +24,7 @@ export const CatalogLayout = ({
   setOpen,
 }: ICatalogLayout) => {
   const router = useRouter();
+  console.log(category, "category");
 
   return (
     <Grid gutter={16}>
@@ -37,10 +39,11 @@ export const CatalogLayout = ({
                 setOpen(false);
               }}
             >
+              <Image src={item?.photo} alt="image" width={32} height={32} />
               <span>
                 {router.locale === "uz" ? item?.name_uz : item?.name_ru}
               </span>
-              <ArrowRightIcon />
+              {/* <ArrowRightIcon /> */}
             </ListItem>
           ))}
         </List>

@@ -24,11 +24,18 @@ import { useTranslation } from "next-i18next";
 import { useSearchParams } from "next/navigation";
 import { IconCatalog1 } from "@/assets/icons/catalog1";
 import Link from "next/link";
+import { IconClose } from "@/assets/icons/close";
 
-export const SearchInput = () => {
+export const SearchInput = ({
+  open,
+  setOpen,
+}: {
+  open?: any;
+  setOpen?: (open: any) => void;
+}) => {
   const router = useRouter();
   const { t } = useTranslation("common");
-  const [isOpen, setOpen] = useState(false);
+  // const [isOpen, setOpen] = useState(false);
   const setSearch = useStore((state: any) => state.setSearch);
   const [outsideClick, setOutSideClick] = useState(false);
   const searchParams: any = useSearchParams();
@@ -56,11 +63,12 @@ export const SearchInput = () => {
       router.push(`/filter?search=${search}`);
     }
   };
-
+  if (!setOpen) return null;
   return (
     <Searchbar>
-      <CatalogPanel onClick={() => setOpen((prev) => !prev)}>
-        <IconCatalog1 />
+      <CatalogPanel onClick={() => setOpen(!open)}>
+        {!open ? <IconCatalog1 /> : <IconClose />}
+
         <span>{t("menu.catalogue")}</span>
       </CatalogPanel>
       <SearchWrapper onSubmit={handleSubmit}>
@@ -108,7 +116,7 @@ export const SearchInput = () => {
           </OutsideClickHandler>
         )}
       </SearchWrapper>
-      <CatalogDrawer open={isOpen} setOpen={setOpen} />
+      <CatalogDrawer open={open} setOpen={setOpen} />
     </Searchbar>
   );
 };

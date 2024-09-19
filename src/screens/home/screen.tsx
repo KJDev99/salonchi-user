@@ -33,10 +33,10 @@ const HomeScreen = () => {
   const { width } = useViewportSize();
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-  console.log(categoryListProducts);
+
   return (
     <Wrapper className="home-wrapper">
-      <Catalog />
+      {/* <Catalog /> */}
       <Container>
         <Slider />
         <Title className="home-title">{t("home.title")}</Title>

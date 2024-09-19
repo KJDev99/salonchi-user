@@ -11,6 +11,7 @@ export const Paper = styled("div")<any>`
   box-shadow: 0 10px 16px #0000001a;
   display: none;
   overflow-y: hidden;
+  transition: 0.3s ease-in-out;
   &.active {
     display: block;
   }
@@ -46,8 +47,10 @@ export const ListItem = styled("div")`
   background: #fff;
   color: #111111;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  align-items: center;
   font-size: 16px;
+  gap: 10px;
   line-height: 1.5;
   padding: 8px 16px;
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
