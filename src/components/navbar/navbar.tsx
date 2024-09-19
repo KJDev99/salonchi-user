@@ -25,11 +25,13 @@ import { LocationIcon } from "@/assets/icons/location";
 import { LanguageMenu } from "../menu";
 import { useTranslation } from "next-i18next";
 import { IconLogo } from "@/assets/icons/logo";
+import { Catalog } from "../catalog";
 
 const Navbar = () => {
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const [navActive, setNavActive] = useState<any>(false);
+  const [isOpen, setOpen] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
   const [scrollY, setScrollY] = useState(0);
   const { t } = useTranslation("common");
@@ -72,7 +74,8 @@ const Navbar = () => {
               <div className={`nav__menu-bar`} onClick={open}>
                 <BurgerIcon />
               </div>
-              <SearchInput />
+
+              <SearchInput open={isOpen} setOpen={setOpen} />
               <div className={`${navActive ? "active" : ""} nav__menu-list`}>
                 {menuList.map((menu, idx) => (
                   <div
@@ -131,6 +134,7 @@ const Navbar = () => {
           </MobileFooter>
         </Container>
       </MobileWrapper>
+      <Catalog open={isOpen} setOpen={setOpen} />
     </>
   );
 };

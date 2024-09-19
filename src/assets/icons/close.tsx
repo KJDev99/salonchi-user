@@ -11,13 +11,13 @@ export const IconClose = () => {
     >
       <path
         d="M1.97461 1.00244L18.8316 17.8594"
-        stroke="#141311"
+        stroke="#ffffff"
         strokeWidth="2"
         strokeLinecap="round"
       />
       <path
         d="M18.833 1.00244L1.97602 17.8594"
-        stroke="#141311"
+        stroke="#ffffff"
         strokeWidth="2"
         strokeLinecap="round"
       />

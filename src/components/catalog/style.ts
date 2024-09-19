@@ -72,10 +72,14 @@ export const ViewAllButton = styled("button")`
   background-color: #fff;
   color: #4d5761;
   border: none;
-  padding: 8px 16px;
+  padding: 0px 16px;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
 `;

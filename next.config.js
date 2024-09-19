@@ -9,11 +9,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: [
-      "api.xuping.uz",
-      "c4de9495-xuping.s3.timeweb.cloud",
-      "f8189e0b-salonchi.s3.timeweb.cloud",
-    ],
+
+    domains: ["api.salonchi.uz", "f8189e0b-salonchi.s3.timeweb.cloud"],
   },
 };
 
