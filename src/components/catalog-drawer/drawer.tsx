@@ -44,7 +44,6 @@ export const CatalogDrawer = ({ open, setOpen }: ICatalogDrawer) => {
           <Grid gutter={8}>
             <Grid.Col span={12} lg={12}>
               <ul className="sub-list">
-             
                 {subCategory?.map((v: any) => {
                   return (
                     <li
