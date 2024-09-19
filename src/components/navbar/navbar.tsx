@@ -52,17 +52,10 @@ const Navbar = () => {
               <Button variant="outline">Hamkorlik qilish</Button>
             </Left>
             <Right>
-              {/* <span>{t("header.communication_center")}:</span> */}
               <span>
                 <a href="tel:+998930007570"> +998 93 537 20 01</a>
               </span>
-              {/* <Button
-                variant="outline"
-                className="last-btn"
-                onClick={() => router.push("https://seller.xuping.uz")}
-              >
-                Hamkorlik qilish
-              </Button> */}
+
               <LanguageMenu />
             </Right>
           </Container>

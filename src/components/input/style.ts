@@ -54,18 +54,11 @@ export const SearchWrapper = styled("form")`
   position: relative;
   border: none;
   .search-btn {
-    height: 100%;
-    width: 48px;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    /* cursor: pointer;
-    background-color: var(--main-bg-color); */
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    left: 14px;
   }
   .search-btn2 {
     height: 100%;
@@ -102,7 +95,7 @@ export const Input = styled("input")`
   outline: none;
   height: 48px;
   width: 100%;
-  text-indent: 38px;
+  text-indent: 42px;
   font-family: "Readex Pro";
   font-weight: 400;
   font-size: 14px;

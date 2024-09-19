@@ -23,6 +23,7 @@ import useStore from "@/store";
 import { useTranslation } from "next-i18next";
 import { useSearchParams } from "next/navigation";
 import { IconCatalog1 } from "@/assets/icons/catalog1";
+import Link from "next/link";
 
 export const SearchInput = () => {
   const router = useRouter();
@@ -44,7 +45,7 @@ export const SearchInput = () => {
   const { data: productList = [], isFetching } = useQuery({
     queryKey: ["get-product-search", search],
     queryFn: () =>
-      request(ENDPOINTS.READ_PRODUCT_LIST + `?search=${search}&limit=20`),
+      request(ENDPOINTS.PRODUCT_LIST + `?search=${search}&limit=20`),
     select: (res) => res?.data?.results,
     enabled: search?.length > 2 ? true : false,
   });
@@ -58,14 +59,14 @@ export const SearchInput = () => {
 
   return (
     <Searchbar>
-      <CatalogPanel onClick={() => setOpen(!isOpen)}>
+      <CatalogPanel onClick={() => setOpen((prev) => !prev)}>
         <IconCatalog1 />
         <span>{t("menu.catalogue")}</span>
       </CatalogPanel>
       <SearchWrapper onSubmit={handleSubmit}>
-        <ActionIcon className="search-btn" type="submit">
+        <div className="search-btn">
           <SearchIcon />
-        </ActionIcon>
+        </div>
         <Input
           type="search"
           placeholder={t("menu.catalogue_search")}
@@ -73,7 +74,7 @@ export const SearchInput = () => {
           onChange={handleSearch}
         />
         <ActionIcon className="search-btn2" type="submit">
-          Izlash
+          {t("search")}
         </ActionIcon>
         {search?.length > 2 && outsideClick && (
           <OutsideClickHandler onOutsideClick={() => setOutSideClick(false)}>
