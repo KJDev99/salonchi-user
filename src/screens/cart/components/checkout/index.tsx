@@ -7,7 +7,6 @@ import { useCheckout } from "./useCheckout";
 import { Modal } from "@/components/modal";
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/router";
-import { Notify } from "./notify";
 import { useTranslation } from "next-i18next";
 import { IconWarning } from "@/assets/icons/warning";
 

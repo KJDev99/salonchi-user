@@ -14,7 +14,6 @@ import { useTranslation } from "next-i18next";
 import { Carousel } from "@mantine/carousel";
 import { IconArrowRight2 } from "@/assets/icons/arrow.right2";
 import { useRouter } from "next/navigation";
-import { Notify } from "./notify";
 import Image from "next/image";
 
 import Banner from "@/assets/images/banner.png";
