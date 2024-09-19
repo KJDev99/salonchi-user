@@ -5,6 +5,26 @@ export const Wrapper = styled("div")`
   padding: 76px 40px 40px 40px;
   border-radius: 12px 12px 0 0;
   position: relative;
+  .personal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    column-gap: 32px;
+    margin-top: 50px;
+    input {
+      margin: 0;
+      font-weight: 500;
+    }
+    label {
+      margin: 0;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #1f2a37;
+    }
+    .personal-input {
+      margin: 0;
+    }
+  }
   .gradient {
     width: 100%;
     position: absolute;

@@ -31,10 +31,14 @@ export const useReset = () => {
 
   const { data: districtList = [] } = useQuery({
     queryKey: [REACT_QUERY_KEYS.GET_DISTRICT_LIST, regions],
-    queryFn: () => getDistricts(regions),
+    queryFn: async () => {
+      const a = await getDistricts(regions);
+      return a;
+    },
     enabled: regions !== undefined ? true : false,
     select: (res) =>
-      res?.data?.results?.map((v: any) => {
+      res?.map((v: any) => {
+        // console.log("v", v);
         return {
           value: v?.id,
           label: v?.name_uz,
@@ -59,7 +63,7 @@ export const useReset = () => {
       }
     },
   });
-
+  // console.log("regionstList", districtList);
   return {
     form,
     image,

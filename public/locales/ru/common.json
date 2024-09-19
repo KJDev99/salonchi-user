@@ -20,7 +20,7 @@
   "region": "Ваша провинция",
   "street": "Ваша улица",
   "district": "Ваш город/район",
-  "home phone": "Ваш домашний номер",
+  "homeNumber": "Ваш домашний номер",
   "delivery address": "Ваш адрес доставки",
   "order_id": "ID заказа",
   "order date": "Дата заказа:",

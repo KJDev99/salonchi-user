@@ -34,6 +34,7 @@ import { IconHeartFilled } from "@/assets/icons/card/heart.filled";
 import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
 import { SimilarProducts } from "./components/similar-products";
 import toast from "react-hot-toast";
+import { StarIcon } from "@/assets/icons/star";
 // import { CustomBox } from './components/box';
 
 const ProductScreen = () => {
@@ -123,13 +124,27 @@ const ProductScreen = () => {
                 <CustomBox boxes={data?.boxes} setBoxList={setBoxList} />
               </>
             </Grid.Col>
-            <Grid.Col lg={5} md={6} sm={12} xs={12} span={12}>
-              <Container>
+            <Grid.Col lg={8} md={6} sm={12} xs={12} span={12}>
+              <Container style={{ padding: 0 }}>
                 <RightContent>
-                  <Title>
-                    {router.locale === "uz" ? data?.name_uz : data?.name_ru}
-                  </Title>
-                  {console.log(`item`, active)}
+                  <div className="right-top">
+                    <Title>
+                      {router.locale === "uz" ? data?.name_uz : data?.name_ru}
+                    </Title>
+                    <div
+                      className="heart-wrapper"
+                      onClick={(e: any) => {
+                        setChecked(!checked);
+                        handleAddWishlist(e);
+                      }}
+                    >
+                      {checked ? <IconHeartFilled /> : <HeartOutlineIcon />}
+                    </div>
+                  </div>
+                  <div className="rating">
+                    <StarIcon /> <span>4.7 (10 sharhlar)</span>
+                  </div>
+                  {/* {console.log(`item`, active)} */}
                   {attributes?.attributes?.map((item: any, index: number) => {
                     return (
                       <>
@@ -145,7 +160,102 @@ const ProductScreen = () => {
                       </>
                     );
                   })}
-                  <Parameters>
+                  <div className="card-options">
+                    <div className="card-amount">
+                      <h3 className="subtitle">Miqdori</h3>
+                      <div className="amount-changer">
+                        <span>-</span>
+                        <input type="number" value="1" />
+                        <span>+</span>
+                      </div>
+                    </div>
+                    <div className="cardPrice">
+                      <div className="price-left">
+                        <h3 className="subtitle">Narxi</h3>
+                        <div className="price-box">
+                          <h2 className="main-price">
+                            <NumberFormat value={data?.price} />{" "}
+                            {router.locale === "uz" ? "so‘m" : "сум"}
+                          </h2>
+                          <h2 className="old-price">
+                            <NumberFormat value={data?.old_price} />{" "}
+                            {router.locale === "uz" ? "so‘m" : "сум"}
+                          </h2>
+                        </div>
+                      </div>
+                      <div className="price-right">
+                        <h3 className="subtitle">Bo'lib to'lashga</h3>
+                        <h2 className="price-monthly">
+                          <NumberFormat value={data?.price} />{" "}
+                          <span className="price-monthly-p">
+                            {router.locale === "uz" ? "so‘m/oyiga" : "сум"}
+                          </span>
+                        </h2>
+                      </div>
+                    </div>
+                    <Footer>
+                      {cart?.find((v: IProduct) => v.id == Number(slug)) ? (
+                        <Stack style={{ display: "flex" }}>
+                          <Button
+                            onClick={() => {
+                              if (active) {
+                                console.log("aaaaaa");
+                                addToCart();
+                              } else {
+                                setAtributErr(true);
+                              }
+                            }}
+                            variant="outline"
+                            style={{
+                              fontFamily: "var(--font-readex)",
+                              border: "1px solid var(--main-bg-color)",
+                              color: "var(--main-bg-color)",
+                            }}
+                          >
+                            {t("slug.in cart")}
+                          </Button>
+                          <Button
+                            color="red"
+                            onClick={handleOrder}
+                            variant="filled"
+                            style={{ fontFamily: "var(--font-readex)" }}
+                          >
+                            {t("place an order")}
+                          </Button>
+                        </Stack>
+                      ) : (
+                        <div className="buy-btns">
+                          <Button
+                            onClick={() => {
+                              if (active) {
+                                addToCart();
+                              } else {
+                                setAtributErr(true);
+                              }
+                            }}
+                            variant="outline"
+                            style={{
+                              fontFamily: "var(--font-readex)",
+                              border: "1px solid var(--main-bg-color)",
+                              color: "var(--main-bg-color)",
+                            }}
+                          >
+                            {t("slug.add to cart")}
+                          </Button>
+                          <Button
+                            color="red"
+                            onClick={handleOrder}
+                            variant="filled"
+                            style={{ fontFamily: "var(--font-readex)" }}
+                          >
+                            {t("place an order")}
+                          </Button>
+                        </div>
+                      )}
+                    </Footer>
+                    <div className="advantages"></div>
+                  </div>
+                  {/* <Parameters>
                     <Text className="desc-title">Tavsif</Text>
                     <div
                       className="description"
@@ -153,11 +263,11 @@ const ProductScreen = () => {
                         __html: data[`desc_${router.locale}`],
                       }}
                     />
-                  </Parameters>
+                  </Parameters> */}
                 </RightContent>
               </Container>
             </Grid.Col>
-            <Grid.Col lg={3} md={6} sm={12} xs={12} span={12}>
+            {/* <Grid.Col lg={3} md={6} sm={12} xs={12} span={12}>
               <Container className="add-to-cart-container">
                 <AddToCart>
                   <Header>
@@ -168,11 +278,10 @@ const ProductScreen = () => {
                       {/* <del style={{ fontSize: 15, color: "#8d8d8d" }}>
                         <NumberFormat value={data?.sale_price ?? 0} />
                       </del>{" "} */}
-                      {/* <span style={{ fontSize: 15, color: "#8d8d8d" }}>
+            {/* <span style={{ fontSize: 15, color: "#8d8d8d" }}>
                         {router.locale === "uz" ? "so‘m" : "сум"}
                       </span> */}
-                    </Title>
-                    {/* <HeartIcon /> */}
+            {/* </Title> 
                     <div
                       className="heart-wrapper"
                       onClick={(e: any) => {
@@ -252,7 +361,7 @@ const ProductScreen = () => {
                   </Footer>
                 </AddToCart>
               </Container>
-            </Grid.Col>
+            </Grid.Col> */}
           </Grid>
           <SimilarProducts item={data} />
         </Container>

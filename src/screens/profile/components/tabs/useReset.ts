@@ -1,21 +1,21 @@
-import { REACT_QUERY_KEYS } from '@/constants/react-query-keys';
-import { getDistricts } from '@/shared/modules/district';
-import { userProfile } from '@/shared/modules/profile';
-import { getRegions } from '@/shared/modules/region';
-import { useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useFormContext, useWatch } from 'react-hook-form';
+import { REACT_QUERY_KEYS } from "@/constants/react-query-keys";
+import { getDistricts } from "@/shared/modules/district";
+import { userProfile } from "@/shared/modules/profile";
+import { getRegions } from "@/shared/modules/region";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 
 export const useReset = () => {
   const form = useFormContext();
   const router = useRouter();
   const [image, setImage] = useState(
-    'https://biolearns.medicine.iu.edu/imgs/user-icon.svg'
+    "https://biolearns.medicine.iu.edu/imgs/user-icon.svg"
   );
-  const regions = useWatch<any>({
+  const regionID = useWatch<any>({
     control: form.control,
-    name: 'region',
+    name: "region",
   });
 
   const { data: regionsList = [] } = useQuery({
@@ -32,11 +32,13 @@ export const useReset = () => {
   });
 
   const { data: districtList = [] } = useQuery({
-    queryKey: [REACT_QUERY_KEYS.GET_DISTRICT_LIST, regions],
-    queryFn: () => getDistricts(regions),
-    enabled: regions !== undefined ? true : false,
+    queryKey: [REACT_QUERY_KEYS.GET_DISTRICT_LIST, regionID],
+    queryFn: () => getDistricts(regionID),
+    enabled: regionID !== undefined ? true : false,
+
     select: (res) =>
-      res?.data?.results?.map((v: any) => {
+      res?.map((v: any) => {
+        console.log(v, "v");
         return {
           value: v?.id,
           label: v?.name_uz,
@@ -45,7 +47,7 @@ export const useReset = () => {
   });
 
   const { isLoading } = useQuery({
-    queryKey: ['get-users-profile'],
+    queryKey: ["get-users-profile"],
     queryFn: userProfile,
     select: (res) => res?.data,
     onSuccess: (res) => {
@@ -60,12 +62,10 @@ export const useReset = () => {
     },
     onError: (err: any) => {
       if (err?.response?.status == 401) {
-        router.push('/');
+        router.push("/");
       }
     },
   });
-
-  console.log(image, 'image');
 
   return {
     isLoading,
