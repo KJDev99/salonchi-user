@@ -245,7 +245,7 @@ const HomeScreen = () => {
           })}
         </Grid>
 
-        <Notify opened={opened} close={close} open={open} />
+        {/* <Notify opened={opened} close={close} open={open} /> */}
       </Container>
     </Wrapper>
   );

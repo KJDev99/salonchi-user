@@ -143,7 +143,7 @@ export const Checkout = ({
           </Button>
         </FlexBtns>
       </Modal>
-      <Notify notifyOpened={notifyOpened} notifyClose={notifyClose} />
+      {/* <Notify notifyOpened={notifyOpened} notifyClose={notifyClose} /> */}
     </Form>
   );
 };
