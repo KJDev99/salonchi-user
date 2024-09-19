@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const Title = styled('h5')`
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: var(--nav-link-color);
+export const Title = styled("h3")`
+  font-weight: 600;
+  font-size: 26px;
+  /* line-height: 22px; */
+  color: black;
 `;

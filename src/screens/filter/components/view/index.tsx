@@ -22,7 +22,7 @@ export const ListView = ({
   filters: string;
 }) => {
   const [hasColumn, setHasColumn] = useState(true);
-  console.log("productList11: ", productList);
+  // console.log("productList11: ", productList);
 
   return (
     <View>

@@ -40,10 +40,9 @@ export const TabsLayout = () => {
       >
         <Grid w={"100%"}>
           <Grid.Col lg={3} span={12}>
-            <Tabs.List>
+            <Tabs.List className="tab">
               <Tabs.Tab
                 value="personal_info"
-                icon={<ProfileIcon />}
                 className={
                   activeTab === "personal_info"
                     ? "tab-element active last-child"
@@ -54,7 +53,6 @@ export const TabsLayout = () => {
               </Tabs.Tab>
               <Tabs.Tab
                 value="purchases"
-                icon={<WishlistIcon />}
                 className={
                   activeTab === "purchases"
                     ? "tab-element active"
@@ -65,7 +63,6 @@ export const TabsLayout = () => {
               </Tabs.Tab>
               <Tabs.Tab
                 value="favourites"
-                icon={<BoldHeartIcon />}
                 className={
                   activeTab === "favourites"
                     ? "tab-element active"
@@ -77,7 +74,7 @@ export const TabsLayout = () => {
               <Tabs.Tab
                 onClick={open}
                 value="logout"
-                icon={<IconLogout />}
+                // icon={<IconLogout />}
                 className={
                   activeTab === "logout"
                     ? "tab-element active"

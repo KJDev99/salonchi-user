@@ -5,6 +5,7 @@ import { UploadImage } from "./upload-image";
 import { Wrapper } from "./style";
 import Image from "next/image";
 import IconUser from "@/assets/images/user.png";
+import { RemoveImage } from "./remove-image";
 
 export const ProfileUpload = ({ setPhoto, image, setImage }: any) => {
   const [open, setOpen] = React.useState(false);
@@ -18,8 +19,8 @@ export const ProfileUpload = ({ setPhoto, image, setImage }: any) => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          // flexDirection: "column",
+          alignItems: "flex-end",
         }}
       >
         <Box my={2}>
@@ -39,6 +40,13 @@ export const ProfileUpload = ({ setPhoto, image, setImage }: any) => {
             setOpen(true);
             setImage(image);
           }}
+        />
+        <RemoveImage
+          setPhoto={setPhoto}
+          // getUploadedFile={() => {
+          //   setOpen(true);
+          //   setPhoto(image);
+          // }}
         />
         <Popup
           open={open}

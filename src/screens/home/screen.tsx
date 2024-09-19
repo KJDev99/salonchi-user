@@ -30,10 +30,11 @@ const HomeScreen = () => {
     isFetchingNextPage,
     categoryListProducts,
   } = usePage();
+  // console.log(data);
   const { width } = useViewportSize();
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-  console.log(categoryListProducts);
+  // console.log(categoryListProducts);
   return (
     <Wrapper className="home-wrapper">
       <Catalog />

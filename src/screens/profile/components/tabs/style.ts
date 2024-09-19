@@ -1,20 +1,31 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const TabsWrapper = styled('div')`
+export const TabsWrapper = styled("div")`
   margin: 24px 0;
   width: 100%;
+  .tab {
+    background-color: white;
+    height: auto;
+    padding: 4px;
+    border-radius: 8px;
+  }
+  /* border: 1px solid black; */
   .tab-element {
+    /* border: 1px solid black; */
     background-color: transparent;
     font-family: var(--font-readex);
-    font-weight: 300;
+    font-weight: 500;
     font-size: 16px;
-    line-height: 20px;
-    color: var(--nav-lang-btn-color);
+    /* line-height: 20px; */
+    padding: 12px;
+    color: var(--gray-700);
+    border-radius: 6px;
     &:hover {
       background-color: transparent;
     }
     &.active {
-      color: var(--main-bg-color);
+      background-color: #fdcd97;
+      color: black;
       svg {
         path {
           stroke: var(--main-bg-color);
@@ -35,7 +46,8 @@ export const TabsWrapper = styled('div')`
     }
   }
   .logout-element {
-    display: none;
+    /* display: none; */
+    color: #f63d68;
   }
 
   @media (max-width: 992px) {
@@ -45,7 +57,7 @@ export const TabsWrapper = styled('div')`
   }
 `;
 
-export const ButtonGroup = styled('div')`
+export const ButtonGroup = styled("div")`
   width: 100%;
   display: flex;
   justify-content: flex-end;

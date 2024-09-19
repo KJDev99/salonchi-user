@@ -1,16 +1,17 @@
-import * as React from 'react';
-import { ActionIcon, Button } from '@mantine/core';
-import styled from '@emotion/styled';
-import { PencilIcon } from '@/assets/icons/pencil';
+import * as React from "react";
+import { ActionIcon, Button } from "@mantine/core";
+import styled from "@emotion/styled";
+import { PencilIcon } from "@/assets/icons/pencil";
+import { AddImage } from "@/assets/icons/addImage";
 
-const Input = styled('input')`
+const Input = styled("input")`
   display: none;
 `;
 
 export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
   const onChange = (e: any) => {
     e.preventDefault();
-    setPhoto(e.target.files[0])
+    setPhoto(e.target.files[0]);
     let files;
     if (e.dataTransfer) {
       files = e.dataTransfer.files;
@@ -18,7 +19,7 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
       files = e.target.files;
     }
     if (files.length === 0) {
-      return alert('Please select a file.');
+      return alert("Please select a file.");
     }
     const reader = new FileReader();
     reader.onload = () => {
@@ -35,8 +36,9 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
         type="file"
         onChange={onChange}
       />
-      <Button className='edit-pencil' component='span'>
-        <PencilIcon />
+      <Button className="edit-pencil" component="span">
+        <AddImage />
+        <p style={{ marginLeft: "5px" }}>Yangilash</p>
       </Button>
     </label>
   );

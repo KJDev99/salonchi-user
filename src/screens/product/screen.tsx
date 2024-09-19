@@ -58,7 +58,7 @@ const ProductScreen = () => {
   const removeWishList = useStore((state: any) => state.removeWishList);
   const wishlist = useStore((state: any) => state.wishlist);
   const [atributErr, setAtributErr] = useState<any>(false);
-
+  console.log(data, "data");
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))
@@ -106,7 +106,7 @@ const ProductScreen = () => {
     }
   }, [wishlist, data?.id]);
 
-  console.log(attributes, "data");
+  // console.log(attributes, "data");
 
   return (
     <Wrapper>
@@ -195,7 +195,7 @@ const ProductScreen = () => {
                     {cart?.find((v: IProduct) => v.id == Number(slug)) ? (
                       <Stack>
                         <Button
-                              onClick={() => {
+                          onClick={() => {
                             if (active) {
                               addToCart();
                             } else {

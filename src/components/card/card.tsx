@@ -35,6 +35,7 @@ export const CustomCard = ({
 }: any) => {
   const router = useRouter();
   const cart = useStore((state: any) => state.cart);
+  // console.log(item);
   const {
     handleAddToCart,
     handleIncrement,
@@ -89,7 +90,7 @@ export const CustomCard = ({
                   fontSize: "13px",
                   textDecoration: "line-through",
                 }}
-                value={item?.price ?? 0}
+                value={item?.oldPrice ?? 0}
               />
               <span
                 style={{

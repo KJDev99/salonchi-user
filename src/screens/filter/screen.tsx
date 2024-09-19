@@ -16,7 +16,7 @@ const FilterScreen = () => {
     slider,
   } = useProducts();
 
-  console.log("productList11: ", productList);
+  // console.log("productList11: ", productList);
   return (
     <FilterLayout
       productList={productList?.data}
