@@ -1,8 +1,8 @@
-import React from 'react';
-import { FilterLayout } from './components/layout';
-import { ListView } from './components/view';
-import { Pagination } from '@/components/pagination';
-import { useProducts } from '@/hooks/useProducts';
+import React from "react";
+import { FilterLayout } from "./components/layout";
+import { ListView } from "./components/view";
+import { Pagination } from "@/components/pagination";
+import { useProducts } from "@/hooks/useProducts";
 
 const FilterScreen = () => {
   const {
@@ -16,6 +16,7 @@ const FilterScreen = () => {
     slider,
   } = useProducts();
 
+  console.log("productList11: ", productList);
   return (
     <FilterLayout
       productList={productList?.data}

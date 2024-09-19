@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const View = styled('div')`
+export const View = styled("div")`
   .active {
     svg {
       path {
@@ -10,7 +10,7 @@ export const View = styled('div')`
   }
 `;
 
-export const ListViewHeader = styled('div')`
+export const ListViewHeader = styled("div")`
   width: 100%;
   display: flex;
   align-items: center;

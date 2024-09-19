@@ -1,14 +1,12 @@
-import CartScreen from "@/screens/cart";
-import { GetServerSideProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Advertising from "@/screens/advert";
 import Head from "next/head";
 import React from "react";
 
-export default function Cart() {
+const Advert = () => {
   return (
     <>
       <Head>
-        <title>Salonchi | Savatcha</title>
+        <title>Salonchi | Advertising</title>
         <meta
           name="description"
           content="Salonchi Счастья, эмоции, подарки и всё что угодно Бесплатная доставка по всему Узбекистану"
@@ -16,15 +14,9 @@ export default function Cart() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <CartScreen />
+      <Advertising />
     </>
   );
-}
-
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale as string, ["common"])),
-    },
-  };
 };
+
+export default Advert;

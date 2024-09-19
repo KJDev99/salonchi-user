@@ -62,7 +62,7 @@ export const Notify = ({ opened, close, open }: INotifyProps) => {
           Yangiliklardan <br /> xabardor bo‘lib boring!
         </ModalTitle>
         <ModalText>
-          Xuping yangiliklaridan doimiy xabardor bo‘lib turish uchun bizning
+          Salonchiyangiliklaridan doimiy xabardor bo‘lib turish uchun bizning
           Telegram botga obuna bo‘ling!
         </ModalText>
       </ModalBody>

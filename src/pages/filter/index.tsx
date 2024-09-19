@@ -8,10 +8,10 @@ export default function Filter() {
   return (
     <>
       <Head>
-        <title>Xuping | Qidiruv</title>
+        <title>Salonchi | Qidiruv</title>
         <meta
           name="description"
-          content="Xuping Счастья, эмоции, подарки и всё что угодно Бесплатная доставка по всему Узбекистану"
+          content="SalonchiСчастья, эмоции, подарки и всё что угодно Бесплатная доставка по всему Узбекистану"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.svg" />

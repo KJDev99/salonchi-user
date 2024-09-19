@@ -1,7 +1,7 @@
-import React from 'react';
-import { Button, Checkbox, Group } from '@mantine/core';
-import { BrandWrap, SystemList, SystemListItem } from './style';
-import { ArrowDownIcon } from '@/assets/icons/arrow.down';
+import React from "react";
+import { Button, Checkbox, Group } from "@mantine/core";
+import { BrandWrap, SystemList, SystemListItem } from "./style";
+import { ArrowDownIcon } from "@/assets/icons/arrow.down";
 
 export const FilterBrand = () => {
   return (
@@ -10,58 +10,45 @@ export const FilterBrand = () => {
         <Group
           mt="xs"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
           }}
         >
           <Checkbox
-            value="apple"
-            label="Apple"
+            value="Bred1"
+            label="Bred1"
             color="red"
             className="checkbox"
           />
           <Checkbox
-            value="xiaomi"
-            label="Xiaomi"
+            value="Bred2"
+            label="Bred2"
             color="red"
             className="checkbox"
           />
           <Checkbox
-            value="samsung"
-            label="Samsung"
+            value="Bred3"
+            label="Bred3"
             color="red"
             className="checkbox"
           />
           <Checkbox
-            value="huawei"
-            label="Huawei"
+            value="Bred4"
+            label="Bred4"
             color="red"
             className="checkbox"
           />
           <Checkbox
-            value="vivo"
-            label="Vivo"
+            value="Bred5"
+            label="Bred5"
             color="red"
             className="checkbox"
           />
         </Group>
       </Checkbox.Group>
-      <SystemList>
-        <SystemListItem>
-          <span>Model</span>
-          <ArrowDownIcon />
-        </SystemListItem>
-        <SystemListItem>
-          <span> OS turi</span>
-          <ArrowDownIcon />
-        </SystemListItem>
-        <SystemListItem>
-          <span> Akkumlyator hajmi</span>
-          <ArrowDownIcon />
-        </SystemListItem>
-      </SystemList>
+
       <Button color="red">Filterni qo‘llash</Button>
     </BrandWrap>
   );

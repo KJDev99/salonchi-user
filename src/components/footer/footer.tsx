@@ -120,7 +120,7 @@ export const Footer = () => {
         <Container>
           <FooterBottom>
             <div className="copyright">
-              <p>(c) 2024-2024. OOO “Xuping jewelry”</p>
+              <p>(c) 2024-2024. OOO “Salonchijewelry”</p>
             </div>
             <div className="public-offer">
               <p>{t("footer.privacy_policy")}</p>

@@ -23,14 +23,11 @@ export const CatalogLayout = ({
   setOpen,
 }: ICatalogLayout) => {
   const router = useRouter();
-  
-    console.log("subCategory",category)
 
   return (
     <Grid gutter={16}>
       <Grid.Col span={12} lg={3} md={4}>
         <List>
-        
           {category.map((item: any) => (
             <ListItem
               key={item.id}

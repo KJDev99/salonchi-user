@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { ListViewHeader, View } from './style';
-import { Column } from './column';
-import { Row } from './row';
-import { Select } from '@mantine/core';
-import { ActionIcon } from '@mantine/core';
-import { IconList } from '@/assets/icons/list';
-import { IconCategory } from '@/assets/icons/category';
-import { IProduct } from '@/types/product';
-import { filter } from '@/constants/filter';
-import { IconChevronDown } from '@tabler/icons-react';
+import React, { useState } from "react";
+import { ListViewHeader, View } from "./style";
+import { Column } from "./column";
+import { Row } from "./row";
+import { Select } from "@mantine/core";
+import { ActionIcon } from "@mantine/core";
+import { IconList } from "@/assets/icons/list";
+import { IconCategory } from "@/assets/icons/category";
+import { IProduct } from "@/types/product";
+import { filter } from "@/constants/filter";
+import { IconChevronDown } from "@tabler/icons-react";
 
 export const ListView = ({
   productList,
@@ -22,43 +22,37 @@ export const ListView = ({
   filters: string;
 }) => {
   const [hasColumn, setHasColumn] = useState(true);
+  console.log("productList11: ", productList);
 
   return (
     <View>
       {productList.length !== 0 && (
         <ListViewHeader>
-          <label>Saralash:</label>
+          <label>Saralash</label>
           <Select
-            placeholder="Saralash"
+            placeholder="Default"
             data={filter}
-            styles={{
-              rightSection: { pointerEvents: 'none' },
-            }}
+            styles={(theme) => ({
+              rightSection: { pointerEvents: "none" },
+              input: {
+                width: "max-content",
+                borderRadius: "8px",
+                borderColor: "#EA580C",
+                "&:focus": {
+                  borderColor: "#EA580C",
+                  boxShadow: "0 0 0px 2px #FDCD97", // Box shadow on focus (active state)
+                },
+              },
+            })}
             rightSection={<IconChevronDown size="1rem" />}
             rightSectionWidth={30}
             value={filters}
             onChange={(e) => setFilters(e)}
           />
-          <ActionIcon
-            onClick={() => setHasColumn(false)}
-            className={!hasColumn ? 'active' : ''}
-          >
-            <IconList />
-          </ActionIcon>
-          <ActionIcon
-            onClick={() => setHasColumn(true)}
-            className={hasColumn ? 'active' : ''}
-          >
-            <IconCategory />
-          </ActionIcon>
         </ListViewHeader>
       )}
 
-      {hasColumn ? (
-        <Column productList={productList} isLoading={isLoading} />
-      ) : (
-        <Row productList={productList} isLoading={isLoading} />
-      )}
+      <Column productList={productList} isLoading={isLoading} />
     </View>
   );
 };
