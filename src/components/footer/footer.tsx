@@ -15,6 +15,7 @@ import { IconTelegram } from "@/assets/icons/telegram2";
 import { IconFacebook } from "@/assets/icons/facebook2";
 import { IconInstagram } from "@/assets/icons/instagram2";
 import { useViewportSize } from "@mantine/hooks";
+import { LanguageMenu } from "../menu";
 
 export const Footer = () => {
   const router = useRouter();
@@ -25,10 +26,13 @@ export const Footer = () => {
     <>
       <Wrapper>
         <ContainerFooter>
-          <Grid style={{ marginBottom: "55px" }}>
+          <Grid gutter="lg" style={{ marginBottom: "55px" }}>
             <Grid.Col lg={3} span={12} md={6} sm={6}>
-              <IconLogo width={145} height={101} />
-              <div className="social-links">
+              <IconLogo width={145} height={60} />
+              <p>
+                2024 Barcha huquqlar <br /> himoyalangan
+              </p>{" "}
+              {/* <div className="social-links">
                 <Link href="/">
                   <IconTelegram />
                 </Link>
@@ -38,21 +42,24 @@ export const Footer = () => {
                 <Link href="/">
                   <IconInstagram />
                 </Link>
-              </div>
+              </div> */}
             </Grid.Col>
             <Grid.Col span={12} lg={3} md={6} sm={6}>
               <h4>{t("footer.info")}</h4>
               <Ul className="footer-info">
-                <li>
+                {/* <li>
                   <Link href="/">Qo‘llab quvvatlash raqami</Link>
                 </li>
                 <li>
                   <Link href="tel:+998935372000">+998 93 537 20 00</Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="/"
-                    style={{ display: "flex", alignItems: "center" }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
                   >
                     <IconLocation /> Toshkent shahar, Chilonzor tuman
                   </Link>
@@ -74,22 +81,35 @@ export const Footer = () => {
                   <Link href="/">Biz haqimizda</Link>
                 </li>
                 <li>
-                  <Link href="/">Hamkor sifatida ishlash</Link>
+                  <Link href="/">Yangiliklar</Link>
                 </li>
                 <li>
-                  <Link href="/">
-                    Tovarlarni almashtirish va to‘lovni qaytarish
-                  </Link>
+                  <Link href="/">Hamkorlik</Link>
                 </li>
                 <li>
                   <Link href="/">Yordam</Link>
                 </li>
+              </Ul>
+            </Grid.Col>
+            <Grid.Col span={12} lg={3} md={6} sm={6}>
+              <h4>Biz bilan bog&rsquo;lanish</h4>
+              <Ul className="footer-info">
                 <li>
-                  <Link href="/">Servis markazlari</Link>
+                  <Link className="phoneNumber" href="tel:+998912559863">
+                    +998 91 255 98 63
+                  </Link>
+                </li>
+                <li>(09:00-17:00 Dushanba-Shanba)</li>
+                <li style={{ marginTop: "32px" }}>Biz ijtimoy tarmoqlarda</li>
+                <li>
+                  <Link href="/">
+                    <IconTelegram />
+                    {/* <IconFacebook /> */}
+                  </Link>
                 </li>
               </Ul>
             </Grid.Col>
-            <Grid.Col
+            {/* <Grid.Col
               span={12}
               lg={3}
               md={6}
@@ -110,21 +130,43 @@ export const Footer = () => {
                     <Link href="https://click.uz">
                       <IconClick />
                     </Link>
-                  </div> */}
+                  </div> 
                 </div>
               </div>
-            </Grid.Col>
+            </Grid.Col> */}
           </Grid>
         </ContainerFooter>
         <Divider />
         <Container>
           <FooterBottom>
-            <div className="copyright">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="payment-systems">
+                <div className="payment-header">
+                  <div className="payment-card payme">
+                    <Link href="https://payme.uz/">
+                      <IconPayme />
+                    </Link>
+                  </div>
+                  <div className="payment-card click">
+                    <Link href="https://click.uz">
+                      <IconClick />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <LanguageMenu /> */}
+            {/* <div className="copyright">
               <p>(c) 2024-2024. OOO “Salonchijewelry”</p>
             </div>
             <div className="public-offer">
               <p>{t("footer.privacy_policy")}</p>
-            </div>
+            </div> */}
           </FooterBottom>
         </Container>
       </Wrapper>

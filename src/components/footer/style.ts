@@ -27,9 +27,9 @@ export const Wrapper = styled("footer")`
   }
   /* background-color: #f1f1f2; */
   h4 {
-    color: var(--main-bg-color);
+    color: var(--gray-700);
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
   }
   .payment-systems {
@@ -59,6 +59,7 @@ export const Wrapper = styled("footer")`
         transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         a {
           height: 30px;
+          color: var(--gray-700);
         }
         &:hover {
           background-color: #999;
@@ -80,31 +81,34 @@ export const Ul = styled("ul")`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-       text-align: center;
-     
-    }
+    text-align: center;
+  }
   li {
     list-style: none;
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 18px;
-    color: #909090;
+    color: var(--gray-700);
     padding: 4px 0;
     display: flex;
     align-items: center;
+    .phoneNumber {
+      font-size: 20px;
+      color: #2e90fa;
+      font-weight: 500;
+    }
     span {
       font-weight: 400;
       font-size: 20px;
       line-height: 25px;
-      color: #909090;
+      /* color: #909090; */
     }
     svg {
       margin-right: 7px;
     }
   }
   &.footer-info {
-    margin-top: 27px;
-  
+    margin-top: 24px;
   }
 `;
 
@@ -254,7 +258,7 @@ export const FooterBottom = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 0 48px 0;
+  padding: 16px 0 34px 0;
   gap: 25px;
   .copyright {
     p {
@@ -312,7 +316,6 @@ export const ContainerFooter = styled.div`
     text-align: center !important;
     width: 100%;
   }
-
 
   @media (min-width: 768px) {
     padding-right: 30px;

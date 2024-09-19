@@ -61,6 +61,7 @@ export const PersonalInfo = () => {
       ) : (
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Grid gutter={10}>
+            <div className="gradient"></div>
             <Grid.Col span={12} lg={3}>
               {/* <Upload /> */}
               <ProfileUpload
@@ -69,30 +70,30 @@ export const PersonalInfo = () => {
                 setImage={setImage}
               />
             </Grid.Col>
-            <Grid.Col span={12} lg={6}>
-              <Input
-                name="firstname"
-                control={form.control}
-                label={t("fullname")}
-                placeholder={t("fullname")}
-              />
-              <PhoneInput
-                name="phone"
-                control={form.control}
-                label={t("phone")}
-                placeholder={t("phone")}
-                disabled
-              />
-              <Select
-                name="region"
-                control={form.control}
-                label={t("region")}
-                placeholder={t("region")}
-                data={regionsList}
-                nothingFound="Nothing found"
-              />
-            </Grid.Col>
           </Grid>
+          <Grid.Col span={12} lg={6}>
+            <Input
+              name="firstname"
+              control={form.control}
+              label={t("fullname")}
+              placeholder={t("fullname")}
+            />
+            <PhoneInput
+              name="phone"
+              control={form.control}
+              label={t("phone")}
+              placeholder={t("phone")}
+              disabled
+            />
+            <Select
+              name="region"
+              control={form.control}
+              label={t("region")}
+              placeholder={t("region")}
+              data={regionsList}
+              nothingFound="Nothing found"
+            />
+          </Grid.Col>
           {/* <Title className="personal-title">{t("delivery address")}</Title> */}
           <Grid gutter={10}>
             {/* <Grid.Col span={12} lg={6}>

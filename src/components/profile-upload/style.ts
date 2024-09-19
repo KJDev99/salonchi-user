@@ -1,7 +1,8 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   position: relative;
+  display: flex;
   .upload-image {
     width: 169px;
     height: 169px;
@@ -10,14 +11,20 @@ export const Wrapper = styled('div')`
     object-fit: cover;
   }
   .edit-pencil {
-    position: absolute;
-    bottom: -10px;
+    /* position: absolute; */
+    /* bottom: -10px; */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 51px;
-    height: 51px;
-    background: var(--main-bg-color);
-    border-radius: 50%;
+    gap: 10px;
+    background-color: white;
+    border: 1px solid var(--main-bg-color);
+    padding: 10px 24px;
+    font-size: 14px;
+    color: var(--main-bg-color);
+    border-radius: 8px;
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+    /* background: var(--main-bg-color); */
+    /* border-radius: 50%; */
   }
 `;

@@ -30,6 +30,7 @@ const HomeScreen = () => {
     isFetchingNextPage,
     categoryListProducts,
   } = usePage();
+  // console.log(data);
   const { width } = useViewportSize();
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);

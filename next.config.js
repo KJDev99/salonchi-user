@@ -9,6 +9,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+
     domains: ["api.salonchi.uz", "f8189e0b-salonchi.s3.timeweb.cloud"],
   },
 };

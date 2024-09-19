@@ -1,8 +1,8 @@
-import { Container, Wrapper } from '@/styles/global';
-import React from 'react';
-import { Title } from './style';
-import { TabsLayout } from './components/tabs';
-import { FormProvider, useForm } from 'react-hook-form';
+import { Container, Wrapper } from "@/styles/global";
+import React from "react";
+import { Title } from "./style";
+import { TabsLayout } from "./components/tabs";
+import { FormProvider, useForm } from "react-hook-form";
 
 const ProfileScreen = () => {
   const form = useForm();
@@ -11,7 +11,7 @@ const ProfileScreen = () => {
     <FormProvider {...form}>
       <Wrapper>
         <Container>
-          <Title>Asosiy</Title>
+          <Title>Profil</Title>
           <TabsLayout />
         </Container>
       </Wrapper>

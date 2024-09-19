@@ -18,7 +18,7 @@ export const ENDPOINTS = {
   REGION_LIST: "/region/list",
   USER_ADDRESS_UPDATE: "/user/address/update",
   USER_PROFILE: "/user/profile",
-  USER_PROFILE_UPDATE: "/user/profile/update",
+  USER_PROFILE_UPDATE: "/user/profile",
   USER_ADDRESS_DETAIL: "/user/address/detail",
   CATEGORY_SUB_LIST: "/category/sub/list/",
   PRODUCT_LIST_NEW: "product/list/new?limit=15&offset=1",
