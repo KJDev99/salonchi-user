@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Input } from "@/components/input";
 import { Select } from "@/components/select";
 import { Button, Grid } from "@mantine/core";
@@ -26,8 +26,9 @@ interface IPersonalInfo {
 export const PersonalInfo = () => {
   // const form = useFormContext();
   const router = useRouter();
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const [photo, setPhoto] = useState<any>(null);
+
   const {
     form,
     image,
@@ -44,16 +45,34 @@ export const PersonalInfo = () => {
     },
   });
   const onSubmit = (data: any) => {
+    // console.log(data);
     const formData: any = new FormData();
     formData.append("firstname", data?.firstname);
     if (photo !== "null" && photo !== null) {
       formData.append("photo", photo);
     }
+    const address = {
+      street: data?.street,
+      home: data?.home,
+      region: data?.region,
+      district: data?.district,
+    };
 
-    formData.append("region", data?.region);
+    formData.append("address", address);
+    // console.log(formData);
+    // console.log(data);
+    // const address = {
+    //   street: data?.street,
+    //   home: data?.home,
+    //   region: data?.region,
+    //   district: data?.district,
+    // };
+    // console.log(address);
+    // formData.append("address", JSON.stringify(address));
+
+    // console.log(data);
     mutate(formData);
   };
-
   return (
     <Wrapper>
       {pageLoading ? (
@@ -71,14 +90,16 @@ export const PersonalInfo = () => {
               />
             </Grid.Col>
           </Grid>
-          <Grid.Col span={12} lg={6}>
+          <Grid.Col className="personal-info">
             <Input
+              className="personal-input"
               name="firstname"
               control={form.control}
               label={t("fullname")}
               placeholder={t("fullname")}
             />
             <PhoneInput
+              className="personal-input"
               name="phone"
               control={form.control}
               label={t("phone")}
@@ -92,6 +113,28 @@ export const PersonalInfo = () => {
               placeholder={t("region")}
               data={regionsList}
               nothingFound="Nothing found"
+            />
+            <Select
+              name="district"
+              control={form.control}
+              label={t("district")}
+              placeholder={t("district")}
+              data={districtList}
+              nothingFound="Nothing found"
+            />
+            <Input
+              className="personal-input"
+              name="street"
+              control={form.control}
+              label={t("street")}
+              placeholder={t("street")}
+            />
+            <Input
+              className="personal-input"
+              name="home"
+              control={form.control}
+              label={t("homeNumber")}
+              placeholder={t("homeNumber")}
             />
           </Grid.Col>
           {/* <Title className="personal-title">{t("delivery address")}</Title> */}

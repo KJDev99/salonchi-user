@@ -1,4 +1,6 @@
-import { request } from '../api/requests';
+import { request } from "../api/requests";
 
-export const getDistricts = (region_id: number | string) =>
-  request(`/region/district/${region_id}/list`);
+export const getDistricts = async (region_id: number | string) => {
+  const a = await request(`region/district/${region_id}/list`);
+  return a.data;
+};

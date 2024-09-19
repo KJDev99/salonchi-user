@@ -1,6 +1,6 @@
-import { Controller } from 'react-hook-form';
-import type { CustomInputProps } from '@/types/input';
-import { MantineInput } from './style';
+import { Controller } from "react-hook-form";
+import type { CustomInputProps } from "@/types/input";
+import { MantineInput } from "./style";
 
 export const Input = ({
   control,
@@ -18,14 +18,14 @@ export const Input = ({
         onChange={(e) => {
           field.onChange(e);
         }}
-        value={field.value ?? ''}
+        value={field.value ?? ""}
         error={
           error ||
-          (errors[props.name] ? (errors[props.name]?.message as string) : '')
+          (errors[props.name] ? (errors[props.name]?.message as string) : "")
         }
         styles={{
           input: errors[props.name] && {
-            border: '0.795144px solid #fa5252 !important',
+            border: "0.795144px solid #fa5252 !important",
           },
         }}
       />

@@ -24,7 +24,6 @@ export const CatalogLayout = ({
   setOpen,
 }: ICatalogLayout) => {
   const router = useRouter();
-  console.log(category, "category");
 
   return (
     <Grid gutter={16}>
