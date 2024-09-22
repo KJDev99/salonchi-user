@@ -84,3 +84,12 @@ input::placeholder {
 .mantine-Drawer-inner {
   z-index: 99999;
 }
+.mantine-nn42t0:focus,
+.mantine-nn42t0:focus-within {
+  border: none;
+  border-radius: 8px;
+}
+
+.mantine-nn42t0 {
+  border-radius: 8px;
+}

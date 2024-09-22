@@ -13,6 +13,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@/components/modal";
 import { useTranslation } from "next-i18next";
 import useToken from "@/store/token";
+import ChangePassword from "../change_password";
 
 export const TabsLayout = () => {
   const router = useRouter();
@@ -52,6 +53,16 @@ export const TabsLayout = () => {
                 {t("personal info")}
               </Tabs.Tab>
               <Tabs.Tab
+                value="change_password"
+                className={
+                  activeTab === "change_password"
+                    ? "tab-element active"
+                    : "tab-element"
+                }
+              >
+                {t("change password")}
+              </Tabs.Tab>
+              <Tabs.Tab
                 value="purchases"
                 className={
                   activeTab === "purchases"
@@ -88,6 +99,9 @@ export const TabsLayout = () => {
           <Grid.Col span={12} lg={9}>
             <Tabs.Panel value="personal_info">
               <PersonalInfo />
+            </Tabs.Panel>
+            <Tabs.Panel value="change_password">
+              <ChangePassword />
             </Tabs.Panel>
             <Tabs.Panel value="purchases">
               <MyOrders />
