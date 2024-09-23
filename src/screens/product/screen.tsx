@@ -2,6 +2,7 @@ import { Container, Wrapper } from "@/styles/global";
 import { Button, Grid, Stack, Text } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import {
+  Additionals,
   AddToCart,
   Body,
   Footer,
@@ -35,6 +36,13 @@ import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
 import { SimilarProducts } from "./components/similar-products";
 import toast from "react-hot-toast";
 import { StarIcon } from "@/assets/icons/star";
+import { Attributes } from "./components/attributes";
+import { BoxIcon } from "@/assets/icons/box";
+import { IconUzCard } from "@/assets/icons/card";
+import { IconUzcard } from "@/assets/icons/uzcard";
+import { IconHumo } from "@/assets/icons/humo";
+import Nasiya from "@/assets/icons/nasiya.svg";
+import Image from "next/image";
 // import { CustomBox } from './components/box';
 
 const ProductScreen = () => {
@@ -59,6 +67,7 @@ const ProductScreen = () => {
   const removeWishList = useStore((state: any) => state.removeWishList);
   const wishlist = useStore((state: any) => state.wishlist);
   const [atributErr, setAtributErr] = useState<any>(false);
+  const [comments, setComments] = useState<any>(false);
   console.log(data, "data");
   const addToCart = () => {
     const media = data?.media[0]?.file;
@@ -145,18 +154,37 @@ const ProductScreen = () => {
                     <StarIcon /> <span>4.7 (10 sharhlar)</span>
                   </div>
                   {/* {console.log(`item`, active)} */}
-                  {attributes?.attributes?.map((item: any, index: number) => {
+                  {attributes?.map((item: any, index: number) => {
+                    console.log(item);
                     return (
                       <>
-                        <Colors
-                          name={item?.[`name_uz`]}
-                          colors={item?.value}
-                          setActive={setActive}
-                          active={active}
-                          index={index}
-                          atributErr={atributErr}
-                          setAtributErr={setAtributErr}
-                        />
+                        {item?.type == "TEXT" && (
+                          <>
+                            <p className="subtitle">
+                              {router.locale === "uz"
+                                ? item?.name_uz
+                                : item?.name_ru}
+                            </p>
+                            <Attributes
+                              setAtributErr={setAtributErr}
+                              setActive={setActive}
+                              values={item?.values}
+                              atributErr={atributErr}
+                              active={active}
+                            />
+                          </>
+                        )}
+                        {item?.type == "IMAGE" && (
+                          <Colors
+                            name={item?.[`name_uz`]}
+                            colors={item?.values}
+                            setActive={setActive}
+                            active={active}
+                            index={index}
+                            atributErr={atributErr}
+                            setAtributErr={setAtributErr}
+                          />
+                        )}
                       </>
                     );
                   })}
@@ -184,7 +212,7 @@ const ProductScreen = () => {
                         </div>
                       </div>
                       <div className="price-right">
-                        <h3 className="subtitle">Bo'lib to'lashga</h3>
+                        <h3 className="subtitle">Bo&apos;lib to&apos;lashga</h3>
                         <h2 className="price-monthly">
                           <NumberFormat value={data?.price} />{" "}
                           <span className="price-monthly-p">
@@ -195,21 +223,21 @@ const ProductScreen = () => {
                     </div>
                     <Footer>
                       {cart?.find((v: IProduct) => v.id == Number(slug)) ? (
-                        <Stack style={{ display: "flex" }}>
+                        <div style={{ display: "flex" }} className="buy-btns">
                           <Button
                             onClick={() => {
                               if (active) {
-                                console.log("aaaaaa");
+                                // console.log("aaaaaa");
                                 addToCart();
                               } else {
                                 setAtributErr(true);
                               }
                             }}
-                            variant="outline"
+                            variant="filled"
                             style={{
                               fontFamily: "var(--font-readex)",
                               border: "1px solid var(--main-bg-color)",
-                              color: "var(--main-bg-color)",
+                              backgroundColor: "var(--main-bg-color)",
                             }}
                           >
                             {t("slug.in cart")}
@@ -217,14 +245,18 @@ const ProductScreen = () => {
                           <Button
                             color="red"
                             onClick={handleOrder}
-                            variant="filled"
-                            style={{ fontFamily: "var(--font-readex)" }}
+                            variant="outline"
+                            style={{
+                              fontFamily: "var(--font-readex)",
+                              border: "1px solid var(--main-bg-color)",
+                              color: "var(--main-bg-color)",
+                            }}
                           >
                             {t("place an order")}
                           </Button>
-                        </Stack>
+                        </div>
                       ) : (
-                        <div className="buy-btns">
+                        <div style={{ display: "flex" }} className="buy-btns">
                           <Button
                             onClick={() => {
                               if (active) {
@@ -233,11 +265,11 @@ const ProductScreen = () => {
                                 setAtributErr(true);
                               }
                             }}
-                            variant="outline"
+                            variant="filled"
                             style={{
                               fontFamily: "var(--font-readex)",
                               border: "1px solid var(--main-bg-color)",
-                              color: "var(--main-bg-color)",
+                              backgroundColor: "var(--main-bg-color)",
                             }}
                           >
                             {t("slug.add to cart")}
@@ -245,16 +277,51 @@ const ProductScreen = () => {
                           <Button
                             color="red"
                             onClick={handleOrder}
-                            variant="filled"
-                            style={{ fontFamily: "var(--font-readex)" }}
+                            variant="outline"
+                            style={{
+                              fontFamily: "var(--font-readex)",
+                              border: "1px solid var(--main-bg-color)",
+                              color: "var(--main-bg-color)",
+                            }}
                           >
                             {t("place an order")}
                           </Button>
                         </div>
                       )}
                     </Footer>
-                    <div className="advantages"></div>
+                    <div className="advantages">
+                      <div className="advantagesBox">
+                        <BoxIcon />
+                        <h3>Tezkor yetkazib berish</h3>
+                        <p>
+                          Toshkent shahriga 1kun ichida, viloyatlarga 2-3 kun
+                          ichda yetkazib berish
+                        </p>
+                      </div>
+                      <div className="advantagesBox">
+                        <div className="advantagesBoxIcons">
+                          <div className="advantagesBoxIcon">
+                            <IconUzcard />
+                          </div>
+                          <div className="advantagesBoxIcon">
+                            <IconHumo />
+                          </div>
+                          <Image
+                            height={100}
+                            width={400}
+                            src={Nasiya}
+                            alt="visa"
+                          />
+                        </div>
+                        <h3>O’zingizga qulay usulda to’lang</h3>
+                        <p>
+                          Karta orqali, naqd pul yoki bo’lib to’lash xizmati
+                          orqali to’lang
+                        </p>
+                      </div>
+                    </div>
                   </div>
+
                   {/* <Parameters>
                     <Text className="desc-title">Tavsif</Text>
                     <div
@@ -363,6 +430,40 @@ const ProductScreen = () => {
               </Container>
             </Grid.Col> */}
           </Grid>
+          <Additionals>
+            <div className="tabs">
+              <h3
+                className={`tab ${!comments ? "active" : ""}`}
+                onClick={() => setComments(false)}
+              >
+                Mahsulot haqida
+              </h3>
+              <h3
+                className={`tab ${comments ? "active" : ""}`}
+                onClick={() => setComments(true)}
+              >
+                Sharhlar
+              </h3>
+            </div>
+            <div
+              style={{ display: !comments ? "block" : "none" }}
+              className="description"
+            >
+              <h2>Mahsulot haqida</h2>
+              <div
+                className="description-text"
+                dangerouslySetInnerHTML={{
+                  __html: data[`desc_${router.locale}`],
+                }}
+              />
+            </div>
+            <div
+              style={{ display: comments ? "block" : "none" }}
+              className="comments"
+            >
+              <h2>Sharhlar</h2>
+            </div>
+          </Additionals>
           <SimilarProducts item={data} />
         </Container>
       )}
