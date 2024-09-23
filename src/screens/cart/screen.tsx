@@ -33,8 +33,6 @@ const CartScreen = () => {
   const [payType, setPaytype] = useState(0);
   const { width } = useViewportSize();
 
-  console.log( "initialCart", initialCart);
-
   return (
     <Wrapper>
       {isLoading ? (
@@ -78,6 +76,14 @@ const CartScreen = () => {
                       {/* <Right>
                         <Button onClick={open}>
                           + {t("cart.select address")}
+                        </Button>
+                      </Right> */}
+                      {/* <Right>
+                        <Button className="ads" >
+                          {t("cart.continue")}
+                          man yana turli xil narsalarni yozmoqcdaman bu shunchaki video uchun qilinyapti  bu kodlarni man videodan keyin ochirishim kerak bo`ladi 
+                          video deyarli tugab qoldi shu uchun bu kodlarni ochirishni ham boshlashim mumkin boladi 
+                          va man hozir juda tez yozyapman lekin kompyuterimda knock yoqligi sababli uncha bilinmayapti man knock sotib olmoqchiman u uchun esa pul kerak ekan yani 4$ ekan. 
                         </Button>
                       </Right> */}
                     </CustomerInfo>
