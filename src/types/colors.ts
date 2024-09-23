@@ -13,7 +13,6 @@ export interface IColors {
   setActive: any;
   name: string;
   index: number;
-  atributErr:any;
-  setAtributErr?:any;
-
+  atributErr: any;
+  setAtributErr?: any;
 }

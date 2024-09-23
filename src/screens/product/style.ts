@@ -1,5 +1,43 @@
 import styled from "@emotion/styled";
+export const Additionals = styled("div")`
+  display: flex;
+  padding: 72px;
+  background-color: white;
+  flex-direction: column;
+  margin-top: 96px;
+  border-radius: 12px;
+  .tabs {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 16px;
+    /* padding-bottom: px; */
 
+    .tab {
+      padding: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .active {
+      color: var(--main-bg-color);
+      border-bottom: 2px solid var(--main-bg-color);
+    }
+  }
+
+  .description {
+    padding-top: 48px;
+    h2 {
+      color: #1f2a37;
+      font-weight: 400;
+      font-size: 18px;
+    }
+  }
+  .comments {
+    padding-top: 48px;
+  }
+`;
 export const LeftContent = styled("div")`
   /* width: 400px; */
   /* padding: 10px; */
@@ -134,6 +172,77 @@ export const RightContent = styled("div")`
       /* stroke: var(--main-bg-color); */
       &.icon-tabler-heart-filled {
         color: var(--main-bg-color);
+      }
+    }
+  }
+
+  .advantages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 57px;
+    border-radius: 32px;
+    border: 1px solid #e5e7eb;
+    padding: 32px;
+    background-color: white;
+    .advantagesBox {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      /* gap: 1rem; */
+      h3 {
+        color: #384250;
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: 1rem;
+        margin-bottom: 12px;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--gray-700);
+      }
+      /* justify-content: center; */
+    }
+    .advantagesBox:first-of-type {
+      padding-top: 10px;
+    }
+    .advantagesBoxIcons {
+      display: flex;
+      gap: 1rem;
+      .advantagesBoxIcon {
+        width: 88px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f1f1f2;
+        border-radius: 10px;
+
+        .advantagesBoxIcons {
+          display: flex;
+          .advantagesBoxIcon {
+            width: 88px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background-color: black; */
+            svg {
+              width: 60px;
+            }
+          }
+        }
+        /* background-color: black; */
+        svg {
+          width: 40px;
+        }
+      }
+      img {
+        width: 99px;
+        height: 32px;
+        object-fit: contain;
       }
     }
   }

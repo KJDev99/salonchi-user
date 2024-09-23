@@ -35,7 +35,7 @@ export const CustomCard = ({
 }: any) => {
   const router = useRouter();
   const cart = useStore((state: any) => state.cart);
-  console.log(item);
+  // console.log(item);
   const {
     handleAddToCart,
     handleIncrement,
@@ -50,7 +50,7 @@ export const CustomCard = ({
   });
   const { t } = useTranslation("common");
   const { width } = useViewportSize();
-
+  // console.log(item);
   return (
     <Card
       className={`${router.pathname !== "/" ? "another-card" : ""} ${
