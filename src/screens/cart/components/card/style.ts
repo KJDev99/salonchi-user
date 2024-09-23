@@ -7,8 +7,8 @@ export const CardUI = styled("div")`
   width: 100%;
   min-height: 165px;
   background: var(--main-white);
-  border: 1px solid var(--main-bg-color);
-  border-radius: 20px;
+  /* border: 1px solid var(--main-bg-color); */
+  /* border-radius: 20px; */
   padding: 16px 21px 29px 21px;
   gap: 5px;
   @media (max-width: 768px) {

@@ -9,8 +9,13 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-
     domains: ["api.salonchi.uz", "f8189e0b-salonchi.s3.timeweb.cloud"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "c4de9495-xuping.s3.timeweb.cloud",
+      },
+    ],
   },
 };
 
