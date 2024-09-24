@@ -3,12 +3,37 @@ import { ActionIcon, Button } from "@mantine/core";
 import styled from "@emotion/styled";
 import { PencilIcon } from "@/assets/icons/pencil";
 import { AddImage } from "@/assets/icons/addImage";
+import axios, { Axios } from "axios";
+import { request } from "@/shared/api/requests";
 
 const Input = styled("input")`
   display: none;
 `;
 
 export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
+  const uploadImage = async (file: any) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await request.post(
+        "https://api.salonchi.uz/api/v1/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      const imageUrl = response.data.url;
+      console.log("Image URL:", imageUrl);
+
+      return imageUrl;
+    } catch (error) {
+      console.error("Image upload failed:", error);
+      throw error;
+    }
+  };
   const onChange = (e: any) => {
     e.preventDefault();
     setPhoto(e.target.files[0]);
@@ -24,9 +49,11 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
     const reader = new FileReader();
     reader.onload = () => {
       getUploadedFile(reader.result);
+      uploadImage(reader.result);
     };
     reader.readAsDataURL(files[0]);
   };
+
   return (
     <label htmlFor="contained-button-file">
       <Input

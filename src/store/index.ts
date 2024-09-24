@@ -21,8 +21,7 @@ const useStore = create(
             ...state.cart,
             {
               ...payload,
-              productQuantity: 1,
-              productQuantityTest: payload.amount,
+              productQuantity: payload.amount || 1,
             },
           ],
           quantity: state.quantity + 1,

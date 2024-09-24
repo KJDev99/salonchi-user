@@ -24,7 +24,7 @@ export const Card = ({ item }: any) => {
   const removeItem = useStore((state: any) => state.removeItem);
   const addToWishList = useStore((state: any) => state.addToWishList);
   const removeWishList = useStore((state: any) => state.removeWishList);
-
+  const [quantity, setQuantity] = useState(1);
   const handleRemove = (id: string | number) => {
     removeItem(id);
   };
