@@ -67,6 +67,7 @@ const ProductScreen = () => {
   const removeWishList = useStore((state: any) => state.removeWishList);
   const wishlist = useStore((state: any) => state.wishlist);
   const [atributErr, setAtributErr] = useState<any>(false);
+  const [colorErr, setColorErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
   const [amout, setAmout] = useState<any>(1);
   const addToCart = () => {
@@ -90,7 +91,7 @@ const ProductScreen = () => {
           // color: active,
           attributes: Object.values(active),
         });
-    console.log(data);
+    // console.log(data);
   };
 
   const handleOrder = () => {
@@ -159,7 +160,19 @@ const ProductScreen = () => {
                     </div>
                   </div>
                   <div className="rating">
-                    <StarIcon /> <span>4.7 (10 sharhlar)</span>
+                    {/* <StarIcon />{" "} */}
+                    <span>
+                      {data?.rate.count > 0 ? (
+                        <>
+                          <StarIcon />
+                          <span>
+                            {data?.rate?.rate} ({data?.rate?.count} sharhlar)
+                          </span>
+                        </>
+                      ) : (
+                        <span>Новинка!</span>
+                      )}
+                    </span>
                   </div>
                   {/* {console.log(`item`, active)} */}
                   {attributes?.map((item: any, index: number) => {
@@ -182,15 +195,22 @@ const ProductScreen = () => {
                           </>
                         )}
                         {item?.type == "IMAGE" && (
-                          <Colors
-                            name={item?.[`name_uz`]}
-                            colors={item?.values}
-                            setActive={setActive}
-                            active={active}
-                            index={index}
-                            atributErr={atributErr}
-                            setAtributErr={setAtributErr}
-                          />
+                          <>
+                            <p className="subtitle">
+                              {router.locale === "uz"
+                                ? item?.name_uz
+                                : item?.name_ru}
+                            </p>
+                            <Colors
+                              name={item?.[`name_uz`]}
+                              colors={item?.values}
+                              setActive={setActive}
+                              active={active}
+                              index={index}
+                              atributErr={colorErr}
+                              setAtributErr={setColorErr}
+                            />
+                          </>
                         )}
                       </>
                     );
@@ -252,6 +272,7 @@ const ProductScreen = () => {
                             color="red"
                             onClick={handleOrder}
                             variant="outline"
+                            className="buy-btn"
                             style={{
                               fontFamily: "var(--font-readex)",
                               border: "1px solid var(--main-bg-color)",
@@ -276,6 +297,7 @@ const ProductScreen = () => {
                               fontFamily: "var(--font-readex)",
                               border: "1px solid var(--main-bg-color)",
                               backgroundColor: "var(--main-bg-color)",
+                              // color: "var(--main-white)",
                             }}
                           >
                             {t("slug.add to cart")}
@@ -284,6 +306,7 @@ const ProductScreen = () => {
                             color="red"
                             onClick={handleOrder}
                             variant="outline"
+                            className="buy-btn"
                             style={{
                               fontFamily: "var(--font-readex)",
                               border: "1px solid var(--main-bg-color)",
