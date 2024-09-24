@@ -68,7 +68,7 @@ const ProductScreen = () => {
   const wishlist = useStore((state: any) => state.wishlist);
   const [atributErr, setAtributErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
-  const [amout, setAmout] = useState<any>(0);
+  const [amout, setAmout] = useState<any>(1);
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))

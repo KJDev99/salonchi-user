@@ -28,7 +28,7 @@ export const PersonalInfo = () => {
   const router = useRouter();
   const { t, i18n } = useTranslation("common");
   const [photo, setPhoto] = useState<any>(null);
-
+  // console.log(photo);
   const {
     form,
     image,
@@ -45,32 +45,23 @@ export const PersonalInfo = () => {
     },
   });
   const onSubmit = (data: any) => {
-    // console.log(data);
-    const formData: any = new FormData();
-    formData.append("firstname", data?.firstname);
-    if (photo !== "null" && photo !== null) {
-      formData.append("photo", photo);
-    }
+    console.log(data);
+    // console.log(photo);
+
+    // const formData: any = new FormData();
+    // formData.append("firstname", data?.firstname);
+
     const address = {
       street: data?.street,
       home: data?.home,
       region: data?.region,
       district: data?.district,
     };
-
-    formData.append("address", address);
-    // console.log(formData);
-    // console.log(data);
-    // const address = {
-    //   street: data?.street,
-    //   home: data?.home,
-    //   region: data?.region,
-    //   district: data?.district,
-    // };
-    // console.log(address);
-    // formData.append("address", JSON.stringify(address));
-
-    // console.log(data);
+    const formData = {
+      address: address,
+      photo: photo,
+      firstname: data?.firstname,
+    };
     mutate(formData);
   };
   return (
