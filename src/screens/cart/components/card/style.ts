@@ -150,9 +150,9 @@ export const ProductInfo = styled("div")`
     align-items: center;
     gap: 2px;
     span {
-      color: var(--brand-black, #141311);
+      color: var(--brand-black, #9da4ae);
       font-family: "Readex Pro", sans-serif;
-      font-size: 20px;
+      font-size: 13px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
