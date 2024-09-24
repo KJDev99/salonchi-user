@@ -1,13 +1,13 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export const RowView = styled('div')`
+export const RowView = styled("div")`
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 31px 0;
 `;
 
-export const CardView = styled('div')`
+export const CardView = styled("div")`
   width: 100%;
   min-height: 165px;
   background: var(--main-white);
@@ -25,12 +25,12 @@ export const CardView = styled('div')`
   }
 `;
 
-export const LeftView = styled('div')`
+export const LeftView = styled("div")`
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
-export const RightView = styled('div')`
+export const RightView = styled("div")`
   p {
     font-weight: 300;
     font-size: 12px;
@@ -45,7 +45,7 @@ export const RightView = styled('div')`
   }
 `;
 
-export const ViewFooter = styled('div')`
+export const ViewFooter = styled("div")`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -99,7 +99,7 @@ export const ViewFooter = styled('div')`
   }
 `;
 
-export const MobileFooter = styled('div')`
+export const MobileFooter = styled("div")`
   display: none;
   @media (max-width: 576px) {
     display: inline-flex;

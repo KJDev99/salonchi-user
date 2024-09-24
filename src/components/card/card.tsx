@@ -35,6 +35,7 @@ export const CustomCard = ({
 }: any) => {
   const router = useRouter();
   const cart = useStore((state: any) => state.cart);
+
   const {
     handleAddToCart,
     handleIncrement,
