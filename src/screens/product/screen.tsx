@@ -68,7 +68,8 @@ const ProductScreen = () => {
   const wishlist = useStore((state: any) => state.wishlist);
   const [atributErr, setAtributErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
-  console.log(data, "data");
+  const [amout, setAmout] = useState<any>(0);
+
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))
@@ -76,6 +77,7 @@ const ProductScreen = () => {
       : !!boxList?.find((v: any) => v?.selected)
       ? addCart({
           ...data,
+          productQuantityTest: amout,
           media,
           // color: active,
           attributes: Object.values(active),
@@ -88,6 +90,7 @@ const ProductScreen = () => {
           // color: active,
           attributes: Object.values(active),
         });
+    console.log(data);
   };
 
   const handleOrder = () => {
@@ -117,6 +120,11 @@ const ProductScreen = () => {
   }, [wishlist, data?.id]);
 
   // console.log(attributes, "data");
+
+  function addOne(value: number) {
+    if (value == -1 && amout == 0) return false;
+    setAmout(amout + value);
+  }
 
   return (
     <Wrapper>
@@ -155,7 +163,6 @@ const ProductScreen = () => {
                   </div>
                   {/* {console.log(`item`, active)} */}
                   {attributes?.map((item: any, index: number) => {
-                    console.log(item);
                     return (
                       <>
                         {item?.type == "TEXT" && (
@@ -192,9 +199,9 @@ const ProductScreen = () => {
                     <div className="card-amount">
                       <h3 className="subtitle">Miqdori</h3>
                       <div className="amount-changer">
-                        <span>-</span>
-                        <input type="number" value="1" />
-                        <span>+</span>
+                        <span onClick={() => addOne(-1)}>-</span>
+                        <input type="number" value={amout} />
+                        <span onClick={() => addOne(+1)}>+</span>
                       </div>
                     </div>
                     <div className="cardPrice">
@@ -227,7 +234,6 @@ const ProductScreen = () => {
                           <Button
                             onClick={() => {
                               if (active) {
-                                // console.log("aaaaaa");
                                 addToCart();
                               } else {
                                 setAtributErr(true);
