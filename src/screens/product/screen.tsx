@@ -195,15 +195,22 @@ const ProductScreen = () => {
                           </>
                         )}
                         {item?.type == "IMAGE" && (
-                          <Colors
-                            name={item?.[`name_uz`]}
-                            colors={item?.values}
-                            setActive={setActive}
-                            active={active}
-                            index={index}
-                            atributErr={colorErr}
-                            setAtributErr={setColorErr}
-                          />
+                          <>
+                            <p className="subtitle">
+                              {router.locale === "uz"
+                                ? item?.name_uz
+                                : item?.name_ru}
+                            </p>
+                            <Colors
+                              name={item?.[`name_uz`]}
+                              colors={item?.values}
+                              setActive={setActive}
+                              active={active}
+                              index={index}
+                              atributErr={colorErr}
+                              setAtributErr={setColorErr}
+                            />
+                          </>
                         )}
                       </>
                     );

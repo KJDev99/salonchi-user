@@ -20,7 +20,7 @@ const CarouselDetails = ({ images }: ICarousel) => {
     return (
       <ImageGallery
         items={images}
-        thumbnailPosition={width > 576 ?  "bottom" : "left"}
+        thumbnailPosition={width > 576 ? "bottom" : "left"}
         showPlayButton={false}
         showFullscreenButton={false}
         showThumbnails={true}
@@ -29,8 +29,6 @@ const CarouselDetails = ({ images }: ICarousel) => {
         showNav={false}
         slideOnThumbnailOver={true}
         disableThumbnailScroll={false}
-       
-      
       />
     );
 };

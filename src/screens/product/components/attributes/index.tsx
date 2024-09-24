@@ -38,7 +38,7 @@ export const Attributes = ({
                     setAtributErr(false);
                   }}
                 >
-                  {color?.title}
+                  {color?.id}
                 </Color>
               );
             })}
