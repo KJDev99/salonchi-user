@@ -69,7 +69,6 @@ const ProductScreen = () => {
   const [atributErr, setAtributErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
   const [amout, setAmout] = useState<any>(0);
-
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))
@@ -77,7 +76,7 @@ const ProductScreen = () => {
       : !!boxList?.find((v: any) => v?.selected)
       ? addCart({
           ...data,
-          productQuantityTest: amout,
+          amout,
           media,
           // color: active,
           attributes: Object.values(active),
@@ -87,6 +86,7 @@ const ProductScreen = () => {
       : addCart({
           ...data,
           media,
+          amount: amout,
           // color: active,
           attributes: Object.values(active),
         });
