@@ -68,7 +68,7 @@ const ProductScreen = () => {
   const wishlist = useStore((state: any) => state.wishlist);
   const [atributErr, setAtributErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
-  console.log(data, "data");
+  // console.log(data, "data");
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))
@@ -155,7 +155,7 @@ const ProductScreen = () => {
                   </div>
                   {/* {console.log(`item`, active)} */}
                   {attributes?.map((item: any, index: number) => {
-                    console.log(item);
+                    // console.log(item);
                     return (
                       <>
                         {item?.type == "TEXT" && (
@@ -227,7 +227,7 @@ const ProductScreen = () => {
                           <Button
                             onClick={() => {
                               if (active) {
-                                // console.log("aaaaaa");
+                                // console.log(data);
                                 addToCart();
                               } else {
                                 setAtributErr(true);
