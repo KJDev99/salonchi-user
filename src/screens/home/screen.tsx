@@ -172,11 +172,16 @@ const HomeScreen = () => {
         </Carousel>
 
         <Grid style={{ gap: "72px" }} gutter={16}>
-          {console.log("categoryListProducts", categoryListProducts)}
           {categoryListProducts?.map((item: any, idx: number) => {
             return (
               <>
-                <Image src={Banner} width={1248} height={400} alt="banner" />
+                {/* {console.log("categoryListProducts", item)} */}
+                <Image
+                  src={item.photo}
+                  width={1248}
+                  height={400}
+                  alt="banner"
+                />
                 <Grid.Col
                   span={12}
                   lg={12}
