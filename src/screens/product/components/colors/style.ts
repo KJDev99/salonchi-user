@@ -13,8 +13,8 @@ export const Title = styled("p")`
 `;
 
 export const Color = styled("div")`
-  width: 44px;
-  height: 44px;
+  width: 64px;
+  height: 64px;
   /* padding: 10px; */
   border-radius: 10px;
   display: flex;
@@ -30,5 +30,10 @@ export const Color = styled("div")`
   }
   &:hover {
     outline: 2px solid #ea580c;
+  }
+  .colorImage {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
   }
 `;

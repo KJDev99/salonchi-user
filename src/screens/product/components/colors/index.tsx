@@ -2,6 +2,7 @@ import React from "react";
 import { Group } from "@mantine/core";
 import { Color, Title, Wrapper } from "./style";
 import { IColor, IColors } from "@/types/colors";
+import Image from "next/image";
 
 export const Colors = ({
   colors = [],
@@ -18,13 +19,10 @@ export const Colors = ({
       [`${index}`]: id,
     });
   };
-
   return (
     <Wrapper>
       {colors?.length !== 0 && (
         <>
-          <Title>{name}</Title>
-
           <Group position="left" spacing="xs">
             {colors?.map((color: any) => {
               return (
@@ -40,7 +38,13 @@ export const Colors = ({
                     setAtributErr(false);
                   }}
                 >
-                  {color?.label}
+                  <Image
+                    className="colorImage"
+                    width={100}
+                    height={100}
+                    src={color?.value}
+                    alt={color?.label}
+                  />
                 </Color>
               );
             })}

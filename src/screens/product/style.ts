@@ -355,6 +355,9 @@ export const Footer = styled("div")`
   .buy-btns {
     display: flex;
     gap: 16px;
+    .buy-btn:hover {
+      color: white !important;
+    }
   }
   /* justify-content: flex-end; */
   button {

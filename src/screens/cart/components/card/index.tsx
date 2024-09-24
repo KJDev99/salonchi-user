@@ -65,9 +65,20 @@ export const Card = ({ item }: any) => {
             <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
           </h2> */}
           <div className="rating">
-            <StarIcon />
-            <span>{item.rate.rate}</span>
-            <span>({item.rate.count} sharhlar)</span>
+
+            {/* <Rating defaultValue={1} /> */}
+            {/* <span>(447)</span> */}
+            {item?.rate.count > 0 ? (
+              <>
+                <StarIcon />
+                <span>
+                  {item?.rate?.rate} ({item?.rate?.count} sharhlar)
+                </span>
+              </>
+            ) : (
+              <span>Новинка!</span>
+            )}
+
           </div>
           {item?.color && (
             <p
