@@ -58,7 +58,7 @@ const CartScreen = () => {
                 {/* <Grid.Col span={12}>
                   <Textarea value={comment} setValue={setComment} />
                 </Grid.Col> */}
-                {user?.access && (
+                {/* {user?.access && (
                   <Grid.Col span={12}>
                     <CustomerInfo>
                       <Left>
@@ -76,7 +76,7 @@ const CartScreen = () => {
                       </Left>
                     </CustomerInfo>
                   </Grid.Col>
-                )}
+                )} */}
               </Grid>
             </Grid.Col>
             <Grid.Col span={12} lg={4}>
@@ -86,7 +86,7 @@ const CartScreen = () => {
                 value={value}
                 payType={payType}
               />
-              {width > 1200 ? (
+              {/* {width > 1200 ? (
                 <FormProvider {...form}>
                   <PaymentMethod
                     value={value}
@@ -95,7 +95,7 @@ const CartScreen = () => {
                     setPaytype={setPaytype}
                   />
                 </FormProvider>
-              ) : null}
+              ) : null} */}
             </Grid.Col>
             {width < 1200 ? (
               <Fragment>

@@ -5,9 +5,9 @@ export const CardUI = styled("div")`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 165px;
+  min-height: 112px;
   background: var(--main-white);
-  /* border: 1px solid var(--main-bg-color); */
+
   /* border-radius: 20px; */
   padding: 16px 21px 29px 21px;
   gap: 5px;
@@ -28,8 +28,13 @@ export const CardUI = styled("div")`
 export const ContentLeft = styled("div")`
   display: flex;
   gap: 33px;
+  overflow: hidden;
   .image-container {
-    display: none;
+    overflow: hidden;
+    /* display: none; */
+    width: 112px;
+    height: 112px;
+    border-radius: 8px;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -156,6 +161,7 @@ export const ProductInfo = styled("div")`
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+      padding-left: 4px;
     }
   }
   button {
