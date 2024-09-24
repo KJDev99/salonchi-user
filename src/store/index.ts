@@ -14,11 +14,20 @@ const useStore = create(
       search: "",
       comment: "",
       setComment: (payload: string) => set(() => ({ comment: payload })),
-      addToCart: (payload: IProduct) =>
-        set((state: IStore) => ({
-          cart: [...state.cart, { ...payload, productQuantity: 1 }],
+      addToCart: (payload: IProduct) => {
+        console.log("nimadir", payload);
+        return set((state: IStore) => ({
+          cart: [
+            ...state.cart,
+            {
+              ...payload,
+              productQuantity: 1,
+              productQuantityTest: payload.amount,
+            },
+          ],
           quantity: state.quantity + 1,
-        })),
+        }));
+      },
       removeItem: (id: string | number) =>
         set((state: IStore) => ({
           cart: state.cart?.filter((v: IProduct) => v.id !== id),

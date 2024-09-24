@@ -22,7 +22,8 @@ export interface IProduct {
   box?: any;
   flow?: string;
   is_cheap?: boolean;
-  attributes?:[]
+  attributes?: [];
+  amount?: number;
 }
 
 interface IMedia {
