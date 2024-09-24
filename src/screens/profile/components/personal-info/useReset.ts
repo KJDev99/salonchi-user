@@ -53,8 +53,8 @@ export const useReset = () => {
     onSuccess: (res) => {
       form.reset({
         ...res,
-        region: res?.address?.region.id,
-        district: res?.address?.district.id,
+        region: res?.address?.region?.id,
+        district: res?.address?.district?.id,
         street: res?.address?.street,
         home: res?.address?.home,
       });

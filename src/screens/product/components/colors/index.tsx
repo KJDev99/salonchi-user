@@ -18,7 +18,7 @@ export const Colors = ({
       [`${index}`]: id,
     });
   };
-
+  console.log("color", colors);
   return (
     <Wrapper>
       {colors?.length !== 0 && (

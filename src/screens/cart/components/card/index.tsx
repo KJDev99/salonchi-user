@@ -16,6 +16,7 @@ import { Color } from "@/screens/product/components/colors/style";
 import { IconTrash } from "@/assets/icons/trash";
 import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
 import { IconHeartFilled } from "@/assets/icons/card/heart.filled";
+import { StarIcon } from "@/assets/icons/star";
 
 export const Card = ({ item }: any) => {
   const { t } = useTranslation("common");
@@ -61,8 +62,16 @@ export const Card = ({ item }: any) => {
           <div className="rating">
             {/* <Rating defaultValue={1} /> */}
             {/* <span>(447)</span> */}
-            <span>{item.rate.rate}</span>
-            <span>({item.rate.count} sharhlar)</span>
+            {item?.rate.count > 0 ? (
+              <>
+                <StarIcon />
+                <span>
+                  {item?.rate?.rate} ({item?.rate?.count} sharhlar)
+                </span>
+              </>
+            ) : (
+              <span>Новинка!</span>
+            )}
           </div>
           {item?.color && (
             <p
