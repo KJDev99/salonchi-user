@@ -23,7 +23,7 @@ export interface IProduct {
   flow?: string;
   is_cheap?: boolean;
   attributes?: [];
-  productQuantityTest?: number;
+  amount?: number;
 }
 
 interface IMedia {
