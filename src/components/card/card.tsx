@@ -35,7 +35,7 @@ export const CustomCard = ({
 }: any) => {
   const router = useRouter();
   const cart = useStore((state: any) => state.cart);
-  // console.log(item);
+
   const {
     handleAddToCart,
     handleIncrement,
@@ -80,7 +80,16 @@ export const CustomCard = ({
           <div>
             <p>{router.locale == "ru" ? item?.name_ru : item?.name_uz}</p>
             <div className="rating">
-              <StarIcon /> <span>4.7 (10 sharhlar)</span>
+              {item?.rate.count > 0 ? (
+                <>
+                  <StarIcon />
+                  <span>
+                    {item?.rate?.rate} ({item?.rate?.count} sharhlar)
+                  </span>
+                </>
+              ) : (
+                <span>Новинка!</span>
+              )}
             </div>
             <div>
               <NumberFormat
@@ -90,7 +99,7 @@ export const CustomCard = ({
                   fontSize: "13px",
                   textDecoration: "line-through",
                 }}
-                value={item?.oldPrice ?? 0}
+                value={item?.old_price ?? 0}
               />
               <span
                 style={{
