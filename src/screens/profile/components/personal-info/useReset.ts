@@ -53,8 +53,12 @@ export const useReset = () => {
     onSuccess: (res) => {
       form.reset({
         ...res,
-        region: res?.region?.id,
+        region: res?.address?.region.id,
+        district: res?.address?.district.id,
+        street: res?.address?.street,
+        home: res?.address?.home,
       });
+      // console.log("res", res);
       if (res?.photo !== null) setImage(res?.photo);
     },
     onError: (err: any) => {

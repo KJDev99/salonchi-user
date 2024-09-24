@@ -25,8 +25,8 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
         }
       );
 
-      const imageUrl = response.data.url;
-      console.log("Image URL:", imageUrl);
+      const imageUrl = response.data.file;
+      setPhoto(imageUrl);
 
       return imageUrl;
     } catch (error) {
@@ -36,7 +36,8 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
   };
   const onChange = (e: any) => {
     e.preventDefault();
-    setPhoto(e.target.files[0]);
+    // console.log("nimadir", e.target.files[0]);
+    // uploadImage(e.target.files[0]);
     let files;
     if (e.dataTransfer) {
       files = e.dataTransfer.files;
@@ -49,9 +50,11 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
     const reader = new FileReader();
     reader.onload = () => {
       getUploadedFile(reader.result);
-      uploadImage(reader.result);
+      // uploadImage(reader.result);
     };
     reader.readAsDataURL(files[0]);
+    // console.log(files[0]);
+    uploadImage(files[0]);
   };
 
   return (
