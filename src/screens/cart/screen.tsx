@@ -49,6 +49,7 @@ const CartScreen = () => {
           </Title>
           <Grid gutter={30} mt={29}>
             <Grid.Col span={12} lg={8}>
+              {/* bu yerda inputlar */}
               <Grid>
                 {initialCart.map((item: IProduct) => (
                   <Grid.Col span={12} lg={12} key={item?.id}>
