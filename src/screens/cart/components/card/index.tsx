@@ -59,8 +59,10 @@ export const Card = ({ item }: any) => {
             <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
           </h2>
           <div className="rating">
-            <Rating defaultValue={2} />
+            {/* <Rating defaultValue={1} /> */}
             {/* <span>(447)</span> */}
+            <span>{item.rate.rate}</span>
+            <span>({item.rate.count} sharhlar)</span>
           </div>
           {item?.color && (
             <p
@@ -84,7 +86,7 @@ export const Card = ({ item }: any) => {
       </ContentLeft>
       <ContentRight>
         <ContentHeader>
-          <div
+          {/* <div
             className="heart-wrapper"
             onClick={(e: any) => {
               setChecked(!checked);
@@ -92,13 +94,13 @@ export const Card = ({ item }: any) => {
             }}
           >
             {checked ? <IconHeartFilled /> : <HeartOutlineIcon />}
-          </div>
+          </div> */}
         </ContentHeader>
         <div className="operations">
+          <Operations count={item.productQuantity} id={item.id} />
           <ActionIcon onClick={() => handleRemove(item.id)}>
             <IconTrash />
           </ActionIcon>
-          <Operations count={item.productQuantity} id={item.id} />
         </div>
       </ContentRight>
     </CardUI>

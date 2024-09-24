@@ -16,11 +16,13 @@ export const Operations = ({ count, id }: ICount) => {
   return (
     <ProductCount>
       <Button onClick={() => decrement(id)} disabled={count === 1}>
-        <DecrementIcon />
+        {/* <DecrementIcon /> */}
+        <span>-</span>
       </Button>
       <span>{count}</span>
       <Button onClick={() => increment(id)}>
-        <IncrementIcon />
+        {/* <IncrementIcon /> */}
+        <span>+</span>
       </Button>
     </ProductCount>
   );

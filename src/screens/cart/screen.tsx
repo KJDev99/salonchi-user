@@ -32,6 +32,7 @@ const CartScreen = () => {
   const [value, setValue] = useState("PAYME");
   const [payType, setPaytype] = useState(0);
   const { width } = useViewportSize();
+  console.log(initialCart, "CartScreen");
 
   return (
     <Wrapper>
@@ -54,9 +55,9 @@ const CartScreen = () => {
                     <Card item={item} />
                   </Grid.Col>
                 ))}
-                <Grid.Col span={12}>
+                {/* <Grid.Col span={12}>
                   <Textarea value={comment} setValue={setComment} />
-                </Grid.Col>
+                </Grid.Col> */}
                 {user?.access && (
                   <Grid.Col span={12}>
                     <CustomerInfo>
@@ -73,19 +74,6 @@ const CartScreen = () => {
                           </p>
                         )}
                       </Left>
-                      {/* <Right>
-                        <Button onClick={open}>
-                          + {t("cart.select address")}
-                        </Button>
-                      </Right> */}
-                      {/* <Right>
-                        <Button className="ads" >
-                          {t("cart.continue")}
-                          man yana turli xil narsalarni yozmoqcdaman bu shunchaki video uchun qilinyapti  bu kodlarni man videodan keyin ochirishim kerak bo`ladi 
-                          video deyarli tugab qoldi shu uchun bu kodlarni ochirishni ham boshlashim mumkin boladi 
-                          va man hozir juda tez yozyapman lekin kompyuterimda knock yoqligi sababli uncha bilinmayapti man knock sotib olmoqchiman u uchun esa pul kerak ekan yani 4$ ekan. 
-                        </Button>
-                      </Right> */}
                     </CustomerInfo>
                   </Grid.Col>
                 )}
