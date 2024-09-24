@@ -16,6 +16,7 @@ import { Color } from "@/screens/product/components/colors/style";
 import { IconTrash } from "@/assets/icons/trash";
 import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
 import { IconHeartFilled } from "@/assets/icons/card/heart.filled";
+import { StarIcon } from "@/assets/icons/star";
 
 export const Card = ({ item }: any) => {
   const { t } = useTranslation("common");
@@ -49,18 +50,22 @@ export const Card = ({ item }: any) => {
   return (
     <CardUI>
       <ContentLeft>
-        <Carousel images={item?.photo || item?.media} />
+        {/* <Carousel images={item?.photo || item?.media} /> */}
         <div className="image-container">
-          <Image src={item?.photo || item?.media} alt={item?.name_uz} />
+          <Image
+            src={item?.photo || item?.media}
+            alt={item?.name_uz}
+            width={112}
+            h={112}
+          />
         </div>
         <ProductInfo>
           <h4>{item?.name_uz}</h4>
-          <h2 style={{ fontWeight: "300", fontSize: 20 }}>
+          {/* <h2 style={{ fontWeight: "300", fontSize: 20 }}>
             <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
-          </h2>
+          </h2> */}
           <div className="rating">
-            {/* <Rating defaultValue={1} /> */}
-            {/* <span>(447)</span> */}
+            <StarIcon />
             <span>{item.rate.rate}</span>
             <span>({item.rate.count} sharhlar)</span>
           </div>
@@ -98,6 +103,29 @@ export const Card = ({ item }: any) => {
         </ContentHeader>
         <div className="operations">
           <Operations count={item.productQuantity} id={item.id} />
+          <div className="prices">
+            <div>
+              <h4 style={{ fontWeight: "300", fontSize: 16 }}>
+                <NumberFormat
+                  value={item?.price * item?.productQuantity ?? 0}
+                />{" "}
+                {t("card.currency")}
+              </h4>
+            </div>
+            <div>
+              <h4
+                style={{
+                  fontWeight: "300",
+                  fontSize: 14,
+                  color: "#6C737F",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
+                /donasi
+              </h4>
+            </div>
+          </div>
           <ActionIcon onClick={() => handleRemove(item.id)}>
             <IconTrash />
           </ActionIcon>

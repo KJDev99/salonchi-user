@@ -4,8 +4,8 @@ export const Form = styled("form")`
   width: 100%;
   height: auto;
   background: var(--main-white);
-  border: 1px solid var(--main-bg-color);
-  border-radius: 20px;
+  /* border: 1px solid var(--main-bg-color); */
+  border-radius: 12px;
   padding: 28px 26px 0px 26px;
   .button-group {
     width: 100%;
@@ -27,15 +27,22 @@ export const Form = styled("form")`
 export const Header = styled("div")`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   h2 {
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 30px;
-    color: var(--main-bg-color);
+    color: #384250;
   }
-  border-bottom: 1px solid #bfbfbf;
-  padding-bottom: 20px;
+  h3 {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 30px;
+    color: #384250;
+  }
+  /* border-bottom: 1px solid #bfbfbf; */
+  /* padding-bottom: 20px; */
 `;
 export const Body = styled("ul")`
   padding: 25px 0 35px 0;

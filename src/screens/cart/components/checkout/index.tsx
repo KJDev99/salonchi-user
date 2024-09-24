@@ -46,7 +46,7 @@ export const Checkout = ({
     <Form onSubmit={onCheckout} id="form">
       <Header>
         <h2>{t("all")}:</h2>
-        <h2>
+        <h3>
           <NumberFormat
             value={initialCart?.reduce(
               (current, item: IProduct) =>
@@ -55,10 +55,10 @@ export const Checkout = ({
             )}
           />{" "}
           {t("card.currency")}
-        </h2>
+        </h3>
       </Header>
       <Body>
-        <li>
+        {/* <li>
           <span>{t("value")}:</span>
           <p>
             <NumberFormat
@@ -105,7 +105,7 @@ export const Checkout = ({
         <li>
           <span>{t("order type")}:</span>
           <span>{t("pay in full")}</span>
-        </li>
+        </li> */}
         <Button color="red" type="submit" className="order-btn" form="form">
           {t("place an order")}
         </Button>
