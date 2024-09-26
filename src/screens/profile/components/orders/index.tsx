@@ -24,21 +24,22 @@ export const MyOrders = () => {
     queryFn: getOrder,
     select: (res) => res.data?.results,
   });
-
   return (
     <MyOrdersProvider>
       <Grid>
         {orders?.map((item: any, i: number) => {
+          // console.log("item", item);
           return (
             <Grid.Col span={12} md={12} sm={12} key={i}>
               <OrderCard>
-                <OrderCardHeader>
+                {/* <OrderCardHeader>
                   <h2>
                     {t("order_id")} {item?.id}
                   </h2>
-                </OrderCardHeader>
+                </OrderCardHeader> */}
                 <OrderCardBody>
                   <ul className="order-body-left">
+                    <li>{t("order_id")}</li>
                     <li>{t("status")}</li>
                     <li>{t("order date")}</li>
                     {/* <li>{t('delivery date')}</li>
@@ -47,6 +48,7 @@ export const MyOrders = () => {
                     <li>{t("comment")}</li>
                   </ul>
                   <ul className="order-body-right">
+                    <li> {item?.id}</li>
                     <li>
                       <Badge color={tagStatus(item?.status)?.color}>
                         {getStatus(item?.status)?.label}
@@ -58,13 +60,14 @@ export const MyOrders = () => {
                     <li>
                       <NumberFormat value={item?.amount} /> <span>so`m</span>{" "}
                     </li>
-                    <li>{item?.comment ?? "Izoh yo`q"}</li>
+                    <li>{item?.comment || "Izoh yo`q"}</li>
                   </ul>
                 </OrderCardBody>
-                {item?.order_items ? (
-                  <OrderCardFooter>
+
+                {item?.order_items && item?.order_items.length > 0 ? (
+                  <OrderCardFooter key={item.id}>
                     <CustomizedAccordion
-                      data={item?.order_items}
+                      data={item.order_items}
                       status={item?.status}
                     />
                   </OrderCardFooter>

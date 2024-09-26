@@ -45,7 +45,7 @@ export const PersonalInfo = () => {
     },
   });
   const onSubmit = (data: any) => {
-    console.log(data);
+    // console.log(data);
     // console.log(photo);
 
     // const formData: any = new FormData();
@@ -57,11 +57,12 @@ export const PersonalInfo = () => {
       region: data?.region,
       district: data?.district,
     };
-    const formData = {
+    const formData: any = {
       address: address,
       photo: photo,
       firstname: data?.firstname,
     };
+    console.log(formData);
     mutate(formData);
   };
   return (

@@ -12,6 +12,7 @@ export const RemoveImage = ({ getUploadedFile, setPhoto }: any) => {
   const onClick = (e: any) => {
     e.preventDefault();
     setPhoto(null);
+    getUploadedFile(null);
   };
   return (
     <label htmlFor="contained-button-file">
