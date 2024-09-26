@@ -26,7 +26,7 @@ export const OrderCard = styled("div")`
   min-height: auto;
   margin: 8px 0;
   border-radius: 20px;
-  border: 1px solid var(--main-bg-color);
+  /* border: 1px solid var(--main-bg-color); */
   background: #fff;
   padding: 21px 0 0 0;
   overflow: hidden;
@@ -58,6 +58,8 @@ export const OrderCardBody = styled.div`
     }
   }
   & .order-body-right {
+    .product-item-p {
+    }
     width: 75%;
     & li {
       list-style: none;
@@ -90,21 +92,59 @@ export const OrderCardBody = styled.div`
 
 export const OrderCardFooter = styled.div`
   & .product-items {
+    font-family: var(--font-readex);
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    /* align-items: center; */
     padding: 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     &:last-of-type {
       border-bottom: none;
     }
     & .product-items-left {
+      .product-items-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        /* background-color: black; */
+      }
+      .element-info {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .product-quantity {
+        color: #6c737f;
+        font-size: 14px;
+        span {
+          color: #384250;
+        }
+      }
+      .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        svg {
+          height: 14px;
+        }
+      }
       width: 65%;
       display: flex;
-      justify-content: space-between;
+      /* justify-content: space-between;  */
+      gap: 10px;
       align-items: center;
-      & .product-items-info {
+      & .product-name {
+        font-family: var(--font-readex);
+        color: #384250;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      /* & .product-items-info {
         display: flex;
         flex-direction: column;
         & .element-info {
@@ -127,13 +167,26 @@ export const OrderCardFooter = styled.div`
             }
           }
         }
-      }
+      } */
     }
     & .product-items-right {
+      height: 80px;
+      /* background-color: red; */
+
       width: 35%;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      justify-content: center;
+      /* height: 100%; */
+      .product-items-p {
+        font-size: 16px;
+        color: #384250;
+      }
+      .product-items-pp {
+        color: #6c737f;
+        font-size: 13px;
+      }
       & .status {
         font-size: 12px;
         opacity: 0.87;

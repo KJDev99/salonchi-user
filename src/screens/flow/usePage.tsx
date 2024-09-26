@@ -6,7 +6,7 @@ import { useState } from "react";
 
 interface IPictures {
   file: string;
-  file_type:string;
+  file_type: string;
 }
 
 interface TImages {
@@ -20,12 +20,12 @@ export const usePage = () => {
   const [images, setImages] = useState<TImages[]>([]);
   const [active, setActive] = useState<any>(null);
   const [active1, setActive1] = useState<number>(1);
- 
-  const serves = {
-    flowList:(slug:any) => request(`/product/detail/${slug}`)
-  }
 
-  const { data:results, isLoading } = useQuery(
+  const serves = {
+    flowList: (slug: any) => request(`/product/detail/${slug}`),
+  };
+
+  const { data: results, isLoading } = useQuery(
     [REACT_QUERY_KEYS.PRODUCT_DETAIL + "flow", slug],
     () => serves.flowList(slug),
     {
@@ -33,28 +33,34 @@ export const usePage = () => {
         results: res?.data,
       }),
       onSuccess: (res) => {
-        {console.log("atributer", active)}
-        const mediaItems = res?.results?.media?.map((v:any) => {
-          if (v.file_type === "image") {
-            return {
-              original: v?.file,
-              thumbnail: v?.file,
-            };
-          } else {
-            return {
-              original: v?.file,
-              thumbnail: 'https://s3.timeweb.cloud/c4de9495-xuping/xuping/avatar.jpg',
-              renderItem: () => (
-                <video src={v?.file} width="100%" height="400px" controls></video>
-              ),
-            };
-          }
-        }) || [];
+        // {console.log("atributer", active)}
+        const mediaItems =
+          res?.results?.media?.map((v: any) => {
+            if (v.file_type === "image") {
+              return {
+                original: v?.file,
+                thumbnail: v?.file,
+              };
+            } else {
+              return {
+                original: v?.file,
+                thumbnail:
+                  "https://s3.timeweb.cloud/c4de9495-xuping/xuping/avatar.jpg",
+                renderItem: () => (
+                  <video
+                    src={v?.file}
+                    width="100%"
+                    height="400px"
+                    controls
+                  ></video>
+                ),
+              };
+            }
+          }) || [];
         setImages(mediaItems);
         setActive(res?.results?.colors?.[0]?.id);
       },
-      onError: (error:any) => {
-    
+      onError: (error: any) => {
         // Handle specific error codes
         if (error.response?.status === 404) {
           // router.push('/404'); // Redirect to a custom 404 page
@@ -65,8 +71,6 @@ export const usePage = () => {
       enabled: !!slug,
     }
   );
-
-
 
   return {
     flow: slug,

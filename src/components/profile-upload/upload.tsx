@@ -4,7 +4,7 @@ import Popup from "./popup";
 import { UploadImage } from "./upload-image";
 import { Wrapper } from "./style";
 import Image from "next/image";
-import IconUser from "@/assets/images/user.png";
+import IconUser from "@/assets/avatar.jpg";
 import { RemoveImage } from "./remove-image";
 
 export const ProfileUpload = ({ setPhoto, image, setImage }: any) => {
@@ -43,10 +43,11 @@ export const ProfileUpload = ({ setPhoto, image, setImage }: any) => {
         />
         <RemoveImage
           setPhoto={setPhoto}
-          // getUploadedFile={() => {
-          //   setOpen(true);
-          //   setPhoto(image);
-          // }}
+          getUploadedFile={() => {
+            setImage(null);
+            // setOpen(true);
+            setPhoto(null);
+          }}
         />
         <Popup
           open={open}
