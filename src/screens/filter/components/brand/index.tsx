@@ -1,9 +1,33 @@
-import React from "react";
-import { Button, Checkbox, Group } from "@mantine/core";
-import { BrandWrap, SystemList, SystemListItem } from "./style";
-import { ArrowDownIcon } from "@/assets/icons/arrow.down";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Checkbox, Group } from "@mantine/core";
+import { BrandWrap } from "./style";
 
-export const FilterBrand = () => {
+// Define the type for the brand data
+interface Brand {
+  id: number;
+  name: string;
+}
+
+export const FilterBrand: React.FC = () => {
+  const [brands, setBrands] = useState<Brand[]>([]); // Use Brand[] to type the state
+
+  // Fetch brand data from the API
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const response = await axios.get<Brand[]>(
+          "https://api.salonchi.uz/api/v1/admin/brand"
+        );
+        setBrands(response.data);
+      } catch (error) {
+        console.error("Error fetching brands:", error);
+      }
+    };
+
+    fetchBrands();
+  }, []);
+
   return (
     <BrandWrap>
       <Checkbox.Group label="Brend">
@@ -16,40 +40,17 @@ export const FilterBrand = () => {
             alignItems: "flex-start",
           }}
         >
-          <Checkbox
-            value="Bred1"
-            label="Bred1"
-            color="red"
-            className="checkbox"
-          />
-          <Checkbox
-            value="Bred2"
-            label="Bred2"
-            color="red"
-            className="checkbox"
-          />
-          <Checkbox
-            value="Bred3"
-            label="Bred3"
-            color="red"
-            className="checkbox"
-          />
-          <Checkbox
-            value="Bred4"
-            label="Bred4"
-            color="red"
-            className="checkbox"
-          />
-          <Checkbox
-            value="Bred5"
-            label="Bred5"
-            color="red"
-            className="checkbox"
-          />
+          {brands.map((brand) => (
+            <Checkbox
+              key={brand.id}
+              value={brand.name}
+              label={brand.name}
+              color="red"
+              className="checkbox"
+            />
+          ))}
         </Group>
       </Checkbox.Group>
-
-      <Button color="red">Filterni qo‘llash</Button>
     </BrandWrap>
   );
 };

@@ -165,7 +165,6 @@ export const Wrapper = styled.div`
     .image-gallery-content {
       display: flex;
       justify-content: center;
-
     }
   }
 `;

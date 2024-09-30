@@ -83,7 +83,7 @@ export const useCheckout = ({
             price: v.price,
             color: v?.color?.id,
             product: v?.id,
-            attributes: v?.attributes,
+            attributes: v?.attributes || [],
           };
           if (v?.box) {
             a["box"] = v?.box;

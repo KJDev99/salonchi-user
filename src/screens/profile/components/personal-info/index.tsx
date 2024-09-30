@@ -41,7 +41,7 @@ export const PersonalInfo = () => {
   const { mutate, isLoading } = useMutation((data) => updateProfile(data), {
     onSuccess: () => {
       toast.success("Profil ma'lumotlari muvaffaqiyatli yangilandi");
-      router.push("/");
+      router.push("/profile");
     },
   });
   const onSubmit = (data: any) => {

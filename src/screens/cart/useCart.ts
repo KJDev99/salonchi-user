@@ -11,7 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { ENDPOINTS } from "@/shared/endpoints";
 import { request } from "@/shared/api/requests";
 
-export const useCart = ():any => {
+export const useCart = (): any => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const cart = useStore((state: any) => state.cart);
@@ -51,20 +51,19 @@ export const useCart = ():any => {
     (data) => request.post(ENDPOINTS.PRODUCT_CHECK_ID, data),
     {
       onSuccess: (res) => {
-        setInitialCart(cart.filter((c:any) => res?.data?.ids.includes(c.id)))
+        setInitialCart(cart.filter((c: any) => res?.data?.ids.includes(c.id)));
       },
     }
   );
 
   useEffect(() => {
-
-    if(cart?.length > 0) {
-      const data:any ={
+    if (cart?.length > 0) {
+      const data: any = {
         ids: cart.map((car: any) => car.id),
-       }
+      };
       mutate(data);
-    }else{
-      setInitialCart([])
+    } else {
+      setInitialCart([]);
     }
   }, [cart]);
 
