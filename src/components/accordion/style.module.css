@@ -1,0 +1,57 @@
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+}
+.modalText {
+  color: var(--gray-700);
+  font-size: 14px;
+  font-weight: 400;
+}
+.modalInput {
+  width: 100%;
+  font-family: var(--font-readex);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  font-size: 14px;
+  resize: none;
+  margin-top: 6px;
+}
+.modalLabel {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid #d2d6db;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.starsBox {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.modalBtn {
+  display: flex;
+  text-align: center;
+  background-color: var(--main-bg-color);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 0;
+  color: white;
+  font-family: var(--font-readex);
+  font-size: 14px;
+  border-radius: 8px;
+}
