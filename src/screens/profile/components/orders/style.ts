@@ -103,6 +103,7 @@ export const OrderCardFooter = styled.div`
     &:last-of-type {
       border-bottom: none;
     }
+
     & .product-items-left {
       .product-items-info {
         display: flex;
@@ -196,6 +197,26 @@ export const OrderCardFooter = styled.div`
         border-radius: 0.425rem;
       }
     }
+  }
+  .add-comment {
+    border: 1px solid var(--main-bg-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    color: var(--main-bg-color);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 24px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .modal-container {
+    background-color: black;
   }
   & .MuiPaper-elevation {
     border: none;

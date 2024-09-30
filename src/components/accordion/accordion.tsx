@@ -1,15 +1,48 @@
-import React from "react";
-import { Accordion, Badge } from "@mantine/core";
+import React, { useState } from "react";
+import { Accordion, Badge, Modal, Textarea } from "@mantine/core";
 import { Wrapper } from "./style";
 import { NumberFormat } from "../number-format";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { getStatus, tagStatus } from "@/utils/status";
 import { StarIcon } from "@/assets/icons/star";
-
+import { CommentIcon } from "@/assets/icons/comment";
+import { useDisclosure } from "@mantine/hooks";
+import { StarYellow } from "@/assets/icons/StarYellow";
+import { StarGrey } from "@/assets/icons/StarGrey";
+import styles from "./style.module.css";
+import { AddImage } from "@/assets/icons/addImage";
+import product from "@/screens/product";
+import { request } from "@/shared/api/requests";
 export const CustomizedAccordion = ({ data, status }: any) => {
   const { t } = useTranslation("common");
+  const [opened, { open, close }] = useDisclosure(false);
   // console.log("data", status);
+  const [rating, setRating] = useState(0); // Initialize state to track the rating
+  const [comment, setComment] = useState("");
+  const [images, setImages] = useState([]);
+  // Function to handle the star click and update the rating
+  const handleStarClick = (index: number) => {
+    setRating(index + 1);
+  };
+  const handleCommentChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setComment(event.target.value);
+  };
+  const handleSubmit = async () => {
+    const dataa = {
+      comment: comment,
+      rating: rating,
+      product: data[0].product.id,
+      photos: [
+        "https://c4de9495-xuping.s3.timeweb.cloud/xuping/Screenshot_from_2024-09-18_16-20-06.png",
+      ],
+    };
+
+    const res = request.post("product/" + data[0].product.id + "/rate", dataa);
+    console.log(res);
+  };
   return (
     <Wrapper>
       <Accordion variant="contained" defaultValue="">
@@ -93,7 +126,59 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                       {getStatus(status)?.label}
                     </Badge> */}
                   </div>
-                  <p>Sharh qoldirish</p>
+                  <p onClick={open} className="add-comment">
+                    <CommentIcon /> Sharh qoldirish
+                  </p>
+                  <Modal
+                    opened={opened}
+                    onClose={close}
+                    title="Mening sharhim"
+                    centered
+                  >
+                    <div className={styles.modalContainer}>
+                      <p className={styles.modalText}>Baholang</p>
+                      <div
+                        className={styles.starsBox}
+                        style={{ display: "flex", cursor: "pointer" }}
+                      >
+                        {Array(5)
+                          .fill(0)
+                          .map((_, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleStarClick(index)}
+                            >
+                              {index < rating ? <StarYellow /> : <StarGrey />}
+                            </div>
+                          ))}
+                      </div>
+
+                      <p className={styles.modalText}>Sharh yozing</p>
+                      <textarea
+                        value={comment}
+                        onChange={handleCommentChange}
+                        className={styles.modalInput}
+                        placeholder="Mana shu yerga o'z sharhingizni yozing"
+                        rows={8}
+                      />
+                      <form className={styles.modalForm}>
+                        <label className={styles.modalLabel} htmlFor="file">
+                          <AddImage />
+                        </label>
+                        <input
+                          style={{ display: "none" }}
+                          id="file"
+                          type="file"
+                        />
+                      </form>
+                      <button
+                        onClick={handleSubmit}
+                        className={styles.modalBtn}
+                      >
+                        Yuborish
+                      </button>
+                    </div>
+                  </Modal>
                 </div>
               );
             })}
