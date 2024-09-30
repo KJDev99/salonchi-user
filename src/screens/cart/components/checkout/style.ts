@@ -4,9 +4,14 @@ export const Form = styled("form")`
   width: 100%;
   height: auto;
   background: var(--main-white);
-  /* border: 1px solid var(--main-bg-color); */
+  border: 1px solid var(--main-bg-color);
   border-radius: 12px;
   padding: 28px 26px 0px 26px;
+  position: fixed;
+  width: max-content;
+  /* top: 0px; */
+  /* top: 200px; */
+
   .button-group {
     width: 100%;
     display: flex;

@@ -9,6 +9,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { IconWarning } from "@/assets/icons/warning";
+import { Notify } from "./notify";
 
 export interface ICheckoutProps {
   initialCart: IProduct[];
@@ -18,6 +19,8 @@ export interface ICheckoutProps {
   notifyClose?: () => void;
   value?: string;
   payType: number;
+  infoUserOpened?: any;
+  setInfoUserOpened?: (value: boolean) => void;
 }
 
 export const Checkout = ({
@@ -25,6 +28,8 @@ export const Checkout = ({
   comment,
   value,
   payType,
+  infoUserOpened,
+  setInfoUserOpened,
 }: ICheckoutProps) => {
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -40,12 +45,12 @@ export const Checkout = ({
     payType,
   });
 
-  console.log(router.pathname, "router");
+  console.log(value, "router");
 
   return (
     <Form onSubmit={onCheckout} id="form">
       <Header>
-        <h2>{t("all")}:</h2>
+        {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}
         <h3>
           <NumberFormat
             value={initialCart?.reduce(
@@ -58,90 +63,61 @@ export const Checkout = ({
         </h3>
       </Header>
       <Body>
-        {/* <li>
-          <span>{t("value")}:</span>
-          <p>
-            <NumberFormat
-              value={initialCart?.reduce(
-                (current, item: IProduct) =>
-                  current + item.productQuantity * item.price,
-                0
-              )}
-            />
-            <span>{t("card.currency")}</span>
-          </p>
-        </li>
-        <li>
-          <span>{t("promo code")}:</span>
-          <span>0 {t("card.currency")}</span>
-        </li>
-        <li>
-          <span>{t("used bonus")}:</span>
-          <span>0 {t("card.currency")}</span>
-        </li>
-        <li>
-          <span>
-            {t("to pay in cash")}
-            <br /> {t("commission amount")}
-          </span>
-          <span>0 %</span>
-        </li>
-        <li>
-          <span>
-            {t("delivery")}
-            <br /> {t("prices")}
-          </span>
-          <span>0 {t("card.currency")}</span>
-        </li>
-        <Divider />
-        <li>
-          <span>{t("delivery")}:</span>
-          <span>{t("by courier")}</span>
-        </li>
-        <li>
-          <span>{t("payment type")}:</span>
-          <span>{t("cash")}</span>
-        </li>
-        <li>
-          <span>{t("order type")}:</span>
-          <span>{t("pay in full")}</span>
-        </li> */}
-        <Button color="red" type="submit" className="order-btn" form="form">
-          {t("place an order")}
-        </Button>
-      </Body>
-      <Modal opened={opened} close={close}>
-        <ModalContent>
-          <IconWarning />
-          <p
-            style={{
-              textAlign: "center",
-              fontWeight: "500",
-              margin: "18px auto",
-              fontSize: 24,
-            }}
-          >
-            {t("please register")}
-          </p>
-        </ModalContent>
-
-        <FlexBtns>
-          <Button
-            onClick={() => {
-              localStorage.setItem("cart_location", router.pathname);
-              router.push("/login");
-            }}
-            color="red"
-            style={{
-              fontFamily: "var(--font-readex);",
-              fontWeight: "400",
-              borderRadius: "5px",
-            }}
-          >
-            {t("log in")}
+        {infoUserOpened ? (
+          <Button color="red" type="submit" className="order-btn" form="form">
+            {t("To’lov sahifasiga o’tish")}
           </Button>
-        </FlexBtns>
-      </Modal>
+        ) : (
+          <Button
+            color="red"
+            className="order-btn"
+            form="form"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              if (setInfoUserOpened) {
+                setInfoUserOpened(true);
+              }
+            }}
+          >
+            {t("place an order")}
+          </Button>
+        )}
+      </Body>
+      {infoUserOpened && (
+        <Modal opened={opened} close={close}>
+          <ModalContent>
+            <IconWarning />
+            <p
+              style={{
+                textAlign: "center",
+                fontWeight: "500",
+                margin: "18px auto",
+                fontSize: 24,
+              }}
+            >
+              {t("please register")}asdf
+            </p>
+          </ModalContent>
+
+          <FlexBtns>
+            <Button
+              onClick={() => {
+                localStorage.setItem("cart_location", router.pathname);
+                router.push("/login");
+              }}
+              color="red"
+              style={{
+                fontFamily: "var(--font-readex);",
+                fontWeight: "400",
+                borderRadius: "5px",
+              }}
+            >
+              {t("log in")}12
+            </Button>
+          </FlexBtns>
+        </Modal>
+      )}
       {/* <Notify notifyOpened={notifyOpened} notifyClose={notifyClose} /> */}
     </Form>
   );

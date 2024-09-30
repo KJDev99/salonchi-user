@@ -1,5 +1,5 @@
-import { Modal as CustomModal } from '@mantine/core';
-import { ReactNode } from 'react';
+import { Modal as CustomModal } from "@mantine/core";
+import { ReactNode } from "react";
 
 interface IModalProps {
   children: ReactNode;

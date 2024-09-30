@@ -107,3 +107,18 @@ input::placeholder {
   padding-top: 0;
   margin-top: 0;
 }
+
+.mantine-16fdnqw {
+  margin: 0;
+}
+
+.mantine-yrx1yy {
+  /* border: 1px solid red; */
+}
+.mantine-1xxb51r {
+  position: relative !important;
+  /* position: fixed; */
+  /* top: 0; */
+  /* right: 0; */
+  border: 1px solid red;
+}
