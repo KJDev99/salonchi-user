@@ -9,6 +9,6 @@ export const filter = [
   },
   {
     value: "is_new",
-    label: "Reyting bo’yicha",
+    label: "Yangi qo'shilganlar",
   },
 ];

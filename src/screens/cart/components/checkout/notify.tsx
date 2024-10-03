@@ -33,7 +33,8 @@ export const Notify = ({ notifyOpened, notifyClose }: INotify) => {
         >
           <ModalContent className="notify-modal">
             <IconDone />
-            <Title className="notify-title">{t("thank you purchase")}</Title>
+            <h3>Buyurtmangiz muvaffiqaytli rasmiylashtirildi</h3>
+            <p>Tez orada operatorlarimiz siz bilan bog’lanishadi</p>
             <div style={{ textAlign: "center", marginBottom: 12 }}>
               <Button
                 color="red"
@@ -45,10 +46,10 @@ export const Notify = ({ notifyOpened, notifyClose }: INotify) => {
                 }}
                 onClick={handleGoHome}
               >
-                Xaridlarim
+                Bosh sahifaga qaytish
               </Button>
             </div>
-            <Link href="/">Telegram orqali ko‘rish</Link>
+            {/* <Link href="/">Telegram orqali ko‘rish</Link> */}
           </ModalContent>
         </Modal>
       )}

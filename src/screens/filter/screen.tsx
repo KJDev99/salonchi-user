@@ -14,6 +14,8 @@ const FilterScreen = () => {
     filters,
     setSlider,
     slider,
+    setBrand,
+    brand,
   } = useProducts();
 
   // console.log("productList11: ", productList);
@@ -23,6 +25,8 @@ const FilterScreen = () => {
       productCount={productList?.count}
       setSlider={setSlider}
       slider={slider}
+      setBrand={setBrand}
+      brand={brand}
     >
       <ListView
         productList={productList?.data}

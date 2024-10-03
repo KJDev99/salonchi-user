@@ -17,6 +17,8 @@ interface IFilterLayout {
   productCount: number;
   setSlider: Dispatch<SetStateAction<number[]>>;
   slider: number[];
+  setBrand: any;
+  brand: number[];
 }
 
 export const FilterLayout = ({
@@ -25,6 +27,8 @@ export const FilterLayout = ({
   productCount,
   setSlider,
   slider,
+  setBrand,
+  brand,
 }: IFilterLayout) => {
   const { t } = useTranslation("common");
   const router = useRouter();
@@ -47,7 +51,7 @@ export const FilterLayout = ({
           <Grid.Col span={12} lg={3}>
             <form>
               <Slider slider={slider} setSlider={setSlider} />
-              <FilterBrand />
+              <FilterBrand brand={brand} setBrand={setBrand} />
             </form>
           </Grid.Col>
           <Grid.Col span={12} lg={9}>

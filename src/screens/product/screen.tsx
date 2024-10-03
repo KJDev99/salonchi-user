@@ -100,6 +100,7 @@ const ProductScreen = () => {
       router.push("/cart");
     } else {
       setAtributErr(true);
+      setColorErr(true);
     }
   };
 

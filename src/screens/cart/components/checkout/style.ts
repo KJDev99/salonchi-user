@@ -1,17 +1,20 @@
+import { colors } from "./../../../flow/constants";
 import styled from "@emotion/styled";
 
 export const Form = styled("form")`
   width: 100%;
   height: auto;
   background: var(--main-white);
-  border: 1px solid var(--main-bg-color);
+  /* border: 1px solid var(--main-bg-color); */
   border-radius: 12px;
-  padding: 28px 26px 0px 26px;
-  position: fixed;
-  width: max-content;
-  /* top: 0px; */
-  /* top: 200px; */
+  padding: 28px 20px 0px 20px;
+  /* position: fixed;
+  width: max-content; */
 
+  position: fixed; /* Default position */
+  width: max-content;
+  transition: all 0.3s ease;
+  margin-top: 8px;
   .button-group {
     width: 100%;
     display: flex;
@@ -36,7 +39,7 @@ export const Header = styled("div")`
   justify-content: space-between;
   h2 {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 30px;
     color: #384250;
   }
@@ -46,8 +49,18 @@ export const Header = styled("div")`
     line-height: 30px;
     color: #384250;
   }
-  /* border-bottom: 1px solid #bfbfbf; */
-  /* padding-bottom: 20px; */
+  .addInfo {
+    display: flex;
+    justify-content: space-between;
+    color: #4d5761;
+    margin-top: 16px;
+  }
+  .Priceall {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 30px;
+    color: #384250;
+  }
 `;
 export const Body = styled("ul")`
   padding: 25px 0 35px 0;
@@ -111,12 +124,24 @@ export const FlexBtns = styled("div")`
 
 export const ModalContent = styled("div")`
   width: 100%;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
+  margin-top: 20px;
+
+  h3 {
+    color: #1f2a37;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  p {
+    font-size: 14px;
+    color: #6c737f;
+    margin-bottom: 32px;
+    text-align: left;
+  }
   &.notify-modal {
-    padding-bottom: 24px;
     .notify-title {
       margin: 24px 0 32px 0;
       color: #141311;
@@ -124,8 +149,9 @@ export const ModalContent = styled("div")`
     button {
       width: 100%;
       min-width: 350px;
-      height: 54px;
+      height: 40px;
       border-radius: 10px !important;
+      font-weight: 600;
     }
     a {
       color: var(--main-bg-color);
