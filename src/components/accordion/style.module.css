@@ -30,12 +30,21 @@
 }
 .modalForm {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: row; */
   gap: 8px;
   margin-top: 24px;
   margin-bottom: 40px;
 }
-
+.modalImages {
+  display: flex;
+  gap: 8px;
+}
+.modalImage {
+  width: 88px;
+  height: 88px;
+  border-radius: 8px;
+  object-fit: cover;
+}
 .starsBox {
   display: flex;
   gap: 12px;

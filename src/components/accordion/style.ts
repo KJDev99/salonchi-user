@@ -1,12 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled("div")`
-  .modal-container {
-    background-color: black;
-  }
-  .mantine-q2m2r0 {
-    background-color: black !important;
-  }
   .mantine-Accordion-item:first-of-type {
     border: none !important;
     background-color: #faf5ff !important;

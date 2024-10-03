@@ -12,16 +12,15 @@ import { StarYellow } from "@/assets/icons/StarYellow";
 import { StarGrey } from "@/assets/icons/StarGrey";
 import styles from "./style.module.css";
 import { AddImage } from "@/assets/icons/addImage";
-import product from "@/screens/product";
+// import product from "@/screens/product";
 import { request } from "@/shared/api/requests";
 export const CustomizedAccordion = ({ data, status }: any) => {
+  console.log("data", data);
   const { t } = useTranslation("common");
   const [opened, { open, close }] = useDisclosure(false);
-  // console.log("data", status);
-  const [rating, setRating] = useState(0); // Initialize state to track the rating
+  const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [images, setImages] = useState([]);
-  // Function to handle the star click and update the rating
   const handleStarClick = (index: number) => {
     setRating(index + 1);
   };
@@ -30,24 +29,45 @@ export const CustomizedAccordion = ({ data, status }: any) => {
   ) => {
     setComment(event.target.value);
   };
+  const uploadImage = async (e: any) => {
+    console.log("nimadir", data);
+    e.preventDefault();
+    const file = e.target.files[0];
+    // console.log(file);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await request.post("upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const imageUrl = response.data.file;
+      setImages([...images, imageUrl]);
+      // console.log(setImages);
+    } catch (error) {
+      console.error("Image upload failed:", error);
+      throw error;
+    }
+  };
   const handleSubmit = async () => {
     const dataa = {
       comment: comment,
       rating: rating,
-      product: data[0].product.id,
-      photos: [
-        "https://c4de9495-xuping.s3.timeweb.cloud/xuping/Screenshot_from_2024-09-18_16-20-06.png",
-      ],
+      // product: data[0].product.id,
+      product: 6,
+      photos: images,
     };
 
     const res = request.post("product/" + data[0].product.id + "/rate", dataa);
-    console.log(res);
+    console.log("res", res);
   };
+  console.log(data);
   return (
     <Wrapper>
       <Accordion variant="contained" defaultValue="">
         <Accordion.Item value="customization">
-          <Accordion.Control>
+          <Accordion.Control style={{ backgroundColor: "white" }}>
             {data?.length}ta mahsulot mavjud
           </Accordion.Control>
           <Accordion.Panel>
@@ -126,9 +146,11 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                       {getStatus(status)?.label}
                     </Badge> */}
                   </div>
-                  <p onClick={open} className="add-comment">
-                    <CommentIcon /> Sharh qoldirish
-                  </p>
+                  {status === "DELIVERED" && (
+                    <p onClick={open} className="add-comment">
+                      <CommentIcon /> Sharh qoldirish
+                    </p>
+                  )}
                   <Modal
                     opened={opened}
                     onClose={close}
@@ -162,14 +184,27 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                         rows={8}
                       />
                       <form className={styles.modalForm}>
+                        <div className={styles.modalImages}>
+                          {images.map((image, index) => (
+                            <Image
+                              className={styles.modalImage}
+                              key={index}
+                              src={image}
+                              alt={`Uploaded ${index}`}
+                              width={150}
+                              height={150}
+                            />
+                          ))}
+                        </div>
                         <label className={styles.modalLabel} htmlFor="file">
                           <AddImage />
+                          <input
+                            style={{ display: "none" }}
+                            id="file"
+                            type="file"
+                            onChange={uploadImage}
+                          />
                         </label>
-                        <input
-                          style={{ display: "none" }}
-                          id="file"
-                          type="file"
-                        />
                       </form>
                       <button
                         onClick={handleSubmit}
