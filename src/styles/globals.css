@@ -109,16 +109,34 @@ input::placeholder {
 }
 
 .mantine-16fdnqw {
-  margin: 0;
+  margin: 12px;
 }
 
-.mantine-yrx1yy {
-  /* border: 1px solid red; */
+.parent-container {
+  position: relative;
+  overflow-y: auto; /* Enable scrolling */
+  height: 100%;
 }
-.mantine-1xxb51r {
-  position: relative !important;
-  /* position: fixed; */
-  /* top: 0; */
-  /* right: 0; */
-  border: 1px solid red;
+
+.fixedd {
+  position: absolute !important;
+  bottom: 0;
+  width: max-content;
+}
+
+.mahsulotlar {
+  background-color: var(--main-white);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mahsulotlar h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 24px 40px 0px;
+}
+
+.mantine-19pz3dh {
+  position: absolute !important;
+  right: 0;
 }

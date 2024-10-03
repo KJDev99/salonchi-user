@@ -49,9 +49,9 @@ export const Slider = ({ setSlider }: any) => {
             <Label>Dan</Label>
             <Input
               type="number"
-              value={inputFrom === 0 ? "" : inputFrom} // Show empty string if it's 0 to prevent leading 0s
+              value={inputFrom === 0 ? "1" : inputFrom} // Show empty string if it's 0 to prevent leading 0s
               onChange={handleInputFromChange}
-              placeholder="Dan"
+              placeholder="1"
             />
           </div>
           <div className="to">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Body, Form, FlexBtns, Header, ModalContent } from "./style";
 import { Button, Divider } from "@mantine/core";
 import { IProduct } from "@/types/product";
@@ -44,81 +44,150 @@ export const Checkout = ({
     value,
     payType,
   });
+  const [isFixed, setIsFixed] = useState(false);
 
-  console.log(value, "router");
+  useEffect(() => {
+    const handleScroll = () => {
+      const formElement = document.getElementById("form");
+      const parentElement = document.querySelector(".parent-container");
+
+      // Check if elements exist before proceeding
+      if (!formElement || !parentElement) {
+        return;
+      }
+
+      const parentBottom = parentElement.getBoundingClientRect().bottom;
+      const windowHeight = window.innerHeight;
+      console.log("scroll", parentBottom, windowHeight);
+
+      if (parentBottom <= windowHeight - 300) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <Form onSubmit={onCheckout} id="form">
-      <Header>
-        {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}
-        <h3>
-          <NumberFormat
-            value={initialCart?.reduce(
-              (current, item: IProduct) =>
-                current + item.productQuantity * item.price,
-              0
-            )}
-          />{" "}
-          {t("card.currency")}
-        </h3>
-      </Header>
-      <Body>
-        {infoUserOpened ? (
-          <Button color="red" type="submit" className="order-btn" form="form">
-            {t("To’lov sahifasiga o’tish")}
-          </Button>
-        ) : (
-          <Button
-            color="red"
-            className="order-btn"
-            form="form"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              if (setInfoUserOpened) {
-                setInfoUserOpened(true);
-              }
-            }}
-          >
-            {t("place an order")}
-          </Button>
-        )}
-      </Body>
-      {infoUserOpened && (
-        <Modal opened={opened} close={close}>
-          <ModalContent>
-            <IconWarning />
-            <p
-              style={{
-                textAlign: "center",
-                fontWeight: "500",
-                margin: "18px auto",
-                fontSize: 24,
-              }}
-            >
-              {t("please register")}asdf
-            </p>
-          </ModalContent>
+    <div className="parent-container">
+      <Form onSubmit={onCheckout} id="form" className={isFixed ? "fixedd" : ""}>
+        <Header>
+          {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}
 
-          <FlexBtns>
+          {!infoUserOpened ? (
+            <h3>
+              <NumberFormat
+                value={initialCart?.reduce(
+                  (current, item: IProduct) =>
+                    current + item.productQuantity * item.price,
+                  0
+                )}
+              />{" "}
+              {t("card.currency")}
+            </h3>
+          ) : (
+            <div className="addInfos">
+              <div className="addInfo">
+                <p>Mahsulotlar ({initialCart.length}): </p>
+                <div>
+                  <NumberFormat
+                    value={initialCart?.reduce(
+                      (current, item: IProduct) =>
+                        current + item.productQuantity * item.price,
+                      0
+                    )}
+                  />{" "}
+                  {t("card.currency")}
+                </div>
+              </div>
+              <div className="addInfo">
+                <p>Yetkazib berish: </p>
+                <div>
+                  <NumberFormat value={45000} /> {t("card.currency")}
+                </div>
+              </div>
+              <div className="addInfo Priceall">
+                <p>Jami: </p>
+                <div>
+                  <div>
+                    <NumberFormat
+                      value={
+                        initialCart?.reduce(
+                          (current, item: IProduct) =>
+                            current + item.productQuantity * item.price,
+                          0
+                        ) + 45000
+                      }
+                    />{" "}
+                    {t("card.currency")}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </Header>
+        <Body>
+          {infoUserOpened ? (
+            <Button color="red" type="submit" className="order-btn" form="form">
+              {t("To’lov sahifasiga o’tish")}
+            </Button>
+          ) : (
             <Button
-              onClick={() => {
-                localStorage.setItem("cart_location", router.pathname);
-                router.push("/login");
-              }}
               color="red"
-              style={{
-                fontFamily: "var(--font-readex);",
-                fontWeight: "400",
-                borderRadius: "5px",
+              className="order-btn"
+              form="form"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                if (setInfoUserOpened) {
+                  setInfoUserOpened(true);
+                }
               }}
             >
-              {t("log in")}12
+              {t("place an order")}
             </Button>
-          </FlexBtns>
-        </Modal>
-      )}
-      {/* <Notify notifyOpened={notifyOpened} notifyClose={notifyClose} /> */}
-    </Form>
+          )}
+        </Body>
+        {infoUserOpened && (
+          <Modal opened={opened} close={close}>
+            <ModalContent>
+              <IconWarning />
+              <p
+                style={{
+                  textAlign: "center",
+                  fontWeight: "500",
+                  margin: "18px auto",
+                  fontSize: 24,
+                }}
+              >
+                {t("please register")}asdf
+              </p>
+            </ModalContent>
+
+            <FlexBtns>
+              <Button
+                onClick={() => {
+                  localStorage.setItem("cart_location", router.pathname);
+                  router.push("/login");
+                }}
+                color="red"
+                style={{
+                  fontFamily: "var(--font-readex);",
+                  fontWeight: "400",
+                  borderRadius: "5px",
+                }}
+              >
+                {t("log in")}12
+              </Button>
+            </FlexBtns>
+          </Modal>
+        )}
+        <Notify notifyOpened={notifyOpened} notifyClose={notifyClose} />
+      </Form>
+    </div>
   );
 };

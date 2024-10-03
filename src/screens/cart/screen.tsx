@@ -98,7 +98,7 @@ const CartScreen = () => {
       ) : (
         <Container>
           <Title className="cart-title">
-            {t("cart.title1")} {initialCart.length} {t("cart.title2")}
+            {infoUserOpened && `${t("Buyurtmani rasmiylashtirish")}`}
           </Title>
           <Grid gutter={30} mt={29}>
             <Grid.Col span={12} lg={8}>
@@ -170,7 +170,9 @@ const CartScreen = () => {
                   </CustomerInfo>
                 </Grid.Col>
               )}
-              <Grid>
+
+              <Grid className="mahsulotlar">
+                <h2>Savatdagi mahsulotlar</h2>
                 {initialCart.map((item: IProduct) => (
                   <Grid.Col span={12} lg={12} key={item?.id}>
                     <Card item={item} />

@@ -3,23 +3,22 @@ import React from "react";
 export const IconDone = () => {
   return (
     <svg
-      width="54"
-      height="55"
-      viewBox="0 0 54 55"
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M27.0013 52.0832C40.5783 52.0832 51.5846 41.0768 51.5846 27.4998C51.5846 13.9228 40.5783 2.9165 27.0013 2.9165C13.4243 2.9165 2.41797 13.9228 2.41797 27.4998C2.41797 41.0768 13.4243 52.0832 27.0013 52.0832Z"
-        stroke="#EA580C"
-        strokeWidth="4"
-        strokeMiterlimit="10"
+        d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"
+        fill="#C5FDE1"
       />
       <path
-        d="M40.5221 18.8958L23.2155 36.1041L13.4805 26.615"
-        stroke="#EA580C"
-        strokeWidth="4"
-        strokeMiterlimit="10"
+        d="M19.5 24L22.5 27L28.5 21M34 24C34 29.5228 29.5228 34 24 34C18.4772 34 14 29.5228 14 24C14 18.4772 18.4772 14 24 14C29.5228 14 34 18.4772 34 24Z"
+        stroke="#16B364"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );

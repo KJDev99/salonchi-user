@@ -9,8 +9,14 @@ export const useProducts = () => {
   const router = useRouter();
   const [activePage, setPage] = useState(1);
   const [filters, setFilters] = useState("");
+  const [brand, setBrand] = useState([]);
   const [slider, setSlider] = useState([0, 1000000]);
 
+  function FilterBrand(brand: any) {
+    return brand.map((i: any) => `&brand=${i}`).join();
+  }
+
+  // console.log(FilterBrand());
 
   const {
     data: productList = {
@@ -26,6 +32,7 @@ export const useProducts = () => {
       filters,
       slider,
       router.query.slug,
+      brand,
     ],
     () =>
       request(`/product/list`, {
@@ -34,6 +41,7 @@ export const useProducts = () => {
           offset: activePage,
           limit: 12,
           filter_type: filters !== "" ? filters : "",
+          brand: brand.length > 0 ? brand : undefined,
           min_price: slider[0],
           max_price: slider[1],
         },
@@ -48,6 +56,8 @@ export const useProducts = () => {
     }
   );
 
+  console.log(brand);
+
   return {
     productList,
     isLoading,
@@ -57,5 +67,7 @@ export const useProducts = () => {
     filters,
     setSlider,
     slider,
+    setBrand,
+    brand,
   };
 };
