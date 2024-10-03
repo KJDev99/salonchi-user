@@ -1,54 +1,54 @@
-import { STATUS } from '@/constants/status';
+import { STATUS } from "@/constants/status";
 
 export const getStatus = (status: string) => {
   switch (status) {
     case STATUS.NEW:
       return {
-        color: '#fff',
-        backgroundColor: '#69b1ff',
-        label: 'Yangi',
+        color: "#fff",
+        backgroundColor: "#69b1ff",
+        label: "Yangi",
       };
     case STATUS.WAITING:
       return {
-        color: '#fff',
-        backgroundColor: 'gold',
-        label: 'Kutilayotgan',
+        color: "#fff",
+        backgroundColor: "gold",
+        label: "Yetkazilmoqda",
       };
     case STATUS.ACCEPTED:
       return {
-        color: '#fff',
-        backgroundColor: '#52c41a',
-        label: 'Qabul qilindi',
+        color: "#fff",
+        backgroundColor: "#52c41a",
+        label: "Qabul qilindi",
       };
     case STATUS.ON_THE_WAY:
       return {
-        color: '#fff',
-        backgroundColor: 'gold',
+        color: "#fff",
+        backgroundColor: "gold",
         label: "Yo'lda",
       };
     case STATUS.DELIVERED:
       return {
-        color: '#fff',
-        backgroundColor: '#52c41a',
-        label: 'Yetkazib berildi',
+        color: "#fff",
+        backgroundColor: "#52c41a",
+        label: "Yetkazilgan",
       };
     case STATUS.CANCELLED:
       return {
-        color: '#fff',
-        backgroundColor: '#ff4d4f',
-        label: 'Bekor qilindi',
+        color: "#fff",
+        backgroundColor: "#ff4d4f",
+        label: "Bekor qilindi",
       };
     case STATUS.RE_CALL:
       return {
-        color: '#fff',
-        backgroundColor: '#ff4d4f',
-        label: 'Qayta aloqa',
+        color: "#fff",
+        backgroundColor: "#ff4d4f",
+        label: "Qayta aloqa",
       };
     default:
       return {
-        color: '#fff',
-        backgroundColor: '#ff4d4f',
-        label: 'Kuryerdan qaytgan',
+        color: "#fff",
+        backgroundColor: "#ff4d4f",
+        label: "Kuryerdan qaytgan",
       };
   }
 };
@@ -57,35 +57,35 @@ export const tagStatus = (status: string) => {
   switch (status) {
     case STATUS.NEW:
       return {
-        color: 'blue',
+        color: "blue",
       };
     case STATUS.WAITING:
       return {
-        color: 'orange',
+        color: "orange",
       };
     case STATUS.ACCEPTED:
       return {
-        color: 'cyan',
+        color: "cyan",
       };
     case STATUS.ON_THE_WAY:
       return {
-        color: 'orange',
+        color: "orange",
       };
     case STATUS.DELIVERED:
       return {
-        color: 'cyan',
+        color: "green",
       };
     case STATUS.CANCELLED:
       return {
-        color: 'error',
+        color: "error",
       };
     case STATUS.RE_CALL:
       return {
-        color: 'lime',
+        color: "lime",
       };
     default:
       return {
-        color: 'rgba(0, 0, 0, 0.5)',
+        color: "rgba(0, 0, 0, 0.5)",
       };
   }
 };
