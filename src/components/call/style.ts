@@ -11,7 +11,7 @@ export const CallWrapper = styled("div")`
     position: fixed;
     z-index: 10000;
     bottom: 30px;
-    right: 25px;
+    left: 25px;
     svg {
       width: 52px;
       height: 52px;
