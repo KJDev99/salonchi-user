@@ -113,17 +113,21 @@ input::placeholder {
 }
 
 .parent-container {
-  position: relative;
   overflow-y: auto; /* Enable scrolling */
   height: 100%;
+  position: relative;
+  top: auto !important;
 }
 
 .fixedd {
   position: absolute !important;
   bottom: 0;
   width: max-content;
+  top: auto !important;
 }
-
+.topCheck {
+  top: 120px;
+}
 .mahsulotlar {
   background-color: var(--main-white);
   border-radius: 8px;
@@ -136,7 +140,7 @@ input::placeholder {
   margin: 24px 40px 0px;
 }
 
-/* .mantine-19pz3dh {
-  position: absolute !important;
-  right: 0;
-} */
+.mantine-146gjqe {
+  background-color: transparent;
+}
+
