@@ -45,6 +45,7 @@ export const Checkout = ({
     payType,
   });
   const [isFixed, setIsFixed] = useState(false);
+  const [isTop, setIsTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,8 +59,16 @@ export const Checkout = ({
 
       const parentBottom = parentElement.getBoundingClientRect().bottom;
       const windowHeight = window.innerHeight;
-      console.log("scroll", parentBottom, windowHeight);
+      const scrollY = window.scrollY || window.pageYOffset; // Get current scroll position
 
+      console.log("scroll", parentBottom, windowHeight, scrollY);
+
+      // Trigger the action if the user has scrolled more than 120px and parent bottom is in range
+      if (scrollY >= 120) {
+        setIsTop(true);
+      } else {
+        setIsTop(false);
+      }
       if (parentBottom <= windowHeight - 300) {
         setIsFixed(true);
       } else {
@@ -74,7 +83,11 @@ export const Checkout = ({
 
   return (
     <div className="parent-container">
-      <Form onSubmit={onCheckout} id="form" className={isFixed ? "fixedd" : ""}>
+      <Form
+        onSubmit={onCheckout}
+        id="form"
+        className={`${isFixed ? "fixedd" : ""} ${isTop ? "topCheck" : ""}`}
+      >
         <Header>
           {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}
 
@@ -133,7 +146,7 @@ export const Checkout = ({
         <Body>
           {infoUserOpened ? (
             <Button color="red" type="submit" className="order-btn" form="form">
-              {t("To’lov sahifasiga o’tish")}
+              {t("place an order")}
             </Button>
           ) : (
             <Button
@@ -148,7 +161,7 @@ export const Checkout = ({
                 }
               }}
             >
-              {t("place an order")}
+              {t("To’lov sahifasiga o’tish")}
             </Button>
           )}
         </Body>
@@ -164,7 +177,7 @@ export const Checkout = ({
                   fontSize: 24,
                 }}
               >
-                {t("please register")}asdf
+                {t("please register")}
               </p>
             </ModalContent>
 

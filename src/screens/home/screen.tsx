@@ -33,6 +33,7 @@ const HomeScreen = () => {
   const { width } = useViewportSize();
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
+  console.log(categoryListProducts);
 
   return (
     <Wrapper className="home-wrapper">
@@ -43,7 +44,7 @@ const HomeScreen = () => {
         {isLoading ? (
           <UISkeleton />
         ) : (
-          <Grid gutter={16}>
+          <Grid gutter={0} style={{ gap: "18px", marginBottom: "20px" }}>
             {data?.pages?.map((page, idx) => {
               return (
                 <Fragment key={idx}>
@@ -84,104 +85,125 @@ const HomeScreen = () => {
             </Button>
           </Paging>
         )}
-        <Title className="home-title" style={{ marginTop: 0 }}>
-          {t("cheap prices")}
-        </Title>
-        <Carousel
-          withIndicators={false}
-          slideSize="20%"
-          slideGap="sm"
-          slidesToScroll={width > 576 ? 5 : 1}
-          loop={false}
-          align="start"
-          breakpoints={[
-            { maxWidth: "md", slideSize: "20%" },
-            { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
-          ]}
-          controlSize={47}
-          withControls={width > 576 ? true : false}
-          styles={{
-            control: {
-              "&[data-inactive]": {
-                opacity: 0,
-                cursor: "default",
-              },
-            },
-          }}
-        >
-          {cheapProductList?.slice(0, 9)?.map((v: any) => {
-            return (
-              <Carousel.Slide key={v?.id}>
-                <CustomCard
-                  isAllview={false}
-                  isCarousel={true}
-                  id={v?.id}
-                  item={v}
-                  type="cheap"
-                />
-              </Carousel.Slide>
-            );
-          })}
-          <Carousel.Slide>
-            <Card
-              onClick={() => router.push(`/all-product/cheap`)}
-              className={"another-card"}
+        {cheapProductList?.length > 0 && (
+          <>
+            <Title className="home-title" style={{ marginTop: 0 }}>
+              {t("cheap prices")}
+            </Title>
+            <Carousel
+              withIndicators={false}
+              slideSize="20%"
+              slideGap="sm"
+              slidesToScroll={width > 576 ? 5 : 1}
+              loop={false}
+              align="start"
+              breakpoints={[
+                { maxWidth: "md", slideSize: "20%" },
+                { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
+              ]}
+              controlSize={47}
+              withControls={width > 576 ? true : false}
+              styles={{
+                control: {
+                  "&[data-inactive]": {
+                    opacity: 0,
+                    cursor: "default",
+                  },
+                },
+              }}
             >
-              <p>Barcha mahsulotlarni ko‘rish</p>
-            </Card>
-          </Carousel.Slide>
-        </Carousel>
-        <Title className="home-title">{t("news")}</Title>
-        <Carousel
-          withIndicators={false}
-          slideSize="20%"
-          slideGap="sm"
-          slidesToScroll={width > 576 ? 5 : 1}
-          loop={false}
-          align="start"
-          breakpoints={[
-            { maxWidth: "md", slideSize: "20%" },
-            { maxWidth: "sm", slideSize: "10%", slideGap: "10px" },
-          ]}
-          styles={{
-            control: {
-              "&[data-inactive]": {
-                opacity: 0,
-                cursor: "default",
-              },
-            },
-          }}
-          controlSize={47}
-          withControls={width > 576 ? true : false}
-        >
-          {newProductList?.slice(0, 9)?.map((v: any) => {
-            return (
-              <Carousel.Slide key={v?.id}>
-                <CustomCard isCarousel={true} id={v?.id} item={v} type="new" />
+              {cheapProductList?.slice(0, 9)?.map((v: any) => {
+                return (
+                  <Carousel.Slide key={v?.id}>
+                    <CustomCard
+                      isAllview={false}
+                      isCarousel={true}
+                      id={v?.id}
+                      item={v}
+                      type="cheap"
+                    />
+                  </Carousel.Slide>
+                );
+              })}
+              <Carousel.Slide>
+                <Card
+                  onClick={() => router.push(`/all-product/cheap`)}
+                  className={"another-card"}
+                >
+                  <p>Barcha mahsulotlarni ko‘rish</p>
+                </Card>
               </Carousel.Slide>
-            );
-          })}
-          <Carousel.Slide>
-            <Card
-              onClick={() => router.push(`/all-product/new`)}
-              className={"another-card"}
-            >
-              <p>Barcha mahsulotlarni ko‘rish</p>
-            </Card>
-          </Carousel.Slide>
-        </Carousel>
+            </Carousel>
+          </>
+        )}
 
-        <Grid style={{ gap: "72px" }} gutter={16}>
+        {newProductList?.length > 0 && (
+          <>
+            <Title className="home-title">{t("news")}</Title>
+            <Carousel
+              withIndicators={false}
+              slideSize="20%"
+              slideGap="sm"
+              slidesToScroll={width > 576 ? 5 : 1}
+              loop={false}
+              align="start"
+              breakpoints={[
+                { maxWidth: "md", slideSize: "20%" },
+                { maxWidth: "sm", slideSize: "10%", slideGap: "0px" },
+              ]}
+              styles={{
+                control: {
+                  "&[data-inactive]": {
+                    opacity: 0,
+                    cursor: "default",
+                  },
+                },
+              }}
+              controlSize={47}
+              withControls={width > 576 ? true : false}
+            >
+              {newProductList?.slice(0, 9)?.map((v: any) => {
+                return (
+                  <Carousel.Slide key={v?.id}>
+                    <CustomCard
+                      isCarousel={true}
+                      id={v?.id}
+                      item={v}
+                      type="new"
+                    />
+                  </Carousel.Slide>
+                );
+              })}
+              <Carousel.Slide>
+                <Card
+                  onClick={() => router.push(`/all-product/new`)}
+                  className={"another-card"}
+                >
+                  <p>Barcha mahsulotlarni ko‘rish</p>
+                </Card>
+              </Carousel.Slide>
+            </Carousel>
+          </>
+        )}
+
+        <Grid style={{ gap: "18px", marginTop: "40px" }} gutter={0}>
           {categoryListProducts?.map((item: any, idx: number) => {
             return (
               <>
                 {/* {console.log("categoryListProducts", item)} */}
-                <Image
-                  src={item.photo}
-                  width={1248}
-                  height={400}
-                  alt="banner"
-                />
+                {item.banner_uz && (
+                  <Image
+                    src={item.banner_uz}
+                    width={1248}
+                    height={400}
+                    alt="banner"
+                    style={{
+                      borderRadius: "32px",
+                      marginTop: "20px",
+                      marginBottom: "20px",
+                    }}
+                  />
+                )}
                 <Grid.Col
                   span={12}
                   lg={12}
