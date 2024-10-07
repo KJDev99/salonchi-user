@@ -30,7 +30,6 @@ export const CustomizedAccordion = ({ data, status }: any) => {
     setComment(event.target.value);
   };
   const uploadImage = async (e: any) => {
-    console.log("nimadir", data);
     e.preventDefault();
     const file = e.target.files[0];
     // console.log(file);
@@ -50,17 +49,18 @@ export const CustomizedAccordion = ({ data, status }: any) => {
       throw error;
     }
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (number: number) => {
+    console.log(number);
     const dataa = {
       comment: comment,
       rating: rating,
       // product: data[0].product.id,
-      product: 6,
+      product: number,
       photos: images,
     };
 
-    const res = request.post("product/" + data[0].product.id + "/rate", dataa);
-    console.log("res", res);
+    const res = request.post("product/" + number + "/rate", dataa);
+    // console.log("res", res);
   };
   console.log(data);
   return (
@@ -146,7 +146,18 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                       {getStatus(status)?.label}
                     </Badge> */}
                   </div>
-                  {status === "DELIVERED" && (
+                  {status === "DELIVERED" && element.is_rate === true && (
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        color: "#3f3f3f",
+                        marginTop: "10px",
+                      }}
+                    >
+                      Sharh qoldirilgan
+                    </p>
+                  )}
+                  {status === "DELIVERED" && element.is_rate === false && (
                     <p onClick={open} className="add-comment">
                       <CommentIcon /> Sharh qoldirish
                     </p>
@@ -207,7 +218,7 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                         </label>
                       </form>
                       <button
-                        onClick={handleSubmit}
+                        onClick={() => handleSubmit(element.details.id)}
                         className={styles.modalBtn}
                       >
                         Yuborish

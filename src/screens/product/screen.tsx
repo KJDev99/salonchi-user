@@ -140,7 +140,11 @@ const ProductScreen = () => {
                 <LeftContent>
                   <CarouselDetails images={images} />
                 </LeftContent>
-                <CustomBox boxes={data?.boxes} setBoxList={setBoxList} />
+                <CustomBox
+                  // style={{ border: "1px solid black" }}
+                  boxes={data?.boxes}
+                  setBoxList={setBoxList}
+                />
               </>
             </Grid.Col>
             <Grid.Col lg={8} md={6} sm={12} xs={12} span={12}>
