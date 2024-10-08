@@ -26,10 +26,12 @@ export const CustomerInfo = styled("div")`
         font-size: 18px;
         margin-bottom: 6px;
       }
-      input {
+      input,
+      select {
         border: 1px solid #e5e7eb;
         padding: 14px;
         border-radius: 8px;
+        outline: none;
       }
     }
     .textarea {

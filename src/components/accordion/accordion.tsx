@@ -15,7 +15,7 @@ import { AddImage } from "@/assets/icons/addImage";
 // import product from "@/screens/product";
 import { request } from "@/shared/api/requests";
 export const CustomizedAccordion = ({ data, status }: any) => {
-  console.log("data", data);
+  // console.log("data", data);
   const { t } = useTranslation("common");
   const [opened, { open, close }] = useDisclosure(false);
   const [rating, setRating] = useState(0);
