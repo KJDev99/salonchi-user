@@ -20,7 +20,7 @@ export const CustomizedAccordion = ({ data, status }: any) => {
   const [opened, { open, close }] = useDisclosure(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<any>([]);
   const handleStarClick = (index: number) => {
     setRating(index + 1);
   };
@@ -42,7 +42,9 @@ export const CustomizedAccordion = ({ data, status }: any) => {
         },
       });
       const imageUrl = response.data.file;
-      setImages([...images, imageUrl]);
+      if (imageUrl) {
+        setImages([...images, imageUrl]);
+      }
       // console.log(setImages);
     } catch (error) {
       console.error("Image upload failed:", error);
@@ -196,16 +198,17 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                       />
                       <form className={styles.modalForm}>
                         <div className={styles.modalImages}>
-                          {images.map((image, index) => (
-                            <Image
-                              className={styles.modalImage}
-                              key={index}
-                              src={image}
-                              alt={`Uploaded ${index}`}
-                              width={150}
-                              height={150}
-                            />
-                          ))}
+                          {images &&
+                            images.map((image: string, index: number) => (
+                              <Image
+                                className={styles.modalImage}
+                                key={index}
+                                src={image}
+                                alt={`Uploaded ${index}`}
+                                width={150}
+                                height={150}
+                              />
+                            ))}
                         </div>
                         <label className={styles.modalLabel} htmlFor="file">
                           <AddImage />

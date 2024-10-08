@@ -91,28 +91,32 @@ export const CustomCard = ({
                 <span>Новинка!</span>
               )}
             </div>
-            <div>
-              <NumberFormat
-                style={{
-                  color: "#6C737F",
-                  fontWeight: 400,
-                  fontSize: "13px",
-                  textDecoration: "line-through",
-                }}
-                value={item?.old_price ?? 0}
-              />
-              <span
-                style={{
-                  color: "#6C737F",
-                  fontWeight: 400,
-                  fontSize: "13px",
-                  textDecoration: "line-through",
-                }}
-              >
-                {" "}
-                {t("card.currency")}
-              </span>
-            </div>
+            {item.old_price ? (
+              <div>
+                <NumberFormat
+                  style={{
+                    color: "#6C737F",
+                    fontWeight: 400,
+                    fontSize: "13px",
+                    textDecoration: "line-through",
+                  }}
+                  value={item?.old_price ?? 0}
+                />
+                <span
+                  style={{
+                    color: "#6C737F",
+                    fontWeight: 400,
+                    fontSize: "13px",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  {" "}
+                  {t("card.currency")}
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
             <NumberFormat
               style={{ color: "#1F2A37", fontWeight: 500, fontSize: "16px" }}
               value={item?.price ?? 0}
