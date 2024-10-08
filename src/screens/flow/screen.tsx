@@ -90,7 +90,6 @@ const FlowScreen = () => {
   };
 
   const handleOrder = () => {
-    console.log("");
     if (active) {
       addToCart();
       router.push("/cart");
@@ -203,7 +202,7 @@ const FlowScreen = () => {
                     {cart?.find((v: IProduct) => v.id == Number(slug)) ? (
                       <Stack>
                         <Button
-                            onClick={() => {
+                          onClick={() => {
                             if (active) {
                               addToCart();
                             } else {

@@ -15,7 +15,7 @@ const useStore = create(
       comment: "",
       setComment: (payload: string) => set(() => ({ comment: payload })),
       addToCart: (payload: IProduct) => {
-        console.log("nimadir", payload);
+        // console.log("nimadir", payload);
         return set((state: IStore) => ({
           cart: [
             ...state.cart,

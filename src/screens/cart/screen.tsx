@@ -32,6 +32,40 @@ import Humo from "@/assets/icons/humo.png";
 import Image from "next/image";
 import axios from "axios";
 
+interface User {
+  id: number;
+  photo: string | null;
+  phone: string;
+  firstname: string;
+  address: {
+    id: number;
+    region: {
+      id: number;
+      name_uz: string;
+      name_ru: string;
+    };
+    district: {
+      id: number;
+      name_uz: string;
+      name_ru: string;
+    };
+    street: string;
+    home: string;
+  };
+}
+
+interface Region {
+  id: number;
+  name_uz: string;
+  name_ru: string;
+}
+
+interface District {
+  id: number;
+  name_uz: string;
+  name_ru: string;
+}
+
 const CartScreen = () => {
   const { t } = useTranslation("common");
   const {
@@ -53,39 +87,97 @@ const CartScreen = () => {
   // console.log(initialCart, "CartScreen");
   const [selectedOption, setSelectedOption] = useState("card");
 
-  const [users, setUsers] = useState([]);
+  const [users, setUser] = useState<User | null>(null);
+  const [regions, setRegions] = useState<Region[]>([]);
+  const [districts, setDistricts] = useState<District[]>([]);
+  const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
+  const [selectedDistrict, setSelectedDistrict] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        // Get the token from localStorage
         const userDataString = localStorage.getItem("userData");
         let userData;
         if (userDataString) {
           try {
-            userData = JSON.parse(userDataString); // Converts the JSON string back to an object
+            userData = JSON.parse(userDataString);
           } catch (error) {
             console.error("Error parsing JSON:", error);
           }
         }
-        // Make the API request with the Authorization header
-        const response = await axios.get(
+
+        // Fetch user profile
+        const userResponse = await axios.get(
           "https://api.salonchi.uz/api/v1/user/profile",
           {
             headers: {
-              Authorization: `Bearer ${userData.access}`,
+              Authorization: `Bearer ${userData?.access}`,
             },
           }
         );
-        setUsers(response.data);
-        console.log(response.data, "test");
+        setUser(userResponse.data);
+
+        // Fetch regions list
+        const regionsResponse = await axios.get(
+          "https://api.salonchi.uz/api/v1/region/list"
+        );
+        setRegions(regionsResponse.data);
+
+        // Fetch districts if the user already has a selected region
+        if (userResponse.data?.address?.region?.id) {
+          const districtsResponse = await axios.get(
+            `https://api.salonchi.uz/api/v1/region/district/${userResponse.data.address.region.id}/list`
+          );
+          setDistricts(districtsResponse.data);
+          setSelectedRegion(userResponse.data.address.region.id); // Set selected region
+          setSelectedDistrict(userResponse.data.address.district.id); // Set selected district
+        }
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchUserProfile();
   }, []);
+
+  const [street, setStreet] = useState(users?.address?.street || "");
+  const [home, setHome] = useState(users?.address?.home || "");
+
+  // Handle street change
+  const handleStreetChange = (e: any) => {
+    setStreet(e.target.value);
+  };
+
+  // Handle home change
+  const handleHomeChange = (e: any) => {
+    setHome(e.target.value);
+  };
+
+  // Handle region change and fetch districts
+  const handleRegionChange = async (e: any) => {
+    const regionId = Number(e.target.value);
+    setSelectedRegion(regionId);
+
+    // Reset districts and selected district when region changes
+    setDistricts([]);
+    setSelectedDistrict(null);
+
+    // Fetch districts for the selected region
+    try {
+      const districtsResponse = await axios.get(
+        `https://api.salonchi.uz/api/v1/region/district/${regionId}/list`
+      );
+      setDistricts(districtsResponse.data);
+    } catch (error) {
+      console.error("Error fetching districts:", error);
+    }
+  };
+
+  // Handle district selection
+  const handleDistrictChange = (e: any) => {
+    const districtId = Number(e.target.value);
+    setSelectedDistrict(districtId);
+  };
 
   return (
     <Wrapper>
@@ -108,62 +200,90 @@ const CartScreen = () => {
                     <Left>
                       <h2>Buyurtmachi ma’lumotlari</h2>
                       <div className="form">
+                        {/* Name */}
                         <div className="inputs">
-                          <label>{t("Familiya va ism")}</label>
+                          <label>Familiya va ism</label>
                           <input
                             type="text"
-                            value={user?.firstname}
+                            value={users?.firstname || ""}
                             placeholder="Ism va familya"
                           />
                         </div>
+
+                        {/* Phone */}
                         <div className="inputs">
-                          <label>{t("Telefon raqami")}</label>
+                          <label>Telefon raqami</label>
                           <input
                             type="text"
-                            value={user?.phone}
+                            value={users?.phone || ""}
                             placeholder="Telefon raqami"
                           />
                         </div>
+
+                        {/* Region */}
+
                         <div className="inputs">
-                          <label>{t("Viloyat")}</label>
-                          <input
-                            type="text"
-                            // value={user?.phone}
-                            placeholder="Viloyatingiz nomini kiriting"
-                          />
+                          <label>Viloyat</label>
+                          <select
+                            value={selectedRegion || ""}
+                            onChange={handleRegionChange}
+                            placeholder="Viloyatingizni tanlang"
+                          >
+                            <option value="" disabled>
+                              Viloyatingizni tanlang
+                            </option>
+                            {regions.map((region) => (
+                              <option key={region.id} value={region.id}>
+                                {region.name_uz}
+                              </option>
+                            ))}
+                          </select>
                         </div>
+
+                        {/* District */}
                         <div className="inputs">
-                          <label>{t("Tuman")}</label>
-                          <input
-                            type="text"
-                            // value={user?.phone}
-                            placeholder="Tumaningizni nomini kiriting"
-                          />
+                          <label>Tuman</label>
+                          <select
+                            value={selectedDistrict || ""}
+                            onChange={handleDistrictChange}
+                            placeholder="Tumaningizni tanlang"
+                          >
+                            <option value="" disabled>
+                              Tumaningizni tanlang
+                            </option>
+                            {districts.map((district) => (
+                              <option key={district.id} value={district.id}>
+                                {district.name_uz}
+                              </option>
+                            ))}
+                          </select>
                         </div>
+                        {/* Street */}
                         <div className="inputs">
-                          <label>{t("Ko’cha(ixtiyoriy)")}</label>
+                          <label>Ko’cha (ixtiyoriy)</label>
                           <input
                             type="text"
-                            // value={user?.phone}
+                            value={street}
+                            onChange={handleStreetChange}
                             placeholder="Ko’changizni nomini kiriting"
                           />
                         </div>
+
+                        {/* Home */}
                         <div className="inputs">
-                          <label>{t("Uy raqami(ixtiyoriy)")}</label>
+                          <label>Uy raqami (ixtiyoriy)</label>
                           <input
                             type="text"
-                            // value={user?.phone}
+                            value={home}
+                            onChange={handleHomeChange}
                             placeholder="Uy raqamini kiriting"
                           />
                         </div>
+
+                        {/* Additional Comments */}
                         <div className="inputs textarea">
-                          <label>
-                            {t("Kuryer uchun izoh yozing(ixtiyoriy)")}
-                          </label>
-                          <textarea
-                            // value={user?.phone}
-                            placeholder="Izoh yozing"
-                          />
+                          <label>Kuryer uchun izoh yozing (ixtiyoriy)</label>
+                          <textarea placeholder="Izoh yozing"></textarea>
                         </div>
                       </div>
                     </Left>
