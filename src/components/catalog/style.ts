@@ -6,11 +6,14 @@ export const Wrapper = styled("div")`
   background: white;
   .katalog_main {
     display: flex;
+    overflow: hidden;
   }
 
   .test {
     display: flex;
     gap: 40px;
+    width: 85%;
+    overflow: hidden;
   }
 
   @media (max-width: 576px) {
