@@ -11,7 +11,7 @@ export const Wrapper = styled("div")`
   left: 0;
   top: 0;
   background-color: #fff;
-  z-index: 10001;
+  z-index: 100;
 
   @media (max-width: 576px) {
     padding: 0 15px;
