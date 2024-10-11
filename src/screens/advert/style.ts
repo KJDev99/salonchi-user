@@ -2,16 +2,17 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled("div")`
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 0;
+  position: fixed;
   top: 0;
+  left: 0;
   background-color: #fff;
-  z-index: 100;
+  z-index: 100000;
 
   @media (max-width: 576px) {
     padding: 0 15px;
@@ -19,13 +20,13 @@ export const Wrapper = styled("div")`
 `;
 
 export const Image = styled("img")`
-  max-width: 300px;
-  width: 100%;
+  max-width: 400px;
+  /* width: 100%; */
   height: auto;
   object-fit: cover;
 
   @media (max-width: 576px) {
-    max-width: 200px;
+    max-width: 300px;
   }
 `;
 
