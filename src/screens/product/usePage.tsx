@@ -4,22 +4,19 @@ import { ENDPOINTS } from "@/shared/endpoints";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { MailIcon } from '../../assets/icons/mail';
-
+import { MailIcon } from "../../assets/icons/mail";
 
 export const usePage = () => {
+  interface IPictures {
+    file: string;
+    file_type: string;
+  }
 
-interface IPictures {
-  file: string;
-  file_type: string;
-}
-
-interface TImages {
-  original: string;
-  thumbnail: string;
-  type:string;
-
-}
+  interface TImages {
+    original: string;
+    thumbnail: string;
+    type: string;
+  }
   const router = useRouter();
   const slug = router.query.slug as string;
   const id = slug?.split("-")[0];
@@ -34,34 +31,39 @@ interface TImages {
       select: (res) => {
         return {
           detail: res?.data,
-          attributes: res?.data?.attributes
+          attributes: res?.data?.attributes,
         };
       },
       onSuccess: (res) => {
-        console.log("res",res)
+        console.log("res", res);
         // res?.detail?.media?.map((mediaItem: IPictures) => {
         //   if(mediaItem.file_type)
         // })
         setImages(
           res?.detail?.media?.map((v: IPictures) => {
-            if(v.file_type === "image"){
+            if (v.file_type === "image") {
               return {
                 original: v?.file,
                 thumbnail: v?.file,
               };
-            }else{
-              return{
+            } else {
+              return {
                 original: v?.file,
-                thumbnail: 'https://s3.timeweb.cloud/c4de9495-xuping/xuping/avatar.jpg',
+                thumbnail:
+                  "https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png",
                 renderItem: () => (
-                  <video src={v?.file} width={'100%'}  height="400px" controls></video>
-              ),
-              }
+                  <video
+                    src={v?.file}
+                    width={"100%"}
+                    height="400px"
+                    controls
+                  ></video>
+                ),
+              };
             }
-        
           })
         );
-        setActive(res?.detail?.colors?.[0]?.id);  
+        setActive(res?.detail?.colors?.[0]?.id);
       },
       enabled: id !== undefined ? true : false,
     }

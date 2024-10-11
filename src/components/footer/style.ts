@@ -331,6 +331,6 @@ export const ContainerFooter = styled.div`
     max-width: 1160px;
   }
   @media (min-width: 1300px) {
-    max-width: 1240px;
+    max-width: 1248px;
   }
 `;

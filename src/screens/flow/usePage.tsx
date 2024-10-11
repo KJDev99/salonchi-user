@@ -45,7 +45,7 @@ export const usePage = () => {
               return {
                 original: v?.file,
                 thumbnail:
-                  "https://s3.timeweb.cloud/c4de9495-xuping/xuping/avatar.jpg",
+                  "https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png",
                 renderItem: () => (
                   <video
                     src={v?.file}

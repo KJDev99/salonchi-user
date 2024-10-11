@@ -38,6 +38,8 @@
 .modalImages {
   display: flex;
   gap: 8px;
+  width: 100%;
+  overflow-x: scroll;
 }
 .modalImage {
   width: 88px;
