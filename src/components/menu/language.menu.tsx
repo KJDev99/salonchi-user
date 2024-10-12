@@ -4,6 +4,7 @@ import { Wrapper } from "./style";
 import { ArrowDownIcon } from "@/assets/icons/arrow.down";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { IconCheck } from "@/assets/icons/check";
 
 export const LanguageMenu = () => {
   const { t } = useTranslation("common");
@@ -30,18 +31,32 @@ export const LanguageMenu = () => {
           )}
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item
+          <li
             onClick={() => handleLanguage("uz")}
             className={`item ${router.locale === "uz" ? "item-active" : ""}`}
           >
             {t("locales.uz")}
-          </Menu.Item>
-          <Menu.Item
+            <div
+              className={`item_icon ${
+                router.locale === "uz" ? "item-active_icon" : ""
+              }`}
+            >
+              <IconCheck />
+            </div>
+          </li>
+          <li
             onClick={() => handleLanguage("ru")}
             className={router.locale === "ru" ? "item-active item" : "item"}
           >
             {t("locales.ru")}
-          </Menu.Item>
+            <div
+              className={`item_icon ${
+                router.locale === "ru" ? "item-active_icon" : ""
+              }`}
+            >
+              <IconCheck />
+            </div>
+          </li>
         </Menu.Dropdown>
       </Menu>
     </Wrapper>

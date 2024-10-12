@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   ImageContainer,
@@ -22,7 +22,7 @@ export const Catalog = ({
   setOpen,
 }: {
   open?: any;
-  setOpen?: (open: any) => void;
+  setOpen?: ((open: any) => void) | undefined;
 }) => {
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -37,6 +37,22 @@ export const Catalog = ({
   });
 
   const itemsToShow = catalog.slice(0, 6);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (setOpen) {
+        setOpen(false);
+      }
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    // Clean up the event listener
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, [router, setOpen]);
+
   if (!setOpen) return null;
 
   return (
