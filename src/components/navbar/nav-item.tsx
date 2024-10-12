@@ -76,7 +76,9 @@ const NavItem = ({
         <Menu withArrow trigger="hover">
           <Menu.Target>
             <Link
-              href={token === null || token === undefined ? "/login" : "/"}
+              href={
+                token === null || token === undefined ? "/login" : "/profile"
+              }
               className={`nav__item ${active ? "active" : ""}`}
               color="white"
             >

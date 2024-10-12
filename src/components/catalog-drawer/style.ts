@@ -19,7 +19,8 @@ export const Paper = styled("div")<any>`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 14px;
+    margin-bottom: 14px;
     li {
       width: 30%;
       list-style: none;
