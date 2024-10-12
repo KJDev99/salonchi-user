@@ -56,7 +56,7 @@ export const useProducts = () => {
     }
   );
 
-  console.log(brand);
+  // console.log(brand);
 
   return {
     productList,

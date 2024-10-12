@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { Title, Wrapper } from "../auth/style";
 import { Button, Text } from "@mantine/core";
@@ -21,7 +19,7 @@ import { REACT_QUERY_KEYS } from "@/constants/react-query-keys";
 const VerifyCodeScreen = () => {
   const router = useRouter();
   const [user, setUser] = useState<any | null>(null);
-  const [status,setStatus] = useState<any | null>(false);
+  const [status, setStatus] = useState<any | null>(false);
   const form = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -38,7 +36,7 @@ const VerifyCodeScreen = () => {
       onSuccess: (res) => {
         Notifications({ title: "Verify", message: res?.data?.message });
         // router.push(`/wholesaler/update-password?client=${res?.data?.id}`);
-        setStatus(true)
+        setStatus(true);
       },
       onError: (err: any) => {
         toast.error(err?.response?.data?.detail);
@@ -46,19 +44,16 @@ const VerifyCodeScreen = () => {
     }
   );
 
-
-
-  const { data: dataCheckStatus = [], isLoading:CheckStatusLoading } = useQuery({
-    queryKey: [REACT_QUERY_KEYS.CHECK_STATUS],
-    queryFn: () => request.get('user/check/wholesaler/status') ,
-    select: (res) => res,
-    onSuccess:(res) => {
-     console.log(`res`, res)
-    },
-    enabled: status,
-  });
-
-
+  const { data: dataCheckStatus = [], isLoading: CheckStatusLoading } =
+    useQuery({
+      queryKey: [REACT_QUERY_KEYS.CHECK_STATUS],
+      queryFn: () => request.get("user/check/wholesaler/status"),
+      select: (res) => res,
+      onSuccess: (res) => {
+        //  console.log(`res`, res)
+      },
+      enabled: status,
+    });
 
   const onSubmit = (data: any) => {
     const payload: any = {
