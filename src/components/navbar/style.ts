@@ -67,9 +67,11 @@ export const Right = styled("div")`
 export const Header = styled.header<any>`
   width: 100%;
   background-color: var(--main-white);
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
+  /* position: sticky; */
   &.fixed {
     position: fixed;
+
     box-shadow: 0 8px 8px #0000000f;
   }
   a {

@@ -15,7 +15,7 @@ import { AddImage } from "@/assets/icons/addImage";
 // import product from "@/screens/product";
 import { request } from "@/shared/api/requests";
 export const CustomizedAccordion = ({ data, status }: any) => {
-  // console.log("data", data);
+ main
   const { t } = useTranslation("common");
   const [opened, { open, close }] = useDisclosure(false);
   const [rating, setRating] = useState(0);
@@ -52,7 +52,6 @@ export const CustomizedAccordion = ({ data, status }: any) => {
     }
   };
   const handleSubmit = async (number: number) => {
-    console.log(number);
     const dataa = {
       comment: comment,
       rating: rating,
@@ -64,7 +63,6 @@ export const CustomizedAccordion = ({ data, status }: any) => {
     const res = request.post("product/" + number + "/rate", dataa);
     // console.log("res", res);
   };
-  console.log(data);
   return (
     <Wrapper>
       <Accordion variant="contained" defaultValue="">

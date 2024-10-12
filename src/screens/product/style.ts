@@ -39,9 +39,9 @@ export const Additionals = styled("div")`
   }
 `;
 export const LeftContent = styled("div")`
-  /* width: 400px; */
-  /* padding: 10px; */
-  /* border: 2px solid red; */
+  /* width: 400px;
+  padding: 10px;
+  border: 2px solid red; */
   /* min-height: 500px;
   height: 500px; */
   /* background: red; */
@@ -63,15 +63,15 @@ export const LeftContent = styled("div")`
   /* justify-content: center; */
 
   .image-gallery-slide-wrapper {
-    width: 290px !important;
-    height: 400px !important;
-
+    width: 450px !important;
+    height: 500px !important;
+    background-color: white !important;
     margin: 0 auto !important;
   }
   .image-gallery-image {
-    width: 300px !important;
-    height: 400px !important;
-    object-fit: cover !important;
+    /* width: 300px !important; */
+    height: 500px !important;
+    object-fit: contain !important;
   }
   @media (max-width: 576px) {
     border-radius: 0;
