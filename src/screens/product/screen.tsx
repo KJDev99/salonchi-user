@@ -135,7 +135,14 @@ const ProductScreen = () => {
       ) : (
         <Container style={{ padding: 0 }} className="product-slug-container">
           <Grid>
-            <Grid.Col lg={6} md={6} sm={12} xs={12} span={12}>
+            <Grid.Col
+              className="carousel-container"
+              lg={5}
+              md={6}
+              sm={12}
+              xs={12}
+              span={12}
+            >
               <LeftContent>
                 <CarouselDetails images={images} />
               </LeftContent>
@@ -145,7 +152,7 @@ const ProductScreen = () => {
                 setBoxList={setBoxList}
               />
             </Grid.Col>
-            <Grid.Col lg={6} md={6} sm={12} xs={12} span={12}>
+            <Grid.Col lg={7} md={6} sm={12} xs={12} span={12}>
               <Container style={{ padding: 0 }}>
                 <RightContent>
                   <div className="right-top">

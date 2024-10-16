@@ -6,6 +6,10 @@ export const Additionals = styled("div")`
   flex-direction: column;
   margin-top: 96px;
   border-radius: 12px;
+  @media (max-width: 576px) {
+    padding: 20px;
+    margin-top: 40px;
+  }
   .tabs {
     display: flex;
     width: 100%;
@@ -67,14 +71,25 @@ export const LeftContent = styled("div")`
     height: 500px !important;
     background-color: white !important;
     margin: 0 auto !important;
+    @media (max-width: 576px) {
+      width: 350px !important;
+      height: 380px !important;
+    }
   }
   .image-gallery-image {
     /* width: 300px !important; */
     height: 500px !important;
     object-fit: contain !important;
+    @media (max-width: 576px) {
+      width: 400px !important;
+      transform: translateX(-50px);
+      height: 380px !important;
+    }
   }
   @media (max-width: 576px) {
     border-radius: 0;
+    background-color: transparent;
+    height: 382px;
   }
 `;
 export const RightContent = styled("div")`
@@ -363,6 +378,13 @@ export const Footer = styled("div")`
     gap: 16px;
     .buy-btn:hover {
       color: white !important;
+    }
+    @media (max-width: 576px) {
+      flex-direction: column;
+      width: 100%;
+      .button {
+        width: 100%;
+      }
     }
   }
   /* justify-content: flex-end; */

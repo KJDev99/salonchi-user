@@ -20,13 +20,13 @@ const CarouselDetails = ({ images }: ICarousel) => {
     return (
       <ImageGallery
         items={images}
-        thumbnailPosition={width > 576 ? "bottom" : "left"}
+        thumbnailPosition={width > 576 ? "bottom" : "bottom"}
         showPlayButton={false}
         showFullscreenButton={false}
-        showThumbnails={true}
+        showThumbnails={width > 576 ? true : false}
         showBullets={false}
         infinite={false}
-        showNav={false}
+        showNav={true}
         slideOnThumbnailOver={true}
         disableThumbnailScroll={false}
       />

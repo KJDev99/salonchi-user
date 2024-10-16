@@ -267,6 +267,9 @@ export const Container = styled.div`
     align-items: center;
   }
   @media (max-width: 576px) {
+    .carousel-container {
+      height: 400px;
+    }
     &.product-slug-container {
       max-width: 100%;
       width: 100%;

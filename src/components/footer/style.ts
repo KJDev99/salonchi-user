@@ -207,6 +207,7 @@ export const Navigator = styled("div")`
   background-color: var(--main-white);
   border-bottom: var(--footer-border);
   padding: 8px;
+
   button {
     color: var(--main-white);
     font-family: var(--font-readex);
@@ -217,6 +218,7 @@ export const Navigator = styled("div")`
     font-size: 16px;
   }
   @media (max-width: 576px) {
+    padding: 10px 40px;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
