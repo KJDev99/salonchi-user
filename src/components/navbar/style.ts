@@ -267,6 +267,7 @@ export const MobileWrapper = styled("div")`
   display: none;
   @media (max-width: 992px) {
     display: block;
+    background-color: white;
   }
 `;
 
@@ -287,7 +288,10 @@ export const MobileHeader = styled("div")`
     }
   }
 `;
-export const MobileFooter = styled("div")``;
+export const MobileFooter = styled("div")`
+  padding-left: 10px;
+  padding-right: 10px;
+`;
 
 export const Wrapper = styled("div")`
   max-height: 85vh;

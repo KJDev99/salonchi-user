@@ -12,6 +12,9 @@ export const Wrapper = styled("div")`
     svg {
       width: 16px;
     }
+    @media (max-width: 768px) {
+      color: black;
+    }
   }
   .item-active {
     background-color: red;

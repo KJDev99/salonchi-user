@@ -74,6 +74,9 @@ export const SearchWrapper = styled("form")`
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     color: white;
+    @media (max-width: 768px) {
+      display: none !important;
+    }
   }
 
   @media (max-width: 992px) {
