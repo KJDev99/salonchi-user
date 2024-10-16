@@ -185,6 +185,7 @@ export const RightContent = styled("div")`
     border: 1px solid #e5e7eb;
     padding: 32px;
     background-color: white;
+
     .advantagesBox {
       display: flex;
       flex-direction: column;
@@ -244,6 +245,11 @@ export const RightContent = styled("div")`
         height: 32px;
         object-fit: contain;
       }
+    }
+  }
+  @media (max-width: 576px) {
+    .advantages {
+      grid-template-columns: 1fr;
     }
   }
 `;

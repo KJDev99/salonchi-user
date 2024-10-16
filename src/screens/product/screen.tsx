@@ -247,7 +247,7 @@ const ProductScreen = () => {
                           </h2>
                         </div>
                       </div>
-                      <div className="price-right">
+                      {/* <div className="price-right">
                         <h3 className="subtitle">Bo&apos;lib to&apos;lashga</h3>
                         <h2 className="price-monthly">
                           <NumberFormat value={data?.price} />{" "}
@@ -255,7 +255,7 @@ const ProductScreen = () => {
                             {router.locale === "uz" ? "so‘m/oyiga" : "сум"}
                           </span>
                         </h2>
-                      </div>
+                      </div> */}
                     </div>
                     <Footer>
                       {cart?.find((v: IProduct) => v.id == Number(slug)) ? (
