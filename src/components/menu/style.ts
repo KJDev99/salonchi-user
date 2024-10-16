@@ -1,3 +1,4 @@
+import { ActionIcon } from "@mantine/core";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled("div")`
@@ -11,6 +12,9 @@ export const Wrapper = styled("div")`
     svg {
       width: 16px;
     }
+    @media (max-width: 768px) {
+      color: black;
+    }
   }
   .item-active {
     background-color: red;
@@ -19,5 +23,18 @@ export const Wrapper = styled("div")`
   .item {
     background-color: white !important;
     color: black;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 170px;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .item_icon {
+    display: none;
+  }
+  .item-active_icon {
+    display: block;
   }
 `;

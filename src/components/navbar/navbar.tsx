@@ -51,7 +51,7 @@ const Navbar = () => {
           <Container className="nav-container">
             <Left>
               <Button variant="outline">Yangiliklar</Button>
-              <Button variant="outline">Hamkorlik qilish</Button>
+              {/* <Button variant="outline">Hamkorlik qilish</Button> */}
             </Left>
             <Right>
               <span>
@@ -114,9 +114,9 @@ const Navbar = () => {
       <MobileWrapper>
         <Container>
           <MobileHeader>
-            <div className={`nav__menu-bar`} onClick={open}>
+            {/* <div className={`nav__menu-bar`} onClick={open}>
               <BurgerIcon />
-            </div>
+            </div> */}
             <Link href={"/"} className="navbar-brand">
               {/* <Image
                 src={LogoIcon1}
@@ -129,8 +129,9 @@ const Navbar = () => {
             </Link>
             <LanguageMenu />
           </MobileHeader>
+
           <MobileFooter>
-            <SearchInput />
+            <SearchInput open={isOpen} setOpen={setOpen} />
           </MobileFooter>
         </Container>
       </MobileWrapper>

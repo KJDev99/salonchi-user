@@ -31,7 +31,7 @@ const CatalogScreen = () => {
           <Grid style={{ marginTop: "17px" }} gutter={16}>
             {catalog?.map((v: any) => {
               return (
-                <Grid.Col span={6} md={2} xs={4} key={v.id}>
+                <Grid.Col span={12} md={2} xs={4} key={v.id}>
                   <Card onClick={() => router.push(`/categories/${v?.id}`)}>
                     <Header>
                       <Image

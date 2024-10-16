@@ -16,11 +16,10 @@ import { IconLogo } from "@/assets/icons/logo";
 import { REACT_QUERY_KEYS } from "@/constants/react-query-keys";
 import { request } from "@/shared/api/requests";
 
-
 const VerifyScreen = () => {
   const router = useRouter();
   const [user, setUser] = useState<any | null>(null);
-  const [status,setStatus] = useState<any | null>(false);
+  const [status, setStatus] = useState<any | null>(false);
 
   const form = useForm({
     resolver: yupResolver(formSchema),
@@ -31,7 +30,7 @@ const VerifyScreen = () => {
       setUser(JSON.parse(localStorage.getItem("userData") as string));
     }
     setUser(JSON.parse(localStorage.getItem("userData") as string));
-console.log(JSON.parse(localStorage.getItem("userData") as string))
+    // console.log(JSON.parse(localStorage.getItem("userData") as string))
   }, []);
 
   const { mutate, isLoading } = useMutation((data) => verify(data), {
@@ -39,33 +38,31 @@ console.log(JSON.parse(localStorage.getItem("userData") as string))
       localStorage.setItem("userData", JSON.stringify(res?.data));
       Notifications({ title: "Verify", message: res?.data?.message });
       // router.push("/");
-      setStatus(true)
+      setStatus(true);
     },
     onError: (err: any) => {
       toast.error(err?.response?.data?.detail);
     },
   });
 
-  const { data: dataCheckStatus = [], isLoading:CheckStatusLoading } = useQuery({
-    queryKey: [REACT_QUERY_KEYS.CHECK_STATUS],
-    queryFn: () => request.get('user/check/wholesaler/status') ,
-    select: (res) => res,
-    onSuccess:(res) => {
-      if(res?.data?.status === "WAITING"){
-        router.push("/wholesaler/pending")
-      }
-      else{
-        router.push("/")
-
-      }
-     console.log(`res`, res)
-    },
-    enabled: status,
-  });
-
+  const { data: dataCheckStatus = [], isLoading: CheckStatusLoading } =
+    useQuery({
+      queryKey: [REACT_QUERY_KEYS.CHECK_STATUS],
+      queryFn: () => request.get("user/check/wholesaler/status"),
+      select: (res) => res,
+      onSuccess: (res) => {
+        if (res?.data?.status === "WAITING") {
+          router.push("/wholesaler/pending");
+        } else {
+          router.push("/");
+        }
+        // console.log(`res`, res);
+      },
+      enabled: status,
+    });
 
   const onSubmit = (data: any) => {
-  console.log("phone",user)
+    // console.log("phone", user);
     const payload: any = {
       phone: user?.phone,
       code: data.code,

@@ -62,7 +62,7 @@ export const PersonalInfo = () => {
       photo: photo,
       firstname: data?.firstname,
     };
-    console.log(formData);
+    // console.log(formData);
     mutate(formData);
   };
   return (
