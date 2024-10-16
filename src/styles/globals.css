@@ -144,3 +144,9 @@ input::placeholder {
   background-color: transparent;
 }
 
+@media (max-width: 768px) {
+  main {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

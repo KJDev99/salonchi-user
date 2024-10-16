@@ -17,6 +17,7 @@ export const Wrapper = styled("div")`
   }
 
   @media (max-width: 576px) {
+    display: none;
     margin: 20px 0;
   }
 `;
