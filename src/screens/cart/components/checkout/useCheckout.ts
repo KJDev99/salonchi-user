@@ -41,6 +41,7 @@ export const useCheckout = ({
       }
     },
   });
+  console.log(initialCart, "initialCart");
 
   const { data } = useQuery<any>({
     queryKey: [REACT_QUERY_KEYS.PAYMENT_STATUS],

@@ -1,6 +1,8 @@
-import React from 'react';
+import React from "react";
+import { useRouter } from "next/router";
 
 export const CatalogIcon = () => {
+  const router = useRouter();
   return (
     <svg
       width="20"
@@ -8,6 +10,7 @@ export const CatalogIcon = () => {
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={router.pathname === "/catalog" ? "active" : ""}
     >
       <rect
         x="1"
