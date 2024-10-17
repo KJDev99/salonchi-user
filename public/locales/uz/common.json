@@ -77,6 +77,10 @@
   "similar products": "O‘xshash mahsulotlar",
   "news": "Yangiliklar",
   "cheap prices": "Arzon mahsulotlar",
+  "comfort_paying": "O’zingizga qulay usulda to’lang",
+  "comfort_paying2": "Karta orqali, naqd pul yoki bo’lib to’lash xizmati orqali to’lang",
+  "about_product": "Mahsulot haqida",
+  "comment_product": "Sharhlar",
   "header": {
     "address": "Toshkent shaxar, Olmazor tuman.",
     "communication_center": "Aloqa markazi"
@@ -137,7 +141,9 @@
     "send message2": "номер телефона",
     "send message3": "отправлено СМС с кодом",
     "send mail": "Отправить письмо",
-    "go back": "Назад"
+    "go back": "Назад",
+    "product_deliver": "Tezkor yetkazib berish",
+    "product_deliver2": "Toshkent shahriga 1kun ichida, viloyatlarga 2-3 kun ichda yetkazib berish"
   },
   "locales": {
     "uz": "O'zbekcha",
