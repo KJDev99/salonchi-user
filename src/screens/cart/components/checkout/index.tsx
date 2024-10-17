@@ -61,8 +61,6 @@ export const Checkout = ({
       const windowHeight = window.innerHeight;
       const scrollY = window.scrollY || window.pageYOffset; // Get current scroll position
 
-      console.log("scroll", parentBottom, windowHeight, scrollY);
-
       // Trigger the action if the user has scrolled more than 120px and parent bottom is in range
       if (scrollY >= 120) {
         setIsTop(true);

@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import useStore from "@/store";
 import { useTranslation } from "next-i18next";
 import useToken from "@/store/token";
+import { CatalogIcon } from "@/assets/icons/catalog";
 
 export const BottomTabs = () => {
   const router = useRouter();
@@ -48,7 +49,7 @@ export const BottomTabs = () => {
             </span>
           </ListItem>
           <ListItem href="/catalog">
-            <SearchIcon />
+            <CatalogIcon />
             <span className={router.pathname === "/catalog" ? "active" : ""}>
               {t("catalog")}
             </span>
