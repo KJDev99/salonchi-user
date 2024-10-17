@@ -135,7 +135,14 @@ const ProductScreen = () => {
       ) : (
         <Container style={{ padding: 0 }} className="product-slug-container">
           <Grid>
-            <Grid.Col lg={6} md={6} sm={12} xs={12} span={12}>
+            <Grid.Col
+              className="carousel-container"
+              lg={5}
+              md={6}
+              sm={12}
+              xs={12}
+              span={12}
+            >
               <LeftContent>
                 <CarouselDetails images={images} />
               </LeftContent>
@@ -145,7 +152,7 @@ const ProductScreen = () => {
                 setBoxList={setBoxList}
               />
             </Grid.Col>
-            <Grid.Col lg={6} md={6} sm={12} xs={12} span={12}>
+            <Grid.Col lg={7} md={6} sm={12} xs={12} span={12}>
               <Container style={{ padding: 0 }}>
                 <RightContent>
                   <div className="right-top">
@@ -226,7 +233,7 @@ const ProductScreen = () => {
                   })}
                   <div className="card-options">
                     <div className="card-amount">
-                      <h3 className="subtitle">Miqdori</h3>
+                      <h3 className="subtitle">{t("quantity")}</h3>
                       <div className="amount-changer">
                         <span onClick={() => addOne(-1)}>-</span>
                         <input type="number" value={amout} />
@@ -235,7 +242,7 @@ const ProductScreen = () => {
                     </div>
                     <div className="cardPrice">
                       <div className="price-left">
-                        <h3 className="subtitle">Narxi</h3>
+                        <h3 className="subtitle">{t("price")}</h3>
                         <div className="price-box">
                           <h2 className="main-price">
                             <NumberFormat value={data?.price} />{" "}
@@ -330,11 +337,8 @@ const ProductScreen = () => {
                     <div className="advantages">
                       <div className="advantagesBox">
                         <BoxIcon />
-                        <h3>Tezkor yetkazib berish</h3>
-                        <p>
-                          Toshkent shahriga 1kun ichida, viloyatlarga 2-3 kun
-                          ichda yetkazib berish
-                        </p>
+                        <h3>{t("common.product_deliver")}</h3>
+                        <p>{t("common.product_deliver2")}</p>
                       </div>
                       <div className="advantagesBox">
                         <div className="advantagesBoxIcons">
@@ -351,11 +355,8 @@ const ProductScreen = () => {
                             alt="visa"
                           />
                         </div>
-                        <h3>O’zingizga qulay usulda to’lang</h3>
-                        <p>
-                          Karta orqali, naqd pul yoki bo’lib to’lash xizmati
-                          orqali to’lang
-                        </p>
+                        <h3>{t("comfort_paying")}</h3>
+                        <p>{t("comfort_paying2")}</p>
                       </div>
                     </div>
                   </div>
@@ -474,20 +475,20 @@ const ProductScreen = () => {
                 className={`tab ${!comments ? "active" : ""}`}
                 onClick={() => setComments(false)}
               >
-                Mahsulot haqida
+                {t("about_product")}
               </h3>
               <h3
                 className={`tab ${comments ? "active" : ""}`}
                 onClick={() => setComments(true)}
               >
-                Sharhlar
+                {t("Комментарии")}
               </h3>
             </div>
             <div
               style={{ display: !comments ? "block" : "none" }}
               className="description"
             >
-              <h2>Mahsulot haqida</h2>
+              <h2>{t("about_product")}</h2>
               <div
                 className="description-text"
                 dangerouslySetInnerHTML={{
@@ -499,7 +500,7 @@ const ProductScreen = () => {
               style={{ display: comments ? "block" : "none" }}
               className="comments"
             >
-              <h2>Sharhlar</h2>
+              <h2>{t("Комментарии")}</h2>
             </div>
           </Additionals>
           <SimilarProducts item={data} />

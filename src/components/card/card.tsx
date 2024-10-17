@@ -159,12 +159,18 @@ export const CustomCard = ({
             <ButtonWrapper>
               <Button
                 className="add-to-cart-btn add-to-cart-btn1"
-                onClick={(e) => handleAddToCart(e, item)}
+                onClick={(e) => {
+                  if (item.have_attribute) {
+                    router.push(`/product/${item?.slug}`);
+                  } else {
+                    handleAddToCart(e, item);
+                  }
+                }}
               >
                 <CartIconn />
               </Button>
             </ButtonWrapper>
-            <ButtonWrapper>
+            <ButtonWrapper style={{ width: "100%" }}>
               <Button
                 className="add-to-cart-btn add-to-cart-btn2"
                 onClick={() => router.push(`/product/${item?.slug}`)}
