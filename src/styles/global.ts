@@ -147,8 +147,9 @@ export const Wrapper = styled.div`
   @media (max-width: 576px) {
     .order-btn {
       width: 100%;
-      min-width: 250px;
+      min-width: 180px;
       margin-top: -35px;
+      font-size: 12px;
     }
     &.catalog-wrap {
       padding: 23px 0;

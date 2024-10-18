@@ -53,9 +53,17 @@ export const CustomerInfo = styled("div")`
     }
   }
   @media (max-width: 768px) {
+    h2 {
+      display: none;
+    }
     flex-direction: column;
     padding: 12px;
     width: 100%;
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px 16px;
+    }
   }
 `;
 
@@ -72,6 +80,8 @@ export const Left = styled("div")`
   }
   @media (max-width: 768px) {
     width: 100%;
+    font-size: 13px;
+    line-height: 1;
   }
 `;
 export const Right = styled("div")`
@@ -103,6 +113,12 @@ export const PaymentOption = styled.div<{ selected: boolean }>`
   background-color: ${({ selected }) => (selected ? "#fff" : "#fff")};
   cursor: pointer;
   height: 80px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    height: max-content;
+  }
 `;
 
 export const RadioButton = styled.div<{ selected: boolean }>`
@@ -114,6 +130,10 @@ export const RadioButton = styled.div<{ selected: boolean }>`
   align-items: center;
   justify-content: center;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 export const RadioCircle = styled.div<{ selected: boolean }>`
@@ -121,12 +141,19 @@ export const RadioCircle = styled.div<{ selected: boolean }>`
   height: 12px;
   border-radius: 50%;
   background-color: ${({ selected }) => (selected ? "#F16A21" : "transparent")};
+  @media (max-width: 768px) {
+    width: 10px;
+    height: 10px;
+  }
 `;
 
 export const OptionText = styled.p<{ selected: boolean }>`
   font-size: 18px;
   font-weight: 500;
   color: ${({ selected }) => (selected ? "#333" : "#6c757d")};
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const IconWrapper = styled.div`
@@ -136,5 +163,10 @@ export const IconWrapper = styled.div`
   img {
     height: auto;
     margin-left: 15px;
+  }
+  @media (max-width: 767px) {
+    img {
+      margin-top: 10px;
+    }
   }
 `;

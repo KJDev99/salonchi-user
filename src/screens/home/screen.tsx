@@ -51,7 +51,7 @@ const HomeScreen = () => {
                   {page?.results?.map((item: IProduct) => (
                     <Grid.Col
                       span={6}
-                      lg={4}
+                      lg={3}
                       xs={width > 640 ? 4 : 6}
                       sm={4}
                       md={3}
@@ -190,7 +190,6 @@ const HomeScreen = () => {
           {categoryListProducts?.map((item: any, idx: number) => {
             return (
               <>
-                {/* {console.log("categoryListProducts", item)} */}
                 {item?.products?.length ? (
                   <>
                     {item.banner_uz && (

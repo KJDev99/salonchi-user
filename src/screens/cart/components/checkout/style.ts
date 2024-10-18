@@ -8,6 +8,7 @@ export const Form = styled("form")`
   /* border: 1px solid var(--main-bg-color); */
   border-radius: 12px;
   padding: 28px 20px 0px 20px;
+
   /* position: fixed;
   width: max-content; */
 
@@ -25,9 +26,21 @@ export const Form = styled("form")`
     width: 100%;
     margin-top: 35px;
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 768px) {
+    padding: 5px 15px;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    ul {
+      display: flex;
+      justify-content: center;
+      font-size: 14px;
+    }
     .order-btn {
-      display: none;
+      /* display: none; */
+      width: 50%;
+      font-size: 12px;
+      margin-top: 0;
     }
   }
 `;
@@ -61,6 +74,21 @@ export const Header = styled("div")`
     line-height: 30px;
     color: #384250;
   }
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      font-size: 16px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    .addInfo {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  }
 `;
 export const Body = styled("ul")`
   padding: 25px 0 35px 0;
@@ -78,6 +106,9 @@ export const Body = styled("ul")`
       color: var(--nav-link-color);
       font-weight: 300;
     }
+  }
+  @media (max-width: 768px) {
+    padding: 10px 0px;
   }
 `;
 export const Footer = styled("div")`
