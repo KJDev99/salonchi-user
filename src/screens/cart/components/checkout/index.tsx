@@ -84,7 +84,9 @@ export const Checkout = ({
       <Form
         onSubmit={onCheckout}
         id="form"
-        className={`${isFixed ? "fixedd" : ""} ${isTop ? "topCheck" : ""}`}
+        className={`mediaFixed ${isFixed ? "fixedd" : ""} ${
+          isTop ? "topCheck" : ""
+        } ${infoUserOpened ? "infoUserOpened" : ""}`}
       >
         <Header>
           {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}

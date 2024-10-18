@@ -23,6 +23,8 @@ export const CallWrapper = styled("div")`
     }
   }
   @media (max-width: 576px) {
+    display: none;
+
     .phone-btn {
       bottom: 85px;
     }

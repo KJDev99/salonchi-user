@@ -128,6 +128,7 @@ input::placeholder {
 .topCheck {
   top: 120px;
 }
+
 .mahsulotlar {
   background-color: var(--main-white);
   border-radius: 8px;
@@ -145,8 +146,28 @@ input::placeholder {
 }
 
 @media (max-width: 768px) {
+  .mahsulotlar h2 {
+    font-size: 18px;
+    margin: 16px 20px 0px;
+  }
   main {
     padding-right: 10px;
     padding-left: 10px;
+  }
+  .mediaFixed {
+    position: fixed !important;
+    bottom: 82px;
+    width: max-content;
+    top: auto !important;
+    width: 95% !important;
+    display: flex;
+  }
+  .topCheck {
+    top: auto;
+  }
+  .infoUserOpened {
+    display: flex;
+    flex-direction: column;
+    position: static !important;
   }
 }
