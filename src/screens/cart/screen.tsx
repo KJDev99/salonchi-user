@@ -85,7 +85,7 @@ const CartScreen = () => {
   const [infoUserOpened, setInfoUserOpened] = useState(false);
   const { width } = useViewportSize();
   // console.log(initialCart, "CartScreen");
-  const [selectedOption, setSelectedOption] = useState("card");
+  const [selectedOption, setSelectedOption] = useState("cash");
 
   const [users, setUser] = useState<User | null>(null);
   const [regions, setRegions] = useState<Region[]>([]);
@@ -305,7 +305,7 @@ const CartScreen = () => {
                     <Left>
                       <Title>To`lov turi</Title>
 
-                      <PaymentOption
+                      {/* <PaymentOption
                         selected={selectedOption === "card"}
                         onClick={() => setSelectedOption("card")}
                       >
@@ -320,6 +320,22 @@ const CartScreen = () => {
                         <IconWrapper>
                           <Image src={Uzcard} alt="Uzcard" />
                           <Image src={Humo} alt="Humo" />
+                        </IconWrapper>
+                      </PaymentOption> */}
+                      <PaymentOption
+                        selected={selectedOption === "cash"}
+                        onClick={() => setSelectedOption("cash")}
+                      >
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <RadioButton selected={selectedOption === "cash"}>
+                            <RadioCircle selected={selectedOption === "cash"} />
+                          </RadioButton>
+                          <OptionText selected={selectedOption === "cash"}>
+                            Naqd pul orqali qabul qilganda
+                          </OptionText>
+                        </div>
+                        <IconWrapper>
+                          <Image src={Cash} alt="Cash" />
                         </IconWrapper>
                       </PaymentOption>
 
@@ -337,23 +353,6 @@ const CartScreen = () => {
                         </div>
                         <IconWrapper>
                           <Image src={Nasiya} alt="Uzum" />
-                        </IconWrapper>
-                      </PaymentOption>
-
-                      <PaymentOption
-                        selected={selectedOption === "cash"}
-                        onClick={() => setSelectedOption("cash")}
-                      >
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <RadioButton selected={selectedOption === "cash"}>
-                            <RadioCircle selected={selectedOption === "cash"} />
-                          </RadioButton>
-                          <OptionText selected={selectedOption === "cash"}>
-                            Naqd pul orqali qabul qilganda
-                          </OptionText>
-                        </div>
-                        <IconWrapper>
-                          <Image src={Cash} alt="Cash" />
                         </IconWrapper>
                       </PaymentOption>
                     </Left>
