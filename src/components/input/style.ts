@@ -81,6 +81,7 @@ export const SearchWrapper = styled("form")`
 
   @media (max-width: 992px) {
     width: 100%;
+    margin-bottom: 10px;
   }
   @media (max-width: 576px) {
     min-width: auto;
@@ -94,7 +95,7 @@ export const SearchWrapper = styled("form")`
 export const Input = styled("input")`
   background-color: #fff;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #ea580c;
   outline: none;
   height: 48px;
   width: 100%;

@@ -194,7 +194,7 @@ export const Checkout = ({
                   borderRadius: "5px",
                 }}
               >
-                {t("log in")}12
+                {t("log in")}
               </Button>
             </FlexBtns>
           </Modal>
