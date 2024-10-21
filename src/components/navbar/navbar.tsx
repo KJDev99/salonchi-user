@@ -55,7 +55,7 @@ const Navbar = () => {
             </Left>
             <Right>
               <span>
-                <a href="tel:+998930007570"> +998 93 537 20 01</a>
+                <a href="tel:+998781139596"> +998 78 113 95 96</a>
               </span>
 
               <LanguageMenu />

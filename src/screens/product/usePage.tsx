@@ -5,7 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { MailIcon } from "../../assets/icons/mail";
-
+import VideoImage from "@/assets/images/video.png";
+import { FaRegCirclePlay } from "react-icons/fa6";
 export const usePage = () => {
   interface IPictures {
     file: string;
@@ -35,7 +36,6 @@ export const usePage = () => {
         };
       },
       onSuccess: (res) => {
-        console.log("res", res);
         // res?.detail?.media?.map((mediaItem: IPictures) => {
         //   if(mediaItem.file_type)
         // })
@@ -50,7 +50,7 @@ export const usePage = () => {
               return {
                 original: v?.file,
                 thumbnail:
-                  "https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png",
+                  "https://f8189e0b-salonchi.s3.timeweb.cloud/salonchi/c2b5d6cc-7759-45c5-a96b-b3158b2e5458.webp",
                 renderItem: () => (
                   <video
                     src={v?.file}

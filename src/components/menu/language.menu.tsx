@@ -17,7 +17,7 @@ export const LanguageMenu = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper style={{ cursor: "pointer" }}>
       <Menu opened={opened} onChange={setOpened} withArrow>
         <Menu.Target>
           {router.locale === "uz" ? (

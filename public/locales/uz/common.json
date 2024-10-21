@@ -108,7 +108,12 @@
     "delete saved": "Sevimlilardan o'chirish"
   },
   "footer": {
+    "address": "Farg’ona viloyati, Beshariq tuman, oltinvodiy chòchasi",
+    "social": "Biz ijtimoy tarmoqlarda",
+    "copyright": "Barcha huquqlar himoyalangan",
     "support_number": "Qo‘llab quvvatlash raqami",
+    "contact": "Biz bilan bog’lanish",
+    "days": "Dushanba-Shanba",
     "info": "Ma'lumotlar",
     "about_us": "Biz haqimizda",
     "vacant_positions": "Bo‘sh ish o‘rinlari",
