@@ -1,6 +1,6 @@
 import { Container, Wrapper } from "@/styles/global";
 import { Button, Grid, Stack, Text } from "@mantine/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import {
   Additionals,
   AddToCart,
@@ -43,6 +43,10 @@ import { IconUzcard } from "@/assets/icons/uzcard";
 import { IconHumo } from "@/assets/icons/humo";
 import Nasiya from "@/assets/icons/nasiya.svg";
 import Image from "next/image";
+import { useViewportSize } from "@mantine/hooks";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
+import ReactImageGallery from "react-image-gallery";
 // import { CustomBox } from './components/box';
 
 const ProductScreen = () => {
@@ -80,7 +84,7 @@ const ProductScreen = () => {
           amout,
           media,
           // color: active,
-          attributes: Object.values(active),
+          attributes: data.attributes.length === 0 ? [] : Object.values(active),
 
           box: boxList?.find((v: any) => v?.selected)?.id,
         })
@@ -89,13 +93,13 @@ const ProductScreen = () => {
           media,
           amount: amout,
           // color: active,
-          attributes: Object.values(active),
+          attributes: data.attributes.length === 0 ? [] : Object.values(active),
         });
     // console.log(data);
   };
 
   const handleOrder = () => {
-    if (active) {
+    if (active || data.attributes.length === 0) {
       addToCart();
       router.push("/cart");
     } else {
@@ -121,13 +125,22 @@ const ProductScreen = () => {
     }
   }, [wishlist, data?.id]);
 
-  // console.log(attributes, "data");
-
   function addOne(value: number) {
     if (value == -1 && amout == 0) return false;
     setAmout(amout + value);
   }
+  const galleryRef = React.createRef<ReactImageGallery>();
+  const handleAttributeImageClick = (selectedImageUrl: any) => {
+    console.log(selectedImageUrl);
+    const selectedIndex = images.findIndex(
+      (image) => image.original === selectedImageUrl
+    );
 
+    if (selectedIndex !== -1 && galleryRef.current) {
+      galleryRef.current.slideToIndex(selectedIndex);
+    }
+  };
+  const { width } = useViewportSize();
   return (
     <Wrapper>
       {isLoading ? (
@@ -144,7 +157,20 @@ const ProductScreen = () => {
               span={12}
             >
               <LeftContent>
-                <CarouselDetails images={images} />
+                <ImageGallery
+                  ref={galleryRef}
+                  items={images}
+                  thumbnailPosition={width > 576 ? "bottom" : "bottom"}
+                  showPlayButton={false}
+                  showFullscreenButton={false}
+                  showThumbnails={width > 576 ? true : false}
+                  showBullets={false}
+                  infinite={false}
+                  showNav={true}
+                  slideOnThumbnailOver={true}
+                  disableThumbnailScroll={false}
+                />
+                {/* <CarouselDetails ref={galleryRef} images={images} /> */}
               </LeftContent>
               <CustomBox
                 // style={{ border: "1px solid black" }}
@@ -225,6 +251,9 @@ const ProductScreen = () => {
                               index={index}
                               atributErr={colorErr}
                               setAtributErr={setColorErr}
+                              handleAttributeImageClick={
+                                handleAttributeImageClick
+                              }
                             />
                           </>
                         )}
@@ -269,10 +298,11 @@ const ProductScreen = () => {
                         <div style={{ display: "flex" }} className="buy-btns">
                           <Button
                             onClick={() => {
-                              if (active) {
+                              if (active || data.attributes.length === 0) {
                                 addToCart();
                               } else {
                                 setAtributErr(true);
+                                setColorErr(true);
                               }
                             }}
                             variant="filled"
@@ -302,10 +332,11 @@ const ProductScreen = () => {
                         <div style={{ display: "flex" }} className="buy-btns">
                           <Button
                             onClick={() => {
-                              if (active) {
+                              if (active || data.attributes.length === 0) {
                                 addToCart();
                               } else {
                                 setAtributErr(true);
+                                setColorErr(true);
                               }
                             }}
                             variant="filled"
