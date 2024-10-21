@@ -12,12 +12,14 @@ export const Colors = ({
   index,
   atributErr,
   setAtributErr,
-}: IColors) => {
-  const clickColor = (id: string, label: string, name: string): any => {
+  handleAttributeImageClick,
+}: any) => {
+  const clickColor = (id: string, value: string): any => {
     setActive({
       ...active,
       [`${index}`]: id,
     });
+    handleAttributeImageClick(value);
   };
   return (
     <Wrapper>
@@ -29,12 +31,12 @@ export const Colors = ({
                 <Color
                   key={color?.id}
                   color={color?.label}
-                  style={{ outline: atributErr ? "2px solid red" : "" }}
+                  style={{ outline: atributErr ? "3px solid red" : "" }}
                   className={`color-swatch ${
                     active[index] === color.id ? "active" : ""
                   }`}
                   onClick={() => {
-                    clickColor(color?.id, color?.label, name);
+                    clickColor(color?.id, color?.value);
                     setAtributErr(false);
                   }}
                 >

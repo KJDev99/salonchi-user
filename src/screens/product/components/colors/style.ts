@@ -26,14 +26,15 @@ export const Color = styled("div")`
   outline-offset: 2px;
   transition: all 0.1s;
   &.active {
-    outline: 2px solid #ea580c;
+    outline: 2px solid red;
   }
   &:hover {
     outline: 2px solid #ea580c;
   }
   .colorImage {
     width: 64px;
-    height: 64px;
+    height: 60px;
     object-fit: cover;
+    border-radius: 10px;
   }
 `;

@@ -4,9 +4,6 @@ import { ENDPOINTS } from "@/shared/endpoints";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { MailIcon } from "../../assets/icons/mail";
-import VideoImage from "@/assets/images/video.png";
-import { FaRegCirclePlay } from "react-icons/fa6";
 export const usePage = () => {
   interface IPictures {
     file: string;
