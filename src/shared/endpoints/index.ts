@@ -1,7 +1,7 @@
 export const ENDPOINTS = {
   READ_PRODUCT_LIST: "/product/list/recommend",
   PRODUCT_LIST: "/product/list",
-  CATEGORY_LIST_WITH_PRODUCTS: "category/list/with/product?limit=15&offset=1",
+  CATEGORY_LIST_WITH_PRODUCTS: "category/list/with/product?limit=15&offset=0",
   PRODUCT_DETAIL: "/product/detail/",
   USER_LIST: "/user/list",
   REGISTER: "/user/register",
@@ -21,7 +21,7 @@ export const ENDPOINTS = {
   USER_PROFILE_UPDATE: "/user/profile",
   USER_ADDRESS_DETAIL: "/user/address/detail",
   CATEGORY_SUB_LIST: "/category/sub/list/",
-  PRODUCT_LIST_NEW: "product/list/new?limit=15&offset=1",
-  PRODUCT_LIST_CHEAP: "product/list/cheap?limit=15&offset=1",
+  PRODUCT_LIST_NEW: "product/list/new?limit=15&offset=0",
+  PRODUCT_LIST_CHEAP: "product/list/cheap?limit=15&offset=0",
   PRODUCT_CHECK_ID: "product/check-ids",
 };

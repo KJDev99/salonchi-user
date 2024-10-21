@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export const useProducts = () => {
   const router = useRouter();
-  const [activePage, setPage] = useState(1);
+  const [activePage, setPage] = useState(0);
   const [filters, setFilters] = useState("");
   const [slider, setSlider] = useState([0, 1000000]);
 
@@ -26,7 +26,10 @@ export const useProducts = () => {
       slider,
       router.query.slug,
     ],
-    () => request(`/product/list/${router.query.slug}?limit=15&offset=${activePage}`),
+    () =>
+      request(
+        `/product/list/${router.query.slug}?limit=15&offset=${activePage}`
+      ),
     {
       select: (res: any) => {
         return {

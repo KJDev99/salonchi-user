@@ -60,8 +60,6 @@ export const usePage = () => {
     },
   });
 
-  // console.log( "cheapProductList",cheapProductList);
-
   return {
     data,
     isLoading,

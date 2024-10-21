@@ -29,11 +29,9 @@ const HomeScreen = () => {
     isFetchingNextPage,
     categoryListProducts,
   } = usePage();
-  // console.log(data);
   const { width } = useViewportSize();
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
-  // console.log(categoryListProducts);
 
   return (
     <Wrapper className="home-wrapper">
@@ -219,7 +217,7 @@ const HomeScreen = () => {
                           idx === 0 ? { marginTop: 30 } : { marginTop: 15 }
                         }
                       >
-                        {item?.name_uz}{" "}
+                        {item?.name_uz}
                         <IconArrowRight2 style={{ marginLeft: 10 }} />
                       </Title>
 
