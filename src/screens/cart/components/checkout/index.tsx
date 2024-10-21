@@ -20,7 +20,7 @@ export interface ICheckoutProps {
   value?: string;
   payType: number;
   infoUserOpened?: any;
-  setInfoUserOpened?: (value: boolean) => void;
+  setInfoUserOpened?: any;
 }
 
 export const Checkout = ({
@@ -46,6 +46,7 @@ export const Checkout = ({
   });
   const [isFixed, setIsFixed] = useState(false);
   const [isTop, setIsTop] = useState(false);
+  const [openLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -152,21 +153,26 @@ export const Checkout = ({
             <Button
               color="red"
               className="order-btn"
-              form="form"
-              type="submit"
+              // form="form"
+              // type="submit"
               onClick={(e) => {
-                e.preventDefault();
-                if (setInfoUserOpened) {
+                const userData = localStorage.getItem("userData");
+                if (userData) {
+                  e.preventDefault();
                   setInfoUserOpened(true);
+                  console.log("if");
+                } else {
+                  setIsLogin(true);
                 }
+                // If userData exists, the form will submit as normal
               }}
             >
               {t("To’lov sahifasiga o’tish")}
             </Button>
           )}
         </Body>
-        {infoUserOpened && (
-          <Modal opened={opened} close={close}>
+        {openLogin && (
+          <Modal opened={openLogin} close={close}>
             <ModalContent>
               <IconWarning />
               <p
