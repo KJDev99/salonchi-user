@@ -29,9 +29,7 @@ export const Footer = () => {
           <Grid gutter="lg" style={{ marginBottom: "55px" }}>
             <Grid.Col lg={3} span={12} md={6} sm={6}>
               <IconLogo width={145} height={60} />
-              <p>
-                2024 Barcha huquqlar <br /> himoyalangan
-              </p>{" "}
+              <p>2024 {t("footer.copyright")}</p>{" "}
               {/* <div className="social-links">
                 <Link href="/">
                   <IconTelegram />
@@ -61,17 +59,17 @@ export const Footer = () => {
                       alignItems: "center",
                     }}
                   >
-                    <IconLocation /> Toshkent shahar, Chilonzor tuman
+                    {t("footer.address")}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/"
                     style={{ display: "flex", alignItems: "center" }}
                   >
                     <IconInbox /> info@salonchi.support.uz
                   </Link>
-                </li>
+                </li> */}
               </Ul>
             </Grid.Col>
             <Grid.Col span={12} lg={3} md={6} sm={6}>
@@ -92,19 +90,21 @@ export const Footer = () => {
               </Ul>
             </Grid.Col>
             <Grid.Col span={12} lg={3} md={6} sm={6}>
-              <h4>Biz bilan bog&rsquo;lanish</h4>
+              <h4>{t("footer.contact")}</h4>
               <Ul className="footer-info">
                 <li>
-                  <Link className="phoneNumber" href="tel:+998912559863">
-                    +998 91 255 98 63
+                  <Link className="phoneNumber" href="tel:+998781139596">
+                    +998 78 113 95 96
                   </Link>
                 </li>
-                <li>(09:00-17:00 Dushanba-Shanba)</li>
-                <li style={{ marginTop: "32px" }}>Biz ijtimoy tarmoqlarda</li>
+                <li>(09:00-17:00 {t("footer.days")})</li>
+                <li style={{ marginTop: "32px" }}>{t("footer.social")}</li>
                 <li>
-                  <Link href="/">
+                  <Link href="https://t.me/salonchi_uz1">
                     <IconTelegram />
-                    {/* <IconFacebook /> */}
+                  </Link>
+                  <Link href="https://www.instagram.com/salonchi_uz/profilecard/?igsh=MXZ4dGJuajhiYWd5NA==">
+                    <IconInstagram />
                   </Link>
                 </li>
               </Ul>
@@ -137,7 +137,7 @@ export const Footer = () => {
           </Grid>
         </ContainerFooter>
         <Divider />
-        <Container>
+        {/* <Container>
           <FooterBottom>
             <div
               style={{
@@ -160,15 +160,15 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-            {/* <LanguageMenu /> */}
-            {/* <div className="copyright">
+            <LanguageMenu />
+            <div className="copyright">
               <p>(c) 2024-2024. OOO “Salonchijewelry”</p>
             </div>
             <div className="public-offer">
               <p>{t("footer.privacy_policy")}</p>
-            </div> */}
+            </div>
           </FooterBottom>
-        </Container>
+        </Container> */}
       </Wrapper>
       {router.pathname !== "/product/[slug]" && <BottomTabs />}
     </>

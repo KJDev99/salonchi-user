@@ -3,28 +3,19 @@ import { request } from "@/shared/api/requests";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
-interface IPictures {
-  file: string;
-  file_type: string;
-}
-
 interface TImages {
   original: string;
   thumbnail: string;
 }
-
 export const usePage = () => {
   const router = useRouter();
   const slug = router.query.slug as string;
   const [images, setImages] = useState<TImages[]>([]);
   const [active, setActive] = useState<any>(null);
   const [active1, setActive1] = useState<number>(1);
-
   const serves = {
     flowList: (slug: any) => request(`/product/detail/${slug}`),
   };
-
   const { data: results, isLoading } = useQuery(
     [REACT_QUERY_KEYS.PRODUCT_DETAIL + "flow", slug],
     () => serves.flowList(slug),
@@ -45,7 +36,7 @@ export const usePage = () => {
               return {
                 original: v?.file,
                 thumbnail:
-                  "https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png",
+                  "https://f8189e0b-salonchi.s3.timeweb.cloud/salonchi/c2b5d6cc-7759-45c5-a96b-b3158b2e5458.webp",
                 renderItem: () => (
                   <video
                     src={v?.file}

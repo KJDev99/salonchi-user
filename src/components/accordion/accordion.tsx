@@ -194,7 +194,10 @@ export const CustomizedAccordion = ({ data, status }: any) => {
                         rows={8}
                       />
                       <form className={styles.modalForm}>
-                        <div className={styles.modalImages}>
+                        <div
+                          className={styles.modalImages}
+                          style={{ width: "100%", overflowX: "scroll" }}
+                        >
                           {images &&
                             images.map((image: string, index: number) => (
                               <Image

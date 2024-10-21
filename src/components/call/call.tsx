@@ -9,7 +9,7 @@ export const Call = () => {
     <Container>
       <CallWrapper>
         <ActionIcon className="phone-btn">
-          <a href="tel:+998930007570">
+          <a href="tel:+998781139596">
             <IconPhone />
           </a>
         </ActionIcon>
