@@ -4,7 +4,7 @@ export const Paper = styled("div")<any>`
   width: 100%;
   height: 100vh;
   position: absolute;
-  top: ${(props) => (props.scrollY > 0 ? "95px" : "140px")};
+  top: ${(props) => (props.scrollY > 0 ? "95px" : "94px")};
   left: 0;
   z-index: 10;
   background: var(--main-white);
@@ -38,7 +38,7 @@ export const Paper = styled("div")<any>`
 
 export const List = styled("div")`
   padding: 12px 0;
-  height: 100vh;
+  height: 80vh;
   overflow-y: auto;
   border-right: 1px solid hsla(220, 4%, 48%, 0.2);
 `;
