@@ -34,7 +34,8 @@ const CatalogScreen = () => {
     useMutation({
       mutationFn: (id: number) => getSubcategories(id),
       onSuccess: (data) => {
-        setSubcategories(data?.data || []);
+        setSubcategories(data || []);
+        console.log(data);
       },
     });
 
@@ -86,7 +87,7 @@ const CatalogScreen = () => {
                           <Grid.Col span={12}>
                             <Text
                               onClick={() =>
-                                router.push(`/categories/${category.id}/all`)
+                                router.push(`/categories/${category.id}`)
                               }
                             >
                               Barcha Mahsulotlar
@@ -97,9 +98,7 @@ const CatalogScreen = () => {
                             <Grid.Col span={12} md={2} xs={4} key={sub.id}>
                               <Card
                                 onClick={() =>
-                                  router.push(
-                                    `/categories/${category.id}/subcategories/${sub.id}`
-                                  )
+                                  router.push(`/categories/${sub.id}`)
                                 }
                               >
                                 <Text>{sub.name_uz}</Text>
