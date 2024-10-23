@@ -48,6 +48,9 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ReactImageGallery from "react-image-gallery";
 import { request } from "@/shared/api/requests";
+import { ProfileIcon } from "@/assets/icons/profile";
+import IconUser from "@/assets/avatar.jpg";
+import { IconStar } from "@tabler/icons-react";
 // import { CustomBox } from './components/box';
 
 const ProductScreen = () => {
@@ -75,7 +78,7 @@ const ProductScreen = () => {
   const [colorErr, setColorErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
   const [amout, setAmout] = useState<any>(1);
-  const [rates, setRates] = useState<any>(0);
+  const [rates, setRates] = useState<any>();
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))
@@ -99,7 +102,16 @@ const ProductScreen = () => {
         });
     // console.log(data);
   };
+  function formatDate(inputDate: any) {
+    const date = new Date(inputDate);
 
+    return new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  }
+  // console.log(formatDate("2024-10-22T21:27:01.183442+05:00"));
   const handleOrder = () => {
     if (active || data.attributes.length === 0) {
       addToCart();
@@ -134,7 +146,8 @@ const ProductScreen = () => {
   // console.log(data);
   const getRates = async () => {
     const res = await request.get("product/" + data?.id + "/rate");
-    console.log(res?.data?.results);
+    // console.log(res?.data?.results);
+    setRates(res?.data?.results);
   };
 
   const galleryRef = React.createRef<ReactImageGallery>();
@@ -542,18 +555,97 @@ const ProductScreen = () => {
               style={{ display: comments ? "block" : "none" }}
               className="comments"
             >
-              <h2>{t("Комментарии")}</h2>
-              {rates && rates.length > 0
-                ? rates.map((item: any) => {
-                    return <div key={item.id}></div>;
-                  })
-                : ""}
+              {rates &&
+                rates.length > 0 &&
+                rates.map((item: any) => {
+                  console.log(item);
+                  return (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "10px",
+                        padding: "10px 0",
+                        borderBottom: "1px solid #ccc",
+                      }}
+                      key={item.id}
+                    >
+                      <div>
+                        <Image
+                          src={item.photo ? item.photo : IconUser}
+                          alt="image"
+                          width={60}
+                          height={60}
+                          style={{ borderRadius: "50%", objectFit: "cover" }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "5px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        <h3 style={{ fontWeight: 500 }}>
+                          {item.name || "User"}
+                        </h3>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "5px",
+                            alignItems: "center",
+                            // justifyContent: "center",
+                          }}
+                        >
+                          <div style={{ display: "flex", gap: "5px" }}>
+                            {Array(5)
+                              .fill(0)
+                              .map((_, index) => (
+                                <div key={index}>
+                                  {index < item.rating ? <StarIcon /> : ""}
+                                </div>
+                              ))}
+                          </div>
+                          <p style={{ color: "#9a9696", fontSize: "14px" }}>
+                            {formatDate(item.created)}
+                          </p>
+                        </div>
+                        <p style={{ color: "#2c2c2c" }}>{item.comment}</p>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "10px",
+                            flexWrap: "wrap",
+                          }}
+                        >
+                          {item.photos.length > 0 &&
+                            item.photos.map((item: any) => {
+                              return (
+                                <Image
+                                  key={item[0]}
+                                  src={item[0]}
+                                  alt="image"
+                                  width={300}
+                                  height={300}
+                                  style={{
+                                    objectFit: "cover",
+                                    height: "140px",
+                                    width: "140px",
+                                  }}
+                                />
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </Additionals>
           <SimilarProducts item={data} />
         </Container>
       )}
-      <BottomNavigator id={slug} data={data} />
+      {/* <BottomNavigator id={slug} data={data} /> */}
     </Wrapper>
   );
 };
