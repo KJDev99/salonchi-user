@@ -47,6 +47,7 @@ import { useViewportSize } from "@mantine/hooks";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ReactImageGallery from "react-image-gallery";
+import { request } from "@/shared/api/requests";
 // import { CustomBox } from './components/box';
 
 const ProductScreen = () => {
@@ -74,6 +75,7 @@ const ProductScreen = () => {
   const [colorErr, setColorErr] = useState<any>(false);
   const [comments, setComments] = useState<any>(false);
   const [amout, setAmout] = useState<any>(1);
+  const [rates, setRates] = useState<any>(0);
   const addToCart = () => {
     const media = data?.media[0]?.file;
     cart?.find((v: IProduct) => v.id == Number(slug))
@@ -129,6 +131,12 @@ const ProductScreen = () => {
     if (value == -1 && amout == 0) return false;
     setAmout(amout + value);
   }
+  // console.log(data);
+  const getRates = async () => {
+    const res = await request.get("product/" + data?.id + "/rate");
+    console.log(res?.data?.results);
+  };
+
   const galleryRef = React.createRef<ReactImageGallery>();
   const handleAttributeImageClick = (selectedImageUrl: any) => {
     console.log(selectedImageUrl);
@@ -510,7 +518,10 @@ const ProductScreen = () => {
               </h3>
               <h3
                 className={`tab ${comments ? "active" : ""}`}
-                onClick={() => setComments(true)}
+                onClick={() => {
+                  getRates();
+                  setComments(true);
+                }}
               >
                 {t("Комментарии")}
               </h3>
@@ -532,6 +543,11 @@ const ProductScreen = () => {
               className="comments"
             >
               <h2>{t("Комментарии")}</h2>
+              {rates && rates.length > 0
+                ? rates.map((item: any) => {
+                    return <div key={item.id}></div>;
+                  })
+                : ""}
             </div>
           </Additionals>
           <SimilarProducts item={data} />
