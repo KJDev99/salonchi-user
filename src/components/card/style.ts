@@ -116,6 +116,9 @@ export const CardHeader = styled("div")`
     font-family: "Readex Pro", sans-serif;
     @media (max-width: 576px) {
       left: 0;
+      font-size: 10px;
+      border-radius: 4px;
+      padding: 2px 4px;
     }
   }
 

@@ -28,7 +28,6 @@ export const MyOrders = () => {
     <MyOrdersProvider>
       <Grid>
         {orders?.map((item: any, i: number) => {
-          // console.log("item", item);
           return (
             <Grid.Col span={12} md={12} sm={12} key={i}>
               <OrderCard>
