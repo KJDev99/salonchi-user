@@ -47,21 +47,23 @@ const Navbar = () => {
   return (
     <>
       <NavProvider className="nav-provider">
-        <NavHeader>
-          <Container className="nav-container">
-            <Left>
-              <Button variant="outline">Yangiliklar</Button>
-              {/* <Button variant="outline">Hamkorlik qilish</Button> */}
-            </Left>
-            <Right>
-              <span>
-                <a href="tel:+998781139596"> +998 78 113 95 96</a>
-              </span>
+        {!isOpen && (
+          <NavHeader>
+            <Container className="nav-container">
+              <Left>
+                <Button variant="outline">Yangiliklar</Button>
+                {/* <Button variant="outline">Hamkorlik qilish</Button> */}
+              </Left>
+              <Right>
+                <span>
+                  <a href="tel:+998781139596"> +998 78 113 95 96</a>
+                </span>
 
-              <LanguageMenu />
-            </Right>
-          </Container>
-        </NavHeader>
+                <LanguageMenu />
+              </Right>
+            </Container>
+          </NavHeader>
+        )}
         <Header
           pathname={router.pathname}
           className={scrollY > 10 ? "fixed" : ""}
@@ -135,7 +137,7 @@ const Navbar = () => {
           </MobileFooter>
         </Container>
       </MobileWrapper>
-      <Catalog open={isOpen} setOpen={setOpen} />
+      {!isOpen && <Catalog open={isOpen} setOpen={setOpen} />}
     </>
   );
 };
