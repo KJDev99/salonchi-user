@@ -1,6 +1,7 @@
 import { Container, Wrapper } from "@/styles/global";
 import { Button, Grid, Stack, Text } from "@mantine/core";
 import React, { useEffect, useState, useLayoutEffect } from "react";
+
 import {
   Additionals,
   AddToCart,
@@ -79,29 +80,111 @@ const ProductScreen = () => {
   const [comments, setComments] = useState<any>(false);
   const [amout, setAmout] = useState<any>(1);
   const [rates, setRates] = useState<any>();
-  const addToCart = () => {
-    const media = data?.media[0]?.file;
-    cart?.find((v: IProduct) => v.id == Number(slug))
-      ? router.push("/cart")
-      : !!boxList?.find((v: any) => v?.selected)
-      ? addCart({
-          ...data,
-          amout,
-          media,
-          // color: active,
-          attributes: data.attributes.length === 0 ? [] : Object.values(active),
+  // const addToCart = () => {
+  //   const media = data?.media[0]?.file;
+  //   cart?.find((v: IProduct) => v.id == Number(slug))
+  //     ? router.push("/cart")
+  //     : !!boxList?.find((v: any) => v?.selected)
+  //     ? addCart({
+  //         ...data,
+  //         amout,
+  //         media,
+  //         // color: active,
+  //         attributes: data.attributes.length === 0 ? [] : Object.values(active),
 
-          box: boxList?.find((v: any) => v?.selected)?.id,
-        })
-      : addCart({
-          ...data,
-          media,
-          amount: amout,
-          // color: active,
-          attributes: data.attributes.length === 0 ? [] : Object.values(active),
-        });
-    // console.log(data);
+  //         box: boxList?.find((v: any) => v?.selected)?.id,
+  //       })
+  //     : addCart({
+  //         ...data,
+  //         media,
+  //         amount: amout,
+  //         // color: active,
+  //         attributes: data.attributes.length === 0 ? [] : Object.values(active),
+  //       });
+  //   // console.log(data);
+  // };
+  // const addToCart = () => {
+  //   const media = data?.media[0]?.file;
+
+  //   // Function to generate a unique key based on product id and attributes
+  //   const generateKey = (productId: number, attributes: any[]) => {
+  //     return `${productId}-${attributes.join("-")}`; // Adjust this logic as needed
+  //   };
+
+  //   const existingProduct = cart?.find((v: IProduct) => {
+  //     // Check if both ID and attributes match
+  //     const isIdMatch = v.id === Number(slug);
+  //     const isAttributeMatch =
+  //       JSON.stringify(v.attributes) === JSON.stringify(Object.values(active)); // Compare attributes
+
+  //     return isIdMatch && isAttributeMatch; // Return true if both match
+  //   });
+
+  //   if (existingProduct) {
+  //     // If product with the same ID and attributes exists, navigate to cart
+  //     router.push("/cart");
+  //   } else {
+  //     // If no existing product, add the new product to cart
+  //     const attributes =
+  //       data.attributes.length === 0 ? [] : Object.values(active);
+  //     console.log(data.attributes);
+  //     const newProduct = {
+  //       ...data,
+  //       amount: amout,
+  //       media,
+  //       attributes, // Add attributes to the new product
+  //       box: boxList?.find((v: any) => v?.selected)?.id,
+  //     };
+
+  //     addCart(newProduct); // Add the new product to the cart
+  //   }
+  // };
+  const addToCart = () => {
+    const attributes =
+      data.attributes.length === 0 ? [] : Object.values(active);
+
+    // Find the selected attribute based on 'active'
+    const selectedAttribute = data.attributes.find(
+      (attr: any, index: number) => {
+        const activeKey = active && Object.keys(active)[index];
+        const activeValue = active && active[activeKey];
+
+        return attr.values.some((val: any) => val.id === activeValue); // Find the matching attribute value
+      }
+    );
+
+    // Get the image URL from the selected attribute if it exists
+    const selectedImage = selectedAttribute
+      ? selectedAttribute.values.find(
+          (val: any) => val.id === active[Object.keys(active)[0]]
+        )?.value // Get the selected image URL
+      : data?.media[0]?.file; // Fallback to the first product image if no attribute is selected
+
+    const existingProduct = cart?.find((v: IProduct) => {
+      const isIdMatch = v.id === Number(slug);
+      const isAttributeMatch =
+        JSON.stringify(v.attributes) === JSON.stringify(attributes);
+
+      return isIdMatch && isAttributeMatch;
+    });
+
+    if (existingProduct) {
+      // If product with the same ID and attributes exists, navigate to cart
+      router.push("/cart");
+    } else {
+      // If no existing product, add the new product to cart
+      const newProduct = {
+        ...data,
+        amount: amout,
+        media: selectedImage, // Use selected attribute's image
+        attributes, // Add attributes to the new product
+        box: boxList?.find((v: any) => v?.selected)?.id,
+      };
+
+      addCart(newProduct); // Add the new product to the cart
+    }
   };
+
   function formatDate(inputDate: any) {
     const date = new Date(inputDate);
 
@@ -152,7 +235,6 @@ const ProductScreen = () => {
 
   const galleryRef = React.createRef<ReactImageGallery>();
   const handleAttributeImageClick = (selectedImageUrl: any) => {
-    console.log(selectedImageUrl);
     const selectedIndex = images.findIndex(
       (image) => image.original === selectedImageUrl
     );
@@ -315,7 +397,24 @@ const ProductScreen = () => {
                       </div> */}
                     </div>
                     <Footer>
-                      {cart?.find((v: IProduct) => v.id == Number(slug)) ? (
+                      {cart?.find((v: IProduct) => {
+                        const isIdMatch = v.id === Number(slug);
+
+                        // Compare active attributes to the corresponding attributes in v.attributes (array)
+
+                        const isAttributeMatch = v.attributes?.every(
+                          (attr: any, index: number) => {
+                            const activeKey =
+                              active && Object.keys(active)[index]; // Get the attribute key from active
+                            const activeValue = active && active[activeKey]; // Get the corresponding selected value from active
+                            console.log(attr, activeKey, activeValue);
+                            // Compare the selected attribute with the product's attribute
+                            return attr === activeValue;
+                          }
+                        );
+                        // Return true only if both ID and attributes match
+                        return isIdMatch && isAttributeMatch;
+                      }) ? (
                         <div style={{ display: "flex" }} className="buy-btns">
                           <Button
                             onClick={() => {
@@ -558,7 +657,6 @@ const ProductScreen = () => {
               {rates &&
                 rates.length > 0 &&
                 rates.map((item: any) => {
-                  console.log(item);
                   return (
                     <div
                       style={{
@@ -571,7 +669,7 @@ const ProductScreen = () => {
                     >
                       <div>
                         <Image
-                          src={item.photo ? item.photo : IconUser}
+                          src={item.user.photo ? item.user.photo : IconUser}
                           alt="image"
                           width={60}
                           height={60}
@@ -587,7 +685,7 @@ const ProductScreen = () => {
                         }}
                       >
                         <h3 style={{ fontWeight: 500 }}>
-                          {item.name || "User"}
+                          {item?.user?.firstname || "User"}
                         </h3>
                         <div
                           style={{
@@ -622,8 +720,8 @@ const ProductScreen = () => {
                             item.photos.map((item: any) => {
                               return (
                                 <Image
-                                  key={item[0]}
-                                  src={item[0]}
+                                  key={item}
+                                  src={item}
                                   alt="image"
                                   width={300}
                                   height={300}

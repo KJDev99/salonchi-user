@@ -26,8 +26,9 @@ export const Card = ({ item }: any) => {
   const addToWishList = useStore((state: any) => state.addToWishList);
   const removeWishList = useStore((state: any) => state.removeWishList);
   const [quantity, setQuantity] = useState(1);
+  console.log(item);
   const handleRemove = (id: string | number) => {
-    removeItem(id);
+    removeItem(id, item.attributes);
   };
 
   const handleAddWishlist = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,12 +52,13 @@ export const Card = ({ item }: any) => {
     <CardUI>
       <ContentLeft>
         {/* <Carousel images={item?.photo || item?.media} /> */}
-        <div className="image-container">
+        <div className="image-container" style={{ width: 112, height: 112 }}>
           <Image
             src={item?.photo || item?.media}
             alt={item?.name_uz}
             width={112}
-            h={112}
+            height={112}
+            style={{ objectFit: "cover" }}
           />
         </div>
         <ProductInfo>
@@ -65,7 +67,6 @@ export const Card = ({ item }: any) => {
             <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
           </h2> */}
           <div className="rating">
-
             {/* <Rating defaultValue={1} /> */}
             {/* <span>(447)</span> */}
             {item?.rate.count > 0 ? (
@@ -78,7 +79,6 @@ export const Card = ({ item }: any) => {
             ) : (
               <span>Новинка!</span>
             )}
-
           </div>
           {item?.color && (
             <p
@@ -118,7 +118,7 @@ export const Card = ({ item }: any) => {
             <div>
               <h4 style={{ fontWeight: "300", fontSize: 16 }}>
                 <NumberFormat
-                  value={item?.price * item?.productQuantity ?? 0}
+                  value={item?.price * item?.productQuantity || 0}
                 />{" "}
                 {t("card.currency")}
               </h4>

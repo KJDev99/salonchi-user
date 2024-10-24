@@ -45,7 +45,7 @@ export const CartMenu = () => {
             </p>
             <ActionIcon
               onClick={(e) => {
-                removeItem(v.id);
+                removeItem(v.id, v.attributes);
                 e.stopPropagation();
               }}
             >
