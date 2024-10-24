@@ -27,11 +27,20 @@ const useStore = create(
           quantity: state.quantity + 1,
         }));
       },
-      removeItem: (id: string | number) =>
+      removeItem: (id: string | number, attributes: any[]) =>
         set((state: IStore) => ({
-          cart: state.cart?.filter((v: IProduct) => v.id !== id),
+          cart: state.cart?.filter((v: IProduct) => {
+            // Check both the product ID and attributes
+            const isIdMatch = v.id !== id;
+            const isAttributeMatch =
+              JSON.stringify(v.attributes) !== JSON.stringify(attributes);
+
+            // Only remove if both the ID and attributes don't match
+            return isIdMatch || isAttributeMatch;
+          }),
           quantity: state.quantity - 1,
         })),
+
       increment: (id: string | number) =>
         set((state: IStore) => ({
           cart: state?.cart?.map((v: IProduct) => {

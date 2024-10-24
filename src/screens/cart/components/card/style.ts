@@ -27,10 +27,9 @@ export const CardUI = styled("div")`
 
 export const ContentLeft = styled("div")`
   display: flex;
-  gap: 33px;
+  gap: 20px;
   overflow: hidden;
   .image-container {
-    overflow: hidden;
     /* display: none; */
     width: 112px;
     height: 112px;
@@ -145,6 +144,7 @@ export const ProductInfo = styled("div")`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  width: auto;
   h4 {
     font-weight: 400;
     font-size: 16px;

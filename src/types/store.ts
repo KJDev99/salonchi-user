@@ -18,7 +18,7 @@ export interface ICartStore {
   comment: string;
   setComment: (payload: string) => void;
   addToCart: (payload: IProduct) => void;
-  removeItem: (id: string | number) => void;
+  removeItem: (id: string | number, attributes: any[]) => void;
   increment: (id: string | number) => void;
   decrement: (id: string | number) => void;
 }
