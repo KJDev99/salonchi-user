@@ -15,6 +15,7 @@ export const ENDPOINTS = {
   PAYMENT_STATUS: "order/check/state",
   ORDER_CREATE: "/order/create",
   CATEGORY_LIST: "/category/list",
+  CATEGORY_LIST_SUB: "category/sub/list/",
   REGION_LIST: "/region/list",
   USER_ADDRESS_UPDATE: "/user/address/update",
   USER_PROFILE: "/user/profile",

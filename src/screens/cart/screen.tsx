@@ -200,7 +200,6 @@ const CartScreen = () => {
                     <Left>
                       <h2>Buyurtmachi ma’lumotlari</h2>
                       <div className="form">
-                        {/* Name */}
                         <div className="inputs">
                           <label>Familiya va ism</label>
                           <input
@@ -210,7 +209,6 @@ const CartScreen = () => {
                           />
                         </div>
 
-                        {/* Phone */}
                         <div className="inputs">
                           <label>Telefon raqami</label>
                           <input
@@ -219,8 +217,6 @@ const CartScreen = () => {
                             placeholder="Telefon raqami"
                           />
                         </div>
-
-                        {/* Region */}
 
                         <div className="inputs">
                           <label>Viloyat</label>
@@ -240,7 +236,6 @@ const CartScreen = () => {
                           </select>
                         </div>
 
-                        {/* District */}
                         <div className="inputs">
                           <label>Tuman</label>
                           <select
@@ -258,7 +253,6 @@ const CartScreen = () => {
                             ))}
                           </select>
                         </div>
-                        {/* Street */}
                         <div className="inputs">
                           <label>Ko’cha (ixtiyoriy)</label>
                           <input
@@ -269,7 +263,6 @@ const CartScreen = () => {
                           />
                         </div>
 
-                        {/* Home */}
                         <div className="inputs">
                           <label>Uy raqami (ixtiyoriy)</label>
                           <input
@@ -280,10 +273,13 @@ const CartScreen = () => {
                           />
                         </div>
 
-                        {/* Additional Comments */}
                         <div className="inputs textarea">
                           <label>Kuryer uchun izoh yozing (ixtiyoriy)</label>
-                          <textarea placeholder="Izoh yozing"></textarea>
+                          <textarea
+                            placeholder="Izoh yozing"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          ></textarea>
                         </div>
                       </div>
                     </Left>

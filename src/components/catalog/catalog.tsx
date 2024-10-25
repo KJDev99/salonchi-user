@@ -46,12 +46,19 @@ export const Catalog = ({
     };
 
     router.events.on("routeChangeStart", handleRouteChange);
+    if (open) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+      console.log("nimadir ishladimi ??? ");
+    } else {
+      document.body.style.overflow = "";
+    }
 
     // Clean up the event listener
     return () => {
       router.events.off("routeChangeStart", handleRouteChange);
     };
-  }, [router, setOpen]);
+  }, [router, open, setOpen]);
 
   if (!setOpen) return null;
 
