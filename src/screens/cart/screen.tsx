@@ -84,7 +84,7 @@ const CartScreen = () => {
   const [payType, setPaytype] = useState(0);
   const [infoUserOpened, setInfoUserOpened] = useState(false);
   const { width } = useViewportSize();
-  const [selectedOption, setSelectedOption] = useState("cash");
+  const [selectedOption, setSelectedOption] = useState("uzum");
   const [loading, setLoading] = useState(true);
   const [users, setUser] = useState<User | null>(null);
   const [regions, setRegions] = useState<Region[]>([]);
@@ -319,14 +319,14 @@ const CartScreen = () => {
                         </IconWrapper>
                       </PaymentOption> */}
                       <PaymentOption
-                        selected={selectedOption === "cash"}
-                        onClick={() => setSelectedOption("cash")}
+                        selected={selectedOption === "CASH"}
+                        onClick={() => setSelectedOption("CASH")}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <RadioButton selected={selectedOption === "cash"}>
-                            <RadioCircle selected={selectedOption === "cash"} />
+                          <RadioButton selected={selectedOption === "CASH"}>
+                            <RadioCircle selected={selectedOption === "CASH"} />
                           </RadioButton>
-                          <OptionText selected={selectedOption === "cash"}>
+                          <OptionText selected={selectedOption === "CASH"}>
                             Naqd pul orqali qabul qilganda
                           </OptionText>
                         </div>
@@ -336,14 +336,14 @@ const CartScreen = () => {
                       </PaymentOption>
 
                       <PaymentOption
-                        selected={selectedOption === "uzum"}
-                        onClick={() => setSelectedOption("uzum")}
+                        selected={selectedOption === "UZUM"}
+                        onClick={() => setSelectedOption("UZUM")}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <RadioButton selected={selectedOption === "uzum"}>
-                            <RadioCircle selected={selectedOption === "uzum"} />
+                          <RadioButton selected={selectedOption === "UZUM"}>
+                            <RadioCircle selected={selectedOption === "UZUM"} />
                           </RadioButton>
-                          <OptionText selected={selectedOption === "uzum"}>
+                          <OptionText selected={selectedOption === "UZUM"}>
                             Uzum nasiya orqali sotib olish
                           </OptionText>
                         </div>
@@ -364,6 +364,7 @@ const CartScreen = () => {
                 payType={payType}
                 setInfoUserOpened={setInfoUserOpened}
                 infoUserOpened={infoUserOpened}
+                selectedOption={selectedOption}
               />
               {/* {width > 1200 ? (
                 <FormProvider {...form}>
