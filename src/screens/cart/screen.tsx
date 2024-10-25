@@ -84,9 +84,8 @@ const CartScreen = () => {
   const [payType, setPaytype] = useState(0);
   const [infoUserOpened, setInfoUserOpened] = useState(false);
   const { width } = useViewportSize();
-  // console.log(initialCart, "CartScreen");
   const [selectedOption, setSelectedOption] = useState("cash");
-
+  const [loading, setLoading] = useState(true);
   const [users, setUser] = useState<User | null>(null);
   const [regions, setRegions] = useState<Region[]>([]);
   const [districts, setDistricts] = useState<District[]>([]);
@@ -131,6 +130,7 @@ const CartScreen = () => {
           setDistricts(districtsResponse.data);
           setSelectedRegion(userResponse.data.address.region.id); // Set selected region
           setSelectedDistrict(userResponse.data.address.district.id); // Set selected district
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -138,7 +138,7 @@ const CartScreen = () => {
     };
 
     fetchUserProfile();
-  }, []);
+  }, [loading]);
 
   const [street, setStreet] = useState(users?.address?.street || "");
   const [home, setHome] = useState(users?.address?.home || "");
@@ -178,10 +178,9 @@ const CartScreen = () => {
     const districtId = Number(e.target.value);
     setSelectedDistrict(districtId);
   };
-
   return (
     <Wrapper>
-      {isLoading ? (
+      {loading ? (
         <Loader />
       ) : initialCart.length === 0 ? (
         <Container>
@@ -286,11 +285,10 @@ const CartScreen = () => {
                   </CustomerInfo>
                 </Grid.Col>
               )}
-
               <Grid className="mahsulotlar">
                 <h2>Savatdagi mahsulotlar</h2>
-                {initialCart.map((item: IProduct) => (
-                  <Grid.Col span={12} lg={12} key={item?.id}>
+                {initialCart.map((item: IProduct, i: number) => (
+                  <Grid.Col span={12} lg={12} key={i}>
                     <Card item={item} />
                   </Grid.Col>
                 ))}

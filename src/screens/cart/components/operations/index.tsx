@@ -8,19 +8,20 @@ import useStore from "@/store";
 interface ICount {
   count: number;
   id: string | number;
+  attributes: any;
 }
 
-export const Operations = ({ count, id }: ICount) => {
+export const Operations = ({ count, id, attributes }: ICount) => {
   const { increment, decrement } = useStore((state) => state);
 
   return (
     <ProductCount>
-      <Button onClick={() => decrement(id)} disabled={count === 1}>
+      <Button onClick={() => decrement(id, attributes)} disabled={count === 1}>
         {/* <DecrementIcon /> */}
         <span>-</span>
       </Button>
       <span>{count}</span>
-      <Button onClick={() => increment(id)}>
+      <Button onClick={() => increment(id, attributes)}>
         {/* <IncrementIcon /> */}
         <span>+</span>
       </Button>
