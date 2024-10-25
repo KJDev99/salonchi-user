@@ -16,6 +16,7 @@ export const useCheckout = ({
   notifOpen,
   value,
   payType,
+  selectedOption,
 }: ICheckoutProps) => {
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -41,7 +42,7 @@ export const useCheckout = ({
       }
     },
   });
-  console.log(initialCart, "initialCart");
+  console.log(selectedOption, "initialCart");
 
   const { data } = useQuery<any>({
     queryKey: [REACT_QUERY_KEYS.PAYMENT_STATUS],
@@ -72,7 +73,7 @@ export const useCheckout = ({
             current + item.productQuantity * item.price,
           0
         ),
-        payment_type: payType === 0 ? "CASH" : value,
+        payment_type: selectedOption,
         comment: comment,
         flow: sessionStorage.getItem("flow")
           ? sessionStorage.getItem("flow")

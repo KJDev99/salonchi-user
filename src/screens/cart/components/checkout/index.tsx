@@ -14,6 +14,7 @@ import { Notify } from "./notify";
 export interface ICheckoutProps {
   initialCart: IProduct[];
   comment: string;
+  selectedOption: string;
   open?: any;
   notifOpen?: any;
   notifyClose?: () => void;
@@ -30,6 +31,7 @@ export const Checkout = ({
   payType,
   infoUserOpened,
   setInfoUserOpened,
+  selectedOption,
 }: ICheckoutProps) => {
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -39,6 +41,7 @@ export const Checkout = ({
   const { onCheckout, isLoading } = useCheckout({
     initialCart,
     comment,
+    selectedOption,
     open,
     notifOpen,
     value,
