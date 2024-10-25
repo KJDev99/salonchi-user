@@ -5,6 +5,7 @@ export const Card = styled("div")`
   min-height: auto;
   cursor: pointer;
   display: flex;
+  align-items: center;
 `;
 
 export const Header = styled("div")`
@@ -37,7 +38,7 @@ export const Text = styled("p")`
   width: 98px;
   @media (max-width: 768px) {
     width: max-content;
-    margin: 8px 0;
+    margin: 0px 0;
     margin-left: 16px;
   }
 `;
