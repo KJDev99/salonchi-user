@@ -41,24 +41,30 @@ const useStore = create(
           quantity: state.quantity - 1,
         })),
 
-      increment: (id: string | number) =>
+      increment: (id: string | number, attributes: any[]) =>
         set((state: IStore) => ({
-          cart: state?.cart?.map((v: IProduct) => {
-            return {
-              ...v,
-              productQuantity:
-                v?.id === id ? v?.productQuantity + 1 : v?.productQuantity,
-            };
+          cart: state.cart?.map((v: IProduct) => {
+            const isIdMatch = v.id === id;
+            const isAttributeMatch =
+              JSON.stringify(v.attributes) === JSON.stringify(attributes);
+
+            // Increment only if both id and attributes match
+            return isIdMatch && isAttributeMatch
+              ? { ...v, productQuantity: v.productQuantity + 1 }
+              : v;
           }),
         })),
-      decrement: (id: string | number) =>
+      decrement: (id: string | number, attributes: any[]) =>
         set((state: IStore) => ({
-          cart: state?.cart?.map((v: IProduct) => {
-            return {
-              ...v,
-              productQuantity:
-                v?.id === id ? v?.productQuantity - 1 : v?.productQuantity,
-            };
+          cart: state.cart?.map((v: IProduct) => {
+            const isIdMatch = v.id === id;
+            const isAttributeMatch =
+              JSON.stringify(v.attributes) === JSON.stringify(attributes);
+
+            // Decrement only if both id and attributes match, ensuring quantity doesn't go below 1
+            return isIdMatch && isAttributeMatch && v.productQuantity > 1
+              ? { ...v, productQuantity: v.productQuantity - 1 }
+              : v;
           }),
         })),
       setCheckWhiteList: () =>

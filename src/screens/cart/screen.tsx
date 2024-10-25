@@ -93,7 +93,6 @@ const CartScreen = () => {
   const [selectedDistrict, setSelectedDistrict] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log(loading);
     const fetchUserProfile = async () => {
       try {
         const userDataString = localStorage.getItem("userData");

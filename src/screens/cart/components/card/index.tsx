@@ -113,7 +113,11 @@ export const Card = ({ item }: any) => {
           </div> */}
         </ContentHeader>
         <div className="operations">
-          <Operations count={item.productQuantity} id={item.id} />
+          <Operations
+            count={item.productQuantity}
+            id={item.id}
+            attributes={item.attributes}
+          />
           <div className="prices">
             <div>
               <h4 style={{ fontWeight: "300", fontSize: 16 }}>
