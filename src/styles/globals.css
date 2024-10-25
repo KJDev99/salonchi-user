@@ -174,4 +174,7 @@ input::placeholder {
     padding-right: 15px;
     padding-left: 15px;
   }
+  .mantine-dg2n8i.mantine-Carousel-container {
+    gap: 10px;
+  }
 }
