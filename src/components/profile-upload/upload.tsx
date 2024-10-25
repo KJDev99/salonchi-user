@@ -17,6 +17,7 @@ export const ProfileUpload = ({ setPhoto, image, setImage }: any) => {
   return (
     <Wrapper>
       <Box
+        className="profile-upload"
         sx={{
           display: "flex",
           // flexDirection: "column",

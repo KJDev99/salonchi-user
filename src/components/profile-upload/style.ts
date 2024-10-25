@@ -3,12 +3,30 @@ import styled from "@emotion/styled";
 export const Wrapper = styled("div")`
   position: relative;
   display: flex;
+  align-items: center;
+  /* background-color: black; */
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+  .profile-upload {
+    @media (max-width: 576px) {
+      /* flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; */
+      align-items: center;
+    }
+  }
   .upload-image {
     width: 169px;
     height: 169px;
     border-radius: 50%;
     object-position: top;
     object-fit: cover;
+    @media (max-width: 576px) {
+      width: 100px;
+      height: 100px;
+    }
   }
   .edit-pencil {
     /* position: absolute; */

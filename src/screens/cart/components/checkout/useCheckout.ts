@@ -31,7 +31,6 @@ export const useCheckout = ({
   });
   const { mutate, isLoading } = useMutation((data) => createOrder(data), {
     onSuccess: (res) => {
-      console.log("res", res);
       if (res?.data?.url) {
         // router.push(res?.data?.url);
         window.open(res?.data?.url);
@@ -42,14 +41,12 @@ export const useCheckout = ({
       }
     },
   });
-  console.log(selectedOption, "initialCart");
 
   const { data } = useQuery<any>({
     queryKey: [REACT_QUERY_KEYS.PAYMENT_STATUS],
     queryFn: () => paymentStatus(pyStatus),
     select: (res) => res?.data,
     onSuccess: (res: any) => {
-      console.log("res", res);
       if (res.state === 2) {
         toast.success(t("order success"));
         setPyStatus(false);
@@ -94,6 +91,7 @@ export const useCheckout = ({
         }),
       };
       if (user?.access) {
+        console.log("payload", payload);
         mutate(payload);
       } else {
         open();

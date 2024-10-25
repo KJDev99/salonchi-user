@@ -180,6 +180,7 @@ const CartScreen = () => {
     const districtId = Number(e.target.value);
     setSelectedDistrict(districtId);
   };
+  console.log(initialCart);
   return (
     <Wrapper>
       {loading ? (

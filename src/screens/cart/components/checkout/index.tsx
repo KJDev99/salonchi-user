@@ -50,7 +50,6 @@ export const Checkout = ({
   const [isFixed, setIsFixed] = useState(false);
   const [isTop, setIsTop] = useState(false);
   const [openLogin, setIsLogin] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const formElement = document.getElementById("form");
@@ -63,9 +62,7 @@ export const Checkout = ({
 
       const parentBottom = parentElement.getBoundingClientRect().bottom;
       const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY || window.pageYOffset; // Get current scroll position
-
-      // Trigger the action if the user has scrolled more than 120px and parent bottom is in range
+      const scrollY = window.scrollY || window.pageYOffset;
       if (scrollY >= 120) {
         setIsTop(true);
       } else {
@@ -163,7 +160,6 @@ export const Checkout = ({
                 if (userData) {
                   e.preventDefault();
                   setInfoUserOpened(true);
-                  console.log("if");
                 } else {
                   setIsLogin(true);
                 }
