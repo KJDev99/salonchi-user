@@ -5,12 +5,19 @@ export const Wrapper = styled("div")`
   padding: 76px 40px 40px 40px;
   border-radius: 12px 12px 0 0;
   position: relative;
+  @media (max-width: 576px) {
+    padding-top: 20px;
+  }
   .personal-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
     column-gap: 32px;
     margin-top: 50px;
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
     input {
       margin: 0;
       font-weight: 500;
