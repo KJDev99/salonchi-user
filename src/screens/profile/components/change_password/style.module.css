@@ -51,3 +51,8 @@
   background-color: var(--main-white);
   color: var(--main-bg-color);
 }
+@media (max-width: 576px) {
+  .form {
+    width: 100%;
+  }
+}

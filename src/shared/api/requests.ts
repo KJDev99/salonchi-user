@@ -13,14 +13,11 @@ const request = axios.create({
   },
 });
 
-
 const errorHandler = (error, hooks) => {
-
-  console.log("error2",error)
-	if (error?.response?.status === 404) {
-     toast.error(error.message)
-	}
-	return Promise.reject(error.response);
+  if (error?.response?.status === 404) {
+    toast.error(error.message);
+  }
+  return Promise.reject(error.response);
 };
 request.interceptors.request.use(async (config) => {
   if (typeof window !== undefined) {

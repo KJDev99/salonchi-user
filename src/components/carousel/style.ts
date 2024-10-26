@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled("div")`
   margin: 46px 0;
+  @media (max-width: 576px) {
+    margin: 24px 0;
+  }
   .mantine-Carousel-root {
     max-width: inherit;
     /* border-radius: 14px; */

@@ -91,7 +91,6 @@ export const useCheckout = ({
         }),
       };
       if (user?.access) {
-        console.log("payload", payload);
         mutate(payload);
       } else {
         open();

@@ -136,7 +136,7 @@ const FlowScreen = () => {
                   <Title>
                     {router.locale === "uz" ? data?.name_uz : data?.name_ru}
                   </Title>
-                  {console.log("atributer", attributes)}
+
                   {attributes?.attributes?.map((item: any, index: number) => {
                     return (
                       <>
