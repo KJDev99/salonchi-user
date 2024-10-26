@@ -11,8 +11,6 @@ interface IColumn {
 }
 
 export const Column = ({ productList, isLoading }: IColumn) => {
-  console.log("productList", productList);
-
   return (
     <Fragment>
       {isLoading ? (

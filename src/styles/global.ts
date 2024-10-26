@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 32px 0;
+  /* @media (max-width: 576px) {
+    padding: 12px 0;
+  } */
   .order-btn {
     font-family: var(--font-readex);
     font-weight: 400;
@@ -12,6 +15,13 @@ export const Wrapper = styled.div`
   }
   &.home-wrapper {
     padding: 0;
+  }
+  .home-grid {
+    gap: 18px;
+    margin-bottom: 20px;
+    @media (max-width: 576px) {
+      margin-bottom: 0;
+    }
   }
   .advertising {
     display: none;
@@ -178,13 +188,26 @@ export const Title = styled.h4`
   color: var(--input-color);
   margin: 17px 0 30px 0;
   padding: 0;
+  @media (max-width: 576px) {
+    margin: 0 0 10px 0;
+  }
   &.home-catalog-title {
     font-size: 28px;
-    margin: 17px 0 30px 0;
+    /* margin: 17px 0 30px 0; */
   }
   &.home-title {
     margin-top: 30px;
     font-size: 28px;
+    @media (max-width: 576px) {
+      padding-left: 10px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  }
+  &.home-titlee {
+    @media (max-width: 576px) {
+      margin: 0;
+    }
   }
   &.catalog-title-2 {
     font-size: 28px;
@@ -225,7 +248,7 @@ export const Title = styled.h4`
   @media (max-width: 576px) {
     &.home-title {
       font-size: 20px;
-      margin-top: 24px;
+      /* margin-top: 10px; */
     }
     &.cart-title {
       font-size: 18px;

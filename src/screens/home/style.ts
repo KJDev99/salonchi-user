@@ -5,6 +5,9 @@ export const Paging = styled("div")`
   display: flex;
   justify-content: center;
   padding: 32px 0;
+  @media (max-width: 576px) {
+    padding: 10px 0;
+  }
   .show-more {
     width: 287px;
     cursor: pointer;

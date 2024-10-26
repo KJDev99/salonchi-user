@@ -38,11 +38,11 @@ const HomeScreen = () => {
       {/* <Catalog /> */}
       <Container>
         <Slider />
-        <Title className="home-title">{t("home.title")}</Title>
+        <Title className="home-title home-titlee">{t("home.title")}</Title>
         {isLoading ? (
           <UISkeleton />
         ) : (
-          <Grid gutter={0} style={{ gap: "18px", marginBottom: "20px" }}>
+          <Grid className="home-grid" gutter={0}>
             {data?.pages?.map((page, idx) => {
               return (
                 <Grid key={idx}>

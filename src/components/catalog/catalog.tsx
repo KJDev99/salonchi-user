@@ -49,7 +49,6 @@ export const Catalog = ({
     if (open) {
       document.body.style.overflow = "hidden";
       document.body.style.height = "100vh";
-      console.log("nimadir ishladimi ??? ");
     } else {
       document.body.style.overflow = "";
     }
