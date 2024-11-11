@@ -28,7 +28,9 @@ export const useProducts = () => {
     ],
     () =>
       request(
-        `/product/list/${router.query.slug}?limit=15&offset=${activePage}`
+        `/product/list/${router.query.slug}?limit=15&offset=${
+          (activePage - 1) * 15
+        }`
       ),
     {
       select: (res: any) => {
