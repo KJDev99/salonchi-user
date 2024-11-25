@@ -61,7 +61,7 @@ const Advertising = ({ id }: any) => {
     setLoading2(true);
     const res = await request.post(`lead`, {
       name,
-      phone: phone.replaceAll("-", ""),
+      phone: phone,
       product: id,
     });
     setLoading2(false);
