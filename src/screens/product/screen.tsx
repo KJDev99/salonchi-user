@@ -314,7 +314,7 @@ const ProductScreen = () => {
                     </span>
                   </div>
                   {/* {console.log(`item`, active)} */}
-                  {attributes?.map((item: any, index: number) => {
+                  {attributes.attributes?.map((item: any, index: number) => {
                     return (
                       <>
                         {item?.type == "TEXT" && (
