@@ -25,6 +25,7 @@ export interface IProduct {
   attributes?: [];
   amount?: number;
   old_price?: number;
+  variant?: any;
 }
 
 interface IMedia {

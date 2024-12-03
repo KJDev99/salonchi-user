@@ -122,7 +122,10 @@ export const Card = ({ item }: any) => {
             <div>
               <h4 style={{ fontWeight: "300", fontSize: 16 }}>
                 <NumberFormat
-                  value={item?.price * item?.productQuantity || 0}
+                  value={
+                    (item.variant?.price || item?.price) *
+                      item?.productQuantity || 0
+                  }
                 />{" "}
                 {t("card.currency")}
               </h4>
@@ -136,7 +139,10 @@ export const Card = ({ item }: any) => {
                   whiteSpace: "nowrap",
                 }}
               >
-                <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
+                <NumberFormat
+                  value={(item.variant?.price || item?.price) ?? 0}
+                />{" "}
+                {t("card.currency")}
                 /donasi
               </h4>
             </div>

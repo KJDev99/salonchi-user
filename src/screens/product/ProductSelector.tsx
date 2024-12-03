@@ -54,14 +54,10 @@ const ProductVariantSelector = ({
   const [amount, setAmount] = useState(1);
   const { t } = useTranslation("common");
 
-  // Find variant based on selected attributes
   useEffect(() => {
-    // console.log(attributes);
-    // Check if all required attributes are selected
     const allAttributesSelected = attributes.every(
       (_, index) => active[index] !== undefined
     );
-    console.log("allAttributesSelected: ", active);
     if (allAttributesSelected) {
       const selectedAttributeValues = attributes.reduce((acc, attr, index) => {
         const attrName = attr.type === "IMAGE" ? "rangi" : "xotira";
@@ -103,14 +99,33 @@ const ProductVariantSelector = ({
 
     const newProduct = {
       ...data,
-      ...currentVariant,
+      price: currentVariant.price,
+      old_price: currentVariant.old_price,
+      count: currentVariant.count,
       amount,
+      variant: currentVariant,
       attributes: active,
     };
-
     addToCart(newProduct);
   };
-
+  const minimumPriceFinder = () => {
+    let min = variants[0].price;
+    variants.forEach((variant: any) => {
+      if (variant.price < min) {
+        min = variant.price;
+      }
+    });
+    return min;
+  };
+  const minimumOldPrice = () => {
+    let min = variants[0].old_price;
+    variants.forEach((variant: any) => {
+      if (variant.old_price < min) {
+        min = variant.old_price;
+      }
+    });
+    return min;
+  };
   return (
     <>
       {attributes.map((attr, index) => (
@@ -187,11 +202,11 @@ const ProductVariantSelector = ({
               ) : (
                 <>
                   <h2 className="main-price">
-                    <NumberFormat value={data.price} />{" "}
+                    <NumberFormat value={minimumPriceFinder()} />{" "}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
                   <h2 className="old-price">
-                    <NumberFormat value={data.old_price} />{" "}
+                    <NumberFormat value={minimumOldPrice()} />{" "}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
                 </>

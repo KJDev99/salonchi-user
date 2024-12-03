@@ -49,8 +49,7 @@ const ProductScreen = () => {
   const [amout, setAmout] = useState<any>(1);
   const [rates, setRates] = useState<any>();
   const [active, setActive] = useState<any>({});
-  const addToCart = () => {
-    console.log(active);
+  const addToCart = (product?: any) => {
     const attributes =
       data.attributes.attributes.length === 0 ? [] : Object.values(active);
     const selectedAttribute = data.attributes.attributes.find(
@@ -87,8 +86,8 @@ const ProductScreen = () => {
         media: selectedImage, // Use selected attribute's image
         attributes, // Add attributes to the new product
         box: boxList?.find((v: any) => v?.selected)?.id,
+        variant: product?.variant,
       };
-
       addCart(newProduct); // Add the new product to the cart
     }
   };
@@ -129,11 +128,6 @@ const ProductScreen = () => {
       setChecked(false);
     }
   }, [wishlist, data?.id]);
-
-  function addOne(value: number) {
-    if (value == -1 && amout == 0) return false;
-    setAmout(amout + value);
-  }
   // console.log(data);
   const getRates = async () => {
     const res = await request.get("product/" + data?.id + "/rate");
