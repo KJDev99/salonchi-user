@@ -1,12 +1,7 @@
 import React from "react";
 import { NumericFormat } from "react-number-format";
 
-interface INumberFormat {
-  value: number;
-  style?: object;
-}
-
-export const NumberFormat = ({ value, style }: INumberFormat) => {
+export const NumberFormat = ({ value, style }: any) => {
   return (
     <NumericFormat
       value={value}

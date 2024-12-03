@@ -23,7 +23,7 @@ export const CartMenu = () => {
     e.stopPropagation();
     router.push("/cart");
   };
-
+  console.log(menu);
   return (
     <Wrapper>
       <Menu.Dropdown>
@@ -40,7 +40,8 @@ export const CartMenu = () => {
             <p className="product-info">
               <span className="product-name">{v.name}</span>
               <span>
-                <NumberFormat value={v.price ?? 0} /> {t("card.currency")}
+                <NumberFormat value={(v.variant.price || v.price) ?? 0} />{" "}
+                {t("card.currency")}
               </span>
             </p>
             <ActionIcon

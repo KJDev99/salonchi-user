@@ -97,7 +97,9 @@ export const Checkout = ({
               <NumberFormat
                 value={initialCart?.reduce(
                   (current, item: IProduct) =>
-                    current + item.productQuantity * item.price,
+                    current +
+                    item.productQuantity *
+                      (item?.variant?.price ? item.variant.price : item.price),
                   0
                 )}
               />{" "}
@@ -132,7 +134,11 @@ export const Checkout = ({
                       value={
                         initialCart?.reduce(
                           (current, item: IProduct) =>
-                            current + item.productQuantity * item.price,
+                            current +
+                            item.productQuantity *
+                              (item?.variant?.price
+                                ? item.variant.price
+                                : item.price),
                           0
                         ) + 45000
                       }

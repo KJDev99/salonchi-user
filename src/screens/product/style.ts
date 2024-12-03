@@ -106,7 +106,7 @@ export const RightContent = styled("div")`
     display: flex;
     align-items: center;
     gap: 5px;
-    margin-top: 10px;
+    margin-top: 5px;
   }
   .rating span {
     color: #9da4ae;
@@ -137,9 +137,9 @@ export const RightContent = styled("div")`
   }
   .card-options {
     display: flex;
-    gap: 40px;
+    gap: 25px;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 25px;
   }
   .subtitle {
     font-size: 18px;
