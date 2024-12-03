@@ -24,6 +24,7 @@ export interface IProduct {
   is_cheap?: boolean;
   attributes?: [];
   amount?: number;
+  old_price?: number;
 }
 
 interface IMedia {
