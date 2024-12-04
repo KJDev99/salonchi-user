@@ -23,7 +23,6 @@ export const CartMenu = () => {
     e.stopPropagation();
     router.push("/cart");
   };
-  console.log(menu);
   return (
     <Wrapper>
       <Menu.Dropdown>

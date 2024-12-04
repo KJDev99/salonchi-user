@@ -127,32 +127,44 @@ const ProductVariantSelector = ({
     return min;
   };
   return (
-    <>
+    <div
+      style={{
+        margin: "20px 0",
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
       {attributes.map((attr, index) => (
-        <div key={attr.id}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "2px" }}
+          key={attr.id}
+        >
           <p className="subtitle">
             {router.locale === "uz" ? attr.name_uz : attr.name_ru}
           </p>
-          {attr.type === "IMAGE" ? (
-            <Colors
-              colors={attr.values}
-              active={active}
-              setActive={setActive}
-              index={index}
-              atributErr={colorErr}
-              setAtributErr={setColorErr}
-              handleAttributeImageClick={handleAttributeImageClick} // You may want to implement this if needed
-            />
-          ) : (
-            <Attributes
-              values={attr.values}
-              active={active}
-              setActive={setActive}
-              index={index}
-              atributErr={attributeErr}
-              setAtributErr={setAttributeErr}
-            />
-          )}
+          <div style={{}}>
+            {attr.type === "IMAGE" ? (
+              <Colors
+                colors={attr.values}
+                active={active}
+                setActive={setActive}
+                index={index}
+                atributErr={colorErr}
+                setAtributErr={setColorErr}
+                handleAttributeImageClick={handleAttributeImageClick} // You may want to implement this if needed
+              />
+            ) : (
+              <Attributes
+                values={attr.values}
+                active={active}
+                setActive={setActive}
+                index={index}
+                atributErr={attributeErr}
+                setAtributErr={setAttributeErr}
+              />
+            )}
+          </div>
         </div>
       ))}
 
@@ -300,7 +312,7 @@ const ProductVariantSelector = ({
           )}
         </Footer>
       </div>
-    </>
+    </div>
   );
 };
 
