@@ -37,6 +37,7 @@ export const Colors = ({
                   }`}
                   onClick={() => {
                     clickColor(color?.id, color?.value);
+                    console.log(color?.value, color?.id);
                     setAtributErr(false);
                   }}
                 >

@@ -39,7 +39,7 @@ export const CartMenu = () => {
             <p className="product-info">
               <span className="product-name">{v.name}</span>
               <span>
-                <NumberFormat value={(v.variant.price || v.price) ?? 0} />{" "}
+                <NumberFormat value={(v.variant?.price || v.price) ?? 0} />{" "}
                 {t("card.currency")}
               </span>
             </p>
