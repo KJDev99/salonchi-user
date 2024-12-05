@@ -58,15 +58,19 @@ const ProductVariantSelector = ({
     const allAttributesSelected = attributes.every(
       (_, index) => active[index] !== undefined
     );
+
     if (allAttributesSelected) {
       const selectedAttributeValues = attributes.reduce((acc, attr, index) => {
-        const attrName = attr.type === "IMAGE" ? "rangi" : "xotira";
         const selectedValue = attr.values.find(
           (v: any) => v.id === active[index]
         );
+
+        // Use the name in the variant's attributes (Rangi, O'lchami)
+        const attrKey = attr.type === "IMAGE" ? "Rangi" : attr.name_uz;
+
         return {
           ...acc,
-          [attrName]: selectedValue?.title || selectedValue?.label,
+          [attrKey]: selectedValue?.title || selectedValue?.label,
         };
       }, {});
 
@@ -81,7 +85,6 @@ const ProductVariantSelector = ({
       setCurrentVariant(null);
     }
   }, [active, variants, attributes]);
-
   // Adjust quantity
   const adjustAmount = (value: number) => {
     if (value === -1 && amount <= 1) return;
