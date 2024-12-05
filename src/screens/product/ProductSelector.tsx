@@ -91,7 +91,7 @@ const ProductVariantSelector = ({
 
   // Add to cart handler
   const handleAddToCart = () => {
-    if (!currentVariant) {
+    if (!currentVariant && variants.length > 0) {
       setAttributeErr(true);
       setColorErr(true);
       return;
@@ -99,9 +99,9 @@ const ProductVariantSelector = ({
 
     const newProduct = {
       ...data,
-      price: currentVariant.price,
-      old_price: currentVariant.old_price,
-      count: currentVariant.count,
+      price: currentVariant?.price || minimumPriceFinder(),
+      old_price: currentVariant?.old_price || minimumOldPrice(),
+      count: currentVariant?.count || data.count,
       amount,
       variant: currentVariant,
       attributes: active,
@@ -109,6 +109,7 @@ const ProductVariantSelector = ({
     addToCart(newProduct);
   };
   const minimumPriceFinder = () => {
+    if (variants.length === 0) return data.price;
     let min = variants[0].price;
     variants.forEach((variant: any) => {
       if (variant.price < min) {
@@ -118,6 +119,7 @@ const ProductVariantSelector = ({
     return min;
   };
   const minimumOldPrice = () => {
+    if (variants.length === 0) return data.old_price;
     let min = variants[0].old_price;
     variants.forEach((variant: any) => {
       if (variant.old_price < min) {
@@ -127,32 +129,44 @@ const ProductVariantSelector = ({
     return min;
   };
   return (
-    <>
+    <div
+      style={{
+        margin: "20px 0",
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
       {attributes.map((attr, index) => (
-        <div key={attr.id}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "2px" }}
+          key={attr.id}
+        >
           <p className="subtitle">
             {router.locale === "uz" ? attr.name_uz : attr.name_ru}
           </p>
-          {attr.type === "IMAGE" ? (
-            <Colors
-              colors={attr.values}
-              active={active}
-              setActive={setActive}
-              index={index}
-              atributErr={colorErr}
-              setAtributErr={setColorErr}
-              handleAttributeImageClick={handleAttributeImageClick} // You may want to implement this if needed
-            />
-          ) : (
-            <Attributes
-              values={attr.values}
-              active={active}
-              setActive={setActive}
-              index={index}
-              atributErr={attributeErr}
-              setAtributErr={setAttributeErr}
-            />
-          )}
+          <div style={{}}>
+            {attr.type === "IMAGE" ? (
+              <Colors
+                colors={attr.values}
+                active={active}
+                setActive={setActive}
+                index={index}
+                atributErr={colorErr}
+                setAtributErr={setColorErr}
+                handleAttributeImageClick={handleAttributeImageClick} // You may want to implement this if needed
+              />
+            ) : (
+              <Attributes
+                values={attr.values}
+                active={active}
+                setActive={setActive}
+                index={index}
+                atributErr={attributeErr}
+                setAtributErr={setAttributeErr}
+              />
+            )}
+          </div>
         </div>
       ))}
 
@@ -173,12 +187,6 @@ const ProductVariantSelector = ({
             />
             <span onClick={() => adjustAmount(1)}>+</span>
           </div>
-          {currentVariant && (
-            <p>
-              {router.locale === "uz" ? "Sotuvda mavjud" : "Доступно"}:{" "}
-              {currentVariant.count} {router.locale === "uz" ? "ta" : "шт."}
-            </p>
-          )}
         </div>
 
         {/* Price Display */}
@@ -213,13 +221,17 @@ const ProductVariantSelector = ({
               )}
             </div>
           </div>
+          {currentVariant && (
+            <h3 className="subtitle">
+              {router.locale === "uz" ? "Sotuvda mavjud" : "Доступно"}:{" "}
+              {currentVariant.count} {router.locale === "uz" ? "ta" : "шт."}
+            </h3>
+          )}
         </div>
-
         {/* Add to Cart Button */}
         <Footer>
           {cart?.find((v: IProduct) => {
             const isIdMatch = v.id === Number(slug);
-
             const isAttributeMatch = v.attributes?.every(
               (attr: any, index: number) => {
                 const activeKey = active && Object.keys(active)[index];
@@ -266,7 +278,11 @@ const ProductVariantSelector = ({
             <div style={{ display: "flex" }} className="buy-btns">
               <Button
                 onClick={() => {
-                  if (active || attributes.length === 0) {
+                  if (
+                    Object.keys(active).length > 0 ||
+                    attributes.length === 0
+                  ) {
+                    console.log(active);
                     handleAddToCart();
                   } else {
                     setAttributeErr(true);
@@ -300,7 +316,7 @@ const ProductVariantSelector = ({
           )}
         </Footer>
       </div>
-    </>
+    </div>
   );
 };
 

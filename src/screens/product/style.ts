@@ -148,7 +148,8 @@ export const RightContent = styled("div")`
   }
   .cardPrice {
     display: flex;
-    gap: 56px;
+    flex-direction: column;
+    /* gap: 56px; */
 
     .price-box {
       display: flex;
