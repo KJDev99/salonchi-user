@@ -53,7 +53,6 @@ const ProductVariantSelector = ({
   const [currentVariant, setCurrentVariant] = useState<Variant | null>(null);
   const [amount, setAmount] = useState(1);
   const { t } = useTranslation("common");
-
   useEffect(() => {
     const allAttributesSelected = attributes.every(
       (_, index) => active[index] !== undefined
@@ -66,7 +65,7 @@ const ProductVariantSelector = ({
         );
 
         // Use the name in the variant's attributes (Rangi, O'lchami)
-        const attrKey = attr.type === "IMAGE" ? "Rangi" : attr.name_uz;
+        const attrKey = attr.name_uz;
 
         return {
           ...acc,

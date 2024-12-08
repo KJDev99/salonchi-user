@@ -61,12 +61,13 @@ const ProductScreen = () => {
     );
 
     // Get the image URL from the selected attribute if it exists
-    const selectedImage = selectedAttribute
-      ? selectedAttribute.values.find(
-          (val: any) => val.id === active[Object.keys(active)[0]]
-        )?.value // Get the selected image URL
-      : data?.media[0]?.file; // Fallback to the first product image if no attribute is selected
-
+    const selectedImage =
+      selectedAttribute && selectedAttribute.type === "IMAGE"
+        ? selectedAttribute.values.find(
+            (val: any) => val.id === active[Object.keys(active)[0]]
+          )?.value // Get the selected image URL
+        : data?.media[0]?.file; // Fallback to the first product image if no attribute is selected
+    console.log(selectedAttribute);
     const existingProduct = cart?.find((v: IProduct) => {
       const isIdMatch = v.id === Number(slug);
       const isAttributeMatch =

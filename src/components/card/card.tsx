@@ -48,6 +48,27 @@ export const CustomCard = ({
     cart,
     item,
   });
+  const minimumPriceFinder = () => {
+    if (item?.variants && item.variants?.length > 0) {
+      let min = item?.variants[0]?.price;
+      item?.variants?.forEach((variant: any) => {
+        if (variant?.price < min) {
+          min = variant.price;
+        }
+      });
+      return min;
+    } else return item?.price;
+  };
+  const minimumOldPrice = () => {
+    if (item.variants.length === 0 && !item.variants) return item.old_price;
+    let min = item.variants[0].old_price;
+    item.variants.forEach((variant: any) => {
+      if (variant.old_price < min) {
+        min = variant.old_price;
+      }
+    });
+    return min;
+  };
   const { t } = useTranslation("common");
   const { width } = useViewportSize();
   // console.log(item);
@@ -119,7 +140,7 @@ export const CustomCard = ({
             )}
             <NumberFormat
               style={{ color: "#1F2A37", fontWeight: 500, fontSize: "16px" }}
-              value={item?.price ?? 0}
+              value={minimumPriceFinder() ?? 0}
             />
             <span
               style={{ color: "#1F2A37", fontWeight: 500, fontSize: "16px" }}
