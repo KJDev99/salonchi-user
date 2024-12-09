@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import { Pagination as CustomPagination } from '@mantine/core';
-import { PageWrap } from './style';
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { Pagination as CustomPagination } from "@mantine/core";
+import { PageWrap } from "./style";
 
 interface IPagination {
   productCount: number;
@@ -21,14 +21,14 @@ export const Pagination = ({
         total={Math.ceil(productCount / 12)}
         styles={() => ({
           control: {
-            '&[data-active]': {
-              backgroundImage: 'transparent',
-              background: 'transparent !important',
-              color: 'var(--btn-red)',
-              border: '1px solid var(--btn-red)',
-              fontFamily: 'Readex Pro',
+            "&[data-active]": {
+              backgroundImage: "transparent",
+              background: "transparent !important",
+              color: "var(--btn-red)",
+              border: "1px solid var(--btn-red)",
+              fontFamily: "Readex Pro",
             },
-            border: '1px solid #626262',
+            border: "1px solid #626262",
           },
         })}
       />

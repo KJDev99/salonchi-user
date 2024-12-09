@@ -38,7 +38,7 @@ export const useProducts = () => {
       request(`/product/list`, {
         params: {
           search: router.query.search,
-          offset: activePage,
+          offset: (activePage - 1) * 12,
           limit: 12,
           filter_type: filters !== "" ? filters : "",
           brand: brand.length > 0 ? brand : undefined,
