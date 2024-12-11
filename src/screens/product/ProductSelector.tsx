@@ -78,7 +78,6 @@ const ProductVariantSelector = ({
           ([key, value]) => variant.attributes[key] === value
         )
       );
-
       setCurrentVariant(matchedVariant || null);
     } else {
       setCurrentVariant(null);
@@ -129,6 +128,16 @@ const ProductVariantSelector = ({
       }
     });
     return min;
+  };
+  const maximumAmountFinder = () => {
+    if (variants.length === 0) return data.count;
+    let max = variants[0].count;
+    variants.forEach((variant: any) => {
+      if (variant.count > max) {
+        max = variant.count;
+      }
+    });
+    return max;
   };
   return (
     <div
@@ -223,12 +232,11 @@ const ProductVariantSelector = ({
               )}
             </div>
           </div>
-          {currentVariant && (
-            <h3 className="subtitle">
-              {router.locale === "uz" ? "Sotuvda mavjud" : "Доступно"}:{" "}
-              {currentVariant.count} {router.locale === "uz" ? "ta" : "шт."}
-            </h3>
-          )}
+
+          <h3 className="subtitle">
+            {router.locale === "uz" ? "Sotuvda mavjud" : "Доступно"}:{" "}
+            {maximumAmountFinder()} {router.locale === "uz" ? "ta" : "шт."}
+          </h3>
         </div>
         {/* Add to Cart Button */}
         <Footer>

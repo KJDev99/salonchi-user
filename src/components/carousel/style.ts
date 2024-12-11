@@ -11,11 +11,11 @@ export const Wrapper = styled("div")`
     position: relative;
     & > div {
       border-radius: 14px;
-      max-height: 310px;
+      max-height: auto;
     }
   }
   .mantine-Carousel-slide {
-    height: 310px;
+    height: auto;
   }
   .carousel-link {
     width: 100%;
@@ -35,21 +35,6 @@ export const Wrapper = styled("div")`
   }
   .carousel-slider {
     /* height: 310px !important; */
-  }
-  @media (max-width: 1024px) {
-    .mantine-Carousel-slide {
-      height: 250px;
-    }
-  }
-  @media (max-width: 576px) {
-    .mantine-Carousel-slide {
-      height: 210px;
-    }
-  }
-  @media (max-width: 300px) {
-    .mantine-Carousel-slide {
-      height: 180px;
-    }
   }
 `;
 
