@@ -33,7 +33,7 @@ export const Slider = () => {
           maw={320}
           mx="auto"
           mih={119}
-          mah={310}
+          mah={400}
           slideGap="md"
           align="start"
           loop
@@ -69,8 +69,8 @@ export const Slider = () => {
                       alt="group"
                       priority
                       quality={100}
-                      width={0}
-                      height={0}
+                      width={1248}
+                      height={400}
                       sizes="100vw"
                       className="carousel-image"
                     />
@@ -84,8 +84,8 @@ export const Slider = () => {
                       alt="group"
                       priority
                       quality={100}
-                      width={0}
-                      height={0}
+                      width={1248}
+                      height={400}
                       sizes="100vw"
                       className="carousel-image"
                     />
