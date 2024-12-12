@@ -65,7 +65,7 @@ const Advertising = ({ id }: any) => {
       product: id,
     });
     setLoading2(false);
-    if (res.status === 201) {
+    if (res.status === 200 || res.status === 201) {
       toast.success("Siz muvaffaqiyatli ro`yxatdan o`tdingiz");
       router.push("/product/" + id);
     }

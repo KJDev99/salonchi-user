@@ -15,7 +15,6 @@ const useStore = create(
       comment: "",
       setComment: (payload: string) => set(() => ({ comment: payload })),
       addToCart: (payload: IProduct) => {
-        // console.log("nimadir", payload);
         return set((state: IStore) => ({
           cart: [
             ...state.cart,
@@ -30,12 +29,9 @@ const useStore = create(
       removeItem: (id: string | number, attributes: any[]) =>
         set((state: IStore) => ({
           cart: state.cart?.filter((v: IProduct) => {
-            // Check both the product ID and attributes
             const isIdMatch = v.id !== id;
             const isAttributeMatch =
               JSON.stringify(v.attributes) !== JSON.stringify(attributes);
-
-            // Only remove if both the ID and attributes don't match
             return isIdMatch || isAttributeMatch;
           }),
           quantity: state.quantity - 1,
@@ -47,8 +43,6 @@ const useStore = create(
             const isIdMatch = v.id === id;
             const isAttributeMatch =
               JSON.stringify(v.attributes) === JSON.stringify(attributes);
-
-            // Increment only if both id and attributes match
             return isIdMatch && isAttributeMatch
               ? { ...v, productQuantity: v.productQuantity + 1 }
               : v;
@@ -60,8 +54,6 @@ const useStore = create(
             const isIdMatch = v.id === id;
             const isAttributeMatch =
               JSON.stringify(v.attributes) === JSON.stringify(attributes);
-
-            // Decrement only if both id and attributes match, ensuring quantity doesn't go below 1
             return isIdMatch && isAttributeMatch && v.productQuantity > 1
               ? { ...v, productQuantity: v.productQuantity - 1 }
               : v;

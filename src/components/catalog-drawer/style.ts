@@ -29,6 +29,9 @@ export const Paper = styled("div")<any>`
       line-height: 2;
       cursor: pointer;
       font-size: 14px;
+      img {
+        margin-right: 6px;
+      }
       &:hover {
         color: var(--main-bg-color);
       }

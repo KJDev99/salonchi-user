@@ -22,6 +22,7 @@ const FavouriteScreen = () => {
         setFavourites(
           wishlist.filter((c: any) => res?.data?.ids.includes(c.id))
         );
+        console.log(res, "dataaaaa");
       },
     }
   );
