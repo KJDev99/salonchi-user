@@ -38,7 +38,10 @@ const CategoriesScreen = () => {
       <Pagination
         productCount={productList.count}
         activePage={activePage}
-        setPage={(e) => setPage(e)}
+        setPage={(e) => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setPage(e);
+        }}
       />
     </Sidebar>
   );

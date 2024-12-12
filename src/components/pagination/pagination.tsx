@@ -24,8 +24,8 @@ export const Pagination = ({
             "&[data-active]": {
               backgroundImage: "transparent",
               background: "transparent !important",
-              color: "var(--btn-red)",
-              border: "1px solid var(--btn-red)",
+              color: "var(--main-bg-color)",
+              border: "1px solid var(--main-bg-color)",
               fontFamily: "Readex Pro",
             },
             border: "1px solid #626262",
