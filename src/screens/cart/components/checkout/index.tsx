@@ -22,6 +22,8 @@ export interface ICheckoutProps {
   payType: number;
   infoUserOpened?: any;
   setInfoUserOpened?: any;
+  handleProfileChange?: any;
+  checkProfile?: boolean;
 }
 
 export const Checkout = ({
@@ -32,6 +34,8 @@ export const Checkout = ({
   infoUserOpened,
   setInfoUserOpened,
   selectedOption,
+  handleProfileChange,
+  checkProfile,
 }: ICheckoutProps) => {
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -152,9 +156,21 @@ export const Checkout = ({
         </Header>
         <Body>
           {infoUserOpened ? (
-            <Button color="red" type="submit" className="order-btn" form="form">
-              {t("place an order")}
-            </Button>
+            checkProfile ? (
+              <Button
+                onClick={() => handleProfileChange()}
+                color="red"
+                type="submit"
+                className="order-btn"
+                form="form"
+              >
+                {t("place an order")}
+              </Button>
+            ) : (
+              <Button color="red" className="order-btn order-btn-disable">
+                {t("place an order")}
+              </Button>
+            )
           ) : (
             <Button
               color="red"

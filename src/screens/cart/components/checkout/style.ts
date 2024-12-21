@@ -26,6 +26,9 @@ export const Form = styled("form")`
     width: 100%;
     margin-top: 35px;
   }
+  .order-btn-disable {
+    cursor: no-drop;
+  }
   @media (max-width: 768px) {
     padding: 5px 15px;
     border-radius: 4px;

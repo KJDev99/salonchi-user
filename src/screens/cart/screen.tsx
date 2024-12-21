@@ -31,6 +31,7 @@ import Uzcard from "@/assets/icons/uzcard.png";
 import Humo from "@/assets/icons/humo.png";
 import Image from "next/image";
 import axios from "axios";
+import { log } from "console";
 
 interface User {
   id: number;
@@ -92,6 +93,11 @@ const CartScreen = () => {
   const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
   const [selectedDistrict, setSelectedDistrict] = useState<number | null>(null);
 
+  const [street, setStreet] = useState(users?.address?.street || "");
+  const [home, setHome] = useState(users?.address?.home || "");
+
+  const [checkProfile, setCheckProfile] = useState(false);
+
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -116,20 +122,20 @@ const CartScreen = () => {
         );
         setUser(userResponse.data);
 
-        // Fetch regions list
         const regionsResponse = await axios.get(
           "https://api.salonchi.uz/api/v1/region/list"
         );
         setRegions(regionsResponse.data);
 
-        // Fetch districts if the user already has a selected region
+        setHome(userResponse.data.address.home);
+        setStreet(userResponse.data.address.street);
         if (userResponse.data?.address?.region?.id) {
           const districtsResponse = await axios.get(
             `https://api.salonchi.uz/api/v1/region/district/${userResponse.data.address.region.id}/list`
           );
           setDistricts(districtsResponse.data);
-          setSelectedRegion(userResponse.data.address.region.id); // Set selected region
-          setSelectedDistrict(userResponse.data.address.district.id); // Set selected district
+          setSelectedRegion(userResponse.data.address.region.id);
+          setSelectedDistrict(userResponse.data.address.district.id);
           setLoading(false);
         }
       } catch (error) {
@@ -142,29 +148,21 @@ const CartScreen = () => {
     fetchUserProfile();
   }, [loading]);
 
-  const [street, setStreet] = useState(users?.address?.street || "");
-  const [home, setHome] = useState(users?.address?.home || "");
-
-  // Handle street change
   const handleStreetChange = (e: any) => {
     setStreet(e.target.value);
   };
 
-  // Handle home change
   const handleHomeChange = (e: any) => {
     setHome(e.target.value);
   };
 
-  // Handle region change and fetch districts
   const handleRegionChange = async (e: any) => {
     const regionId = Number(e.target.value);
     setSelectedRegion(regionId);
 
-    // Reset districts and selected district when region changes
     setDistricts([]);
     setSelectedDistrict(null);
 
-    // Fetch districts for the selected region
     try {
       const districtsResponse = await axios.get(
         `https://api.salonchi.uz/api/v1/region/district/${regionId}/list`
@@ -175,12 +173,56 @@ const CartScreen = () => {
     }
   };
 
-  // Handle district selection
   const handleDistrictChange = (e: any) => {
     const districtId = Number(e.target.value);
     setSelectedDistrict(districtId);
   };
-  console.log(initialCart);
+
+  useEffect(() => {
+    if (home && street && selectedRegion && selectedDistrict) {
+      setCheckProfile(true);
+    } else {
+      setCheckProfile(false);
+    }
+  }, [home, street, selectedRegion, selectedDistrict]);
+
+  const handleProfileChange = async () => {
+    try {
+      const userDataString = localStorage.getItem("userData");
+      let userData;
+      if (userDataString) {
+        try {
+          userData = JSON.parse(userDataString);
+        } catch (error) {
+          console.error("Error parsing JSON:", error);
+        }
+      }
+      const address: any = {};
+
+      if (street) address.street = street;
+      if (home) address.home = home;
+      if (selectedRegion) address.region = selectedRegion;
+      if (selectedDistrict) address.district = selectedDistrict;
+      const formData: any = {
+        address: address,
+        firstname: "Jamshid",
+      };
+      if (home && street && selectedRegion && selectedDistrict) {
+        await axios.put(
+          `https://api.salonchi.uz/api/v1/user/profile`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${userData?.access}`,
+            },
+          }
+        );
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
+  };
+
   return (
     <Wrapper>
       {loading ? (
@@ -256,7 +298,7 @@ const CartScreen = () => {
                           </select>
                         </div>
                         <div className="inputs">
-                          <label>Ko’cha (ixtiyoriy)</label>
+                          <label>Ko’cha</label>
                           <input
                             type="text"
                             value={street}
@@ -266,7 +308,7 @@ const CartScreen = () => {
                         </div>
 
                         <div className="inputs">
-                          <label>Uy raqami (ixtiyoriy)</label>
+                          <label>Uy raqami</label>
                           <input
                             type="text"
                             value={home}
@@ -336,7 +378,7 @@ const CartScreen = () => {
                         </IconWrapper>
                       </PaymentOption>
 
-                      <PaymentOption
+                      {/* <PaymentOption
                         selected={selectedOption === "UZUM"}
                         onClick={() => setSelectedOption("UZUM")}
                       >
@@ -351,7 +393,7 @@ const CartScreen = () => {
                         <IconWrapper>
                           <Image src={Nasiya} alt="Uzum" />
                         </IconWrapper>
-                      </PaymentOption>
+                      </PaymentOption> */}
                     </Left>
                   </CustomerInfo>
                 </Grid.Col>
@@ -366,6 +408,8 @@ const CartScreen = () => {
                 setInfoUserOpened={setInfoUserOpened}
                 infoUserOpened={infoUserOpened}
                 selectedOption={selectedOption}
+                handleProfileChange={handleProfileChange}
+                checkProfile={checkProfile}
               />
               {/* {width > 1200 ? (
                 <FormProvider {...form}>
