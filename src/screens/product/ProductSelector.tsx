@@ -119,7 +119,7 @@ const ProductVariantSelector = ({
     });
     return min;
   };
-  const minimumOldPrice = () => {
+  const minimumOldPrice: any = () => {
     if (variants.length === 0) return data.old_price;
     let min = variants[0].old_price;
     variants.forEach((variant: any) => {
@@ -129,6 +129,8 @@ const ProductVariantSelector = ({
     });
     return min;
   };
+  let minn: number = 0;
+  minn = minimumOldPrice();
   const maximumAmountFinder = () => {
     if (variants.length === 0) return data.count;
     let max = variants[0].count;
@@ -224,10 +226,12 @@ const ProductVariantSelector = ({
                     <NumberFormat value={minimumPriceFinder()} />{" "}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
-                  <h2 className="old-price">
-                    <NumberFormat value={minimumOldPrice()} />{" "}
-                    {router.locale === "uz" ? "so'm" : "сум"}
-                  </h2>
+                  {minn > 0 && (
+                    <h2 className="old-price">
+                      <NumberFormat value={minimumOldPrice()} />{" "}
+                      {router.locale === "uz" ? "so'm" : "сум"}
+                    </h2>
+                  )}
                 </>
               )}
             </div>
