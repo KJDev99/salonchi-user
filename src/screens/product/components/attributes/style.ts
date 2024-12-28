@@ -13,7 +13,8 @@ export const Title = styled("p")`
 `;
 
 export const Color = styled("div")`
-  width: 44px;
+  min-width: 44px;
+  padding: 0 5px;
   height: 44px;
   /* padding: 10px; */
   border-radius: 10px;
