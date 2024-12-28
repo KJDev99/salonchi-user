@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CatalogPanel,
   CustomPopup,
@@ -48,6 +48,14 @@ export const SearchInput = ({
       query: { search: `${e.target.value}` },
     });
   };
+
+  useEffect(() => {
+    if (router.pathname !== "/filter") {
+      setSearch("");
+    } else if (router.pathname == "/filter") {
+      setSearch(searchParams.get("search"));
+    }
+  }, [router.pathname]);
 
   const { data: productList = [], isFetching } = useQuery({
     queryKey: ["get-product-search", search],

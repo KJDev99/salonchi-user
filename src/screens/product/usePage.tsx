@@ -33,9 +33,12 @@ export const usePage = () => {
         };
       },
       onSuccess: (res) => {
-        // res?.detail?.media?.map((mediaItem: IPictures) => {
-        //   if(mediaItem.file_type)
-        // })
+        if (!res?.detail) {
+          // Agar ma'lumot yo'q bo'lsa, 404 sahifaga yo'naltirish
+          window.location.href = "/404";
+          return;
+        }
+
         setImages(
           res?.detail?.media?.map((v: IPictures) => {
             if (v.file_type === "image") {
@@ -62,7 +65,11 @@ export const usePage = () => {
         );
         setActive(res?.detail?.colors?.[0]?.id);
       },
-      enabled: id !== undefined ? true : false,
+      onError: () => {
+        // Agar xato bo'lsa, 404 sahifaga yo'naltirish
+        window.location.href = "/404";
+      },
+      enabled: id !== undefined,
     }
   );
 

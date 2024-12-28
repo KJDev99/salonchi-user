@@ -3,11 +3,11 @@ import { Carousel as CartSlider } from "@mantine/carousel";
 import { ImageContainer } from "./style";
 import Image from "next/image";
 
-export const Carousel = ({ images }: any) => {
+export const Carousel = ({ images, media }: any) => {
   return (
     <ImageContainer>
       <Image
-        src={images}
+        src={images || media?.[0]?.file}
         alt="iphone"
         layout="fill"
         sizes="(min-width: 60em) 24vw,

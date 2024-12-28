@@ -6,6 +6,7 @@ import { Container } from "@/styles/global";
 import { useCategory } from "./useCategory";
 import { ArrowRightIcon } from "@/assets/icons/right.arrow";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface ICatalogDrawer {
   open: boolean;
@@ -53,6 +54,15 @@ export const CatalogDrawer = ({ open, setOpen }: ICatalogDrawer) => {
                         setOpen(false);
                       }}
                     >
+                      {v?.photo == null ? null : (
+                        <Image
+                          src={v?.photo}
+                          alt={v.name_uz}
+                          priority
+                          width={18}
+                          height={18}
+                        />
+                      )}
                       {router.locale === "uz" ? v?.name_uz : v?.name_ru}
                     </li>
                   );

@@ -88,7 +88,7 @@ export const CustomCard = ({
         {checked ? <IconHeartFilled /> : <HeartOutlineIcon />}
       </div>
       <CardHeader onClick={() => router.push(`/product/${item?.slug}`)}>
-        {item?.photo !== null && <Carousel images={item?.photo} />}
+        <Carousel images={item?.photo} media={item?.media} />
         {type === "cheap" ? (
           <span className="badge">Aksiya</span>
         ) : type === "new" ? (
