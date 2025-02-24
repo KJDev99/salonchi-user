@@ -136,6 +136,26 @@ export const Footer = () => {
             </Grid.Col> */}
           </Grid>
         </ContainerFooter>
+          <div
+            style={{
+              maxWidth: "100%",
+              fontSize: "12px",
+              fontWeight: "400",
+              padding: "10px 0",
+              borderTop: "0.5px solid #91979F",
+              textAlign: "center",
+            }}
+          >
+            Copyright 2024. Topuy.uz made by{" "}
+            <a
+              style={{ color: "#0190e0", fontWeight: "500", fontSize: "14px" }}
+              target="blank"
+              href="https://upgrow.uz/"
+            >
+              Upgrow agency
+            </a>
+            . All rights reserved.
+          </div>
         <Divider />
         {/* <Container>
           <FooterBottom>
