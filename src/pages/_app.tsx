@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Salonchi</title>
+        <meta name="facebook-domain-verification" content="2n2223oliandeejhfj94n4lkh9rp8r" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
