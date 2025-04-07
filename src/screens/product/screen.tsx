@@ -101,7 +101,7 @@ const ProductScreen = () => {
       day: "numeric",
     }).format(date);
   }
-  // console.log(formatDate("2024-10-22T21:27:01.183442+05:00"));
+
   const handleOrder = () => {
     if (active || data.attributes.attributes.length === 0) {
       addToCart();

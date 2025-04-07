@@ -38,7 +38,13 @@ export const CatalogLayout = ({
                 setOpen(false);
               }}
             >
-              <Image src={item?.photo} alt="image" width={32} height={32} />
+              <Image
+                src='/category_empty.webp'
+                // src={item?.photo}
+                alt="image"
+                width={32}
+                height={32}
+              />
               <span>
                 {router.locale === "uz" ? item?.name_uz : item?.name_ru}
               </span>

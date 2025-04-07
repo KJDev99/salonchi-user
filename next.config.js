@@ -14,6 +14,14 @@ const nextConfig = {
       "f8189e0b-salonchi.s3.timeweb.cloud",
       "c4de9495-xuping.s3.timeweb.cloud",
     ],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "192.168.2.54",
+        port: "8001",
+        pathname: "/media/banner/uz/**",
+      },
+    ],
   },
 };
 

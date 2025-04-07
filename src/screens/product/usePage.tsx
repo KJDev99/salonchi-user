@@ -17,7 +17,8 @@ export const usePage = () => {
   }
   const router = useRouter();
   const slug = router.query.slug as string;
-  const id = slug?.split("-")[0];
+  // const id = slug.split("-")[0];
+  const id = slug;
   const [images, setImages] = useState<TImages[]>([]);
   const [active, setActive] = useState<any>([]);
   const [active1, setActive1] = useState<number>(1);

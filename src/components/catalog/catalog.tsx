@@ -74,7 +74,8 @@ export const Catalog = ({
                 <ImageContainer>
                   {item?.photo == null ? null : (
                     <Image
-                      src={item?.photo}
+                    src='/category_empty.webp'
+                      // src={item?.photo}
                       alt={item.name_uz}
                       priority
                       width={24}

@@ -10,11 +10,13 @@ import { useRouter } from "next/router";
 import { UILoader } from "./loader";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
+import { request } from "@/shared/api/requests";
 
 export const getSubcategories = async (id: number) => {
-  const response = await axios.get(
+  /* const response = await axios.get(
     `https://api.salonchi.uz/api/v1/category/sub/list/${id}`
-  );
+  ); */
+  const response = await request.get(`category/sub/list/${id}`);
   return response.data;
 };
 const CatalogScreen = () => {

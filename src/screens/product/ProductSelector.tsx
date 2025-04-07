@@ -8,6 +8,7 @@ import { Colors } from "./components/colors";
 import { Attributes } from "./components/attributes";
 import { Footer } from "./style";
 import { useTranslation } from "react-i18next";
+import { request } from "@/shared/api/requests";
 
 interface Variant {
   id: number;
@@ -48,10 +49,31 @@ const ProductVariantSelector = ({
   colorErr: any;
   handleAttributeImageClick: any;
 }) => {
+  useEffect(() => {
+    if (Object.keys(active).length === 0) return;
+
+    const payload = {
+      attributes: Object.values(active), // Object.values() bilan massivga o‘tkazamiz
+    };
+
+    request
+      .post("product/get-product-variant/", payload)
+      .then((res) => {
+        setAmount(0);
+        setCurrentVariant(res.data);
+        localStorage.setItem("variant", JSON.stringify(res.data.id));
+      })
+      .catch((err) => {
+        setAmount(0);
+        localStorage.removeItem("variant");
+      });
+  }, [active]);
+
   const router = useRouter();
 
   const [currentVariant, setCurrentVariant] = useState<Variant | null>(null);
-  const [amount, setAmount] = useState(1);
+
+  const [amount, setAmount] = useState(0);
   const { t } = useTranslation("common");
   useEffect(() => {
     const allAttributesSelected = attributes.every(
@@ -73,6 +95,11 @@ const ProductVariantSelector = ({
         };
       }, {});
 
+      if (!variants || !Array.isArray(variants)) {
+        console.error("variants undefined yoki noto'g'ri formatda:", variants);
+        setCurrentVariant(null);
+        return;
+      }
       const matchedVariant = variants.find((variant) =>
         Object.entries(selectedAttributeValues).every(
           ([key, value]) => variant.attributes[key] === value
@@ -92,7 +119,7 @@ const ProductVariantSelector = ({
 
   // Add to cart handler
   const handleAddToCart = () => {
-    if (!currentVariant && variants.length > 0) {
+    if (!currentVariant && variants?.length > 0) {
       setAttributeErr(true);
       setColorErr(true);
       return;
@@ -100,8 +127,10 @@ const ProductVariantSelector = ({
 
     const newProduct = {
       ...data,
-      price: currentVariant?.price || minimumPriceFinder(),
-      old_price: currentVariant?.old_price || minimumOldPrice(),
+      price: currentVariant?.price || data.price,
+      // price: currentVariant?.price || minimumPriceFinder(),
+      old_price: currentVariant?.old_price || data.old_price,
+      // old_price: currentVariant?.old_price || minimumOldPrice(),
       count: currentVariant?.count || data.count,
       amount,
       variant: currentVariant,
@@ -109,7 +138,8 @@ const ProductVariantSelector = ({
     };
     addToCart(newProduct);
   };
-  const minimumPriceFinder = () => {
+
+  /* const minimumPriceFinder = () => {
     if (variants.length === 0) return data.price;
     let min = variants[0].price;
     variants.forEach((variant: any) => {
@@ -118,8 +148,8 @@ const ProductVariantSelector = ({
       }
     });
     return min;
-  };
-  const minimumOldPrice: any = () => {
+  }; */
+  /* const minimumOldPrice: any = () => {
     if (variants.length === 0) return data.old_price;
     let min = variants[0].old_price;
     variants.forEach((variant: any) => {
@@ -130,8 +160,8 @@ const ProductVariantSelector = ({
     return min;
   };
   let minn: number = 0;
-  minn = minimumOldPrice();
-  const maximumAmountFinder = () => {
+  minn = minimumOldPrice(); */
+  /* const maximumAmountFinder = () => {
     if (variants.length === 0) return data.count;
     let max = variants[0].count;
     variants.forEach((variant: any) => {
@@ -141,6 +171,13 @@ const ProductVariantSelector = ({
     });
     return max;
   };
+
+  useEffect(() => {
+    const maxAmount = currentVariant?.count || maximumAmountFinder();
+    if (amount > maxAmount) {
+      setAmount(maxAmount);
+    }
+  }, [currentVariant, amount]); */
   return (
     <div
       style={{
@@ -196,9 +233,18 @@ const ProductVariantSelector = ({
               type="number"
               value={amount}
               readOnly
-              max={currentVariant?.count || 1}
+              // max={currentVariant?.count || data.count}
             />
-            <span onClick={() => adjustAmount(1)}>+</span>
+            <span
+              onClick={() => {
+                // @ts-ignore
+                if (data.count > amount || currentVariant?.count > amount) {
+                  adjustAmount(1);
+                }
+              }}
+            >
+              +
+            </span>
           </div>
         </div>
 
@@ -215,20 +261,28 @@ const ProductVariantSelector = ({
                     <NumberFormat value={currentVariant.price} />{" "}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
-                  <h2 className="old-price">
-                    <NumberFormat value={currentVariant.old_price} />{" "}
-                    {router.locale === "uz" ? "so'm" : "сум"}
-                  </h2>
+                  {currentVariant.old_price !== null && (
+                    <h2 className={`old-price`}>
+                      <NumberFormat value={currentVariant.old_price} />{" "}
+                      {router.locale === "uz" ? "so'm" : "сум"}
+                    </h2>
+                  )}
                 </>
               ) : (
                 <>
-                  <h2 className="main-price">
-                    <NumberFormat value={minimumPriceFinder()} />{" "}
+                  <h2
+                    className={`main-price ${
+                      data?.price === null ? "display-none" : ""
+                    }`}
+                  >
+                    <NumberFormat value={data.price} />
+                    {""}
+                    {/* <NumberFormat value={minimumPriceFinder()} />{" "} */}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
-                  {minn > 0 && (
-                    <h2 className="old-price">
-                      <NumberFormat value={minimumOldPrice()} />{" "}
+                  {data?.old_price !== null && (
+                    <h2 className={`old-price`}>
+                      <NumberFormat value={data?.old_price} />{" "}
                       {router.locale === "uz" ? "so'm" : "сум"}
                     </h2>
                   )}
@@ -239,7 +293,9 @@ const ProductVariantSelector = ({
 
           <h3 className="subtitle">
             {router.locale === "uz" ? "Sotuvda mavjud" : "Доступно"}:{" "}
-            {maximumAmountFinder()} {router.locale === "uz" ? "ta" : "шт."}
+            {currentVariant?.count || data.count}{" "}
+            {router.locale === "uz" ? "ta" : "шт."}
+            {/* {maximumAmountFinder()} {router.locale === "uz" ? "ta" : "шт."} */}
           </h3>
         </div>
         {/* Add to Cart Button */}

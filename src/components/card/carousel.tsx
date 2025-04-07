@@ -7,7 +7,8 @@ export const Carousel = ({ images, media }: any) => {
   return (
     <ImageContainer>
       <Image
-        src={images || media?.[0]?.file}
+        src="/category_empty.webp"
+        // src={images || media?.[0]?.file}
         alt="iphone"
         layout="fill"
         sizes="(min-width: 60em) 24vw,

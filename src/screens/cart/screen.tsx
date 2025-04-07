@@ -31,7 +31,7 @@ import Uzcard from "@/assets/icons/uzcard.png";
 import Humo from "@/assets/icons/humo.png";
 import Image from "next/image";
 import axios from "axios";
-import { log } from "console";
+import { request } from "@/shared/api/requests";
 
 interface User {
   id: number;
@@ -112,26 +112,27 @@ const CartScreen = () => {
         }
 
         // Fetch user profile
-        const userResponse = await axios.get(
-          "https://api.salonchi.uz/api/v1/user/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${userData?.access}`,
-            },
-          }
-        );
+        const userResponse = await request.get("user/profile", {
+          headers: {
+            Authorization: `Bearer ${userData?.access}`,
+          },
+        });
         setUser(userResponse.data);
 
-        const regionsResponse = await axios.get(
+        /* const regionsResponse = await axios.get(
           "https://api.salonchi.uz/api/v1/region/list"
-        );
+        ); */
+        const regionsResponse = await request.get("region/list");
         setRegions(regionsResponse.data);
 
         setHome(userResponse.data.address.home);
         setStreet(userResponse.data.address.street);
         if (userResponse.data?.address?.region?.id) {
-          const districtsResponse = await axios.get(
+          /* const districtsResponse = await axios.get(
             `https://api.salonchi.uz/api/v1/region/district/${userResponse.data.address.region.id}/list`
+          ); */
+          const districtsResponse = await request.get(
+            `region/district/${userResponse.data.address.region.id}/list`
           );
           setDistricts(districtsResponse.data);
           setSelectedRegion(userResponse.data.address.region.id);
@@ -164,8 +165,11 @@ const CartScreen = () => {
     setSelectedDistrict(null);
 
     try {
-      const districtsResponse = await axios.get(
+      /* const districtsResponse = await axios.get(
         `https://api.salonchi.uz/api/v1/region/district/${regionId}/list`
+      ); */
+      const districtsResponse = await request.get(
+        `region/district/${regionId}/list`
       );
       setDistricts(districtsResponse.data);
     } catch (error) {
@@ -208,7 +212,7 @@ const CartScreen = () => {
         firstname: "Jamshid",
       };
       if (home && street && selectedRegion && selectedDistrict) {
-        await axios.put(
+        /* await axios.put(
           `https://api.salonchi.uz/api/v1/user/profile`,
           formData,
           {
@@ -216,7 +220,12 @@ const CartScreen = () => {
               Authorization: `Bearer ${userData?.access}`,
             },
           }
-        );
+        ); */
+        await request.put(`user/profile`, formData, {
+          headers: {
+            Authorization: `Bearer ${userData?.access}`,
+          },
+        });
       }
     } catch (error) {
       console.error("Error updating profile:", error);

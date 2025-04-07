@@ -9,7 +9,7 @@ interface TImages {
 }
 export const usePage = () => {
   const router = useRouter();
-  const slug = router.query.slug as string;
+  const slug = router.query.slug as string;  
   const [images, setImages] = useState<TImages[]>([]);
   const [active, setActive] = useState<any>(null);
   const [active1, setActive1] = useState<number>(1);

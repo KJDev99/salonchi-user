@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Checkbox, Group } from "@mantine/core";
 import { BrandWrap } from "./style";
+import { request } from "@/shared/api/requests";
 
 // Define the type for the brand data
 interface Brand {
@@ -22,9 +23,10 @@ export const FilterBrand = ({
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get<Brand[]>(
+        /* const response = await axios.get<Brand[]>(
           "https://api.salonchi.uz/api/v1/admin/brand"
-        );
+        ); */
+        const response = await request.get("admin/brand");
         setBrands(response.data);
         console.log(response.data);
       } catch (error) {

@@ -31,6 +31,7 @@ export const useCheckout = ({
   });
   const { mutate, isLoading } = useMutation((data) => createOrder(data), {
     onSuccess: (res) => {
+      localStorage.removeItem("variant");
       if (res?.data?.url) {
         // router.push(res?.data?.url);
         window.open(res?.data?.url);
@@ -39,6 +40,9 @@ export const useCheckout = ({
       } else {
         notifOpen();
       }
+    },
+    onError: () => {
+      localStorage.removeItem("variant");
     },
   });
 
@@ -77,12 +81,14 @@ export const useCheckout = ({
           : undefined,
         // "redirect_url": null  ,
         order_items: initialCart.map((v: IProduct) => {
+          console.log(v);
           const a: any = {
             count: v.productQuantity,
             price: v.price,
             color: v?.color?.id,
             product: v?.id,
             attributes: v?.attributes || [],
+            product_variant: localStorage.getItem("variant"),
           };
           if (v?.box) {
             a["box"] = v?.box;

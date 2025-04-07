@@ -192,7 +192,8 @@ const HomeScreen = () => {
                   <>
                     {item.banner_uz && (
                       <Image
-                        src={item.banner_uz}
+                        src='/category_empty.webp'
+                        // src={item.banner_uz}
                         width={1248}
                         height={400}
                         alt="banner"

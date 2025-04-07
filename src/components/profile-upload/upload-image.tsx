@@ -15,7 +15,7 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const response = await request.post(
+      /* const response = await request.post(
         "https://api.salonchi.uz/api/v1/upload",
         formData,
         {
@@ -23,7 +23,12 @@ export const UploadImage = ({ getUploadedFile, setPhoto }: any) => {
             "Content-Type": "multipart/form-data",
           },
         }
-      );
+      ); */
+      const response = await request.post("upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       const imageUrl = response.data.file;
       setPhoto(imageUrl);

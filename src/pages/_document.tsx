@@ -44,7 +44,7 @@ export default class _Document extends Document {
           </Script>
 
           {/* Facebook Pixel */}
-          <Script id="facebook-pixel" strategy="afterInteractive">
+          {/* <Script id="facebook-pixel" strategy="afterInteractive">
             {`
               !function(f,b,e,v,n,t,s)
               {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -57,7 +57,7 @@ export default class _Document extends Document {
               fbq('init', '529375946403229');
               fbq('track', 'PageView');
             `}
-          </Script>
+          </Script> */}
         </Head>
         <body>
           <Main />
