@@ -56,8 +56,8 @@ export const CatalogDrawer = ({ open, setOpen }: ICatalogDrawer) => {
                     >
                       {v?.photo == null ? null : (
                         <Image
-                          src="/category_empty.webp"
-                          // src={v?.photo}
+                          // src="/category_empty.webp"
+                          src={v?.photo}
                           alt={v.name_uz}
                           priority
                           width={18}

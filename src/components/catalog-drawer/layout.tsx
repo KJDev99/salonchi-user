@@ -39,8 +39,8 @@ export const CatalogLayout = ({
               }}
             >
               <Image
-                src='/category_empty.webp'
-                // src={item?.photo}
+                // src='/category_empty.webp'
+                src={item?.photo}
                 alt="image"
                 width={32}
                 height={32}
