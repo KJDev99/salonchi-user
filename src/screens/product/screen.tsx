@@ -50,6 +50,8 @@ const ProductScreen = () => {
   const [rates, setRates] = useState<any>();
   const [active, setActive] = useState<any>({});
   const addToCart = (product?: any) => {
+    console.log(product);
+    
     const attributes =
       data.attributes.attributes.length === 0 ? [] : Object.values(active);
     const selectedAttribute = data.attributes.attributes.find(
@@ -104,7 +106,7 @@ const ProductScreen = () => {
 
   const handleOrder = () => {
     if (active || data.attributes.attributes.length === 0) {
-      addToCart();
+      // addToCart();
       router.push("/cart");
     } else {
       setAtributErr(true);

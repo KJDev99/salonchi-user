@@ -342,9 +342,12 @@ const CartScreen = () => {
               <Grid className="mahsulotlar">
                 <h2>Savatdagi mahsulotlar</h2>
                 {initialCart.map((item: IProduct, i: number) => (
-                  <Grid.Col span={12} lg={12} key={i}>
-                    <Card item={item} />
-                  </Grid.Col>
+                  <>
+                    {console.log(item, 'item')}
+                    <Grid.Col span={12} lg={12} key={i}>
+                      <Card item={item} />
+                    </Grid.Col>
+                  </>
                 ))}
               </Grid>
               {infoUserOpened && (

@@ -51,7 +51,6 @@ export const Card = ({ item }: any) => {
   return (
     <CardUI>
       <ContentLeft>
-        {/* <Carousel images={item?.photo || item?.media} /> */}
         <div className="image-container" style={{ width: 112, height: 112 }}>
           <Image
             src={item?.photo || item?.media}
@@ -63,12 +62,7 @@ export const Card = ({ item }: any) => {
         </div>
         <ProductInfo>
           <h4>{item?.name_uz}</h4>
-          {/* <h2 style={{ fontWeight: "300", fontSize: 20 }}>
-            <NumberFormat value={item?.price ?? 0} /> {t("card.currency")}
-          </h2> */}
           <div className="rating">
-            {/* <Rating defaultValue={1} /> */}
-            {/* <span>(447)</span> */}
             {item?.rate.count > 0 ? (
               <>
                 <StarIcon />
@@ -114,6 +108,9 @@ export const Card = ({ item }: any) => {
         </ContentHeader>
         <div className="operations">
           <Operations
+            // @ts-ignore
+            productCount={item?.variant?.count}
+            quantity={item?.count}
             count={item.productQuantity}
             id={item.id}
             attributes={item.attributes}

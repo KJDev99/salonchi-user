@@ -124,60 +124,19 @@ const ProductVariantSelector = ({
       setColorErr(true);
       return;
     }
-
     const newProduct = {
       ...data,
       price: currentVariant?.price || data.price,
-      // price: currentVariant?.price || minimumPriceFinder(),
       old_price: currentVariant?.old_price || data.old_price,
-      // old_price: currentVariant?.old_price || minimumOldPrice(),
       count: currentVariant?.count || data.count,
       amount,
       variant: currentVariant,
       attributes: active,
     };
+    // console.log(newProduct.count);
     addToCart(newProduct);
   };
 
-  /* const minimumPriceFinder = () => {
-    if (variants.length === 0) return data.price;
-    let min = variants[0].price;
-    variants.forEach((variant: any) => {
-      if (variant.price < min) {
-        min = variant.price;
-      }
-    });
-    return min;
-  }; */
-  /* const minimumOldPrice: any = () => {
-    if (variants.length === 0) return data.old_price;
-    let min = variants[0].old_price;
-    variants.forEach((variant: any) => {
-      if (variant.old_price < min) {
-        min = variant.old_price;
-      }
-    });
-    return min;
-  };
-  let minn: number = 0;
-  minn = minimumOldPrice(); */
-  /* const maximumAmountFinder = () => {
-    if (variants.length === 0) return data.count;
-    let max = variants[0].count;
-    variants.forEach((variant: any) => {
-      if (variant.count > max) {
-        max = variant.count;
-      }
-    });
-    return max;
-  };
-
-  useEffect(() => {
-    const maxAmount = currentVariant?.count || maximumAmountFinder();
-    if (amount > maxAmount) {
-      setAmount(maxAmount);
-    }
-  }, [currentVariant, amount]); */
   return (
     <div
       style={{
@@ -352,26 +311,37 @@ const ProductVariantSelector = ({
                     Object.keys(active).length > 0 ||
                     attributes.length === 0
                   ) {
-                    console.log(active);
                     handleAddToCart();
                   } else {
                     setAttributeErr(true);
                     setColorErr(true);
                   }
                 }}
+                disabled={amount === 0}
                 variant="filled"
                 style={{
                   fontFamily: "var(--font-readex)",
                   border: "1px solid var(--main-bg-color)",
                   backgroundColor: "var(--main-bg-color)",
-                  // color: "var(--main-white)",
                 }}
               >
                 {t("slug.add to cart")}
               </Button>
               <Button
+                disabled={amount === 0}
                 color="red"
-                onClick={handleOrder}
+                onClick={() => {
+                  if (
+                    Object.keys(active).length > 0 ||
+                    attributes.length === 0
+                  ) {
+                    handleAddToCart();
+                    handleOrder();
+                  } else {
+                    setAttributeErr(true);
+                    setColorErr(true);
+                  }
+                }}
                 variant="outline"
                 className="buy-btn"
                 style={{

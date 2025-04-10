@@ -9,9 +9,17 @@ interface ICount {
   count: number;
   id: string | number;
   attributes: any;
+  productCount: number;
+  quantity: number;
 }
 
-export const Operations = ({ count, id, attributes }: ICount) => {
+export const Operations = ({
+  count,
+  id,
+  attributes,
+  productCount,
+  quantity,
+}: ICount) => {
   const { increment, decrement } = useStore((state) => state);
 
   return (
@@ -21,7 +29,10 @@ export const Operations = ({ count, id, attributes }: ICount) => {
         <span>-</span>
       </Button>
       <span>{count}</span>
-      <Button onClick={() => increment(id, attributes)}>
+      <Button
+        onClick={() => increment(id, attributes)}
+        disabled={count === productCount || count === quantity}
+      >
         {/* <IncrementIcon /> */}
         <span>+</span>
       </Button>
