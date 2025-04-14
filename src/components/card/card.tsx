@@ -77,6 +77,7 @@ export const CustomCard = ({
       className={`${router.pathname !== "/" ? "another-card" : ""} ${
         isCarousel ? "carousel" : ""
       }`}
+      style={{ minWidth: "228px" }}
     >
       <div
         className="heart-wrapper"

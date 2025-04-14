@@ -35,7 +35,6 @@ const HomeScreen = () => {
 
   return (
     <Wrapper className="home-wrapper">
-      {/* <Catalog /> */}
       <Container>
         <Slider />
         <Title className="home-title home-titlee">{t("home.title")}</Title>
@@ -45,15 +44,16 @@ const HomeScreen = () => {
           <Grid className="home-grid" gutter={0}>
             {data?.pages?.map((page, idx) => {
               return (
-                <Grid key={idx}>
+                <Grid key={idx} gutter={16}>
                   {page?.results?.map((item: IProduct) => (
                     <Grid.Col
                       span={6}
-                      lg={4}
+                      lg={3}
                       xs={width > 640 ? 4 : 6}
                       sm={4}
                       md={3}
                       key={item?.id}
+                      style={{ minWidth: "260px" }}
                     >
                       <CustomCard
                         isCarousel={false}

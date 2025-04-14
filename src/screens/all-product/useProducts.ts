@@ -45,7 +45,7 @@ export const useProducts = () => {
   //   },
   // });
 
-  console.log('productList',productList)
+  console.log("productList", productList);
 
   return {
     productList,

@@ -39,9 +39,12 @@ export const Checkout = ({
 }: ICheckoutProps) => {
   const router = useRouter();
   const { t } = useTranslation("common");
+
+  // useDisclosure hooks
   const [opened, { open, close }] = useDisclosure(false);
-  const [notifyOpened, { open: notifOpen, close: notifyClose }] =
-    useDisclosure(false);
+  const [notifyOpened, { open: notifOpen, close: notifyClose }] = useDisclosure(false);
+  const [openLogin, { open: openLoginOpen, close: openLoginClose }] = useDisclosure(false);
+
   const { onCheckout, isLoading } = useCheckout({
     initialCart,
     comment,
@@ -51,36 +54,26 @@ export const Checkout = ({
     value,
     payType,
   });
+
   const [isFixed, setIsFixed] = useState(false);
   const [isTop, setIsTop] = useState(false);
-  const [openLogin, setIsLogin] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const formElement = document.getElementById("form");
       const parentElement = document.querySelector(".parent-container");
 
-      // Check if elements exist before proceeding
-      if (!formElement || !parentElement) {
-        return;
-      }
+      if (!formElement || !parentElement) return;
 
       const parentBottom = parentElement.getBoundingClientRect().bottom;
       const windowHeight = window.innerHeight;
       const scrollY = window.scrollY || window.pageYOffset;
-      if (scrollY >= 120) {
-        setIsTop(true);
-      } else {
-        setIsTop(false);
-      }
-      if (parentBottom <= windowHeight - 300) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
+
+      setIsTop(scrollY >= 120);
+      setIsFixed(parentBottom <= windowHeight - 300);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -89,9 +82,7 @@ export const Checkout = ({
       <Form
         onSubmit={onCheckout}
         id="form"
-        className={`mediaFixed ${isFixed ? "fixedd" : ""} ${
-          isTop ? "topCheck" : ""
-        } ${infoUserOpened ? "infoUserOpened" : ""}`}
+        className={`mediaFixed ${isFixed ? "fixedd" : ""} ${isTop ? "topCheck" : ""} ${infoUserOpened ? "infoUserOpened" : ""}`}
       >
         <Header>
           {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}
@@ -101,9 +92,7 @@ export const Checkout = ({
               <NumberFormat
                 value={initialCart?.reduce(
                   (current, item: IProduct) =>
-                    current +
-                    item.productQuantity *
-                      (item?.variant?.price ? item.variant.price : item.price),
+                    current + item.productQuantity * (item?.variant?.price ?? item.price),
                   0
                 )}
               />{" "}
@@ -116,8 +105,7 @@ export const Checkout = ({
                 <div>
                   <NumberFormat
                     value={initialCart?.reduce(
-                      (current, item: IProduct) =>
-                        current + item.productQuantity * item.price,
+                      (current, item: IProduct) => current + item.productQuantity * item.price,
                       0
                     )}
                   />{" "}
@@ -140,9 +128,7 @@ export const Checkout = ({
                           (current, item: IProduct) =>
                             current +
                             item.productQuantity *
-                              (item?.variant?.price
-                                ? item.variant.price
-                                : item.price),
+                              (item?.variant?.price ?? item.price),
                           0
                         ) + 45000
                       }
@@ -154,6 +140,7 @@ export const Checkout = ({
             </div>
           )}
         </Header>
+
         <Body>
           {infoUserOpened ? (
             checkProfile ? (
@@ -175,15 +162,13 @@ export const Checkout = ({
             <Button
               color="red"
               className="order-btn"
-              // form="form"
-              // type="submit"
               onClick={(e) => {
                 const userData = localStorage.getItem("userData");
                 if (userData) {
                   e.preventDefault();
                   setInfoUserOpened(true);
                 } else {
-                  setIsLogin(true);
+                  openLoginOpen(); // ✅ correct way
                 }
               }}
             >
@@ -191,10 +176,14 @@ export const Checkout = ({
             </Button>
           )}
         </Body>
+
+        {/* Login Modal */}
         {openLogin && (
-          <Modal opened={openLogin} close={close}>
+          <Modal opened={openLogin} close={openLoginClose}>
             <ModalContent>
-              <IconWarning />
+              <div style={{ textAlign: "center" }}>
+                <IconWarning />
+              </div>
               <p
                 style={{
                   textAlign: "center",
@@ -225,6 +214,7 @@ export const Checkout = ({
             </FlexBtns>
           </Modal>
         )}
+
         <Notify notifyOpened={notifyOpened} notifyClose={notifyClose} />
       </Form>
     </div>

@@ -53,7 +53,7 @@ const ProductVariantSelector = ({
     if (Object.keys(active).length === 0) return;
 
     const payload = {
-      attributes: Object.values(active), // Object.values() bilan massivga o‘tkazamiz
+      attributes: Object.values(active),
     };
 
     request
@@ -190,9 +190,17 @@ const ProductVariantSelector = ({
             <span onClick={() => adjustAmount(-1)}>-</span>
             <input
               type="number"
-              value={amount}
+              value={
+                amount >= 1
+                  ? 1
+                  : data.count >= 1
+                  ? 1
+                  : // @ts-ignore
+                  currentVariant?.count >= 1
+                  ? 1
+                  : 0
+              }
               readOnly
-              // max={currentVariant?.count || data.count}
             />
             <span
               onClick={() => {
@@ -220,9 +228,10 @@ const ProductVariantSelector = ({
                     <NumberFormat value={currentVariant.price} />{" "}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
-                  {currentVariant.old_price !== null && (
+                  {/* @ts-ignore */}
+                  {data?.old_price > 0 && (
                     <h2 className={`old-price`}>
-                      <NumberFormat value={currentVariant.old_price} />{" "}
+                      <NumberFormat value={data.old_price} />{" "}
                       {router.locale === "uz" ? "so'm" : "сум"}
                     </h2>
                   )}
@@ -235,11 +244,10 @@ const ProductVariantSelector = ({
                     }`}
                   >
                     <NumberFormat value={data.price} />
-                    {""}
-                    {/* <NumberFormat value={minimumPriceFinder()} />{" "} */}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
-                  {data?.old_price !== null && (
+                  {/* @ts-ignore */}
+                  {data?.old_price > 0 && (
                     <h2 className={`old-price`}>
                       <NumberFormat value={data?.old_price} />{" "}
                       {router.locale === "uz" ? "so'm" : "сум"}
@@ -254,10 +262,8 @@ const ProductVariantSelector = ({
             {router.locale === "uz" ? "Sotuvda mavjud" : "Доступно"}:{" "}
             {currentVariant?.count || data.count}{" "}
             {router.locale === "uz" ? "ta" : "шт."}
-            {/* {maximumAmountFinder()} {router.locale === "uz" ? "ta" : "шт."} */}
           </h3>
         </div>
-        {/* Add to Cart Button */}
         <Footer>
           {cart?.find((v: IProduct) => {
             const isIdMatch = v.id === Number(slug);

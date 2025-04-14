@@ -32,7 +32,9 @@ export const Notify = ({ notifyOpened, notifyClose }: INotify) => {
           closeOnClickOutside={false}
         >
           <ModalContent className="notify-modal">
-            <IconDone />
+            <div style={{ textAlign: "center" }}>
+              <IconDone />
+            </div>
             <h3>Buyurtmangiz muvaffiqaytli rasmiylashtirildi</h3>
             <p>Tez orada operatorlarimiz siz bilan bog’lanishadi</p>
             <div style={{ textAlign: "center", marginBottom: 12 }}>
