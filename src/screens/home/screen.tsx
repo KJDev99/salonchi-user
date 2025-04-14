@@ -49,7 +49,7 @@ const HomeScreen = () => {
                   {page?.results?.map((item: IProduct) => (
                     <Grid.Col
                       span={6}
-                      lg={3}
+                      lg={4}
                       xs={width > 640 ? 4 : 6}
                       sm={4}
                       md={3}

@@ -209,7 +209,7 @@ const CartScreen = () => {
       if (selectedDistrict) address.district = selectedDistrict;
       const formData: any = {
         address: address,
-        firstname: "Jamshid",
+        firstname: users?.firstname,
       };
       if (home && street && selectedRegion && selectedDistrict) {
         /* await axios.put(

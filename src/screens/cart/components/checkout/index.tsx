@@ -185,7 +185,6 @@ export const Checkout = ({
                 } else {
                   setIsLogin(true);
                 }
-                // If userData exists, the form will submit as normal
               }}
             >
               {t("To’lov sahifasiga o’tish")}
