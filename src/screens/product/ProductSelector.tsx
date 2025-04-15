@@ -59,8 +59,12 @@ const ProductVariantSelector = ({
     request
       .post("product/get-product-variant/", payload)
       .then((res) => {
-        setAmount(0);
         setCurrentVariant(res.data);
+        if (res.data.count === 0) {
+          setAmount(0);
+        } else {
+          setAmount(1);
+        }
         localStorage.setItem("variant", JSON.stringify(res.data.id));
       })
       .catch((err) => {
@@ -72,9 +76,17 @@ const ProductVariantSelector = ({
   const router = useRouter();
 
   const [currentVariant, setCurrentVariant] = useState<Variant | null>(null);
-
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const { t } = useTranslation("common");
+
+  useEffect(() => {
+    if (data.count === 0) {
+      setAmount(0);
+    }
+  }, [data]);
+
+  console.log(data);
+
   useEffect(() => {
     const allAttributesSelected = attributes.every(
       (_, index) => active[index] !== undefined
@@ -190,22 +202,23 @@ const ProductVariantSelector = ({
             <span onClick={() => adjustAmount(-1)}>-</span>
             <input
               type="number"
-              value={
-                amount >= 1
-                  ? 1
-                  : data.count >= 1
-                  ? 1
-                  : // @ts-ignore
-                  currentVariant?.count >= 1
-                  ? 1
-                  : 0
-              }
+              // value={
+              //   amount >= 1
+              //     ? 1
+              //     : data.count >= amount
+              //     ? 1
+              //     : // @ts-ignore
+              //     currentVariant?.count >= amount
+              //     ? 1
+              //     : 0
+              // }
+              value={amount}
               readOnly
             />
             <span
               onClick={() => {
                 // @ts-ignore
-                if (data.count > amount || currentVariant?.count > amount) {
+                if (data.count < 0 || currentVariant?.count >= amount) {
                   adjustAmount(1);
                 }
               }}
@@ -243,7 +256,7 @@ const ProductVariantSelector = ({
                       data?.price === null ? "display-none" : ""
                     }`}
                   >
-                    <NumberFormat value={data.price} />
+                    <NumberFormat value={data.price} />{" "}
                     {router.locale === "uz" ? "so'm" : "сум"}
                   </h2>
                   {/* @ts-ignore */}
