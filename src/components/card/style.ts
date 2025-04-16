@@ -5,9 +5,7 @@ export const Card = styled("div")`
   min-height: 387px;
   height: 100%;
   background: var(--main-white);
-  /* border: 0.5px solid var(--main-bg-color); */
   border-radius: 12px;
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -53,7 +53,6 @@ const HomeScreen = () => {
                       sm={4}
                       md={3}
                       key={item?.id}
-                      style={{ minWidth: "260px" }}
                     >
                       <CustomCard
                         isCarousel={false}
