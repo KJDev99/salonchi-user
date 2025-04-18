@@ -314,65 +314,94 @@ const ProductVariantSelector = ({
             </div>
           ) : (
             <div style={{ display: "flex" }} className="buy-btns">
-              <Button
-                onClick={() => {
-                  if (
-                    Object.keys(active).length > 0 ||
-                    attributes.length === 0
-                  ) {
-                    handleAddToCart();
-                  } else {
-                    setAttributeErr(true);
-                    setColorErr(true);
+              {cart.some((v: IProduct) => v.id === data.id) ? (
+                <Button
+                  color="red"
+                  // variant="outline"
+                  // className="buy-btn"
+                  onClick={() => router.push("/cart")}
+                  style={{
+                    fontFamily: "var(--font-readex)",
+                    border: "1px solid var(--main-bg-color)",
+                    color: "white",
+                  }}
+                >
+                  Savatga o'tish
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    if (
+                      Object.keys(active).length > 0 ||
+                      attributes.length === 0
+                    ) {
+                      handleAddToCart();
+                    } else {
+                      setAttributeErr(true);
+                      setColorErr(true);
+                    }
+                  }}
+                  disabled={
+                    amount === 0 || cart.some((v: IProduct) => v.id === data.id)
                   }
-                }}
-                disabled={
-                  amount === 0 || cart.some((v: IProduct) => v.id === data.id)
-                }
-                variant="filled"
-                style={{
-                  fontFamily: "var(--font-readex)",
-                  border: "1px solid var(--main-bg-color)",
-                  backgroundColor: "var(--main-bg-color)",
-                }}
-              >
-                {/* {console.log(cart.map((v: IProduct) => v.id))}
-                {t("slug.add to cart")} */}
-                {cart.some((v: IProduct) => v.id === data.id)
-                  ? router.locale === "uz"
-                    ? "Savatga qo'shilgan"
-                    : "Добавлено в корзину"
-                  : router.locale === "uz"
-                  ? "Savatchaga qo'shish"
-                  : "Добавить в корзину"}
-              </Button>
-              <Button
-                disabled={
-                  amount === 0 || cart.some((v: IProduct) => v.id === data.id)
-                }
-                color="red"
-                onClick={() => {
-                  if (
-                    Object.keys(active).length > 0 ||
-                    attributes.length === 0
-                  ) {
-                    handleAddToCart();
-                    handleOrder();
-                  } else {
-                    setAttributeErr(true);
-                    setColorErr(true);
-                  }
-                }}
-                variant="outline"
-                className="buy-btn"
-                style={{
-                  fontFamily: "var(--font-readex)",
-                  border: "1px solid var(--main-bg-color)",
-                  color: "var(--main-bg-color)",
-                }}
-              >
-                {t("place an order")}
-              </Button>
+                  variant="filled"
+                  style={{
+                    fontFamily: "var(--font-readex)",
+                    border: "1px solid var(--main-bg-color)",
+                    backgroundColor: "var(--main-bg-color)",
+                  }}
+                >
+                  {/* {t("slug.add to cart")} */}
+                  {cart.some((v: IProduct) => v.id === data.id)
+                    ? router.locale === "uz"
+                      ? "Savatga qo'shilgan"
+                      : "Добавлено в корзину"
+                    : router.locale === "uz"
+                    ? "Savatchaga qo'shish"
+                    : "Добавить в корзину"}
+                </Button>
+              )}
+              {cart.some((v: IProduct) => v.id === data.id) ? (
+                <Button
+                  color="red"
+                  variant="outline"
+                  className="buy-btn"
+                  onClick={() => router.push("/cart")}
+                  style={{
+                    fontFamily: "var(--font-readex)",
+                    border: "1px solid var(--main-bg-color)",
+                    color: "var(--main-bg-color)",
+                  }}
+                >
+                  Buyurtma berish
+                </Button>
+              ) : (
+                <Button
+                  disabled={amount === 0}
+                  color="red"
+                  onClick={() => {
+                    if (
+                      Object.keys(active).length > 0 ||
+                      attributes.length === 0
+                    ) {
+                      handleAddToCart();
+                      handleOrder();
+                    } else {
+                      setAttributeErr(true);
+                      setColorErr(true);
+                    }
+                  }}
+                  variant="outline"
+                  className="buy-btn"
+                  style={{
+                    fontFamily: "var(--font-readex)",
+                    border: "1px solid var(--main-bg-color)",
+                    color: "var(--main-bg-color)",
+                  }}
+                >
+                  {t("place an order")}
+                </Button>
+              )}
             </div>
           )}
         </Footer>
