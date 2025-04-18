@@ -37,6 +37,54 @@ const HomeScreen = () => {
     <Wrapper className="home-wrapper">
       <Container>
         <Slider />
+        {newProductList?.length > 0 && (
+          <>
+            <Title className="home-title">{t("news")}</Title>
+            <Carousel
+              withIndicators={false}
+              slideSize="20%"
+              slideGap="sm"
+              slidesToScroll={width > 576 ? 5 : 1}
+              loop={false}
+              align="start"
+              breakpoints={[
+                { maxWidth: "md", slideSize: "20%" },
+                { maxWidth: "sm", slideSize: "10%", slideGap: "0px" },
+              ]}
+              styles={{
+                control: {
+                  "&[data-inactive]": {
+                    opacity: 0,
+                    cursor: "default",
+                  },
+                },
+              }}
+              controlSize={47}
+              withControls={width > 576 ? true : false}
+            >
+              {newProductList?.slice(0, 9)?.map((v: any) => {
+                return (
+                  <Carousel.Slide key={v?.id}>
+                    <CustomCard
+                      isCarousel={true}
+                      id={v?.id}
+                      item={v}
+                      type="new"
+                    />
+                  </Carousel.Slide>
+                );
+              })}
+              <Carousel.Slide>
+                <Card
+                  onClick={() => router.push(`/all-product/new`)}
+                  className={"another-card"}
+                >
+                  <p>Barcha mahsulotlarni ko‘rish</p>
+                </Card>
+              </Carousel.Slide>
+            </Carousel>
+          </>
+        )}
         <Title className="home-title home-titlee">{t("home.title")}</Title>
         {isLoading ? (
           <UISkeleton />
@@ -134,7 +182,7 @@ const HomeScreen = () => {
           </>
         )}
 
-        {newProductList?.length > 0 && (
+        {/* {newProductList?.length > 0 && (
           <>
             <Title className="home-title">{t("news")}</Title>
             <Carousel
@@ -181,7 +229,7 @@ const HomeScreen = () => {
               </Carousel.Slide>
             </Carousel>
           </>
-        )}
+        )} */}
 
         <Grid style={{ gap: "18px", marginTop: "40px" }} gutter={0}>
           {categoryListProducts?.map((item: any, idx: number) => {

@@ -85,7 +85,7 @@ const ProductVariantSelector = ({
     }
   }, [data]);
 
-  console.log(data);
+  console.log(data, "data");
 
   useEffect(() => {
     const allAttributesSelected = attributes.every(
@@ -200,25 +200,15 @@ const ProductVariantSelector = ({
           </h3>
           <div className="amount-changer">
             <span onClick={() => adjustAmount(-1)}>-</span>
-            <input
-              type="number"
-              // value={
-              //   amount >= 1
-              //     ? 1
-              //     : data.count >= amount
-              //     ? 1
-              //     : // @ts-ignore
-              //     currentVariant?.count >= amount
-              //     ? 1
-              //     : 0
-              // }
-              value={amount}
-              readOnly
-            />
+            <input type="number" value={amount} readOnly />
             <span
               onClick={() => {
                 // @ts-ignore
-                if (data.count < 0 || currentVariant?.count >= amount) {
+                if (
+                  ((data.count > 0 && amount + 1 <= data.count) ||
+                    currentVariant?.count) ??
+                  0 >= amount
+                ) {
                   adjustAmount(1);
                 }
               }}
@@ -283,7 +273,7 @@ const ProductVariantSelector = ({
             const isAttributeMatch = v.attributes?.every(
               (attr: any, index: number) => {
                 const activeKey = active && Object.keys(active)[index];
-                const activeValue = active && active[activeKey]; // Get the corresponding
+                const activeValue = active && active[activeKey];
                 return attr === activeValue;
               }
             );
@@ -336,7 +326,9 @@ const ProductVariantSelector = ({
                     setColorErr(true);
                   }
                 }}
-                disabled={amount === 0}
+                disabled={
+                  amount === 0 || cart.some((v: IProduct) => v.id === data.id)
+                }
                 variant="filled"
                 style={{
                   fontFamily: "var(--font-readex)",
@@ -344,10 +336,20 @@ const ProductVariantSelector = ({
                   backgroundColor: "var(--main-bg-color)",
                 }}
               >
-                {t("slug.add to cart")}
+                {/* {console.log(cart.map((v: IProduct) => v.id))}
+                {t("slug.add to cart")} */}
+                {cart.some((v: IProduct) => v.id === data.id)
+                  ? router.locale === "uz"
+                    ? "Savatga qo'shilgan"
+                    : "Добавлено в корзину"
+                  : router.locale === "uz"
+                  ? "Savatchaga qo'shish"
+                  : "Добавить в корзину"}
               </Button>
               <Button
-                disabled={amount === 0}
+                disabled={
+                  amount === 0 || cart.some((v: IProduct) => v.id === data.id)
+                }
                 color="red"
                 onClick={() => {
                   if (
