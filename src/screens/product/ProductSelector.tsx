@@ -326,7 +326,7 @@ const ProductVariantSelector = ({
                     color: "white",
                   }}
                 >
-                  Savatga o'tish
+                  {router.locale === "uz" ? "Savatga o'tish" : "Доступно"}
                 </Button>
               ) : (
                 <Button
@@ -373,7 +373,7 @@ const ProductVariantSelector = ({
                     color: "var(--main-bg-color)",
                   }}
                 >
-                  Buyurtma berish
+                  {t("place an order")}
                 </Button>
               ) : (
                 <Button
