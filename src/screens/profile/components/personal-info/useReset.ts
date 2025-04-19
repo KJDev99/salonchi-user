@@ -57,6 +57,7 @@ export const useReset = () => {
         district: res?.address?.district?.id,
         street: res?.address?.street,
         home: res?.address?.home,
+        phone: res?.phone,
       });
       // console.log("res", res);
       if (res?.photo !== null) setImage(res?.photo);

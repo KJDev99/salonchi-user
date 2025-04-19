@@ -57,6 +57,7 @@ export const useReset = () => {
         home: res?.address?.home,
         region: res?.address?.region?.id,
         district: res?.address?.district?.id,
+        phone: res?.phone,
       });
       if (res?.photo !== null) setImage(`https://dev.freepik.uz${res?.photo}`);
     },

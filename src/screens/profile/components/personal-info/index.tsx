@@ -24,11 +24,9 @@ interface IPersonalInfo {
 }
 
 export const PersonalInfo = () => {
-  // const form = useFormContext();
   const router = useRouter();
   const { t, i18n } = useTranslation("common");
   const [photo, setPhoto] = useState<any>(null);
-  // console.log(photo);
   const {
     form,
     image,
@@ -45,12 +43,6 @@ export const PersonalInfo = () => {
     },
   });
   const onSubmit = (data: any) => {
-    // console.log(data);
-    // console.log(photo);
-
-    // const formData: any = new FormData();
-    // formData.append("firstname", data?.firstname);
-
     const address = {
       street: data?.street,
       home: data?.home,
@@ -61,10 +53,13 @@ export const PersonalInfo = () => {
       address: address,
       photo: photo,
       firstname: data?.firstname,
+      phone: data?.phone,
     };
-    // console.log(formData);
-    mutate(formData);
+    console.log("formData", formData);
+    
+    mutate(formData);    
   };
+  
   return (
     <Wrapper>
       {pageLoading ? (

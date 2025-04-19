@@ -343,7 +343,7 @@ const CartScreen = () => {
                 <h2>Savatdagi mahsulotlar</h2>
                 {initialCart.map((item: IProduct, i: number) => (
                   <>
-                    {console.log(item, 'item')}
+                    {console.log(item, "item")}
                     <Grid.Col span={12} lg={12} key={i}>
                       <Card item={item} />
                     </Grid.Col>

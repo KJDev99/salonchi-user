@@ -33,7 +33,6 @@ export const useCheckout = ({
     onSuccess: (res) => {
       localStorage.removeItem("variant");
       if (res?.data?.url) {
-        // router.push(res?.data?.url);
         window.open(res?.data?.url);
         setPyStatus(res?.data?.id);
         sessionStorage.removeItem("flow");
@@ -76,6 +75,7 @@ export const useCheckout = ({
         ),
         payment_type: selectedOption,
         comment: comment,
+        phone: user?.phone,
         flow: sessionStorage.getItem("flow")
           ? sessionStorage.getItem("flow")
           : undefined,

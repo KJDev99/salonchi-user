@@ -9,6 +9,7 @@ import { Attributes } from "./components/attributes";
 import { Footer } from "./style";
 import { useTranslation } from "react-i18next";
 import { request } from "@/shared/api/requests";
+import { FaCheck } from "react-icons/fa";
 
 interface Variant {
   id: number;
@@ -317,8 +318,6 @@ const ProductVariantSelector = ({
               {cart.some((v: IProduct) => v.id === data.id) ? (
                 <Button
                   color="red"
-                  // variant="outline"
-                  // className="buy-btn"
                   onClick={() => router.push("/cart")}
                   style={{
                     fontFamily: "var(--font-readex)",
@@ -326,7 +325,19 @@ const ProductVariantSelector = ({
                     color: "white",
                   }}
                 >
-                  {router.locale === "uz" ? "Savatga o'tish" : "Доступно"}
+                  {router.locale === "uz" ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      Savatga o'tish <FaCheck size={16} />
+                    </div>
+                  ) : (
+                    "Доступно"
+                  )}
                 </Button>
               ) : (
                 <Button
@@ -351,7 +362,6 @@ const ProductVariantSelector = ({
                     backgroundColor: "var(--main-bg-color)",
                   }}
                 >
-                  {/* {t("slug.add to cart")} */}
                   {cart.some((v: IProduct) => v.id === data.id)
                     ? router.locale === "uz"
                       ? "Savatga qo'shilgan"
