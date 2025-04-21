@@ -10,6 +10,7 @@ import { Footer } from "./style";
 import { useTranslation } from "react-i18next";
 import { request } from "@/shared/api/requests";
 import { FaCheck } from "react-icons/fa";
+import { MdAddShoppingCart } from "react-icons/md";
 
 interface Variant {
   id: number;
@@ -362,13 +363,33 @@ const ProductVariantSelector = ({
                     backgroundColor: "var(--main-bg-color)",
                   }}
                 >
-                  {cart.some((v: IProduct) => v.id === data.id)
-                    ? router.locale === "uz"
-                      ? "Savatga qo'shilgan"
-                      : "Добавлено в корзину"
-                    : router.locale === "uz"
-                    ? "Savatchaga qo'shish"
-                    : "Добавить в корзину"}
+                  {cart.some((v: IProduct) => v.id === data.id) ? (
+                    router.locale === "uz" ? (
+                      "Savatchadan olib tashlash"
+                    ) : (
+                      "Удалить из корзины"
+                    )
+                  ) : router.locale === "uz" ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      Savatchaga qo'shish <MdAddShoppingCart size={16} />
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      Добавить в корзину <MdAddShoppingCart size={16} />
+                    </div>
+                  )}
                 </Button>
               )}
               {cart.some((v: IProduct) => v.id === data.id) ? (

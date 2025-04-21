@@ -1,5 +1,3 @@
-
-
 import { UISkeleton } from "@/components/skeleton";
 import { Container, Title, Wrapper } from "@/styles/global";
 import { Grid } from "@mantine/core";
@@ -22,8 +20,8 @@ const AllProductScreen = () => {
   return (
     <Wrapper className="home-wrapper">
       <Container>
-      <Title className="home-title" style={{ marginTop: 0 }}>
-          { slug === "cheap" ? t("cheap prices"): t("news")}
+        <Title className="home-title" style={{ marginTop: 0 }}>
+          {slug === "cheap" ? t("cheap prices") : t("news")}
         </Title>
         {isLoading ? (
           <UISkeleton />
@@ -51,8 +49,11 @@ const AllProductScreen = () => {
           </Grid>
         )}
       </Container>
-     <Pagination productCount={productList.count} activePage={activePage} setPage={(e) => setPage(e)} />
-
+      <Pagination
+        productCount={productList.count}
+        activePage={activePage}
+        setPage={(e) => setPage(e)}
+      />
     </Wrapper>
   );
 };
