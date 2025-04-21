@@ -28,7 +28,7 @@ export const useProducts = () => {
     ],
     () =>
       request(
-        `product/list/${router.query.slug}?limit=15&offset=${
+        `product/list/${router.query.slug}?limit=10&offset=${
           (activePage - 1) * 10
         }`
       ),
