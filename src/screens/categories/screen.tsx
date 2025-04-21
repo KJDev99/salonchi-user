@@ -3,7 +3,6 @@ import { Sidebar } from "./components/sidebar";
 import { Grid } from "@mantine/core";
 import { CustomCard } from "@/components/card";
 import { Title } from "@/styles/global";
-// import { useProducts } from "@/hooks/useProducts";
 import { IProduct } from "@/types/product";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -27,7 +26,6 @@ const CategoriesScreen = () => {
               lg={4}
               md={3}
               xs={4}
-              // sm={4}
               key={item.id}
               style={{ background: "red !important" }}
             >

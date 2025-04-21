@@ -26,7 +26,12 @@ export const useProducts = () => {
       slider,
       router.query.slug,
     ],
-    () => request(`product/list/${router.query.slug}`),
+    () =>
+      request(
+        `product/list/${router.query.slug}?limit=15&offset=${
+          (activePage - 1) * 10
+        }`
+      ),
     {
       select: (res: any) => {
         return {

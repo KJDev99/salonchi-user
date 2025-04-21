@@ -377,7 +377,7 @@ const ProductVariantSelector = ({
                         gap: "10px",
                       }}
                     >
-                      Savatchaga qo'shish <MdAddShoppingCart size={16} />
+                      Savatchaga qo&apos;shish <MdAddShoppingCart size={16} />
                     </div>
                   ) : (
                     <div
