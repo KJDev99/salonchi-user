@@ -74,7 +74,7 @@ export const Catalog = ({
                 <ImageContainer>
                   {item?.photo == null ? null : (
                     <Image
-                    // src='/category_empty.webp'
+                      // src='/category_empty.webp'
                       src={item?.photo}
                       alt={item.name_uz}
                       priority
@@ -90,7 +90,11 @@ export const Catalog = ({
 
           <ButtonWrapper>
             <ViewAllButton onClick={() => setOpen(true)}>
-              <p> {t("Barchasini ko’rish")}</p>
+              <p>
+                {router.locale == "ru"
+                  ? "Посмотреть все"
+                  : "Barchasini ko'rish"}
+              </p>
               <ArrowDownIcon color="black" />
             </ViewAllButton>
           </ButtonWrapper>

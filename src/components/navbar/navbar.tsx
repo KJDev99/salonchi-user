@@ -51,8 +51,7 @@ const Navbar = () => {
           <NavHeader>
             <Container className="nav-container">
               <Left>
-                <Button variant="outline">Yangiliklar</Button>
-                {/* <Button variant="outline">Hamkorlik qilish</Button> */}
+                <Button variant="outline">{t("news")}</Button>
               </Left>
               <Right>
                 <span>

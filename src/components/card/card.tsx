@@ -196,7 +196,7 @@ export const CustomCard = ({
                 className="add-to-cart-btn add-to-cart-btn2"
                 onClick={() => router.push(`/product/${item?.slug}`)}
               >
-                Xarid qilish
+                {router.locale == "ru" ? "Купить" : "Xarid qilish"}
               </Button>
             </ButtonWrapper>
           </div>

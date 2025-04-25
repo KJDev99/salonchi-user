@@ -73,19 +73,20 @@ export const Footer = () => {
               </Ul>
             </Grid.Col>
             <Grid.Col span={12} lg={3} md={6} sm={6}>
-              <h4>Takliflar</h4>
+              {/* <h4>Takliflar</h4> */}
+              <h4>{router.locale == "ru" ? "Предложения" : "Takliflar"}</h4>
               <Ul className="footer-info">
                 <li>
-                  <Link href="/">Biz haqimizda</Link>
+                  <Link href="/">{router.locale == "ru" ? "О нас" : "Biz haqimizda"}</Link>
                 </li>
                 <li>
-                  <Link href="/">Yangiliklar</Link>
+                  <Link href="/">{router.locale == "ru" ? "Новости" : "Yangiliklar"}</Link>
                 </li>
                 <li>
-                  <Link href="/">Hamkorlik</Link>
+                  <Link href="/">{router.locale == "ru" ? "Сотрудничество" : "Hamkorlik" }</Link>
                 </li>
                 <li>
-                  <Link href="/">Yordam</Link>
+                  <Link href="/">{router.locale == "ru" ? "Помощь" : "Yordam" }</Link>
                 </li>
               </Ul>
             </Grid.Col>
