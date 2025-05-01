@@ -4,7 +4,6 @@ import NavItem from "./nav-item";
 import {
   NavProvider,
   Header,
-  NavHeader,
   NavHeaderWrapper,
   Left,
   Right,
