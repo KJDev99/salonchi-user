@@ -15,6 +15,16 @@ export const Wrapper = styled("div")`
     width: 85%;
     overflow: hidden;
   }
+  .test1 {
+    padding: 4px 8px;
+    border-radius: 8px;
+    :hover {
+      border-radius: 8px;
+      padding: 4px 8px;
+      transition: transform 0.9s ease;
+      background-color: #EA9070;
+    }
+  }
 
   @media (max-width: 576px) {
     display: none;

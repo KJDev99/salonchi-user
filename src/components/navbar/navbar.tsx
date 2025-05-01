@@ -5,6 +5,7 @@ import {
   NavProvider,
   Header,
   NavHeader,
+  NavHeaderWrapper,
   Left,
   Right,
   MobileWrapper,
@@ -34,20 +35,36 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
   const [scrollY, setScrollY] = useState(0);
+  const [showHeader, setShowHeader] = useState(true); // yangi holat
   const { t } = useTranslation("common");
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+
   useEffect(() => {
-    if (typeof window !== undefined) {
-      document.addEventListener("scroll", () => {
-        setScrollY(window.scrollY);
-      });
-    }
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setScrollY(currentY);
+      setShowHeader(currentY < 40); // pastga tushganda yo‘qoladi, tepada ko‘rinadi
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
       <NavProvider className="nav-provider">
-        {!isOpen && (
+        {/* {!isOpen && (
           <NavHeader>
             <Container className="nav-container">
               <Left>
@@ -62,7 +79,23 @@ const Navbar = () => {
               </Right>
             </Container>
           </NavHeader>
+        )} */}
+        {!isOpen && (
+          <NavHeaderWrapper $visible={showHeader}>
+            <Container className="nav-container">
+              <Left>
+                <Button variant="outline">{t("news")}</Button>
+              </Left>
+              <Right>
+                <span>
+                  <a href="tel:+998781139596"> +998 78 113 95 96</a>
+                </span>
+                <LanguageMenu />
+              </Right>
+            </Container>
+          </NavHeaderWrapper>
         )}
+
         <Header
           pathname={router.pathname}
           className={scrollY > 10 ? "fixed" : ""}
@@ -77,6 +110,7 @@ const Navbar = () => {
               </div>
 
               <SearchInput open={isOpen} setOpen={setOpen} />
+
               <div className={`${navActive ? "active" : ""} nav__menu-list`}>
                 {menuList.map((menu, idx) => (
                   <div
@@ -115,17 +149,7 @@ const Navbar = () => {
       <MobileWrapper>
         <Container>
           <MobileHeader>
-            {/* <div className={`nav__menu-bar`} onClick={open}>
-              <BurgerIcon />
-            </div> */}
             <Link href={"/"} className="navbar-brand">
-              {/* <Image
-                src={LogoIcon1}
-                alt="logo"
-                priority
-                // width={149}
-                // height={60}
-              /> */}
               <IconLogo width={100} height={40} />
             </Link>
             <LanguageMenu />
@@ -136,7 +160,8 @@ const Navbar = () => {
           </MobileFooter>
         </Container>
       </MobileWrapper>
-      {!isOpen && <Catalog open={isOpen} setOpen={setOpen} />}
+      <Catalog setOpen={setOpen} />
+      {/* {!isOpen && <Catalog open={isOpen} setOpen={setOpen} />} */}
     </>
   );
 };

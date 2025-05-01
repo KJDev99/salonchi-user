@@ -1,20 +1,62 @@
 import styled from "@emotion/styled";
 
+// export const Paper = styled("div")<any>`
+//   width: 100%;
+//   height: 100vh;
+//   position: absolute;
+//   top: ${(props) => (props.scrollY > 0 ? "95px" : "94px")};
+//   left: 0;
+//   z-index: 10;
+//   background: var(--main-white);
+//   box-shadow: 0 10px 16px #0000001a;
+//   display: none;
+//   overflow-y: hidden;
+//   transition: 0.3s ease-in-out;
+//   &.active {
+//     display: block;
+//   }
+//   .sub-list {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     margin-top: 14px;
+//     margin-bottom: 14px;
+//     li {
+//       width: 30%;
+//       list-style: none;
+//       font-weight: 300;
+//       padding: 0;
+//       line-height: 2;
+//       cursor: pointer;
+//       font-size: 14px;
+//       img {
+//         margin-right: 6px;
+//       }
+//       &:hover {
+//         color: var(--main-bg-color);
+//       }
+//     }
+//   }
+// `;
+
 export const Paper = styled("div")<any>`
   width: 100%;
-  height: 100vh;
+  max-height: 0;
   position: absolute;
   top: ${(props) => (props.scrollY > 0 ? "95px" : "94px")};
   left: 0;
   z-index: 10;
   background: var(--main-white);
   box-shadow: 0 10px 16px #0000001a;
-  display: none;
-  overflow-y: hidden;
-  transition: 0.3s ease-in-out;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  padding: 0; /* optional: animatsiyani chiroyli qilish uchun */
+
   &.active {
-    display: block;
+    max-height: 100vh;
+    /* padding: 20px;  */
   }
+
   .sub-list {
     display: flex;
     flex-wrap: wrap;

@@ -6,13 +6,50 @@ export const NavProvider = styled.div`
   }
 `;
 
-export const NavHeader = styled("div")`
+// export const NavHeader = styled("div")`
+//   width: 100%;
+//   height: 40px;
+//   background-color: var(--main-bg-color);
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   & span {
+//     color: var(--main-white);
+//     font-size: 14px;
+//     font-weight: 300;
+//   }
+//   button {
+//     height: 40px;
+//     border-radius: 10px;
+//     border: none;
+//     font-size: 16px;
+//     background-color: var(--main-bg-color) !important;
+//     font-family: var(--font-readex);
+//     &.last-btn {
+//       margin-left: 30px;
+//       width: 224px;
+//       span {
+//         font-size: 16px;
+//       }
+//     }
+//     span {
+//       margin-left: 0;
+//       font-size: 16px;
+//     }
+//   }
+//   @media (max-width: 992px) {
+//     display: none;
+//   }
+// `;
+
+export const NavHeaderWrapper = styled.div<{ $visible: boolean }>`
   width: 100%;
-  height: 40px;
+  overflow: hidden;
   background-color: var(--main-bg-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  transition: max-height 1s ease, opacity 0.1s ease;
+  max-height: ${({ $visible }) => ($visible ? "40px" : "0")};
+  opacity: ${({ $visible }) => ($visible ? "1" : "0")};
+
   & span {
     color: var(--main-white);
     font-size: 14px;
@@ -37,6 +74,7 @@ export const NavHeader = styled("div")`
       font-size: 16px;
     }
   }
+
   @media (max-width: 992px) {
     display: none;
   }
@@ -52,15 +90,27 @@ export const Left = styled("div")`
   & span {
     margin-left: 15px;
   }
+  :hover {
+    transition: transform 0.5s ease;
+    transform: scale(1.1);
+  }
 `;
 export const Right = styled("div")`
   display: flex;
   align-items: center;
   & span:nth-of-type(1) {
     font-size: 12px;
+    :hover {
+      transition: transform 0.5s ease;
+      transform: scale(1.1);
+    }
   }
   & span:nth-of-type(2) {
     margin-left: 15px;
+    :hover {
+      transition: transform 0.5s ease;
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -195,6 +245,10 @@ export const Header = styled.header<any>`
 `;
 export const NavItemProvider = styled.div<any>`
   position: relative;
+  :hover {
+    transition: transform 0.5s ease;
+    transform: scale(1.1);
+  }
   & .cart-title {
     margin-top: 7px;
   }

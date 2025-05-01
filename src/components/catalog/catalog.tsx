@@ -70,6 +70,7 @@ export const Catalog = ({
               <Card
                 key={item.id}
                 onClick={() => router.push(`/categories/${item.id}`)}
+                className="test1"
               >
                 <ImageContainer>
                   {item?.photo == null ? null : (
@@ -89,7 +90,7 @@ export const Catalog = ({
           </div>
 
           <ButtonWrapper>
-            <ViewAllButton onClick={() => setOpen(true)}>
+            <ViewAllButton className="test1" onClick={() => setOpen(true)}>
               <p>
                 {router.locale == "ru"
                   ? "Посмотреть все"

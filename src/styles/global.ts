@@ -266,20 +266,10 @@ export const Title = styled.h4`
 
 export const Container = styled.div`
   width: 100%;
-  /* padding-right: 20px;
-  padding-left: 20px; */
   padding: 0;
   margin-right: auto;
   margin-left: auto;
-  /* @media (max-width: 576px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: aliceblue;
-    text-align: center !important;
-    width: 100%;
-  } */
+
   &.add-to-cart-container {
     padding-left: 0;
     padding-right: 0;

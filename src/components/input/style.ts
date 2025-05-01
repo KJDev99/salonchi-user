@@ -34,6 +34,11 @@ export const CatalogPanel = styled("div")`
   border-radius: 8px;
   padding: 0 10px;
 
+  :hover {
+    transition: transform 0.5s ease;
+    transform: scale(1.05);
+  }
+
   span {
     font-weight: 400;
     font-size: 18px;
@@ -74,6 +79,9 @@ export const SearchWrapper = styled("form")`
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     color: white;
+    :hover {
+      background-color: #EA9070;
+    }
     @media (max-width: 768px) {
       display: none !important;
     }
