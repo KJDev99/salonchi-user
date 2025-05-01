@@ -49,12 +49,14 @@ export const Paper = styled("div")<any>`
   background: var(--main-white);
   box-shadow: 0 10px 16px #0000001a;
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
-  padding: 0; /* optional: animatsiyani chiroyli qilish uchun */
+
+  /* ScrollY ga qarab transition qo‘shiladi yoki olib tashlanadi */
+  transition: ${(props) =>
+    props.scrollY > 0 ? "max-height 0.5s ease-in-out" : "none"};
+  padding: 0;
 
   &.active {
     max-height: 100vh;
-    /* padding: 20px;  */
   }
 
   .sub-list {

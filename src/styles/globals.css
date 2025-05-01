@@ -178,3 +178,30 @@ input::placeholder {
     gap: 10px;
   }
 }
+
+/* button animation */
+
+.icon-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.8s ease;
+}
+
+.icon.show {
+  opacity: 1;
+  z-index: 1;
+}
+
+.icon.hide {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}

@@ -74,11 +74,24 @@ export const SearchInput = ({
   if (!setOpen) return null;
   return (
     <Searchbar>
-      <CatalogPanel onClick={() => setOpen(!open)}>
+      {/* <CatalogPanel onClick={() => setOpen(!open)}>
         {!open ? <IconCatalog1 /> : <IconClose />}
 
         <span>{t("menu.catalogue")}</span>
+      </CatalogPanel> */}
+      <CatalogPanel onClick={() => setOpen(!open)} className="catalog-panel">
+        <span className="icon-wrapper">
+          <span className={`icon icon-catalog ${open ? "hide" : "show"}`}>
+            <IconCatalog1 />
+          </span>
+          <span className={`icon icon-close ${open ? "show" : "hide"}`}>
+            <IconClose />
+          </span>
+        </span>
+
+        <span>{t("menu.catalogue")}</span>
       </CatalogPanel>
+
       <SearchWrapper onSubmit={handleSubmit}>
         <div className="search-btn">
           <SearchIcon />
