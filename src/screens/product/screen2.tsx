@@ -493,12 +493,12 @@ const ProductScreen = () => {
                       </div>
                       <div className="advantagesBox">
                         <div className="advantagesBoxIcons">
-                          <div className="advantagesBoxIcon">
+                          {/* <div className="advantagesBoxIcon">
                             <IconUzcard />
-                          </div>
-                          <div className="advantagesBoxIcon">
+                          </div> */}
+                          {/* <div className="advantagesBoxIcon">
                             <IconHumo />
-                          </div>
+                          </div> */}
                           <Image
                             height={100}
                             width={400}
