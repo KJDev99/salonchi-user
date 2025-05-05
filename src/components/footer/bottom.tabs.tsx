@@ -41,7 +41,7 @@ export const BottomTabs = () => {
   return (
     <TabsWrapper>
       <Container>
-        <List>
+        <List style={{ padding: "0 16px" }}>
           <ListItem href="/">
             <HomeIcon />
             <span className={router.pathname === "/" ? "active" : ""}>
