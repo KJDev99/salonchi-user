@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Group } from "@mantine/core";
 import { Color, Title, Wrapper } from "./style";
+import { useRouter } from "next/router";
 
 export const Attributes = ({
   values = [],
@@ -11,6 +12,7 @@ export const Attributes = ({
   atributErr,
   setAtributErr,
 }: any) => {
+  const router = useRouter();
   useEffect(() => {
     if (values.length > 0 && !active[index]) {
       setActive((prev: any) => ({
@@ -44,7 +46,7 @@ export const Attributes = ({
                 setAtributErr(false);
               }}
             >
-              {color.title}
+              {router.locale === "uz" ? color.title : color.title_ru}
             </Color>
           ))}
         </Group>
