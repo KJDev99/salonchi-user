@@ -1,4 +1,7 @@
-import React from "react";
+import { CartIconn } from "@/assets/icons/cartIcon";
+import { StarIcon } from "@/assets/icons/start";
+import { ActionIcon, Button } from "@mantine/core";
+import { useRouter } from "next/router";
 import {
   ButtonWrapper,
   Card,
@@ -6,25 +9,18 @@ import {
   CardHeader,
   Input,
   ProductBtns,
-  // CardMain,
 } from "./style";
-import { StarIcon } from "@/assets/icons/start";
-import { CartIconn } from "@/assets/icons/cartIcon";
-import { useRouter } from "next/router";
-import { ActionIcon, Badge, Button } from "@mantine/core";
 // import { CartIcon } from "@/assets/icons/cart";
-import { IProduct } from "@/types/product";
-import { NumberFormat } from "../number-format";
-import useStore from "@/store";
-import { ICardProps } from "@/types/card";
-import { IconPlus } from "@/assets/icons/plus";
-import { IconMinus } from "@/assets/icons/minus";
-import { useReduce } from "./useReduce";
-import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
 import { IconHeartFilled } from "@/assets/icons/card/heart.filled";
-import { Carousel } from "./carousel";
-import { useTranslation } from "next-i18next";
+import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
+import useStore from "@/store";
+import { IProduct } from "@/types/product";
 import { useViewportSize } from "@mantine/hooks";
+import { IconMinus, IconPlus } from "@tabler/icons-react";
+import { useTranslation } from "next-i18next";
+import { NumberFormat } from "../number-format";
+import { Carousel } from "./carousel";
+import { useReduce } from "./useReduce";
 
 export const CustomCard = ({
   id,

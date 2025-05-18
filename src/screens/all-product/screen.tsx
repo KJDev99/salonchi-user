@@ -1,14 +1,14 @@
+import { CustomCard } from "@/components/card";
+import { Pagination } from "@/components/pagination";
 import { UISkeleton } from "@/components/skeleton";
 import { Container, Title, Wrapper } from "@/styles/global";
-import { Grid } from "@mantine/core";
-import { Fragment } from "react";
 import { IProduct } from "@/types/product";
-import { CustomCard } from "@/components/card";
-import { useProducts } from "./useProducts";
-import { useTranslation } from "react-i18next";
-import { useRouter } from "next/router";
+import { Grid } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
-import { Pagination } from "@/components/pagination";
+import { useRouter } from "next/router";
+import { Fragment } from "react";
+import { useTranslation } from "react-i18next";
+import { useProducts } from "./useProducts";
 
 const AllProductScreen = () => {
   const router = useRouter();

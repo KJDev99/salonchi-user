@@ -1,22 +1,19 @@
+import { IconArrowRight2 } from "@/assets/icons/arrow.right2";
 import { CustomCard } from "@/components/card";
 import { Slider } from "@/components/carousel";
-import { Catalog } from "@/components/catalog";
+import { UISkeleton } from "@/components/skeleton";
 import { Container, Title, Wrapper } from "@/styles/global";
+import { IProduct } from "@/types/product";
+import { Carousel } from "@mantine/carousel";
 import { Button, Grid } from "@mantine/core";
 import { useDisclosure, useViewportSize } from "@mantine/hooks";
-import React, { Fragment } from "react";
-import { usePage } from "./usePage";
-import { Paging, Card } from "./style";
-import { UISkeleton } from "@/components/skeleton";
 import { IconRefresh } from "@tabler/icons-react";
-import { IProduct } from "@/types/product";
 import { useTranslation } from "next-i18next";
-import { Carousel } from "@mantine/carousel";
-import { IconArrowRight2 } from "@/assets/icons/arrow.right2";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Card, Paging } from "./style";
+import { usePage } from "./usePage";
 
-import Banner from "@/assets/images/banner.png";
 const HomeScreen = () => {
   const { t } = useTranslation("common");
   const {
