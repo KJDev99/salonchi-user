@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Body, Form, FlexBtns, Header, ModalContent } from "./style";
-import { Button, Divider } from "@mantine/core";
-import { IProduct } from "@/types/product";
-import { NumberFormat } from "@/components/number-format";
-import { useCheckout } from "./useCheckout";
-import { Modal } from "@/components/modal";
-import { useDisclosure } from "@mantine/hooks";
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 import { IconWarning } from "@/assets/icons/warning";
+import { Modal } from "@/components/modal";
+import { NumberFormat } from "@/components/number-format";
+import { IProduct } from "@/types/product";
+import { Button } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { Notify } from "./notify";
+import { Body, FlexBtns, Form, Header, ModalContent } from "./style";
+import { useCheckout } from "./useCheckout";
 
 export interface ICheckoutProps {
   initialCart: IProduct[];
@@ -42,8 +42,10 @@ export const Checkout = ({
 
   // useDisclosure hooks
   const [opened, { open, close }] = useDisclosure(false);
-  const [notifyOpened, { open: notifOpen, close: notifyClose }] = useDisclosure(false);
-  const [openLogin, { open: openLoginOpen, close: openLoginClose }] = useDisclosure(false);
+  const [notifyOpened, { open: notifOpen, close: notifyClose }] =
+    useDisclosure(false);
+  const [openLogin, { open: openLoginOpen, close: openLoginClose }] =
+    useDisclosure(false);
 
   const { onCheckout, isLoading } = useCheckout({
     initialCart,
@@ -82,7 +84,9 @@ export const Checkout = ({
       <Form
         onSubmit={onCheckout}
         id="form"
-        className={`mediaFixed ${isFixed ? "fixedd" : ""} ${isTop ? "topCheck" : ""} ${infoUserOpened ? "infoUserOpened" : ""}`}
+        className={`mediaFixed ${isFixed ? "fixedd" : ""} ${
+          isTop ? "topCheck" : ""
+        } ${infoUserOpened ? "infoUserOpened" : ""}`}
       >
         <Header>
           {!infoUserOpened ? <h2>{t("all")}:</h2> : <h2>Buyurtmangiz</h2>}
@@ -92,7 +96,8 @@ export const Checkout = ({
               <NumberFormat
                 value={initialCart?.reduce(
                   (current, item: IProduct) =>
-                    current + item.productQuantity * (item?.variant?.price ?? item.price),
+                    current +
+                    item.productQuantity * (item?.variant?.price ?? item.price),
                   0
                 )}
               />{" "}
@@ -105,7 +110,8 @@ export const Checkout = ({
                 <div>
                   <NumberFormat
                     value={initialCart?.reduce(
-                      (current, item: IProduct) => current + item.productQuantity * item.price,
+                      (current, item: IProduct) =>
+                        current + item.productQuantity * item.price,
                       0
                     )}
                   />{" "}
@@ -150,8 +156,14 @@ export const Checkout = ({
                 type="submit"
                 className="order-btn"
                 form="form"
+                disabled={isLoading}
               >
-                {t("place an order")}
+                {isLoading
+                  ? router.locale === "uz"
+                    ? "Yuklanmoqda..."
+                    : "Загрузка..."
+                  : t("place an order")}
+                {/* {t("place an order")} */}
               </Button>
             ) : (
               <Button color="red" className="order-btn order-btn-disable">

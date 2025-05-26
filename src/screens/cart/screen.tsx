@@ -1,37 +1,29 @@
+import { Loader } from "@/components/loader";
 import { Container, Title, Wrapper } from "@/styles/global";
-import { Button, Grid, Modal } from "@mantine/core";
-import React, { Fragment, useEffect, useState } from "react";
+import { IProduct } from "@/types/product";
+import { Grid, Modal } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
+import { FormProvider } from "react-hook-form";
+import { Address } from "./components/address";
 import { Card } from "./components/card";
 import { Checkout } from "./components/checkout";
-import { Textarea } from "@/components/textarea";
+import { CartEmpty } from "./components/empty";
 import {
   CustomerInfo,
-  CustomerTitle,
+  IconWrapper,
   Left,
-  Right,
+  OptionText,
   PaymentOption,
   RadioButton,
   RadioCircle,
-  OptionText,
-  IconWrapper,
 } from "./style";
-import { IProduct } from "@/types/product";
-import { CartEmpty } from "./components/empty";
-import { FormProvider } from "react-hook-form";
-import { Address } from "./components/address";
 import { useCart } from "./useCart";
-import { Loader } from "@/components/loader";
-import { useTranslation } from "next-i18next";
-import { PaymentMethod } from "./components/payment";
-import { useViewportSize } from "@mantine/hooks";
 
-import Nasiya from "@/assets/icons/nasiya.png";
 import Cash from "@/assets/icons/cash.png";
-import Uzcard from "@/assets/icons/uzcard.png";
-import Humo from "@/assets/icons/humo.png";
-import Image from "next/image";
-import axios from "axios";
 import { request } from "@/shared/api/requests";
+import Image from "next/image";
 
 interface User {
   id: number;
@@ -212,15 +204,6 @@ const CartScreen = () => {
         firstname: users?.firstname,
       };
       if (home && street && selectedRegion && selectedDistrict) {
-        /* await axios.put(
-          `https://api.salonchi.uz/api/v1/user/profile`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${userData?.access}`,
-            },
-          }
-        ); */
         await request.put(`user/profile`, formData, {
           headers: {
             Authorization: `Bearer ${userData?.access}`,
@@ -355,24 +338,6 @@ const CartScreen = () => {
                   <CustomerInfo>
                     <Left>
                       <Title>To`lov turi</Title>
-
-                      {/* <PaymentOption
-                        selected={selectedOption === "card"}
-                        onClick={() => setSelectedOption("card")}
-                      >
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <RadioButton selected={selectedOption === "card"}>
-                            <RadioCircle selected={selectedOption === "card"} />
-                          </RadioButton>
-                          <OptionText selected={selectedOption === "card"}>
-                            Karta orqali to`lash
-                          </OptionText>
-                        </div>
-                        <IconWrapper>
-                          <Image src={Uzcard} alt="Uzcard" />
-                          <Image src={Humo} alt="Humo" />
-                        </IconWrapper>
-                      </PaymentOption> */}
                       <PaymentOption
                         selected={selectedOption === "CASH"}
                         onClick={() => setSelectedOption("CASH")}
@@ -389,23 +354,6 @@ const CartScreen = () => {
                           <Image src={Cash} alt="Cash" />
                         </IconWrapper>
                       </PaymentOption>
-
-                      {/* <PaymentOption
-                        selected={selectedOption === "UZUM"}
-                        onClick={() => setSelectedOption("UZUM")}
-                      >
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <RadioButton selected={selectedOption === "UZUM"}>
-                            <RadioCircle selected={selectedOption === "UZUM"} />
-                          </RadioButton>
-                          <OptionText selected={selectedOption === "UZUM"}>
-                            Uzum nasiya orqali sotib olish
-                          </OptionText>
-                        </div>
-                        <IconWrapper>
-                          <Image src={Nasiya} alt="Uzum" />
-                        </IconWrapper>
-                      </PaymentOption> */}
                     </Left>
                   </CustomerInfo>
                 </Grid.Col>
@@ -423,47 +371,7 @@ const CartScreen = () => {
                 handleProfileChange={handleProfileChange}
                 checkProfile={checkProfile}
               />
-              {/* {width > 1200 ? (
-                <FormProvider {...form}>
-                  <PaymentMethod
-                    value={value}
-                    setValue={setValue}
-                    payType={payType}
-                    setPaytype={setPaytype}
-                  />
-                </FormProvider>
-              ) : null} */}
             </Grid.Col>
-            {/* {width < 1200 ? (
-              <Fragment>
-                <Grid.Col span={12}>
-                  <FormProvider {...form}>
-                    <PaymentMethod
-                      value={value}
-                      setValue={setValue}
-                      payType={payType}
-                      setPaytype={setPaytype}
-                    />
-                  </FormProvider>
-                </Grid.Col>
-                <Grid.Col
-                  span={12}
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  <Button
-                    color="red"
-                    type="submit"
-                    className="order-btn"
-                    form="form"
-                  >
-                    {t("place an order")}
-                  </Button>
-                </Grid.Col>
-              </Fragment>
-            ) : null} */}
           </Grid>
         </Container>
       )}
