@@ -25,11 +25,9 @@ export const Card = styled("div")`
     z-index: 1;
     right: 1rem;
     top: 1rem;
-    /* background-color: whi; */
     svg {
       width: 24px;
       height: 24px;
-      /* stroke: var(--main-bg-color); */
       &.icon-tabler-heart-filled {
         color: var(--main-bg-color);
       }

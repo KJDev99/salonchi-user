@@ -1,7 +1,15 @@
 import { CartIconn } from "@/assets/icons/cartIcon";
 import { StarIcon } from "@/assets/icons/start";
+import useStore from "@/store";
+import { IProduct } from "@/types/product";
 import { ActionIcon, Button } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
+import { IconMinus, IconPlus } from "@tabler/icons-react";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { GoHeart, GoHeartFill } from "react-icons/go";
+import { NumberFormat } from "../number-format";
+import { Carousel } from "./carousel";
 import {
   ButtonWrapper,
   Card,
@@ -10,16 +18,6 @@ import {
   Input,
   ProductBtns,
 } from "./style";
-// import { CartIcon } from "@/assets/icons/cart";
-import { IconHeartFilled } from "@/assets/icons/card/heart.filled";
-import { HeartOutlineIcon } from "@/assets/icons/heart.outline";
-import useStore from "@/store";
-import { IProduct } from "@/types/product";
-import { useViewportSize } from "@mantine/hooks";
-import { IconMinus, IconPlus } from "@tabler/icons-react";
-import { useTranslation } from "next-i18next";
-import { NumberFormat } from "../number-format";
-import { Carousel } from "./carousel";
 import { useReduce } from "./useReduce";
 
 export const CustomCard = ({
@@ -81,7 +79,7 @@ export const CustomCard = ({
           handleAddWishlist(e);
         }}
       >
-        {checked ? <IconHeartFilled /> : <HeartOutlineIcon />}
+        {checked ? <GoHeartFill color="#ea580b" /> : <GoHeart />}
       </div>
       <CardHeader onClick={() => router.push(`/product/${item?.slug}`)}>
         <Carousel images={item?.photo} media={item?.media} />
@@ -91,7 +89,6 @@ export const CustomCard = ({
           <span className="badge">Yangi</span>
         ) : null}
       </CardHeader>
-      {/* <CardMain> */}
       <CardFooter>
         <div className="stars-group">
           <div>
@@ -198,7 +195,6 @@ export const CustomCard = ({
           </div>
         )}
       </CardFooter>
-      {/* </CardMain> */}
     </Card>
   );
 };

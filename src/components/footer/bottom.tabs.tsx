@@ -1,17 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import { Badge, List, ListItem, TabsWrapper } from "./style";
-import { Container } from "@/styles/global";
-import { HomeIcon } from "@/assets/icons/mobile/home";
-import { SearchIcon } from "@/assets/icons/mobile/search";
-import { HeartIcon } from "@/assets/icons/mobile/heart";
-import { CartIcon } from "@/assets/icons/mobile/cart";
-import { ProfileIcon } from "@/assets/icons/mobile/profile";
-import { useRouter } from "next/router";
-import useStore from "@/store";
-import { useTranslation } from "next-i18next";
-import useToken from "@/store/token";
 import { CatalogIcon } from "@/assets/icons/catalog";
+import { CartIcon } from "@/assets/icons/mobile/cart";
+import { HeartIcon } from "@/assets/icons/mobile/heart";
+import { HomeIcon } from "@/assets/icons/mobile/home";
+import { ProfileIcon } from "@/assets/icons/mobile/profile";
+import useStore from "@/store";
+import useToken from "@/store/token";
+import { Container } from "@/styles/global";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Badge, List, ListItem, TabsWrapper } from "./style";
 
 export const BottomTabs = () => {
   const router = useRouter();

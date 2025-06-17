@@ -6,7 +6,7 @@ export const Wrapper = styled("footer")`
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
-  padding: 44px 0 0 0;
+  padding: 44px 0 0px 0;
   margin-top: 125px;
   @media (max-width: 576px) {
     display: flex;
@@ -15,6 +15,9 @@ export const Wrapper = styled("footer")`
     flex-direction: column;
     /* background-color: red; */
     width: 100%;
+  }
+  @media (max-width: 992px) {
+    padding-bottom: 86px;
   }
   .social-links {
     display: flex;
@@ -121,7 +124,7 @@ export const TabsWrapper = styled("div")`
   box-shadow: 0 -4px 8px #0000000f;
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: -5px;
   z-index: 10;
   background-color: var(--main-white);
   @media (max-width: 992px) {
